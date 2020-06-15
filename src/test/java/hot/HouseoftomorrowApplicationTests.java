@@ -22,5 +22,4 @@ class HouseoftomorrowApplicationTests {
 		rep.save(new MemberRole(null, "ROLE_USER"));
 		System.out.println(22);
 	}
-
 }
