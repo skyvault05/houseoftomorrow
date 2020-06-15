@@ -13,13 +13,15 @@ import hot.member.repository.MemberRoleRepository;
 @Commit
 class HouseoftomorrowApplicationTests {
 	@Autowired
-	private MemberRoleRepository rep;
+	private MemberRoleRepository memberRole;
 
 	@Test
 	void contextLoads() {
-		System.out.println(rep);
-		System.out.println(11);
-		rep.save(new MemberRole(null, "ROLE_USER"));
-		System.out.println(22);
+//		System.out.println(memberRole);
+//		System.out.println(11);
+//		memberRole.save(new MemberRole(null, "ROLE_CONSTRUCTOR"));
+//		System.out.println(22);
+		
+		
 	}
 }

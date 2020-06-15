@@ -20,8 +20,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MemberRole {
 	@Id
-	@Column(name = "member_role_no")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "member_role_no")
 	private Long memberRoleNo;
 	@Column(name = "member_role_name")
 	private String memberRoleName;
