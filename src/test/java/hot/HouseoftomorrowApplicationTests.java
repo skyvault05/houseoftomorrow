@@ -29,7 +29,7 @@ class HouseoftomorrowApplicationTests {
 //		Member member = new Member(null, "hj", "hj", "hj", "000-0000-0000", null, memberRole.findById(2L).orElse(null));
 //		memberRep.save(member);
 		
-		Member memberf = memberRep.findById(2L).orElse(null);
-		System.out.println(memberf);
+//		Member memberf = memberRep.findById(2L).orElse(null);
+//		System.out.println(memberf);
 	}
 }
