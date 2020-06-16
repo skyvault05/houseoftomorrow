@@ -8,8 +8,10 @@ import org.springframework.test.annotation.Commit;
 
 import hot.member.domain.Member;
 import hot.member.domain.MemberRole;
+import hot.member.domain.Notification;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
+import hot.member.repository.NotificationRepository;
 
 @SpringBootTest
 @Commit
@@ -18,7 +20,10 @@ class HouseoftomorrowApplicationTests {
 	private MemberRoleRepository memberRole;
 	@Autowired
 	private MemberRepository memberRep;
-
+	
+	@Autowired
+	private NotificationRepository notificationRep;
+	
 	@Test
 	void contextLoads() {
 //		System.out.println(memberRole);
@@ -26,10 +31,23 @@ class HouseoftomorrowApplicationTests {
 //		memberRole.save(new MemberRole(null, "ROLE_CONSTRUCTOR"));
 //		System.out.println(22);
 		
-//		Member member = new Member(null, "hj", "hj", "hj", "000-0000-0000", null, memberRole.findById(2L).orElse(null));
+//		Member member = new Member(null, "삐삐삐", "1234", "구급차", "000-0000-0119", null, memberRole.findById(2L).orElse(null));
 //		memberRep.save(member);
 		
 //		Member memberf = memberRep.findById(2L).orElse(null);
 //		System.out.println(memberf);
+		
+//		Notification newNoti = new Notification(null, memberRep.getOne(6L), 6,5);
+//		notificationRep.save(newNoti);
+		System.out.println(11);
+		Member member = memberRep.findById(1L).orElse(null);
+		System.out.println(22);
+		
+//		notificationRep.save(new Notification(null, memberRep.getOne(6L), 6,5));
+		
+	
 	}
+	
+	
+	
 }
