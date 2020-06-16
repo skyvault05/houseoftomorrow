@@ -1,0 +1,9 @@
+package hot.member.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import hot.member.domain.Notification;
+
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
+
+}
