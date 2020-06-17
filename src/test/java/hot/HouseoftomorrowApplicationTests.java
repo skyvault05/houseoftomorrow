@@ -8,6 +8,7 @@ import org.springframework.test.annotation.Commit;
 
 import hot.member.domain.Member;
 import hot.member.domain.Notification;
+import hot.member.repository.ConstructorRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NotificationRepository;
@@ -22,6 +23,9 @@ class HouseoftomorrowApplicationTests {
 	
 	@Autowired
 	private NotificationRepository notificationRep;
+	
+	@Autowired
+	private ConstructorRepository contructorRep;
 	
 	@Test
 	void contextLoads() {
