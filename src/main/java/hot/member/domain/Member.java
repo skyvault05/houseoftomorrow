@@ -43,9 +43,11 @@ public class Member {
 	private String memberPhone;
 	@Column(name = "member_regdate")
 	private Timestamp memberRegdate;
+	
 	@ManyToOne
 	@JoinColumn(name = "member_role_no")
 	private MemberRole memberRole;
+	
 	@Column(name = "member_status")
 	private Integer memberStatus = 1;
 	public Member(Long memberNo, String memberId, String memberPwd, String memberName, String memberPhone,
