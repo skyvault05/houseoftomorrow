@@ -1,23 +1,13 @@
 package hot;
 
 
-import java.util.Arrays;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
-import hot.member.domain.Estimate;
 import hot.member.domain.Member;
 import hot.member.domain.Notification;
-import hot.member.repository.ConstructorRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NotificationRepository;
@@ -33,8 +23,8 @@ class HouseoftomorrowApplicationTests {
 	@Autowired
 	private NotificationRepository notificationRep;
 	
-	@Autowired
-	private ConstructorRepository contructorRep;
+//	@Autowired
+//	private ConstructorRepository contructorRep;
 	
 	@Test
 	void contextLoads() {
