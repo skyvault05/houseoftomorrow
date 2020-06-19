@@ -4,10 +4,14 @@ package hot;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
+import hot.member.domain.Estimate;
+import hot.member.domain.Kitchen;
 import hot.member.domain.Member;
 import hot.member.domain.Notification;
+import hot.member.repository.EstimateRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NotificationRepository;
@@ -26,6 +30,9 @@ class HouseoftomorrowApplicationTests {
 //	@Autowired
 //	private ConstructorRepository contructorRep;
 	
+	@Autowired
+	private EstimateRepository estimateRepository;
+	
 	@Test
 	void contextLoads() {
 //		System.out.println(memberRole);
@@ -33,7 +40,7 @@ class HouseoftomorrowApplicationTests {
 //		memberRole.save(new MemberRole(null, "ROLE_CONSTRUCTOR"));
 //		System.out.println(22);
 		
-//		Member member = new Member(null, "삐삐삐", "1234", "구급차", "000-0000-0119", null, memberRole.findById(2L).orElse(null));
+//		Member member = new Member(null, "mh", encoder.encode("1234"), "구급차", "000-0000-0119", null, memberRole.findById(2L).orElse(null));
 //		memberRep.save(member);
 		
 //		Member memberf = memberRep.findById(2L).orElse(null);
@@ -41,16 +48,18 @@ class HouseoftomorrowApplicationTests {
 		
 //		Notification newNoti = new Notification(null, memberRep.getOne(6L), 6,5);
 //		notificationRep.save(newNoti);
-		System.out.println(111111);
-		Member member = memberRep.findById(1L).orElse(null);
-		System.out.println(222222);
-		for(Notification noti : member.getList()) {
-			System.out.println("noti_No:"+noti.getNotificationNo());
-		}
+//		System.out.println(111111);
+//		Member member = memberRep.findById(1L).orElse(null);
+//		System.out.println(222222);
+//		for(Notification noti : member.getList()) {
+//			System.out.println("noti_No:"+noti.getNotificationNo());
+//		}
 		
 //		notificationRep.save(new Notification(null, memberRep.getOne(6L), 6,5));
+		Kitchen kit = new Kitchen(1, 1, 1, 1, 1);
+		Estimate est = new Estimate(null, memberRep.findById(6L).orElse(null), "desc", null, 1, kit, null, null, null, null, null);
+		estimateRepository.save(est);
 		
-
 	}
 	
 }

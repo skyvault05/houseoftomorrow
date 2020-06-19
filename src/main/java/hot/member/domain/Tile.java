@@ -1,30 +1,24 @@
 package hot.member.domain;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "tile")
-@DiscriminatorValue("Dtype_Tile")
+@Embeddable
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Tile extends Estimate {
+public class Tile{
 	
 	
-	@Column(name = "tile_type")
+	@Column(name = "tile_type", table = "tile")
 	private int tileType;
-	@Column(name = "tile_area")
+	@Column(name = "tile_area", table = "tile")
 	private int tileArea;
 
 }

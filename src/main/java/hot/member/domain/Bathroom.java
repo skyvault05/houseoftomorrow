@@ -1,34 +1,28 @@
 package hot.member.domain;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "bathroom")
-@DiscriminatorValue("Dtype_Bathroom")
+@Embeddable
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Bathroom  extends Estimate{
+public class Bathroom{
 	
 	
-	@Column(name = "bathroom_number_of_rooms")
+	@Column(name = "bathroom_number_of_rooms", table = "bathroom")
 	private int bathroomNumberOfRooms;
-	@Column(name = "bathroom_type")
+	@Column(name = "bathroom_type", table = "bathroom")
 	private int bathroomType;
-	@Column(name = "bathroom_ceiling")
+	@Column(name = "bathroom_ceiling", table = "bathroom")
 	private int bathroomCeiling;
-	@Column(name = "bathroom_tile")
+	@Column(name = "bathroom_tile", table = "bathroom")
 	private int bathroomTile;
 
 }

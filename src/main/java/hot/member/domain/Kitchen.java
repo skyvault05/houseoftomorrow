@@ -1,35 +1,27 @@
 package hot.member.domain;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-@Entity
-@Table(name="kitchen")
+@Embeddable
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Kitchen {
-
-	
-	@Column(name="kitchen_type")
+public class Kitchen{	
+	@Column(name="kitchen_type", table = "kitchen")
 	private int kitchenType;
-	@Column(name="kitchen_max_width")
+	@Column(name="kitchen_max_width", table = "kitchen")
 	private int kitchenMaxWidth;
-	@Column(name="kitchen_countertop")
+	@Column(name="kitchen_countertop", table = "kitchen")
 	private int kitchenCountertop;
-	@Column(name="kitchen_door")
+	@Column(name="kitchen_door", table = "kitchen")
 	private int kitchenDoor;
-	@Column(name="kitchen_tile")
+	@Column(name="kitchen_tile", table = "kitchen")
 	private int kitchenTile;
 
 }

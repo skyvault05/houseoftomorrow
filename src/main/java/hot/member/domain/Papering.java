@@ -1,38 +1,32 @@
 package hot.member.domain;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name="papering")
-@DiscriminatorValue("Dtype_Papering")
+@Embeddable
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Papering extends Estimate {
+public class Papering {
 
 	
-	@Column(name = "papering_type")
+	@Column(name = "papering_type", table = "papering")
 	private int paperingType;
-	@Column(name = "papering_area")
+	@Column(name = "papering_area", table = "papering")
 	private int paperingArea;
-	@Column(name = "papering_number_of_rooms")
+	@Column(name = "papering_number_of_rooms", table = "papering")
 	private int paperingNumberOfRooms;
-	@Column(name = "papering_ceiling")
+	@Column(name = "papering_ceiling", table = "papering")
 	private int paperingCeiling;
-	@Column(name = "papering_veranda")
+	@Column(name = "papering_veranda", table = "papering")
 	private int paperingVeranda;
-	@Column(name = "papering_burdon")
+	@Column(name = "papering_burdon", table = "papering")
 	private int paperingBurdon;
 
 }
