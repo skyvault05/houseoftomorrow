@@ -68,7 +68,7 @@ class HouseoftomorrowApplicationTests {
 		
 		///////////////////////////////////////////////////////
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		Member member = new Member(null, "dddd", encoder.encode("1234"), "구급차", "000-0000-01217", null, memberRole.findById(1).orElse(null));
+		Member member = new Member(null, "dddd", encoder.encode("1234"), "구급차", "000-0000-01217", null, memberRole.findById(2).orElse(null));
 		
 		Constructor con = new Constructor(null, member, "회사", "011-0000-0000", "11", "russia", 1, "no license");
 		
