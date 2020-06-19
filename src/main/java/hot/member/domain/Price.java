@@ -23,7 +23,7 @@ public class Price {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "price_no")
-	private Long priceNo;
+	private Integer priceNo;
 	
 	@Column(name = "price_amount")
 	private int priceAmount;

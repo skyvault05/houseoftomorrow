@@ -26,8 +26,9 @@ public class memberController {
 	@RequestMapping("/doSignUp")
 	public String memberInsert(Member member) {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		member = new Member(null, "id1", encoder.encode("1234"), "효정", "00-0242", null, memberRoleRepository.findById(1).orElse(null));
-		memberService.memberInsert(member);
-	return "/";
+		System.out.println(member);
+//		member = new Member(null, "id1", encoder.encode("1234"), "효정", "00-0242", null, memberRoleRepository.findById(1).orElse(null));
+//		memberService.memberInsert(member);
+	return "index";
 	}
 }
