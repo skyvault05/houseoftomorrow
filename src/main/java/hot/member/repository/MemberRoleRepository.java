@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import hot.member.domain.MemberRole;
 
-public interface MemberRoleRepository extends JpaRepository<MemberRole, Long> {
+public interface MemberRoleRepository extends JpaRepository<MemberRole, Integer> {
 
 }

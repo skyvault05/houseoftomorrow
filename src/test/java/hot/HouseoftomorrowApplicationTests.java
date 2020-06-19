@@ -1,26 +1,17 @@
 package hot;
 
 
-import java.util.Arrays;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
-import hot.member.domain.ChCategory;
-//import hot.member.domain.Estimate;
+import hot.member.domain.Constructor;
 import hot.member.domain.Member;
-import hot.member.domain.Notification;
-import hot.member.domain.Price;
-import hot.member.repository.ChCategoryRepository;
-//import hot.member.repository.ConstructorRepository;
+import hot.member.repository.ConstructorRepository;
+import hot.member.repository.EstimateRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NotificationRepository;
@@ -31,6 +22,7 @@ import hot.member.repository.PriceRepository;
 class HouseoftomorrowApplicationTests {
 	@Autowired
 	private MemberRoleRepository memberRole;
+	
 	@Autowired
 	private MemberRepository memberRep;
 	
@@ -41,10 +33,12 @@ class HouseoftomorrowApplicationTests {
 //	private ConstructorRepository contructorRep;
 	
 	@Autowired
-	private PriceRepository priceRep;
+	private EstimateRepository estimateRepository;
 	
 	@Autowired
-	private ChCategoryRepository chCategoryRep;
+	private ConstructorRepository constructorRepository;
+	
+	
 	
 	@Test
 	void contextLoads() {
@@ -52,8 +46,8 @@ class HouseoftomorrowApplicationTests {
 //		System.out.println(11);
 //		memberRole.save(new MemberRole(null, "ROLE_CONSTRUCTOR"));
 //		System.out.println(22);
-		
-//		Member member = new Member(null, "삐삐삐", "1234", "구급차", "000-0000-0119", null, memberRole.findById(2L).orElse(null));
+//		PasswordEncoder encoder = new BCryptPasswordEncoder();
+//		Member member = new Member(null, "dd", encoder.encode("dd"), "구급차", "000-0000-0112", null, memberRole.findById(1).orElse(null));
 //		memberRep.save(member);
 		
 //		Member memberf = memberRep.findById(2L).orElse(null);
@@ -69,13 +63,24 @@ class HouseoftomorrowApplicationTests {
 //		}
 		
 //		notificationRep.save(new Notification(null, memberRep.getOne(6L), 6,5));
+//		Kitchen kit = new Kitchen(1, 1, 1, 1, 1);
+//		Estimate est = new Estimate(null, memberRep.findById(6L).orElse(null), "desc", null, 1, kit, null, null, null, null, null);
+//		estimateRepository.save(est);
 		
 		
 //		priceRep.save(new Price(null, 0, "priceNa"));
 		
-		chCategoryRep.save(new ChCategory(null, "채널"));
+		// chCategoryRep.save(new ChCategory(null, "채널"));
 		
 
+		///////////////////////////////////////////////////////
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		Member member = new Member(null, "dddd", encoder.encode("1234"), "구급차", "000-0000-01217", null, memberRole.findById(2).orElse(null));
+		
+		Constructor con = new Constructor(null, member, "회사", "011-0000-0000", "11", "russia", 1, "no license");
+		
+		constructorRepository.save(con);
+		//////////////////////////////////////////////////////
 	}
 	
 }

@@ -26,7 +26,7 @@ public class CommCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "comm_category_no")
-	private Long commCategoryNo;
+	private Integer commCategoryNo;
 	@Column(name = "comm_category_name")
 	private String commCategoryName;
 

@@ -34,7 +34,7 @@ public class Community {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "comm_no")
-	private Long commNo;
+	private Integer commNo;
 	
 	@ManyToOne
 	@JoinColumn(name = "member_no")
