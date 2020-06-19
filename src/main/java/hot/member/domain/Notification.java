@@ -27,11 +27,7 @@ public class Notification {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "notification_no")
-	private Long notificationNo;
-	
-	@ManyToOne
-	@JoinColumn(name = "member_no")
-	private Member member;
+	private Integer notificationNo;
 	
 	@Column(name = "notification_category")
 	private int notificationCategory;

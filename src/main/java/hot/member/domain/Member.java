@@ -32,7 +32,7 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_no")
-	private Long memberNo;
+	private Integer memberNo;
 	@Column(name = "member_id")
 	private String memberId;
 	@Column(name = "member_pwd")
@@ -50,7 +50,7 @@ public class Member {
 	
 	@Column(name = "member_status")
 	private Integer memberStatus = 1;
-	public Member(Long memberNo, String memberId, String memberPwd, String memberName, String memberPhone,
+	public Member(Integer memberNo, String memberId, String memberPwd, String memberName, String memberPhone,
 			Timestamp memberRegdate, MemberRole memberRole) {
 		super();
 		this.memberNo = memberNo;
@@ -62,6 +62,7 @@ public class Member {
 		this.memberRole = memberRole;
 	}
 	
-	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "member_no")
 	private List<Notification> list = new ArrayList<Notification>();
 }

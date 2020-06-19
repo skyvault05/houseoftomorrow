@@ -30,7 +30,7 @@ public class QNA {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "qna_no")
-	private Long qnaNo;
+	private Integer qnaNo;
 	
 	@ManyToOne
 	@JoinColumn(name = "member_no")

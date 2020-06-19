@@ -41,7 +41,7 @@ public class Estimate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "est_no")
-	private Long estNo;
+	private Integer estNo;
 	
 	@ManyToOne
 	@JoinColumn(name="member_no")
