@@ -1,5 +1,6 @@
 package hot.member.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,11 +27,11 @@ public class Portfolio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "port_no")
-	private int portNo;
+	private Integer portNo;
 	
 	@ManyToOne
 	@JoinColumn(name = "ch_no")
-	//private Channel channel;
+	private Channel channel;
 	@Column(name = "port_title")
 	private String portTitle;
 	@Column(name = "port_img")
@@ -39,11 +39,11 @@ public class Portfolio {
 	@Column(name = "port_dsecription")
 	private String portDescription;
 	@Column(name = "port_regdate")
-	private Date portRegdate;
-	@Column(name = "port_startDate")
-	private Date portStartDate;
-	@Column(name = "port_endDate")
-	private Date portEndDate;
+	private Timestamp portRegdate;
+	@Column(name = "port_startdate")
+	private Timestamp portStartDate;
+	@Column(name = "port_enddate")
+	private Timestamp portEndDate;
 	@Column(name = "port_status")
 	private int portStatus;
 
