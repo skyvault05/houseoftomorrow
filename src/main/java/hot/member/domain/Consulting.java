@@ -26,7 +26,7 @@
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@Column(name = "consul_no")
-//	private int consulNo;
+//	private Integer consulNo;
 //	
 //	@Column(name = "member_no")
 //	private Member member;

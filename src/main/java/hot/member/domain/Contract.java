@@ -22,6 +22,9 @@
 //@AllArgsConstructor
 //public class Contract {
 //	
+
+    //construct에 같은 방법있음
+
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@Column(name = "consul_no")
