@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +29,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Member {
+public class Member{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_no")
@@ -65,4 +66,7 @@ public class Member {
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "member_no")
 	private List<Notification> list = new ArrayList<Notification>();
+	
+	@OneToOne(mappedBy = "member")
+	private Constructor con;
 }
