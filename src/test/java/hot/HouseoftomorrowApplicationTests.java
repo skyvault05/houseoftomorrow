@@ -14,13 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
-import hot.member.domain.Estimate;
+import hot.member.domain.ChCategory;
+//import hot.member.domain.Estimate;
 import hot.member.domain.Member;
 import hot.member.domain.Notification;
-import hot.member.repository.ConstructorRepository;
+import hot.member.domain.Price;
+import hot.member.repository.ChCategoryRepository;
+//import hot.member.repository.ConstructorRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NotificationRepository;
+import hot.member.repository.PriceRepository;
 
 @SpringBootTest
 @Commit
@@ -33,8 +37,14 @@ class HouseoftomorrowApplicationTests {
 	@Autowired
 	private NotificationRepository notificationRep;
 	
+//	@Autowired
+//	private ConstructorRepository contructorRep;
+	
 	@Autowired
-	private ConstructorRepository contructorRep;
+	private PriceRepository priceRep;
+	
+	@Autowired
+	private ChCategoryRepository chCategoryRep;
 	
 	@Test
 	void contextLoads() {
@@ -51,14 +61,19 @@ class HouseoftomorrowApplicationTests {
 		
 //		Notification newNoti = new Notification(null, memberRep.getOne(6L), 6,5);
 //		notificationRep.save(newNoti);
-		System.out.println(111111);
-		Member member = memberRep.findById(1L).orElse(null);
-		System.out.println(222222);
-		for(Notification noti : member.getList()) {
-			System.out.println("noti_No:"+noti.getNotificationNo());
-		}
+//		System.out.println(111111);
+//		Member member = memberRep.findById(1L).orElse(null);
+//		System.out.println(222222);
+//		for(Notification noti : member.getList()) {
+//			System.out.println("noti_No:"+noti.getNotificationNo());
+//		}
 		
 //		notificationRep.save(new Notification(null, memberRep.getOne(6L), 6,5));
+		
+		
+//		priceRep.save(new Price(null, 0, "priceNa"));
+		
+		chCategoryRep.save(new ChCategory(null, "채널"));
 		
 
 	}
