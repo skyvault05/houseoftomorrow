@@ -35,7 +35,7 @@ public class Order {
 	
 	@ManyToOne
 	@JoinColumn(name = "port_no")
-	private Portfolio portNo;
+	private Portfolio Portfolio;
 	
 	@ManyToOne
 	@JoinColumn(name = "price_no")
