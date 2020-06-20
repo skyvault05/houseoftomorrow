@@ -10,14 +10,24 @@ import org.springframework.test.annotation.Commit;
 
 import hot.member.domain.Channel;
 import hot.member.domain.Constructor;
+import hot.member.domain.ConstructorRegisterRequest;
+import hot.member.domain.Consulting;
+import hot.member.domain.Contract;
+import hot.member.domain.EstResponse;
 import hot.member.domain.Member;
+import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
+import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
+import hot.member.repository.ConsultingRepository;
+import hot.member.repository.ContractRepository;
+import hot.member.repository.EstResponseRepository;
 import hot.member.repository.EstimateRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NotificationRepository;
 import hot.member.repository.PriceRepository;
+import hot.member.repository.ReviewRepository;
 
 @SpringBootTest
 @Commit
@@ -43,6 +53,20 @@ class HouseoftomorrowApplicationTests {
 	@Autowired
 	private ChannelRepository channelRep;
 	
+	@Autowired
+	private ConstructorRegisterRequestRepository ConRRRep;
+	
+	@Autowired
+	private ReviewRepository reviewRep;
+	
+	@Autowired
+	private EstResponseRepository estResponseRep;
+	
+	@Autowired
+	private ConsultingRepository consultingRep;
+	
+	@Autowired
+	private ContractRepository contractRep;
 	
 	
 	@Test
@@ -88,9 +112,29 @@ class HouseoftomorrowApplicationTests {
 		//////////////////////////////////////////////////////
 		
 		
-		channelRep.save(new Channel(null, "이미지 널", "설명", null, contructorRep.findById(11).orElse(null), 0, 0));
+//		channelRep.save(new Channel(null, "이미지 널", "설명", null, contructorRep.findById(11).orElse(null), 0, 0));
 		
 	//	channelRep.save(new Channel(chNo, chImg, chDescription, chRegdate, constructor, chStatus, chGrades));
+		
+	//	ConRRRep.save(new ConstructorRegisterRequest(null, channelRep.findById(1).orElse(null), null));
+		
+	//	ConRRRep.save(new ConstructorRegisterRequest(conReqNo, channel, conReqRegdate);
+		
+	//	reviewRep.save(new Review(null, channelRep.findById(1).orElse(null), memberRep.findById(6).orElse(null), 0, null, 0));
+		
+	//	reviewRep.save(new Review(reviewNo, channel, member, reviewGrade, reviewRegdate));
+		
+		
+	//	estResponseRep.save(new EstResponse(null, estimateRepository.findById(1).orElse(null), channelRep.findById(1).orElse(null), "설명", null));
+		
+	//	estResponseRep.save(new EstResponse(null, estNo, channel, estRespDescription, estRespRegdate))
+		
+	//	consultingRep.save(new Consulting(null, memberRep.findById(6).orElse(null), channelRep.findById(1).orElse(null), "consulDescription", null, "consulTitle", null, 0, 0, 0, null));
+		
+//		Consulting co =new Consulting(null, memberRep.findById(6).orElse(null), channelRep.findById(1).orElse(null), "consulDescription2", null, "consulTitle2", null, 0, 0, 0, null);
+//		contractRep.save(new Contract(null, co, "이미지 없음", null));
+		
+		
 		
 		
 	}

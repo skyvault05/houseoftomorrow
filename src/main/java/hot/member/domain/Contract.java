@@ -1,39 +1,43 @@
-//package hot.member.domain;
-//
-//import java.sql.Timestamp;
-//
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
-//
-//import lombok.AllArgsConstructor;
-//import lombok.Getter;
-//import lombok.NoArgsConstructor;
-//import lombok.Setter;
-//
-//@Entity
-//@Table(name =  "contract")
-//@Setter
-//@Getter
-//@NoArgsConstructor
-//@AllArgsConstructor
-//public class Contract {
-//	
+package hot.member.domain;
 
-    //construct에 같은 방법있음
+import java.sql.Timestamp;
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "consul_no")
-//	private Consulting consulting;
-//	
-//	@Column(name = "contract_img")
-//	private String contractImg;
-//	
-//	@Column(name = "contract_update_date")
-//	private Timestamp contractUpdateDate;
-//
-//}
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name =  "contract")
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Contract {
+	
+	@Id
+	private Integer consulNo;
+	
+	@MapsId
+	@OneToOne
+	@JoinColumn(name = "consul_no")
+	private Consulting consulting;
+	
+	@Column(name = "contract_img")
+	private String contractImg;
+	
+	@Column(name = "contract_update_date")
+	private Timestamp contractUpdateDate;
+	
+
+}

@@ -17,40 +17,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "order")
+@Table(name = "constructor_register_request")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+public class ConstructorRegisterRequest {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "order_no")
-	private Integer orderNo;
+	@Column(name = "con_req_no")
+	private Integer conReqNo;
 	
 	@ManyToOne
-	@JoinColumn(name = "member_no")
-	private Constructor constructor;
+	@JoinColumn(name = "ch_no")
+	private Channel channel;
 	
-	@ManyToOne
-	@JoinColumn(name = "port_no")
-	private Portfolio portNo;
-	
-	@ManyToOne
-	@JoinColumn(name = "price_no")
-	private Price price;
-	
-	@Column(name = "order_regdate")
-	private Timestamp orderRegdate;
-	
-	@Column(name = "order_payment")
-	private int orderPayment;
-	
-	@Column(name = "order_method")
-	private String orderMethod;
-	
-	@Column(name = "order_status")
-	private int oderStatus;
+	@Column(name = "con_req_regdate")
+	private Timestamp conReqRegdate;
 
 }
