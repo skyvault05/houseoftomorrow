@@ -9,14 +9,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
 import hot.member.domain.Channel;
+import hot.member.domain.CommComment;
 import hot.member.domain.Constructor;
 import hot.member.domain.ConstructorRegisterRequest;
 import hot.member.domain.Consulting;
 import hot.member.domain.Contract;
 import hot.member.domain.EstResponse;
 import hot.member.domain.Member;
+import hot.member.domain.Notice;
 import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
+import hot.member.repository.CommCommentRepository;
+import hot.member.repository.CommunityRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
@@ -25,6 +29,7 @@ import hot.member.repository.EstResponseRepository;
 import hot.member.repository.EstimateRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
+import hot.member.repository.NoticeRepository;
 import hot.member.repository.NotificationRepository;
 import hot.member.repository.PriceRepository;
 import hot.member.repository.ReviewRepository;
@@ -67,6 +72,15 @@ class HouseoftomorrowApplicationTests {
 	
 	@Autowired
 	private ContractRepository contractRep;
+	
+	@Autowired
+	private NoticeRepository noticeRep;
+	
+	@Autowired
+	private CommCommentRepository commCommentRep;
+	
+	@Autowired
+	private CommunityRepository communityRep;
 	
 	
 	@Test
@@ -135,6 +149,12 @@ class HouseoftomorrowApplicationTests {
 //		contractRep.save(new Contract(null, co, "이미지 없음", null));
 		
 		
+		
+//		noticeRep.save(new Notice(null, "타이틀", "설명", null));
+		
+		commCommentRep.save(new CommComment(null, communityRep.findById(2).orElse(null), memberRep.findById(6).orElse(null), "설명", null, 1));
+		
+//		commCommentRep.save(new CommComment(commCommentNo, community, member, commCommentDescription, commCommentRegdate, commCommentStatus));
 		
 		
 	}
