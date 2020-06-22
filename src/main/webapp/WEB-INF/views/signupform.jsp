@@ -38,7 +38,7 @@ function myFunction(){
 
         <div class="col-md-12 order-md-1">
             
-            <form class="needs-validation" novalidate action="/signup" method="POST">
+            <form class="needs-validation"  action="/signup" method="POST">
 
 
                 <div class="mb-3">

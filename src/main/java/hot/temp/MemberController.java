@@ -11,19 +11,19 @@ import hot.member.repository.MemberRoleRepository;
 import lombok.AllArgsConstructor;
 
 /**
- * 회원가입
+ * 일반회원가입
  * @author kosta
  *
  */
 
 @Controller
-public class memberController {
+public class MemberController {
 	@Autowired
 	MemberRoleRepository memberRoleRepository;
 	@Autowired
 	MemberService memberService;
 	
-	@RequestMapping("/doSignUp")
+	@RequestMapping("/signup")
 	public String memberInsert(Member member) {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		System.out.println(member);
@@ -31,4 +31,22 @@ public class memberController {
 //		memberService.memberInsert(member);
 	return "index";
 	}
+
+	@RequestMapping("/")
+	public void url() {
+		
+	}
+	
+	@RequestMapping("/update")
+	public String memberUpdate(Member member) {
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		System.out.println(member);
+		member = new Member(null, "memberId", encoder.encode("1234"), "memberName", "memberPhone", null, memberRoleRepository.findById(1).orElse(null));
+		memberService.memberUpdate(member);
+	return "index";
+	}
+	
+	
+	
+	
 }
