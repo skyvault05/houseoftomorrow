@@ -24,10 +24,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.anyRequest().permitAll();
 		
 		http.formLogin()
-		.loginPage("/loginForm")
+		.loginPage("/common/loginForm")
 		.loginProcessingUrl("/login")
-		.failureUrl("/loginForm") //실패하면 로그인으로
-		.defaultSuccessUrl("/index")	//성공했을때 기본적으로 index로
+		.failureUrl("/common/loginForm") //실패하면 로그인으로
+		.defaultSuccessUrl("/common/index")	//성공했을때 기본적으로 index로
 		.usernameParameter("email")
 		.passwordParameter("password")
 		.permitAll();
@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.logout()
 		.invalidateHttpSession(true)
 		.logoutUrl("/logout")
-		.logoutSuccessUrl("/loginForm")	//로그아웃 실패시 로그인 페이지로
+		.logoutSuccessUrl("/common/loginForm")	//로그아웃 성공시 로그인 페이지로
 		.permitAll();
 	}
 	
