@@ -9,7 +9,6 @@
    <!--  <link rel="stylesheet" type="text/css" href="/board.css"> -->
    
 <script>
-
 function myFunction(){
 	var obj = document.getElementById('mailselect');
 	var obj2 = document.getElementById('aaa');
@@ -18,12 +17,8 @@ function myFunction(){
 	} else {
 		obj.style.display = 'inline-block';
 		obj2.style.display = 'none';
-	}
-	
-	
-	
-}
-   
+	}	
+}   
 </script>
    
 </head>
@@ -40,7 +35,7 @@ function myFunction(){
             
             <form class="needs-validation" novalidate action="/signup" method="POST">
 
-
+				<h1>회원 정보</h1>
                 <div class="mb-3">
                     <label for="email">이메일 (email)</label>
                     <p>8자 이상 입력해주세요.</p>
@@ -84,6 +79,10 @@ function myFunction(){
                     <input type="text" class="form-control" id="nickname" placeholder="별명(2자-15자)" required name="nickname">
                     <div class="invalid-feedback">좋아하는 별명을 입력하세요.</div>
                 </div>
+				
+				
+				
+				
 				
 				
 				<div class="mb-3">
