@@ -13,9 +13,6 @@ public class LoginLogoutController {
 	@Autowired
 	MemberRepository rep;
 	
-	@RequestMapping("/{url}")
-	public void url() {}
-	
 	@RequestMapping("/{url1}/{url2}")
 	public void url2() {}
 	
