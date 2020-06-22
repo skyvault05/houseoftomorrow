@@ -5,11 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입 폼</title>
-    <link rel="stylesheet" type="text/css" href="/plugins/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+
+    <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
+	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
    <!--  <link rel="stylesheet" type="text/css" href="/board.css"> -->
    
 <script>
-
 function myFunction(){
 	var obj = document.getElementById('mailselect');
 	var obj2 = document.getElementById('aaa');
@@ -18,12 +21,8 @@ function myFunction(){
 	} else {
 		obj.style.display = 'inline-block';
 		obj2.style.display = 'none';
-	}
-	
-	
-	
-}
-   
+	}	
+}   
 </script>
    
 </head>
@@ -40,8 +39,8 @@ function myFunction(){
             
             <form class="needs-validation" novalidate action="/signup" method="POST">
 
-
-                <div class="mb-3">
+				<h1>회원 정보</h1>
+                <div class="col-md-3">
                     <label for="email">이메일 (email)</label>
                     <p>8자 이상 입력해주세요.</p>
                     <div class="input-group">
@@ -65,28 +64,70 @@ function myFunction(){
                     </div>
                 </div>
                 
-                <div class="mb-3">
+                <div class="col-md-3">
                     <label for="password">비밀번호</label> 
                     <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="user-password">
                     <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
                 </div>
 
 
-                <div class="mb-3">
+                <div class="col-md-3">
                     <label for="password">비밀번호 확인</label> 
                     <input type="password" class="form-control" id="real-name" placeholder="비밀번호 확인" value="" required name="user-password">
                     <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
                 </div>
            
 
-                <div class="mb-3">
+                <div class="col-md-3">
                     <label for="nickname">별명</label> 
                     <input type="text" class="form-control" id="nickname" placeholder="별명(2자-15자)" required name="nickname">
                     <div class="invalid-feedback">좋아하는 별명을 입력하세요.</div>
-                </div>
+                </div>			
+				
+				<h1>시공사 정보 입력</h1>
+				
+				<div class="col-md-3">
+					<label for="con_name">시공사명</label> 
+                    <input type="text" class="form-control" id="con_name" placeholder="시공사명" name="con_name" required>
+				</div>
+				
+				<div class="col-md-3">
+					<label for="con_phone">시공사 연락처</label> 
+                    <input type="text" class="form-control" id="con_phone" placeholder="xxx-xxxx-xxxx" name="con_phone" required>
+				</div>
+				
+				<div class="col-md-3">
+					<label for="con_career">경력사항</label> 
+                    <input type="text" class="form-control" id="con_career" placeholder="xx년" name="con_career" required>
+				</div>
+				
+				<div class="col-md-3">
+					<label for="con_isCompany">기업체 여부</label> 
+                    <input type="text" class="form-control" id="con_isCompany" placeholder="xxx-xxxx-xxxx" name="con_isCompany" required>
+				</div>
 				
 				
-				<div class="mb-3">
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<<!-- div class="mb-3">
 					<label for="agree">약관동의</label>
 					
 					<table class="table table-border">
@@ -110,7 +151,7 @@ function myFunction(){
                 <button class="btn btn-primary btn-lg btn-block" type="submit">회원가입 완료</button>
                 <hr class="mb-4">
 
-                <footer th:replace="/fragments/semantic :: footer"></footer>
+                <footer th:replace="/fragments/semantic :: footer"></footer> -->
             </form>
         </div>
 
