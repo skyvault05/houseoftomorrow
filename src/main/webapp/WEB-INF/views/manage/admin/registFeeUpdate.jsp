@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>시공 상담, 이미 끝난 상담 조회</h1>
+<h1>등록비 수정 폼</h1>
 </body>
 </html>
