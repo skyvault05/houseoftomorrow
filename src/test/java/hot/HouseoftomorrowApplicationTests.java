@@ -9,12 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
 import hot.member.domain.Channel;
-<<<<<<< HEAD
 import hot.member.domain.CommComment;
-=======
 import hot.member.domain.CommCategory;
 import hot.member.domain.Community;
->>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
 import hot.member.domain.Constructor;
 import hot.member.domain.ConstructorRegisterRequest;
 import hot.member.domain.Consulting;
@@ -24,12 +21,9 @@ import hot.member.domain.Member;
 import hot.member.domain.Notice;
 import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
-<<<<<<< HEAD
 import hot.member.repository.CommCommentRepository;
 import hot.member.repository.CommunityRepository;
-=======
 import hot.member.repository.CommCategoryRepository;
->>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
