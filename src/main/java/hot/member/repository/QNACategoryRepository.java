@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import hot.member.domain.QNACategory;
 
-public interface QNACategoryRepository extends JpaRepository<QNACategory, Long> {
+public interface QNACategoryRepository extends JpaRepository<QNACategory, Integer> {
 
 }

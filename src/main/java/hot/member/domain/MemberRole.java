@@ -28,10 +28,7 @@ public class MemberRole {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_role_no")
-	private Long memberRoleNo;
+	private Integer memberRoleNo;
 	@Column(name = "member_role_name")
 	private String memberRoleName;
-	
-	@OneToMany(mappedBy = "memberRole", fetch = FetchType.EAGER)
-	private List<Member> list = new ArrayList<Member>();
 }

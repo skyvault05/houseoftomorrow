@@ -23,7 +23,7 @@ public class ReportCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "report_category_no")
-	private Long reportCategoryNo;
+	private Integer reportCategoryNo;
 	@Column(name = "report_category_name")
 	private String reportCategoryName;
 

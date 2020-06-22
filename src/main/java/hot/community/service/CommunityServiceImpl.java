@@ -1,6 +1,7 @@
 package hot.community.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,8 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Override
 	public List<Community> selectCommunityCategory(Integer commCategoryNo) {
-		// TODO Auto-generated method stub
+		
+		
 		return null;
 	}
 

@@ -23,7 +23,7 @@ public class QNACategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "qna_category_no")
-	private Long qnaCategoryNo;
+	private Integer qnaCategoryNo;
 	@Column(name = "qna_category_name")
 	private String qnaCategoryName;
 

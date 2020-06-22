@@ -8,8 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,26 +17,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name =  "contract")
+@Table(name = "est_response")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Contract {
+public class EstResponse {
 	
 	@Id
-	private Integer consulNo;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "est_resp_no")
+	private Integer estRespNo;
 	
-	@MapsId
-	@OneToOne
-	@JoinColumn(name = "consul_no")
-	private Consulting consulting;
 	
-	@Column(name = "contract_img")
-	private String contractImg;
+	@ManyToOne
+	@JoinColumn(name = "est_no")
+	private Estimate estNo;
 	
-	@Column(name = "contract_update_date")
-	private Timestamp contractUpdateDate;
+	@ManyToOne
+	@JoinColumn(name = "ch_no")
+	private Channel channel;
 	
+	@Column(name = "est_resp_description")
+	private String estRespDescription;
+	
+	@Column(name = "est_resp_regdate")
+	private Timestamp estRespRegdate;
+
 
 }

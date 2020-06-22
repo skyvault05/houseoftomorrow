@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,31 +17,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "report")
+@Table(name = "review")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Report {
+public class Review {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "report_no")
-	private Integer reportNo;
+	@Column(name = "review_no")
+	private Integer reviewNo;
+	
+	@ManyToOne
+	@JoinColumn(name = "ch_no")
+	private Channel channel;
 	
 	@ManyToOne
 	@JoinColumn(name = "member_no")
-	private Member member;   //신고자
-	@Column(name = "reported")
-	private int reported;         //신고당하는 주체
+	private Member member;
 	
-	@ManyToOne
-	@JoinColumn(name = "report_category_no")
-	private ReportCategory reportCategory;
+	@Column(name = "review_grade")
+	private int reviewGrade;
 	
-	@Column(name = "report_status")
-	private int reportStatus;
-	@Column(name = "report_regdate")
-	private Timestamp reportRegdate;
+	@Column(name = "review_regdate")
+	private Timestamp reviewRegdate;
+	
+//	@Column(name = "review_status")   //인터페이스에는 리뷰상태가 없고 mysql eer다이어그램에는 리뷰상태가 있어요
+//	private int reviewStatus;
 
 }

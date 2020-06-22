@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,31 +17,40 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "report")
+@Table(name = "order")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Report {
+public class Order {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "report_no")
-	private Integer reportNo;
+	@Column(name = "order_no")
+	private Integer orderNo;
 	
 	@ManyToOne
 	@JoinColumn(name = "member_no")
-	private Member member;   //신고자
-	@Column(name = "reported")
-	private int reported;         //신고당하는 주체
+	private Constructor constructor;
 	
 	@ManyToOne
-	@JoinColumn(name = "report_category_no")
-	private ReportCategory reportCategory;
+	@JoinColumn(name = "port_no")
+	private Portfolio Portfolio;
 	
-	@Column(name = "report_status")
-	private int reportStatus;
-	@Column(name = "report_regdate")
-	private Timestamp reportRegdate;
+	@ManyToOne
+	@JoinColumn(name = "price_no")
+	private Price price;
+	
+	@Column(name = "order_regdate")
+	private Timestamp orderRegdate;
+	
+	@Column(name = "order_payment")
+	private int orderPayment;
+	
+	@Column(name = "order_method")
+	private String orderMethod;
+	
+	@Column(name = "order_status")
+	private int oderStatus;
 
 }

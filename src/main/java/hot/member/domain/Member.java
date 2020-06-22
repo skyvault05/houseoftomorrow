@@ -10,9 +10,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import net.bytebuddy.dynamic.TypeResolutionStrategy.Lazy;
 
 @Entity
 @Table(name = "member")
@@ -28,11 +31,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Member {
+public class Member{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "member_no")
-	private Long memberNo;
+	private Integer memberNo;
 	@Column(name = "member_id")
 	private String memberId;
 	@Column(name = "member_pwd")
@@ -50,7 +53,7 @@ public class Member {
 	
 	@Column(name = "member_status")
 	private Integer memberStatus = 1;
-	public Member(Long memberNo, String memberId, String memberPwd, String memberName, String memberPhone,
+	public Member(Integer memberNo, String memberId, String memberPwd, String memberName, String memberPhone,
 			Timestamp memberRegdate, MemberRole memberRole) {
 		super();
 		this.memberNo = memberNo;
@@ -62,6 +65,8 @@ public class Member {
 		this.memberRole = memberRole;
 	}
 	
-	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "member_no")
 	private List<Notification> list = new ArrayList<Notification>();
+	
 }

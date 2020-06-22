@@ -12,6 +12,7 @@ import hot.member.domain.Community;
 @RequestMapping("/community")
 public class CommunityController {
 	
+	
 	@Autowired
 	CommunityService communityService;
 
@@ -24,12 +25,12 @@ public class CommunityController {
 	@RequestMapping("/insert")
 	public String insertCommunity(Community community) {
 		System.out.println("컨트롤러 들어옴");
-		System.out.println("community.getCommCategory().getCommCategoryNo()" + community.getCommCategory().getCommCategoryNo());
+		System.out.println("community.getCommCategory().getCommCategoryNo()");
 		communityService.insertCommunity(community);
 		
 		System.out.println("설명: " + community.getCommDescription());
 		
-		return "redirect:list";
+		return "list";
 	}
 	
 	/**
