@@ -9,7 +9,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
 import hot.member.domain.Channel;
+<<<<<<< HEAD
 import hot.member.domain.CommComment;
+=======
+import hot.member.domain.CommCategory;
+import hot.member.domain.Community;
+>>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
 import hot.member.domain.Constructor;
 import hot.member.domain.ConstructorRegisterRequest;
 import hot.member.domain.Consulting;
@@ -19,8 +24,12 @@ import hot.member.domain.Member;
 import hot.member.domain.Notice;
 import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
+<<<<<<< HEAD
 import hot.member.repository.CommCommentRepository;
 import hot.member.repository.CommunityRepository;
+=======
+import hot.member.repository.CommCategoryRepository;
+>>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
@@ -81,6 +90,9 @@ class HouseoftomorrowApplicationTests {
 	
 	@Autowired
 	private CommunityRepository communityRep;
+
+	@Autowired
+	private CommCategoryRepository commCateRep;
 	
 	
 	@Test
@@ -148,6 +160,10 @@ class HouseoftomorrowApplicationTests {
 //		Consulting co =new Consulting(null, memberRep.findById(6).orElse(null), channelRep.findById(1).orElse(null), "consulDescription2", null, "consulTitle2", null, 0, 0, 0, null);
 //		contractRep.save(new Contract(null, co, "이미지 없음", null));
 		
+		CommCategory comCate = commCateRep.findById(5).orElse(null);
+		for(Community com : comCate.getCommList()) {
+			System.out.println(com.getCommNo());
+		}
 		
 		
 //		noticeRep.save(new Notice(null, "타이틀", "설명", null));
