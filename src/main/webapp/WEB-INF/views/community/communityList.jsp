@@ -10,5 +10,9 @@
 </head>
 <body>
 커뮤니티 리스트
+
+	<c:forEach items="${requestScope.list}" var="list" >
+	${list.commTitle}
+	</c:forEach>
 </body>
 </html>

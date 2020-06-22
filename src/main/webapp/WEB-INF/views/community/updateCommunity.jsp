@@ -9,9 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
-	<button><a href="createCommunity?commCategoryNo=4">사진</a></button>
-	<button><a href="createCommunity?commCategoryNo=5">노하우</a></button>
-</form>
+
 </body>
 </html>

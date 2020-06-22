@@ -14,7 +14,7 @@ public interface CommunityService {
 	
 	List<Community> selectCommunityCategory(Integer commCategoryNo); 
 	
-	Community selectCommunity(int commNo);
+	Community selectCommunity(int commNo, boolean state);
 	
 	List<Community> selectCommunityMember(Integer memberNo);
 

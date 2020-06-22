@@ -1,17 +1,26 @@
 package hot.community.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import hot.community.service.CommunityService;
 import hot.member.domain.Community;
+import hot.member.repository.CommCategoryRepository;
 
 @Controller
 @RequestMapping("/community")
 public class CommunityController {
-	
+	@Autowired
+	CommCategoryRepository commCategoryRepository;
 	
 	@Autowired
 	CommunityService communityService;
@@ -22,10 +31,10 @@ public class CommunityController {
 	/**
 	 * 실제 community  글 등록
 	 * */
-	@RequestMapping("/insert")
-	public String insertCommunity(Community community) {
+	@PostMapping("/insert")
+	public String insertCommunity(Community community, Integer commCategoryNo) {
 		System.out.println("컨트롤러 들어옴");
-		System.out.println("community.getCommCategory().getCommCategoryNo()");
+		community.setCommCategory(commCategoryRepository.findById(commCategoryNo).orElse(null));
 		communityService.insertCommunity(community);
 		
 		System.out.println("설명: " + community.getCommDescription());
@@ -36,37 +45,55 @@ public class CommunityController {
 	/**
 	 * community 글 수정
 	 * */
-	public String updateCommunity(Community community) {
-		return "";
+	@RequestMapping("/update")
+	public String updateCommunity(@ModelAttribute("community")Community community) {
+		communityService.updateCommunity(community);
+		
+		return "community/detail";
 	} 
 	
 	/**
 	 * community 글 수정 폼 - community/updateCommunity.jsp
 	 * */
+	@RequestMapping("/updateCommunity")
 	public ModelAndView updateCommunityForm(int commNo) {
-		return null;
+		
+		Community community = communityService.selectCommunity(commNo, false);
+		
+		return new ModelAndView("community/updateCommunity", "community", community);
 	}
 	
 	/**
 	 * community 글 삭제
 	 * */
+	@RequestMapping("/delete")
 	public String deleteCommunity(int commNo) {
-		return "";
+		
+		communityService.deleteCommunity(commNo);
+		
+		return "redirect:list";
 	} 
 	
 	/**
 	 * community 글 카테고리 별로 보기
 	 * */
-	@RequestMapping("/list")
-	public ModelAndView selectCommunityCategory(Integer commCategoryNo) {
-		return null;
+	@RequestMapping("/list/{commCategoryNo}")
+	public ModelAndView selectCommunityCategory(@PathVariable(name = "commCategoryNo") Integer commCategoryNo) {
+		
+		List<Community> communityList = communityService.selectCommunityCategory(commCategoryNo);
+		
+		return new ModelAndView("community/communityList", "list", communityList);
 	}
 	
 	/**
-	 * community 글 조회수 증가
+	 * community 글 조회수 증가, 상세보기
 	 * */
-	public ModelAndView selectCommunity(int commNo) {
-		return null;
+	@RequestMapping("/detail/{commNo}")
+	public ModelAndView selectCommunity(HttpSession session,int commNo) {
+		
+		Community community = communityService.selectCommunity(commNo, true);
+		
+		return new ModelAndView("community/communityDetail", "community", community);
 	} //조회수 증가 
 	
 	/**
