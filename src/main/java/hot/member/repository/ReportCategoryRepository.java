@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import hot.member.domain.ReportCategory;
 
-public interface ReportCategoryRepository extends JpaRepository<ReportCategory, Long> {
+public interface ReportCategoryRepository extends JpaRepository<ReportCategory, Integer> {
 
 }
