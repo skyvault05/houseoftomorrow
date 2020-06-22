@@ -45,5 +45,8 @@ public class Constructor {
 	@Column(name = "con_certification")
 	private String conCertification;
 	
+//	@OneToOne(mappedBy = "channel")
+//	@JoinColumn(name = "ch_no")
+//	private Channel channel;
 	
 }

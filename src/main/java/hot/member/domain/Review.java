@@ -1,7 +1,6 @@
 package hot.member.domain;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,34 +17,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "portfolio")
-@Getter
+@Table(name = "review")
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
-public class Portfolio {
+@AllArgsConstructor
+public class Review {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "port_no")
-	private Integer portNo;
+	@Column(name = "review_no")
+	private Integer reviewNo;
 	
 	@ManyToOne
 	@JoinColumn(name = "ch_no")
 	private Channel channel;
-	@Column(name = "port_title")
-	private String portTitle;
-	@Column(name = "port_img")
-	private String portImg;
-	@Column(name = "port_dsecription")
-	private String portDescription;
-	@Column(name = "port_regdate")
-	private Timestamp portRegdate;
-	@Column(name = "port_startdate")
-	private Timestamp portStartDate;
-	@Column(name = "port_enddate")
-	private Timestamp portEndDate;
-	@Column(name = "port_status")
-	private int portStatus;
-
 	
+	@ManyToOne
+	@JoinColumn(name = "member_no")
+	private Member member;
+	
+	@Column(name = "review_grade")
+	private int reviewGrade;
+	
+	@Column(name = "review_regdate")
+	private Timestamp reviewRegdate;
+	
+//	@Column(name = "review_status")   //인터페이스에는 리뷰상태가 없고 mysql eer다이어그램에는 리뷰상태가 있어요
+//	private int reviewStatus;
+
 }

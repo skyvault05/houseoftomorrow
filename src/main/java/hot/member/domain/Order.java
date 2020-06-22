@@ -27,7 +27,7 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_no")
-	private int orderNo;
+	private Integer orderNo;
 	
 	@ManyToOne
 	@JoinColumn(name = "member_no")
@@ -35,7 +35,7 @@ public class Order {
 	
 	@ManyToOne
 	@JoinColumn(name = "port_no")
-	private int portNo;
+	private Portfolio Portfolio;
 	
 	@ManyToOne
 	@JoinColumn(name = "price_no")
