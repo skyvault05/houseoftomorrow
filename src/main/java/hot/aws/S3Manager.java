@@ -52,9 +52,8 @@ public class S3Manager {
       ObjectMetadata uploadMetaData = new ObjectMetadata();
       uploadMetaData.setContentLength(file.length);
       ByteArrayInputStream is = new ByteArrayInputStream(file);
-      try {         
+      try {
          s3client.putObject(makeRequest(is, name, uploadMetaData));
-         System.out.println(s3client.putObject(makeRequest(is, name, uploadMetaData)));
          return true;
       } catch (Exception e) {
          e.printStackTrace();

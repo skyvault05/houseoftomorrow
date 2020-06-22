@@ -32,12 +32,11 @@ function myFunction(){
         <div class="py-5 text-left">
            
             <h2>회원가입</h2>
-         <!--  <p class="lead">회원가입하세요. 가입하면 게시판을 열람할 수 있습니다.</p> -->
         </div>
 
         <div class="col-md-12 order-md-1">
             
-            <form class="needs-validation" novalidate action="/signup" method="POST">
+            <form class="needs-validation" enctype="multipart/form-data" novalidate action="/signup" method="POST">
 
 				<h1>회원 정보</h1>
                 <div class="col-md-3">
@@ -105,6 +104,7 @@ function myFunction(){
 					<label for="con_isCompany">기업체 여부</label> 
                     <input type="text" class="form-control" id="con_isCompany" placeholder="xxx-xxxx-xxxx" name="con_isCompany" required>
 				</div>
+				
 				
 				
 				

@@ -14,12 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import hot.aws.S3Manager;
 
 @Controller
-@RequestMapping("/file")
 public class FileController {
 	@Autowired
 	S3Manager s3Manager;
 	
-	@PostMapping("")
+	@PostMapping("/file")
 	public ResponseEntity<?> handleImageUpload(@RequestParam("file") MultipartFile file) {
 		String fileName;
 		try {
