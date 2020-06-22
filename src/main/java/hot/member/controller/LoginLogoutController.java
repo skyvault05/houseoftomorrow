@@ -16,9 +16,12 @@ public class LoginLogoutController {
 	@RequestMapping("/{url}")
 	public void url() {}
 	
+	@RequestMapping("/{url1}/{url2}")
+	public void url2() {}
+	
 	@RequestMapping("/member/test")
 	public String test() {
 		System.out.println("d");
-		return "member/testPage";
+		return "manage/member/testPage";
 	}
 }
