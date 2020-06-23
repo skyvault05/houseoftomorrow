@@ -35,6 +35,7 @@ public class S3Manager {
    private static ObjectMetadata meta;    
    
    public String saveUploadedFiles(MultipartFile file) throws IOException {
+
       if (file.isEmpty()) {
          System.out.println("file not found");
       }
@@ -46,6 +47,15 @@ public class S3Manager {
       sendFiles(randomFileName, bytes);
       System.out.println(amazonPath+randomFileName);
       return amazonPath + randomFileName;
+   }
+   
+   public String upload(MultipartFile file) throws IOException{
+	   String fileName = file.getOriginalFilename();
+	   
+	   s3client.putObject(new PutObjectRequest("houseoftomorrow", fileName, file.getInputStream(), null));
+	   
+	   
+	   return s3client.getUrl("houseoftomorrow", fileName).toString();
    }
    
    public static boolean sendFiles(String name, byte[] file) {

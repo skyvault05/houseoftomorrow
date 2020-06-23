@@ -30,13 +30,15 @@ public class UserSecurityService implements UserDetailsService {
 		CustomUser customUser = new CustomUser();
 		customUser.setUsername(member.getMemberId());
 		customUser.setPassword(member.getMemberPwd());
+		customUser.setMemberNo(member.getMemberNo());
         customUser.setAuthorities(getAuthorities(username, member));
         customUser.setEnabled(true);
         customUser.setAccountNonExpired(true);
         customUser.setAccountNonLocked(true);
         customUser.setCredentialsNonExpired(true);
+        customUser.setAuthorities(getAuthorities(username, member));
 		
-		return null;
+		return customUser;
 	}
 	
 	 public Collection<GrantedAuthority> getAuthorities(String username, Member member) {

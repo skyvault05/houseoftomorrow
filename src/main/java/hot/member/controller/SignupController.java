@@ -14,4 +14,9 @@ public class SignupController {
 	public String test() {
 		return "/member/test";
 	}
+	
+	@RequestMapping("/logintest")
+	public String logintest() {
+		return "/estimate/member/requestForm";
+	}
 }
