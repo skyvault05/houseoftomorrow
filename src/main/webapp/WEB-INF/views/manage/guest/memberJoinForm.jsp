@@ -42,13 +42,14 @@ function myFunction(){
             
             <form class="needs-validation" novalidate action="/signup" method="POST">
             	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+            	<input type="hidden" name="memberRoleNo" value="1">
                 <div class="mb-3">
                     <label for="email">이메일</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                        	<input type="text" class="form-control"> @
-                        	<input type="text" id="aaa" class="form-control" style="display: none;">
-                        	<select id="mailselect" onchange="myFunction()" style="display: inline-block;">
+                        	<input type="text" name="memberId" class="form-control"> @
+                        	<input type="text" id="aaa" name="domain" class="form-control" style="display: none;">
+                        	<select id="mailselect" onchange="myFunction()" name="domainAuto" style="display: inline-block;">
                         		<option>선택</option>
                         		<option>naver.com</option>
                         		<option>hanmail.com</option>
@@ -61,26 +62,28 @@ function myFunction(){
                         </div>
                     </div>
                 </div>
+                <input type="hidden">
                 <div class="mb-3">
                     <label for="username">이름</label> 
-                  	<input type="text" class="form-control" id="username" placeholder="Username" required name="user-id">
+                  	<input type="text" class="form-control" id="username" placeholder="Username" required name="memberName">
                 </div>
                 
                 <div class="mb-3">
                     <label for="password">비밀번호</label> 
-                    <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="user-password">
+                    <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="memberPwd">
                 </div>
 
 
                 <div class="mb-3">
                     <label for="password">비밀번호 확인</label> 
-                    <input type="password" class="form-control" id="real-name" placeholder="비밀번호 확인" value="" required name="user-password">
+                    <input type="password" class="form-control" id="real-name" placeholder="비밀번호 확인" value="" required name="memberPwdCheck">
                 </div>
                 
                 <div class="mb-3">
                     <label for="phone">전화번호</label> 
-                    <input type="text" class="form-control" id="phone" placeholder="전화번호" value="" required name="user-phone">
+                    <input type="text" class="form-control" id="phone" placeholder="전화번호" value="" required name="memberPhone">
                 </div>
+                
 <!-- 				<div class="mb-3"> -->
 <!-- 					<label for="agree">약관동의</label> -->
 <!-- 					<table class="table table-border"> -->
