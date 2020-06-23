@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hot.member.domain.Member;
 import hot.member.domain.MemberRole;
@@ -36,5 +37,25 @@ public class MemberController {
 		memberService.memberInsert(member);
 		
 		return "common/loginForm";
+	}
+	
+	/**
+	 * 아이디 중복 체크
+	 */
+	@ResponseBody
+	@RequestMapping("/idCheck")
+	public String dupCheck(String memberId, String domain, String domainAuto) {
+		String fullId = memberId + "@";
+		if(domain == null || domain.equals("")) {
+			fullId += domainAuto;
+		}else {
+			fullId += domain;
+		}
+		Member member = memberService.selectMember(fullId);
+		if(member == null) {
+			return "possible";
+		}else {
+			return "impossible";
+		}
 	}
 }
