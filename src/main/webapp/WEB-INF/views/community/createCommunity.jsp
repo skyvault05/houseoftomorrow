@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <!DOCTYPE html>
 <html>
@@ -33,8 +34,10 @@ $(document).ajaxSend(function(e, xhr, options) {
 
 제목: <input type="text" name="commTitle"  id="commTitle"/><p>
 
-	<input type="hidden" name="memberNo"  value=""/>
-
+	
+	<sec:authentication var="user" property="principal" />
+	${user.memberNo}
+	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
 	이미지: <input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png" ><p>
 	
 <!-- 	설명: <input type="text" name="commDescription" id="commDescription"/><p> -->

@@ -19,12 +19,16 @@ import hot.aws.S3Manager;
 import hot.community.service.CommunityService;
 import hot.member.domain.Community;
 import hot.member.repository.CommCategoryRepository;
+import hot.member.repository.MemberRepository;
 
 @Controller
 @RequestMapping("/community")
 public class CommunityController {
 	@Autowired
 	CommCategoryRepository commCategoryRepository;
+	
+	@Autowired
+	MemberRepository memberRepository;
 	
 	@Autowired
 	CommunityService communityService;
@@ -40,12 +44,10 @@ public class CommunityController {
 	 * @throws IOException 
 	 * */
 	@PostMapping("/insert")
-	public String insertCommunity(Community community, Integer commCategoryNo, MultipartFile file ) throws IOException {
-		System.out.println("정보: "  + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-		
-		System.out.println("컨트롤러 들어옴");
-		
+	public String insertCommunity(Community community, Integer commCategoryNo, Integer membNo, MultipartFile file ) throws IOException {
 		community.setCommCategory(commCategoryRepository.findById(commCategoryNo).orElse(null));
+		community.setMember(memberRepository.findById(membNo).orElse(null));
+		
 		String imgPath = s3Manager.saveUploadedFiles(file);
 		community.setCommImg(imgPath);
 		communityService.insertCommunity(community);

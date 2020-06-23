@@ -10,6 +10,6 @@
 </head>
 <body>
 ${community.commTitle}
-<img src="https://kostarepository.s3.ap-northeast-2.amazonaws.com/${community.commImg}">
+<img src="${community.commImg}">
 </body>
 </html>
