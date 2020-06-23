@@ -1,14 +1,16 @@
 package hot.community.service;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import hot.aws.S3Manager;
 import hot.member.domain.CommCategory;
 import hot.member.domain.Community;
 import hot.member.repository.CommCategoryRepository;
@@ -23,11 +25,20 @@ public class CommunityServiceImpl implements CommunityService {
 	@Autowired
 	private CommCategoryRepository commCateRep;
 	
-
+	@Autowired
+	S3Manager s3Manager;
 	
 	@Override
 	public int insertCommunity(Community community) {
-		
+		String commImg;
+//		try {
+//			if (file.isEmpty()) {
+//				return new ResponseEntity(“please select a file!“, HttpStatus.OK);
+//			}
+//			commImg = s3Manager.saveUploadedFiles(file);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		communityRepository.save(community);
 		
 		return 0;

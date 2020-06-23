@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import hot.community.service.CommunityService;
 import hot.member.domain.Community;
+import hot.member.domain.Member;
 import hot.member.repository.CommCategoryRepository;
 
 @Controller
@@ -32,12 +34,16 @@ public class CommunityController {
 	 * 실제 community  글 등록
 	 * */
 	@PostMapping("/insert")
-	public String insertCommunity(Community community, Integer commCategoryNo) {
-		System.out.println("컨트롤러 들어옴");
-		community.setCommCategory(commCategoryRepository.findById(commCategoryNo).orElse(null));
-		communityService.insertCommunity(community);
+	public String insertCommunity(Community community, Integer commCategoryNo, HttpSession session) {
+		System.out.println("정보: "  + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		
-		System.out.println("설명: " + community.getCommDescription());
+		System.out.println("컨트롤러 들어옴");
+		
+		community.setCommCategory(commCategoryRepository.findById(commCategoryNo).orElse(null));
+		
+		
+		
+		communityService.insertCommunity(community);
 		
 		return "list";
 	}

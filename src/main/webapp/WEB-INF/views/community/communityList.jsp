@@ -12,7 +12,11 @@
 커뮤니티 리스트
 
 	<c:forEach items="${requestScope.list}" var="list" >
-	${list.commTitle}
+	글번호: ${list.commNo}<p>
+	제목: ${list.commTitle}<p>
+<%-- 	작성자: ${list.memberNo}<p> --%>
+	<img src='{pageContet.request.contextPath}/resources/${commImg}'/><p>
+	날짜: ${list.commRegdate }
 	</c:forEach>
 </body>
 </html>
