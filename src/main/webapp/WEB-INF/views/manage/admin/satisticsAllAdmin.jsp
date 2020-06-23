@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>인증 성공</h1>
-<form action="/logout" method="post">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	<input type="submit" value="로그아웃">
-</form>
+<h1>전체 상담 및 거래성사 통계 보기</h1>
 </body>
 </html>

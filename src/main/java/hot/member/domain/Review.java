@@ -43,7 +43,7 @@ public class Review {
 	@Column(name = "review_regdate")
 	private Timestamp reviewRegdate;
 	
-//	@Column(name = "review_status")   //인터페이스에는 리뷰상태가 없고 mysql eer다이어그램에는 리뷰상태가 있어요
-//	private int reviewStatus;
+	@Column(name = "review_status")   //인터페이스에는 리뷰상태가 없고 mysql eer다이어그램에는 리뷰상태가 있어요
+	private int reviewStatus;
 
 }
