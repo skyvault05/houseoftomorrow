@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	private MemberAuthenticationProvider authenticationProvider;
 	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	protected void configure(HttpSecurity http) throws Exception {		
 		http.authorizeRequests()
 		.antMatchers("/**/guest/**").permitAll()
 		.antMatchers("/**/member/**").hasRole("MEMBER")
@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.logoutUrl("/logout")
 		.logoutSuccessUrl("/common/loginForm")	//로그아웃 성공시 로그인 페이지로
 		.permitAll();
+		
+		
 	}
 	
 	@Bean
@@ -51,4 +53,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider);
 	}
+	
+	@Bean
+	public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

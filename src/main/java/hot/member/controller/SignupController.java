@@ -9,4 +9,9 @@ public class SignupController {
 	public String conSignup() {
 		return "member/construcor_signupform";
 	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "/member/test";
+	}
 }
