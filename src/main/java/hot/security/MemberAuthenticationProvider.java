@@ -24,7 +24,8 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 	@Autowired
 	private MemberRepository memberRep;
 	
-	private PasswordEncoder encoder = new BCryptPasswordEncoder();
+	@Autowired
+	private PasswordEncoder encoder;
 	
 	private final String[] roles = {"ROLE_MEMBER", "ROLE_CONSTRUCTOR", "ROLE_ADMIN"};
 	

@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+${community.commTitle}
+<img src="https://kostarepository.s3.ap-northeast-2.amazonaws.com/${community.commImg}">
 </body>
 </html>

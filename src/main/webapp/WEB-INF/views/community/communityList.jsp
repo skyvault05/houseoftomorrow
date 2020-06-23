@@ -13,9 +13,8 @@
 
 	<c:forEach items="${requestScope.list}" var="list" >
 	글번호: ${list.commNo}<p>
-	제목: ${list.commTitle}<p>
+	<a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">제목: ${list.commTitle}<p></p>
 <%-- 	작성자: ${list.memberNo}<p> --%>
-	<img src='{pageContet.request.contextPath}/resources/${commImg}'/><p>
 	날짜: ${list.commRegdate }
 	</c:forEach>
 </body>

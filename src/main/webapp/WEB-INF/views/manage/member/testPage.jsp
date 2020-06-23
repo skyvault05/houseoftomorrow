@@ -1,16 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>ì¸ì¦ ì„±ê³µ</h1>
-<form action="/logout" method="post">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	<input type="submit" value="ë¡œê·¸ì•„ì›ƒ">
-</form>
+<h1>ÀÎÁõ ¼º°ø</h1>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package hot.community.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,11 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import hot.aws.S3Manager;
 import hot.community.service.CommunityService;
 import hot.member.domain.Community;
-import hot.member.domain.Member;
 import hot.member.repository.CommCategoryRepository;
 
 @Controller
@@ -26,23 +28,26 @@ public class CommunityController {
 	
 	@Autowired
 	CommunityService communityService;
+	
+	@Autowired
+	S3Manager s3Manager;
 
 	@RequestMapping("/{url}")
 	public void url() {}
 	
 	/**
 	 * 실제 community  글 등록
+	 * @throws IOException 
 	 * */
 	@PostMapping("/insert")
-	public String insertCommunity(Community community, Integer commCategoryNo, HttpSession session) {
+	public String insertCommunity(Community community, Integer commCategoryNo, MultipartFile file ) throws IOException {
 		System.out.println("정보: "  + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		
 		System.out.println("컨트롤러 들어옴");
 		
 		community.setCommCategory(commCategoryRepository.findById(commCategoryNo).orElse(null));
-		
-		
-		
+		String imgPath = s3Manager.saveUploadedFiles(file);
+		community.setCommImg(imgPath);
 		communityService.insertCommunity(community);
 		
 		return "list";
@@ -95,7 +100,7 @@ public class CommunityController {
 	 * community 글 조회수 증가, 상세보기
 	 * */
 	@RequestMapping("/detail/{commNo}")
-	public ModelAndView selectCommunity(HttpSession session,int commNo) {
+	public ModelAndView selectCommunity(HttpSession session,@PathVariable(name = "commNo") int commNo) {
 		
 		Community community = communityService.selectCommunity(commNo, true);
 		

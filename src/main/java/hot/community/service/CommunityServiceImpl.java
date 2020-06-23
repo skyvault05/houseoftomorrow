@@ -9,6 +9,7 @@ import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import hot.aws.S3Manager;
 import hot.member.domain.CommCategory;
@@ -30,15 +31,11 @@ public class CommunityServiceImpl implements CommunityService {
 	
 	@Override
 	public int insertCommunity(Community community) {
-		String commImg;
-//		try {
-//			if (file.isEmpty()) {
-//				return new ResponseEntity(“please select a file!“, HttpStatus.OK);
-//			}
-//			commImg = s3Manager.saveUploadedFiles(file);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		System.out.println("서비스 들어옴");
+		String fileName = community.getCommImg();
+
+
+
 		communityRepository.save(community);
 		
 		return 0;

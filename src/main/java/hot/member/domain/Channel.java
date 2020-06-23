@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,6 +30,11 @@ public class Channel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ch_no")
 	private Integer chNo;
+	
+	@MapsId
+	@OneToOne
+	@JoinColumn(name = "member_no")
+	private Member member;
 	
 	@Column(name = "ch_img")
 	private String chImg;
