@@ -15,6 +15,7 @@ import hot.member.domain.Consulting;
 import hot.member.domain.Contract;
 import hot.member.domain.EstResponse;
 import hot.member.domain.Member;
+import hot.member.domain.Notification;
 import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
@@ -135,6 +136,10 @@ class HouseoftomorrowApplicationTests {
 //		contractRep.save(new Contract(null, co, "이미지 없음", null));
 		
 		
+		notificationRep.save(new Notification(null, memberRep.findById(1).orElse(null), 1, 1));
+		
+		//notificationRep.deleteById(4);
+	
 		
 		
 	}
