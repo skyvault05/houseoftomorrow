@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hot.member.domain.Channel;
+import hot.member.domain.Constructor;
 import hot.member.domain.Member;
 import hot.member.domain.MemberRole;
 import hot.member.service.MemberService;
@@ -23,6 +25,7 @@ public class MemberController {
 		return "manage/guest/memberJoinForm";
 	}
 	
+	
 	/**
 	 * 회원가입
 	 */
@@ -36,6 +39,25 @@ public class MemberController {
 		member.setMemberRole(role);
 		memberService.memberInsert(member);
 		
+		return "common/loginForm";
+	}
+	
+	/**
+	 * 시공사 회원가입 폼으로
+	 */
+	@RequestMapping("/constructorSignup")
+	public String conSignup() {
+		return "manage/guest/constructorJoinForm";
+	}
+	
+	/**
+	 * 시공사 회원가입
+	 */
+	@PostMapping("/conSignup")
+	public String ConstructorInsert(Member member, Constructor constructor, Channel channel) {
+		System.out.println(member);
+		System.out.println(constructor);
+		System.out.println(channel);
 		return "common/loginForm";
 	}
 	

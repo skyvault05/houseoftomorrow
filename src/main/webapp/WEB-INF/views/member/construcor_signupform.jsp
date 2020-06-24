@@ -35,10 +35,10 @@ $(function(){
 		console.log($(this).val());
 		if($(this).val()==1){
 			$('label[for=conCertification]').text('사업자 등록번호');
-			console.log('t');
+			$('#conCertification').attr('placeholder', '사업자 등록번호');
 		}else{
 			$('label[for=conCertification]').text('주민등록번호');
-			console.log('f');
+			$('#conCertification').attr('placeholder', '주민등록번호');
 		}
 	});
 	
@@ -54,30 +54,11 @@ $(function(){
 				<div class="form-group col-md-12">
 				<h1>회원 정보</h1>
 				</div>
-				<div class="form-group col-md-12">
-                    <label for="memberId">이메일 (email)</label>
-                    <p>8자 이상 입력해주세요.</p>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                        	<input type="text" class="form-control"> @
-                        	
-                        	<input type="text" id="aaa" class="form-control" style="display: none;">
-                        	<select id="mailselect" onchange="myFunction()" style="display: inline-block;">
-                        		<option>선택</option>
-                        		<option>naver.com</option>
-                        		<option>hanmail.com</option>
-                        		<option>nate.com</option>
-                        		<option>gmail.com</option>
-                        		<option value="person">직접입력</option>
-                        	</select>
-                        	<!-- <span class="input-group-text"></span>
-                            <span class="input-group-text">@</span> -->
-                        </div>
-                    <!--     <input type="text" class="form-control" id="username" placeholder="Username" required name="user-id"> -->
-                        <div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
-                    </div>
-                
+				<div class="form-group col-md-6">
+                    <label for="memberId">이메일</label> 
+                    <input type="email" class="form-control" id="memberId" placeholder="이메일" value="" required name="memberId">
                 </div>
+                <div class="w-100"></div>
                 <div class="form-group col-md-6">
                     <label for="memberPwd">비밀번호</label> 
                     <input type="password" class="form-control" id="memberPwd" placeholder="비밀번호" value="" required name="memberPwd">
@@ -93,13 +74,13 @@ $(function(){
                 
                 <div class="col-md-6">
 					<label for="memberPhone">회원 연락처</label> 
-                    <input type="text" class="form-control" id="memberPhone" placeholder="전화번호" name="memberPhone" required>
+                    <input type="text" class="form-control" id="memberPhone" placeholder="회원 연락처" name="memberPhone" required>
 				</div>
            
 
                 <div class="form-group col-md-6">
                     <label for="memberName">이름</label> 
-                    <input type="text" class="form-control" id="memberName" placeholder="별명(2자-15자)" required name="memberName">
+                    <input type="text" class="form-control" id="memberName" placeholder="이름" required name="memberName">
                     <div class="invalid-feedback">이름을 입력하세요.</div>
                 </div>		
                 	
@@ -113,12 +94,12 @@ $(function(){
 				
 				<div class="form-group col-md-6">
 					<label for="conPhone">시공사 연락처</label> 
-                    <input type="text" class="form-control" id="conPhone" placeholder="시공사 전화번호" name="conPhone" required>
+                    <input type="text" class="form-control" id="conPhone" placeholder="시공사 연락처" name="conPhone" required>
 				</div>
 				
 				<div class="form-group col-md-6">
 					<label for="conCareer">경력사항</label> 
-                    <input type="text" class="form-control" id="conCareer" placeholder="기간을 입력해주세요" name="conCareer" required>
+                    <input type="text" class="form-control" id="conCareer" placeholder="경력사항 -기간을 입력해주세요." name="conCareer" required>
 				</div>
 				
 				<div class="form-group col-md-6">
@@ -131,7 +112,7 @@ $(function(){
 				
 				<div class="form-group col-md-6">
 					<label for="conCertification">사업자 등록번호</label> 
-                    <input type="text" class="form-control" id="conCertification" placeholder="기간을 입력해주세요" name="conCertification" required>
+                    <input type="text" class="form-control" id="conCertification" placeholder="사업자 등록번호" name="conCertification" required>
 				</div>					
 				<div id='addr' class="form-group col-md-6">
 					<div class='container'>
@@ -153,6 +134,11 @@ $(function(){
 				<div class="form-group col-md-6">
 					<label for="chDescription">채널 설명</label> 
                     <input type="text" class="form-control" id="chDescription" placeholder="채널 설명" name="chDescription" required>
+				</div>
+				
+				<div class="form-group col-md-6">
+					<label for="chImgFile">채널 대표 이미지</label> <br>
+                    <input type="file" class="" id="chImgFile" placeholder="채널 대표 이미지" name="chImgFile" required>
 				</div>
 			</form>
 		</div>
@@ -188,11 +174,7 @@ $(function(){
                 <hr class="mb-4">
 
                 <footer th:replace="/fragments/semantic :: footer"></footer> -->
-            </form>
-            </div>
-        </div>
-
-    </div>
+            
 
 </body>
 

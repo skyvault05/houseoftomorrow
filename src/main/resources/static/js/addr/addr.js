@@ -52,6 +52,14 @@ $(function(){
 	    	}
 	);//주소 API 끝
 	
+	//onSubmit 주소 합치기
+	function onSubmit(){
+		let addrStr = $('postcode').val()+","+$('roadAddress').val()+","+$('extraAddress').val()+","+$('detailAddress').val();
+		let addr = $('<input>').attr('type', 'hidden').attr('name', 'conAddr').val(addrStr);
+		$('form').append(addr);
+		$('form').submit();
+	}
+	
 	//contextPath
 	function getContextPath() {
 		var hostIndex = location.href.indexOf( location.host ) + location.host.length;

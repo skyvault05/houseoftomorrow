@@ -154,13 +154,16 @@ class HouseoftomorrowApplicationTests {
 //		commCommentRep.save(new CommComment(null, communityRep.findById(2).orElse(null), memberRep.findById(6).orElse(null), "설명", null, 1));
 		
 //		commCommentRep.save(new CommComment(commCommentNo, community, member, commCommentDescription, commCommentRegdate, commCommentStatus));
-		CommCategory commCategory = new CommCategory();
-		commCategory.setCommCategoryNo(4);
-		List<Community> list = communityRep.findByCommCategoryEnabled(commCategory, 0);
-		System.out.println(list);
-		for(Community com : list) {
-			System.out.println(com.getCommNo());
-		}
+		
+		
+//		CommCategory commCategory = new CommCategory();
+//		commCategory.setCommCategoryNo(4);
+//		List<Community> list = communityRep.findByCommCategoryEnabled(commCategory, 0);
+//		System.out.println(list);
+//		for(Community com : list) {
+//			System.out.println(com.getCommNo());
+//		}
+		System.out.println(channelRep.findById(1).orElse(null).getConstructor());
 	}
 	
 }

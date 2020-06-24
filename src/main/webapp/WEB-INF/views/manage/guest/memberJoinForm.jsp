@@ -171,7 +171,7 @@
 			<h2>회원가입</h2>
 		</div>
 		<div class="col-md-12 order-md-1">
-			<form class="needs-validation" novalidate action="/signup" method="POST">
+			<form class="needs-validation" novalidate action="/conSignup" method="POST">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
 				<input type="hidden" name="memberRoleNo" value="1">
 				<div class="mb-3">
