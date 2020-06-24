@@ -12,4 +12,9 @@ public interface MemberService {
 	 * id로 맴버 찾기
 	 */
 	Member selectMember(String memberId);
+	
+	/**
+	 * phone번호 인증 (중복 불가)
+	 */
+	Member selectMemberByPhone(String phone);
 }

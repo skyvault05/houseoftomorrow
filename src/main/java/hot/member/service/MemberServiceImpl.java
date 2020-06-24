@@ -32,4 +32,9 @@ public class MemberServiceImpl implements MemberService{
 		Member member = memberRep.findByMemberId(memberId);
 		return member;
 	}
+	
+	@Override
+	public Member selectMemberByPhone(String phone) {
+		return memberRep.findByMemberPhone(phone);
+	}
 }

@@ -6,4 +6,6 @@ import hot.member.domain.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Integer> {
 	Member findByMemberId(String memberId);
+	
+	Member findByMemberPhone(String memberPhone);
 }

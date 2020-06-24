@@ -58,4 +58,18 @@ public class MemberController {
 			return "impossible";
 		}
 	}
+	
+	/**
+	 * 폰번호 중복 체크
+	 */
+	@ResponseBody
+	@RequestMapping("/phoneCheck")
+	public String phoneDupCheck(String memberPhone) {
+		Member member = memberService.selectMemberByPhone(memberPhone);
+		if(member == null) {
+			return "possible";
+		}else {
+			return "impossible";
+		}
+	}
 }
