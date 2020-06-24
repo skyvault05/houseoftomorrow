@@ -151,8 +151,8 @@ $(function(){
 				<h1>시공사 채널 정보 입력</h1>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="chName   ">채널 이름</label> 
-                    <input type="text" class="form-control" id="conCareer" placeholder="기간을 입력해주세요" name="conCareer" required>
+					<label for="chDescription">채널 설명</label> 
+                    <input type="text" class="form-control" id="chDescription" placeholder="채널 설명" name="chDescription" required>
 				</div>
 			</form>
 		</div>
