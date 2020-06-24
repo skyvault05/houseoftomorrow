@@ -1,0 +1,365 @@
+/*-----------main------------*/
+.expert-calculate {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 1px;
+}
+.expert-calculate__main-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -moz-box-flex: 1;
+    -moz-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+}
+.expert-calculate__main-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -moz-box-flex: 1;
+    -moz-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+}
+.expert-calculate .layout>.expert-calculate, .expert-calculate__main {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -moz-box-flex: 1;
+    -moz-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    min-height: 1px;
+}
+
+
+/*----------aside category---------------*/
+.sticky-container {
+	position: sticky;
+    top:150px;
+}
+
+.sticky-child.expert-calculate__menu {
+	position:relative;
+}
+.expert-calculate__menu {
+    padding-bottom: 30px;
+    border: none;
+}
+.expert-calculate__category-list-wrap {
+    overflow: auto;
+}
+.expert-calculate__category-list {
+    padding: 0;
+}
+.expert-calculate__category-list {
+    padding: 0 2px;
+    white-space: nowrap;
+    text-align: center;
+}
+.expert-calculate__category-list__item {
+    display: block;
+}
+.expert-calculate__category-list__link {
+    //padding: 12px 0;
+    text-align: right;
+}
+.expert-calculate__category-list__link {
+    display: block;
+    padding: 10px 13px;
+    color: #424242;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 21px;
+    transition: color .1s;
+}
+.expert-calculate__category-list__link.active {color:#33f0c0;}
+.expert-calculate__category-list__link:hover {
+    color: #33f0c0;
+}
+
+/*-------구분선 divider---------*/
+.expert-calculate__divider {
+   /* display: block;
+    //display: none;
+    position: relative;
+    margin: 0;
+    //border: none;*/
+
+    border:         none;
+    border-left:    1px solid #ededed;
+    height:         100vh;
+    width:          1px;      
+
+}
+
+.expert-calculate__divider::after {
+  /*  content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background-color: #ededed;*/
+}
+
+
+/*----------견적문의 form----------------*/
+
+.expert-calculate__content {
+    //padding-top: 40px;
+    padding-bottom: 30px;
+    padding-right: 6rem;
+}
+/*.col-lg-5 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    box-sizing: border-box;
+    flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
+    padding-right: 5px;
+    padding-left: 5px;
+}*/
+.expert-calculate__content__header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.expert-calculate__content__header__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.expert-reset-button {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    line-height: 20px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: #757575;
+    background-color: #f5f5f5;
+    border: none;
+    transition: background-color .2s;
+}
+.expert-reset-button>.reset-icon {
+    margin-right: 4px;
+    vertical-align: -5px;
+}
+
+.expert-form-group {
+    padding: 20px 0;
+}
+.expert-form-group__title__right {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+.expert-form-group__title__label {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -moz-box-flex: 1;
+    -moz-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+.expert-form-group__title {
+	/*display: -webkit-box;*/
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    margin: 0 0 15px;
+   font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #424242;
+}
+.expert-form-group-detail-popup__toggle {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    color: #ccf0c0;
+    font-weight: 700;
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1;
+
+    display: none;
+}
+.expert-grid-select-input__row {
+    
+    display: flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    align-items: stretch;
+}
+.expert-grid-select-input__button-wrap>input {
+    position: absolute;
+    opacity: 0;
+    z-index: -10000;
+}
+.expert-grid-select-input__row:last-child .expert-grid-select-input__col:first-child .expert-grid-select-input__button {
+    border-bottom-left-radius: 6px;
+}
+.expert-grid-select-input__button.selected, input:active+.expert-grid-select-input__button {
+    font-weight: 700;
+    color: #fff;
+    background-color: #ccf0c0;
+    border: 1px solid #ccf0c0;
+    z-index: 1;
+}
+.expert-grid-select-input__button {
+    position: relative;
+    transition: border-color .2s,background-color .2s;
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 9px 0;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    color: #424242;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.select-input {
+    position: relative;
+    width: 48%;
+}
+.select-input.input-group>.form-control {
+    width: 100%;
+}
+.select-input>.form-control {
+    width: 100%;
+    padding-right: 30px;
+    background-image: none;
+}
+.expert-form-group__input .form-control {
+    font-size: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+.form-control {
+    transition: .2s border-color, .2s box-shadow, .2s background-color;
+    display: block;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100%;
+    padding: 0 15px;
+    line-height: 40px;
+    border-radius: 4px;
+    border: solid 1px #dbdbdb;
+    background-color: #ffffff;
+    color: #424242;
+    font-size: 1rem;
+    flex: 1 0 auto;
+}
+.custom-select { 
+    background: none; 
+}
+.select-input>.form-control>option:disabled {
+    color: #bdbdbd;
+}
+.select-input>.form-control>option {
+    color: #424242;
+}
+
+.select-input__icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    font-size: 0;
+    cursor: default;
+    color: rgba(0,0,0,.3);
+    pointer-events: none;
+    z-index: 100;}
+
+
+.select-row {display:flex;justify-content: space-between;}
+.input-gruop.select-input {flex:1;}
+
+textarea.form-control.form-rounded {
+    border-color: #dbdbdb;
+    font-size:0.9rem;
+} 
+/*--------papering 도배-------*/
+
+.estmate-form-group__row {display: flex;}
+.btn.btn-mint {flex:1; padding:10px 0px; font-size: 1rem;}
+
+
+/*---------bathroom 욕실----------------*/
+.img-box {
+    padding-top:10px;
+}
+figcaption.bathroom_caption {
+    font-style: normal;
+    font-size: 0.9rem;
+}
+.image-item.img {
+    padding-top: 15px;
+}
+.image-item.img img {
+    width:80%;
+}
