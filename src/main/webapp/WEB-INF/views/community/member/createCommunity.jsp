@@ -25,25 +25,59 @@ $(document).ajaxSend(function(e, xhr, options) {
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script src="/plugins/summernote/setsummernote.js"></script>
 
+<script> 
+function setThumbnail(event) { 
+	var reader = new FileReader(); 
+	reader.onload = function(event) { 
+		var img = document.createElement("img"); 
+		img.setAttribute("src", event.target.result); 
+		document.querySelector("div#image_container").appendChild(img); }; 
+		reader.readAsDataURL(event.target.files[0]); } 
+</script>
 
+
+<style>
+	h1{
+		margin-left: 10%
+	}
+	#commTitle{
+		margin-left: 10%;
+		width: 20%;
+		height: 10%
+	}
+	#commImg{
+		margin-left: 10%;
+	}
+	#image_container{
+		margin-left: 10%;
+	}
+</style>
 </head>
 <body>
-커뮤니티 등록 페이지
 
+
+<c:choose>
+	<c:when test="${param.commCategoryNo == 4}">
+		<h1>사진 올리기</h1>
+	</c:when>
+	<c:when test="${param.commCategoryNo == 5}">
+		<h1>노하우 올리기</h1>
+	</c:when>
+</c:choose>
+
+<br><br>
 <form name="insertForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/community/insert" >
 
-제목: <input type="text" name="commTitle"  id="commTitle"/><p>
+<input type="text" name="commTitle"  id="commTitle" placeholder="올릴 게시글의 제목을 입력해주세요"/><p>
 
 	
 	<sec:authentication var="user" property="principal" />
-	${user.memberNo}
 	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
-	이미지: <input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png" ><p>
-	
-<!-- 	설명: <input type="text" name="commDescription" id="commDescription"/><p> -->
-	
-	
-	<input type="hidden" name="commCategoryNo"  value="<%=request.getParameter("commCategoryNo")%>"/>
+	<input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event);"><p>
+	<div id="image_container"></div>
+
+	<%-- <%=request.getParameter("commCategoryNo")%>${param.commCategoryNo} --%>
+	<input type="hidden" name="commCategoryNo"  value="${param.commCategoryNo}"/>
 	<input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
 	<textarea id="summernote" name="commDescription"></textarea>
 	<input type="submit" value="등록하기"> 

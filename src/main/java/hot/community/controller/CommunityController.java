@@ -37,7 +37,13 @@ public class CommunityController {
 	S3Manager s3Manager;
 
 	@RequestMapping("/{url}")
-	public void url() {}
+	public void url1() {}
+	
+	@RequestMapping("/{url1}/{url2}")
+	public void url2() {}
+	
+	@RequestMapping("/{url1}/{url2}/{url3}")
+	public void url3() {}
 	
 	/**
 	 * 실제 community  글 등록
@@ -52,39 +58,43 @@ public class CommunityController {
 		community.setCommImg(imgPath);
 		communityService.insertCommunity(community);
 		
-		return "list";
+		return "redirect:list/"+commCategoryNo;
 	}
 	
 	/**
 	 * community 글 수정
+	 * @throws IOException 
 	 * */
 	@RequestMapping("/update")
-	public String updateCommunity(@ModelAttribute("community")Community community) {
+	public String updateCommunity(@ModelAttribute("community")Community community, MultipartFile file ) throws IOException {
+		
+		String imgPath = s3Manager.saveUploadedFiles(file);
+		community.setCommImg(imgPath);
 		communityService.updateCommunity(community);
 		
-		return "community/detail";
+		return "redirect:detail/"+community.getCommNo();
 	} 
 	
 	/**
-	 * community 글 수정 폼 - community/updateCommunity.jsp
+	 * community 글 수정 폼 - community/member/updateCommunity.jsp
 	 * */
 	@RequestMapping("/updateCommunity")
-	public ModelAndView updateCommunityForm(int commNo) {
+	public ModelAndView updateCommunityForm(@ModelAttribute("commNo")Integer commNo) {
 		
 		Community community = communityService.selectCommunity(commNo, false);
 		
-		return new ModelAndView("community/updateCommunity", "community", community);
+		return new ModelAndView("community/member/updateCommunity", "community", community);
 	}
 	
 	/**
 	 * community 글 삭제
 	 * */
 	@RequestMapping("/delete")
-	public String deleteCommunity(int commNo) {
+	public String deleteCommunity(int commNo, Integer commCategoryNo) {
 		
 		communityService.deleteCommunity(commNo);
 		
-		return "redirect:list";
+		return "redirect:list/"+commCategoryNo;
 	} 
 	
 	/**
@@ -95,7 +105,7 @@ public class CommunityController {
 		
 		List<Community> communityList = communityService.selectCommunityCategory(commCategoryNo);
 		
-		return new ModelAndView("community/communityList", "list", communityList);
+		return new ModelAndView("community/guest/communityList", "list", communityList);
 	}
 	
 	/**
@@ -106,15 +116,17 @@ public class CommunityController {
 		
 		Community community = communityService.selectCommunity(commNo, true);
 		
-		return new ModelAndView("community/communityDetail", "community", community);
+		return new ModelAndView("community/guest/communityDetail", "community", community);
 	} //조회수 증가 
 	
 	/**
 	 * 내가 쓴 community 글 보기
 	 * */
-	public ModelAndView selectCommunityMember(Integer memberNo) {
-		return null;
+	@RequestMapping("/myCommunity/{memberNo}")
+	public ModelAndView selectCommunityMember(@ModelAttribute("memberNo")Integer memberNo) {
+		
+		List<Community> community = communityService.selectCommunityMember(memberNo);
+		
+		return new ModelAndView("community/member/myCommunity", "community", community);
 	}
-
-	
 }
