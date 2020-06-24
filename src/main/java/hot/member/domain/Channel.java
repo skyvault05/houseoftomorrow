@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "channel")
@@ -30,11 +31,6 @@ public class Channel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ch_no")
 	private Integer chNo;
-	
-	@MapsId
-	@OneToOne
-	@JoinColumn(name = "member_no")
-	private Member member;
 	
 	@Column(name = "ch_img")
 	private String chImg;

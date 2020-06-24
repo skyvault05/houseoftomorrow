@@ -44,7 +44,7 @@ public class CommComment {
 	private Timestamp commCommentRegdate;
 	
 	@Column(name = "comm_comment_status")
-	private int commCommentStatus;
+	private int commCommentStatus=1;
 	
 	
 

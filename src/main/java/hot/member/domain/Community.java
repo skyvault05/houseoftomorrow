@@ -61,7 +61,7 @@ public class Community {
 	private Community commParentNo;
 	
 	@Column(name = "comm_status")
-	private int commStatus;
+	private int commStatus=1;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "commParentNo")
 	private List<Community> commChildNo;
