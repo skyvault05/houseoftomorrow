@@ -15,7 +15,7 @@ public interface CommunityRepository extends JpaRepository<Community, Integer> {
 	@Modifying
 	int updateReadnum(int commNo);
 	
-	@Query("SELECT c FROM Community c WHERE commCategory.commCategoryNo = :#{#commCategory.commCategoryNo} AND commStatus = :#{#commStatus}")
-	List<Community> findByCommCategoryEnabled(CommCategory commCategory, Integer commStatus);
+	@Query("SELECT c FROM Community c WHERE commCategory.commCategoryNo = :#{#commCategory.commCategoryNo} AND commStatus = :commStatus")
+	List<Community> findByCommCategoryEnabled(CommCategory commCategory, int commStatus);
 
 }
