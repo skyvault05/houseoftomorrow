@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import hot.member.domain.CommCategory;
 import hot.member.domain.Community;
 
 public interface CommunityRepository extends JpaRepository<Community, Integer> {
@@ -22,5 +23,8 @@ public interface CommunityRepository extends JpaRepository<Community, Integer> {
 	int deleteCommunity(int commNo);
 	
 	List<Community> findByMemberMemberNo(int memberNo);
+
+	@Query("SELECT c FROM Community c WHERE commCategory.commCategoryNo = :#{#commCategory.commCategoryNo} AND commStatus = :#{#commStatus}")
+	List<Community> findByCommCategoryEnabled(CommCategory commCategory, Integer commStatus);
 
 }

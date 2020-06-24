@@ -65,12 +65,16 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public List<Community> selectCommunityCategory(Integer commCategoryNo) {
 		
-		CommCategory comCate = commCateRep.findById(commCategoryNo).orElse(null);
-		for(Community com : comCate.getCommList()) {
-//			System.out.println(com.getCommNo());
-		}
+		// 상태값 생각하지 않고 모든 내용을 출력하고자 했을 때
+		// CommCategory comCate = commCateRep.findById(commCategoryNo).orElse(null);
 		
-		return comCate.getCommList();
+		// return comCate.getCommList();
+		
+		CommCategory commCategory = new CommCategory();
+		commCategory.setCommCategoryNo(commCategoryNo);
+		List<Community> list = communityRepository.findByCommCategoryEnabled(commCategory, 1);
+		
+		return list;
 	}
 	
 	/**

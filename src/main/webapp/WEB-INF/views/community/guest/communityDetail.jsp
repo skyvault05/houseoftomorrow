@@ -90,11 +90,13 @@ ul, ol { list-style: none; }
 
 }(window, window.jQuery));
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </head>
 <body>
 	<div id="contents">
 	<img src="${community.commImg}">
-
 
 	${community.commDescription}
     <div class="floating-menu">
@@ -115,8 +117,8 @@ ul, ol { list-style: none; }
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose>
 			<c:when test="${community.member.memberNo == user.memberNo}">
-				<a href="${pageContext.request.contextPath}/community/updateCommunity?commNo=${community.commNo}"}>수정하기</a>
-				<a href="${pageContext.request.contextPath}/community/delete?commNo=${community.commNo}&commCategoryNo=${community.commCategory.commCategoryNo}">삭제하기</a>
+				<a href="${pageContext.request.contextPath}/community/updateCommunity?commNo=${community.commNo}"}>게시글 수정하기</a>
+				<a href="${pageContext.request.contextPath}/community/delete?commNo=${community.commNo}&commCategoryNo=${community.commCategory.commCategoryNo}">게시글 삭제하기</a>
 			</c:when>
 <%--   <c:when test="${community.member.memberNo != user.memberNo}">
 			달라용
@@ -124,23 +126,47 @@ ul, ol { list-style: none; }
 		</c:choose>
 	</sec:authorize>
 	
+	<sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	<div class="container">
         <label for="content">comment 덧글</label>
-        <form name="commentInsertForm" method="post" action="">
+        <form id = "commentInsertForm" name="commentInsertForm" method="post" action="${pageContext.request.contextPath}/community/insertComment">
             <div class="input-group">
-               <input type="hidden" name="bno" value="${community.commNo}"/>
+               <input type="hidden" name="comNo" value="${community.commNo}"/>
+               <input type="hidden" name="membNo"  value="${user.memberNo}"/>
                <input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
-               <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
+               <input type="text" class="form-control" id="content" name="commCommentDescription" placeholder="내용을 입력하세요.">
                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
+                    <button class="btn btn-default" type="submit" name="commentInsertBtn">등록</button>
                </span>
               </div>
         </form>
     </div>
-    
-    <div class="container">
-        <div class="commentList"></div>
-    </div>
+    </sec:authorize>
+    <br><br>
+    	<h3>덧글 모음</h3>
+    	<c:forEach items="${comment}" var="comment" varStatus="status">
+    	
+    	<script>
+			$(document).ready(function(){
+				  $("#update").click(function(){
+				    	$("#content").val("${comment.commCommentDescription}")
+				    	$("#commentInsertForm").attr("action", "${pageContext.request.contextPath}/community/updateComment?commNo=${comment.community.commNo}");
+				  });
+				});
+		</script>
+    	
+	<div id="id${status.count}">${comment.commCommentDescription}</div> | ${comment.member.memberName} | <fmt:formatDate value="${comment.commCommentRegdate}" pattern="yyyy-MM-dd HH:mm"/>
+	<sec:authentication var="user" property="principal" />
+    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
+		
+		<c:if test="${comment.member.memberNo == user.memberNo}">
+<%-- 			<a id="update"  href="${pageContext.request.contextPath}/community/updateCommentForm?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}" >덧글 수정하기</a>  --%>
+			<button id="update" value="id${status.count}">수정하기</button>
+			<a href="${pageContext.request.contextPath}/community/deleteComment?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}">덧글 삭제하기</a>
+		</c:if>
+	</sec:authorize>
+	<p>
+</c:forEach>
 	
 	<!-- 이건 필요 없는 부분이에요 -->
     <div class="section-01 scroll">

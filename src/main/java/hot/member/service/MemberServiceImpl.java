@@ -26,4 +26,15 @@ public class MemberServiceImpl implements MemberService{
 		memberRep.save(member);
 		return 0;
 	}
+	
+	@Override
+	public Member selectMember(String memberId) {
+		Member member = memberRep.findByMemberId(memberId);
+		return member;
+	}
+	
+	@Override
+	public Member selectMemberByPhone(String phone) {
+		return memberRep.findByMemberPhone(phone);
+	}
 }
