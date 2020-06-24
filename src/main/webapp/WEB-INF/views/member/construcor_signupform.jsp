@@ -28,18 +28,13 @@ function myFunction(){
 </head>
 
 <body>
-    <div class="container">
-        <div class="py-5 text-left">
-           
-            <h2>회원가입</h2>
-        </div>
-
-        <div class="col-md-12 order-md-1">
-            
-            <form class="needs-validation" enctype="multipart/form-data" novalidate action="/signup" method="POST">
-
+	<div class="container" style="background-color:black;">
+		<div class="row">
+		 <form class="row" enctype="multipart/form-data" action="/signup" method="POST" style="background-color:yellow;">
+				<div class="form-group col-md-12">
 				<h1>회원 정보</h1>
-                <div class="col-md-3">
+				</div>
+				<div class="form-group col-md-12">
                     <label for="email">이메일 (email)</label>
                     <p>8자 이상 입력해주세요.</p>
                     <div class="input-group">
@@ -61,71 +56,57 @@ function myFunction(){
                     <!--     <input type="text" class="form-control" id="username" placeholder="Username" required name="user-id"> -->
                         <div class="invalid-feedback" style="width: 100%;">Your username is required.</div>
                     </div>
-                </div>
                 
-                <div class="col-md-3">
+                </div>
+                <div class="form-group col-md-6">
                     <label for="password">비밀번호</label> 
                     <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="user-password">
                     <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
                 </div>
 
 
-                <div class="col-md-3">
+                <div class="form-group col-md-6">
                     <label for="password">비밀번호 확인</label> 
                     <input type="password" class="form-control" id="real-name" placeholder="비밀번호 확인" value="" required name="user-password">
                     <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
                 </div>
            
 
-                <div class="col-md-3">
+                <div class="form-group col-md-6">
                     <label for="nickname">별명</label> 
                     <input type="text" class="form-control" id="nickname" placeholder="별명(2자-15자)" required name="nickname">
                     <div class="invalid-feedback">좋아하는 별명을 입력하세요.</div>
                 </div>			
-				
+				<div class="form-group col-md-12">
 				<h1>시공사 정보 입력</h1>
-				
-				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
 					<label for="con_name">시공사명</label> 
                     <input type="text" class="form-control" id="con_name" placeholder="시공사명" name="con_name" required>
 				</div>
 				
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<label for="con_phone">시공사 연락처</label> 
                     <input type="text" class="form-control" id="con_phone" placeholder="xxx-xxxx-xxxx" name="con_phone" required>
 				</div>
 				
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<label for="con_career">경력사항</label> 
-                    <input type="text" class="form-control" id="con_career" placeholder="xx년" name="con_career" required>
+                    <input type="text" class="form-control" id="con_career" placeholder="기간을 입력해주세요" name="con_career" required>
 				</div>
 				
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<label for="con_isCompany">기업체 여부</label> 
                     <input type="text" class="form-control" id="con_isCompany" placeholder="xxx-xxxx-xxxx" name="con_isCompany" required>
 				</div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+				</form>
+		</div>
+	</div>
+
+
+
+
+    
 				
 				<<!-- div class="mb-3">
 					<label for="agree">약관동의</label>
@@ -153,6 +134,7 @@ function myFunction(){
 
                 <footer th:replace="/fragments/semantic :: footer"></footer> -->
             </form>
+            </div>
         </div>
 
     </div>
