@@ -1,13 +1,14 @@
 package hot;
 
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import hot.member.domain.CommCategory;
-import hot.member.domain.CommComment;
 import hot.member.domain.Community;
 import hot.member.repository.ChannelRepository;
 import hot.member.repository.CommCategoryRepository;
@@ -153,8 +154,13 @@ class HouseoftomorrowApplicationTests {
 //		commCommentRep.save(new CommComment(null, communityRep.findById(2).orElse(null), memberRep.findById(6).orElse(null), "설명", null, 1));
 		
 //		commCommentRep.save(new CommComment(commCommentNo, community, member, commCommentDescription, commCommentRegdate, commCommentStatus));
-		
-		
+		CommCategory commCategory = new CommCategory();
+		commCategory.setCommCategoryNo(4);
+		List<Community> list = communityRep.findByCommCategoryEnabled(commCategory, 0);
+		System.out.println(list);
+		for(Community com : list) {
+			System.out.println(com.getCommNo());
+		}
 	}
 	
 }

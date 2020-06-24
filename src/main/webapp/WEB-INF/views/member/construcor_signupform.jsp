@@ -12,7 +12,12 @@
 
 	<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/js/addr/addr.js"></script>
-   
+<style>
+#addrrow{
+	padding-left:15;
+	padding-right:15;
+}
+</style>
 <script>
 function myFunction(){
 	var obj = document.getElementById('mailselect');
@@ -96,7 +101,8 @@ $(function(){
                     <label for="memberName">이름</label> 
                     <input type="text" class="form-control" id="memberName" placeholder="별명(2자-15자)" required name="memberName">
                     <div class="invalid-feedback">이름을 입력하세요.</div>
-                </div>			
+                </div>		
+                	
 				<div class="form-group col-md-12">
 				<h1>시공사 정보 입력</h1>
 				</div>
@@ -126,10 +132,9 @@ $(function(){
 				<div class="form-group col-md-6">
 					<label for="conCertification">사업자 등록번호</label> 
                     <input type="text" class="form-control" id="conCertification" placeholder="기간을 입력해주세요" name="conCertification" required>
-				</div>
-				
-					
-					<div id='addr' class="form-group col-md-6">
+				</div>					
+				<div id='addr' class="form-group col-md-6">
+					<div class='container'>
 						<div class='row'>
 							<label class="col-md-4" for="postalcode">주소</label>
 							<div class="w-100"></div>
@@ -141,7 +146,15 @@ $(function(){
 							<input class="form-control col-md-12" id="detailAddress" name="detailAddress" placeholder="상세주소" type="text">
 						</div>
 					</div>
-				</form>
+				</div>					
+				<div class="form-group col-md-12">
+				<h1>시공사 채널 정보 입력</h1>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="chName   ">채널 이름</label> 
+                    <input type="text" class="form-control" id="conCareer" placeholder="기간을 입력해주세요" name="conCareer" required>
+				</div>
+			</form>
 		</div>
 	</div>
 
