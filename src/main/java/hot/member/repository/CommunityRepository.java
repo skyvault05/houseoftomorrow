@@ -11,11 +11,20 @@ import hot.member.domain.Community;
 
 public interface CommunityRepository extends JpaRepository<Community, Integer> {
 
+//	@Query("select * from Community c where c.commStatus = 1")
+//	List<Community> selectAll();
+	
 	@Query("update Community c set c.commReadnum = c.commReadnum+1 where c.commNo =?1")
 	@Modifying
 	int updateReadnum(int commNo);
 	
-	@Query("SELECT c FROM Community c WHERE commCategory.commCategoryNo = :#{#commCategory.commCategoryNo} AND commStatus = :commStatus")
-	List<Community> findByCommCategoryEnabled(CommCategory commCategory, int commStatus);
+	@Query("update Community c set c.commStatus = 0 where c.commNo=?1")
+	@Modifying
+	int deleteCommunity(int commNo);
+	
+	List<Community> findByMemberMemberNo(int memberNo);
+
+	@Query("SELECT c FROM Community c WHERE commCategory.commCategoryNo = :#{#commCategory.commCategoryNo} AND commStatus = :#{#commStatus}")
+	List<Community> findByCommCategoryEnabled(CommCategory commCategory, Integer commStatus);
 
 }
