@@ -27,6 +27,7 @@
 	function myFunction(){
 		var obj = document.getElementById('mailselect');
 		var obj2 = document.getElementById('aaa');
+		idCheck=false;
 		if(obj.value==='person'){
 			obj2.style.display = 'inline-block';
 		} else {
@@ -35,8 +36,9 @@
 			obj2.style.display = 'none';
 		}
 	}
+	
 	$(function(){
-		$('#dupCheck').click(function(){
+		$('#dupCheck').click(function(){//id체크
 			$.ajax({
 				url: "/idCheck",
 				type: "post",
@@ -47,13 +49,67 @@
 					domainAuto : $('#mailselect').val()
 				},
 				success: function(response){
-					alert(response);
+					if(response == "possible"){
+						idCheck=true;
+					}
 				},
 				error: function(e){
 					alert(e);
 				}
 			});
 		});
+
+		$('#phoneCheck').click(function(){//폰 번호 체크
+			$.ajax({
+				url: "/phoneCheck",
+				type: "post",
+				dataType: "text",
+				data: {
+					memberPhone : $('#phone').val()
+				},
+				success: function(response){
+					alert(response);
+					if(response == "possible"){
+						phoneCheck=true;
+					}
+				},
+				error: function(e){
+					alert(e);
+				}
+			});
+		});
+
+		$('#passwordCheck').keyup(function(){//비밀번호 체크
+			if($('#password').val() == $(this).val()){
+				$('span.checkSpan').hide();
+				pwdCheck = true;
+			}else{
+				$('span.checkSpan').show();
+				pwdCheck = false;
+			}
+		});
+		
+		$('#memberId').keyup(function(){
+			idCheck=false;
+		});
+		
+		$('#aaa').keyup(function(){
+			idCheck=false;
+		});
+		
+		$('#password').keyup(function(){
+			if($('#passwordCheck').val() == $(this).val()){
+				$('span.checkSpan').hide();
+				pwdCheck = true;
+			}else{
+				$('span.checkSpan').show();
+				pwdCheck = false;
+			}
+		});
+		
+		$('#phone').keyup(function(){
+			phoneCheck=false;
+		})
 		
 		$('#signupBtn').click(function(){
 			if($('#memberId').val()==""){
@@ -88,15 +144,16 @@
 			}
 		});
 		
-		$('#passwordCheck').keyup(function(){
-			if($('#password').val() == $(this).val()){
-				$('span.checkSpan').hide();
-				pwdCheck = true;
+		$('#idRemember').change(function(){
+			if($(this).prop("checked")){
+				sessionStorage.setItem("id",$('#memberId').val());
 			}else{
-				$('span.checkSpan').show();
-				pwdCheck = false;
+				sessionStorage.removeItem("id");
 			}
-		})
+		});
+		
+		$('#memberId').val(sessionStorage.getItem("id"));
+		
 	});
 	
 </script>
@@ -161,6 +218,10 @@
 					<label for="phone">전화번호</label> 
 					<input type="text" class="form-control" id="phone" placeholder="전화번호" value="" required name="memberPhone"> 
 					<input type="button" id="phoneCheck" value="인증하기">
+				</div>
+				
+				<div class="mb-3">
+					<input type="checkbox" id="idRemember"> id기억하기
 				</div>
 
 				<!-- 				<div class="mb-3"> -->
