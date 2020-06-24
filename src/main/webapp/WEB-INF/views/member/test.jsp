@@ -26,7 +26,9 @@ $(document).ajaxSend(function(e, xhr, options) {
 <form>
 <sec:authentication var="user" property="principal" />
 <h1>
+<sec:authorize access="isAuthenticated()">
 user:${user.memberNo}
+</sec:authorize>
 </h1>
 <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 <h1>authorized</h1>
