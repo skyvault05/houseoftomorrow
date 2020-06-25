@@ -14,6 +14,9 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +29,9 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
+@ToString
 public class Channel {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,15 +47,15 @@ public class Channel {
 	@Column(name = "ch_regdate")
 	private Timestamp chRegdate;
 	
-	@OneToOne   //(fetch = FetchType.LAZY)
+	@OneToOne   //(fetch = FetchType.LAZY)	
 	@JoinColumn(name = "member_no")
 	private Constructor constructor;
 	
 	@Column(name = "ch_status")
-	private int chStatus;
+	private Integer chStatus;
 	
 	@Column(name = "ch_grades")
-	private double chGrades;
+	private Double chGrades;
 	
 	
 	

@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +28,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class QNA {
 	
 	@Id
@@ -53,7 +58,7 @@ public class QNA {
 	private QNACategory qnaCategory;
 	
 	@Column(name = "qna_status")
-	private int qnaStatus;
+	private Integer qnaStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "qnaParentNo")
 	private List<QNA> qnaChildNo;

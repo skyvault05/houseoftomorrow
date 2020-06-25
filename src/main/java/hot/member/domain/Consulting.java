@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +28,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Consulting {
 	
 	
@@ -52,7 +57,7 @@ public class Consulting {
 	private Consulting consulParentNo;
 	
 	@Column(name = "consul_status")
-	private int consulStatus;
+	private Integer consulStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "consulParentNo")
 	private List<Consulting> consultChildNo;
