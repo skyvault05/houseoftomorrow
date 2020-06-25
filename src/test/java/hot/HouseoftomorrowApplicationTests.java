@@ -19,6 +19,8 @@ import hot.member.domain.Contract;
 import hot.member.domain.EstResponse;
 import hot.member.domain.Member;
 import hot.member.domain.Notice;
+import hot.member.domain.Notification;
+import hot.member.domain.Portfolio;
 import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
 import hot.member.repository.CommCommentRepository;
@@ -34,6 +36,7 @@ import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
 import hot.member.repository.NotificationRepository;
+import hot.member.repository.PortfolioRepository;
 import hot.member.repository.PriceRepository;
 import hot.member.repository.ReviewRepository;
 
@@ -87,6 +90,9 @@ class HouseoftomorrowApplicationTests {
 
 	@Autowired
 	private CommCategoryRepository commCateRep;
+	
+	@Autowired
+	private PortfolioRepository portfolioRep;
 	
 	
 	@Test
@@ -154,17 +160,21 @@ class HouseoftomorrowApplicationTests {
 //		Consulting co =new Consulting(null, memberRep.findById(6).orElse(null), channelRep.findById(1).orElse(null), "consulDescription2", null, "consulTitle2", null, 0, 0, 0, null);
 //		contractRep.save(new Contract(null, co, "이미지 없음", null));
 		
-		CommCategory comCate = commCateRep.findById(5).orElse(null);
-		for(Community com : comCate.getCommList()) {
-			System.out.println(com.getCommNo());
-		}
+//		CommCategory comCate = commCateRep.findById(5).orElse(null);
+//		for(Community com : comCate.getCommList()) {
+//			System.out.println(com.getCommNo());
+//		}
 		
 		
 //		noticeRep.save(new Notice(null, "타이틀", "설명", null));
 		
-		commCommentRep.save(new CommComment(null, communityRep.findById(2).orElse(null), memberRep.findById(6).orElse(null), "설명", null, 1));
+//		commCommentRep.save(new CommComment(null, communityRep.findById(2).orElse(null), memberRep.findById(6).orElse(null), "설명", null, 1));
 		
 //		commCommentRep.save(new CommComment(commCommentNo, community, member, commCommentDescription, commCommentRegdate, commCommentStatus));
+		
+		
+//		portfolioRep.save(new Portfolio(null, channelRep.findById(1).orElse(null), "타이틀", "이미지", "설명", null, null, null, 1));
+		
 		
 		
 	}
