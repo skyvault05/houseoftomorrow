@@ -52,18 +52,9 @@ public class Consulting {
 	@Column(name = "consul_regdate")
 	private Timestamp consulRegDate;
 	
-	@Column(name = "consul_title")
-	private String consulTitle;
-	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "consul_parent_no", referencedColumnName = "consul_no", nullable = true)
 	private Consulting consulParentNo;
-	
-	@Column(name = "consul_user_decide")
-	private Integer consulUserDecide;
-	
-	@Column(name = "consul_con_decide")
-	private Integer consulConDecide;
 	
 	@Column(name = "consul_status")
 	private Integer consulStatus;

@@ -12,6 +12,7 @@
 
 	<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/js/addr/addr.js"></script>
+	
 <style>
 #addrrow{
 	padding-left:15;
@@ -49,8 +50,7 @@ $(function(){
 
 <body>
 	<div class="container">
-		<div class="row">
-		 <form class="row" enctype="multipart/form-data" action="/conSignup" method="POST" onsubmit='addAddr()'>
+		 <form class="row" enctype="multipart/form-data" action="/conSignup" method="POST">
 		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
 				<div class="form-group col-md-12">
 				<h1>회원 정보</h1>
@@ -145,7 +145,6 @@ $(function(){
 			</form>
 			<br><br>
 		</div>
-	</div>
 
 
 
