@@ -3,6 +3,9 @@ package hot.member.domain;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,20 +16,22 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Papering {
 
 	
 	@Column(name = "papering_type", table = "papering")
-	private int paperingType;
+	private Integer paperingType;
 	@Column(name = "papering_area", table = "papering")
-	private int paperingArea;
+	private Integer paperingArea;
 	@Column(name = "papering_number_of_rooms", table = "papering")
-	private int paperingNumberOfRooms;
+	private Integer paperingNumberOfRooms;
 	@Column(name = "papering_ceiling", table = "papering")
-	private int paperingCeiling;
+	private Integer paperingCeiling;
 	@Column(name = "papering_veranda", table = "papering")
-	private int paperingVeranda;
+	private Integer paperingVeranda;
 	@Column(name = "papering_burdon", table = "papering")
-	private int paperingBurdon;
+	private Integer paperingBurdon;
 
 }
