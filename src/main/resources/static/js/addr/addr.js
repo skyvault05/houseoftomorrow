@@ -52,76 +52,21 @@ $(function(){
 	    	}
 	);//주소 API 끝
 	
-	//onSubmit 주소 합치기
-	function addAddr(){
-		let addrStr = $('postcode').val()+","+$('roadAddress').val()+","+$('extraAddress').val()+","+$('detailAddress').val();
-		let addr = $('<input>').attr('type', 'hidden').attr('name', 'conAddr').val(addrStr);
-		$('form').append(addr);
-		$('form').submit();
-	}
-	
 	//contextPath
 	function getContextPath() {
 		var hostIndex = location.href.indexOf( location.host ) + location.host.length;
 		return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
 	};
 	
-	//아이디 중복체크
-//	$('#idChk').click(function(){
-//		if($('#userId').val() == null || $('#userId').val() == ""){
-//			alert('아이디를 입력해주세요');
-//			return false;
-//		}
-//		
-//		let params = "key=idChk&userId="+$('#userId').val();
-//		$.ajax({
-//			dataType : "text",
-//			url : getContextPath()+"/front?"+params,
-//			success : function(result){
-//				if(result==1){
-//					alert("중복된 아이디입니다.");
-//				}else{
-//					$("#submit").removeAttr("disabled");
-//					$("#submit").html("가입하기");
-//					alert("사용 가능한 아이디입니다.");
-//				}
-//			}
-//		});
-//	});
-//	
-//	$('#userId').on("change", function(){
-//		$("#submit").attr("disabled", true);
-//		$("#submit").html("아이디 중복체크를 해주세요");
-//	});
-//	
-//	$('#userPwd').on('keyup', function(){
-//		if($('#userPwd').val() == $('#userPwdChk').val()){
-//			$('#userPwdChkResult').css('visibility' ,'hidden');
-//		}else{
-//			$('#userPwdChkResult').css('visibility' ,'visible');
-//		}
-//	});
-//	
-//	$('#userPwdChk').on('keyup', function(){
-//		if($('#userPwd').val() == $('#userPwdChk').val()){
-//			$('#userPwdChkResult').css('visibility' ,'hidden');
-//		}else{
-//			$('#userPwdChkResult').css('visibility' ,'visible');
-//		}	
-//	});	
-//	
-//	$('#submit').on("click", function(){
-//		if($('#userId').val() == null || $('#userId').val() == "" ||
-//				$('#userPwd').val() == null || $('#userPwd').val() == "" ||
-//				$('#userPwdChk').val() == null || $('#userPwdChk').val() == "" ||
-//				$('#userName').val() == null || $('#userName').val() == "" ||
-//				$('#roadAddress').val() == null || $('#roadAddress').val() == "" ||
-//				$('#detailAddress').val() == null || $('#detailAddress').val() == "" ||
-//				$('#userPhone').val() == null || $('#userPhone').val() == "" ||
-//				$('#userEmail').val() == null || $('#userEmail').val() == "" ){
-//			alert("항목을 확인해 주세요");
-//			return false;
-//		}
-//	});
+	//onSubmit 주소 합치기
+	function addAddrFunc(){
+		let addrStr = $('#postcode').val()+","+$('#roadAddress').val()+","+$('#extraAddress').val()+","+$('#detailAddress').val();
+		let addr = $('<input>').attr('type', 'hidden').attr('name', 'conAddr').val(addrStr);
+		console.log(addr);
+		console.log(4873);
+		$('form').append(addr);
+	}
+	
+	$('form').on('submit', addAddrFunc);
 });
 

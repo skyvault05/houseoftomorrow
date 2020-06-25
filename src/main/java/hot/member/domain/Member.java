@@ -57,7 +57,7 @@ public class Member{
 	private MemberRole memberRole;
 	
 	@Column(name = "member_status")
-	private Integer memberStatus = 1;
+	private Integer memberStatus;
 	public Member(Integer memberNo, String memberId, String memberPwd, String memberName, String memberPhone,
 			Timestamp memberRegdate, MemberRole memberRole) {
 		super();
