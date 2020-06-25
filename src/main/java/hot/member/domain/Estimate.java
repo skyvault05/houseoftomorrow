@@ -57,7 +57,7 @@ public class Estimate {
 	@Column(name = "est_regdate")
 	private Timestamp estRegdate;
 	@Column(name="est_status")
-	private int estStatus;
+	private Integer estStatus;
 	
 	@Embedded
 	private Kitchen kitchen;

@@ -52,10 +52,10 @@ public class Channel {
 	private Constructor constructor;
 	
 	@Column(name = "ch_status")
-	private int chStatus;
+	private Integer chStatus;
 	
 	@Column(name = "ch_grades")
-	private double chGrades;
+	private Double chGrades;
 	
 	
 	

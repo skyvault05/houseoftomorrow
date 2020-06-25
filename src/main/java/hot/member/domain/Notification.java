@@ -35,9 +35,9 @@ public class Notification {
 	private Integer notificationNo;
 	
 	@Column(name = "notification_category")
-	private int notificationCategory;
+	private Integer notificationCategory;
 	
 	@Column(name = "notification_count")
-	private int notificationCount;
+	private Integer notificationCount;
 	
 }

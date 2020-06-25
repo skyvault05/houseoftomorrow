@@ -34,7 +34,7 @@ public class Price {
 
 	
 	@Column(name = "price_amount")
-	private int priceAmount;
+	private Integer priceAmount;
 	
 	@Column(name = "price_name")
 	private String priceName;

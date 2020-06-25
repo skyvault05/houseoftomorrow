@@ -60,13 +60,13 @@ public class Consulting {
 	private Consulting consulParentNo;
 	
 	@Column(name = "consul_user_decide")
-	private int consulUserDecide;
+	private Integer consulUserDecide;
 	
 	@Column(name = "consul_con_decide")
-	private int consulConDecide;
+	private Integer consulConDecide;
 	
 	@Column(name = "consul_status")
-	private int consulStatus;
+	private Integer consulStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "consulParentNo")
 	private List<Consulting> consultChildNo;

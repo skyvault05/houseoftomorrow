@@ -50,12 +50,12 @@ public class Order {
 	private Timestamp orderRegdate;
 	
 	@Column(name = "order_payment")
-	private int orderPayment;
+	private Integer orderPayment;
 	
 	@Column(name = "order_method")
 	private String orderMethod;
 	
 	@Column(name = "order_status")
-	private int oderStatus;
+	private Integer oderStatus;
 
 }

@@ -58,7 +58,7 @@ public class QNA {
 	private QNACategory qnaCategory;
 	
 	@Column(name = "qna_status")
-	private int qnaStatus;
+	private Integer qnaStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "qnaParentNo")
 	private List<QNA> qnaChildNo;

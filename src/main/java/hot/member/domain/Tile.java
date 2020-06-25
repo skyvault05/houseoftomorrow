@@ -22,8 +22,8 @@ public class Tile{
 	
 	
 	@Column(name = "tile_type", table = "tile")
-	private int tileType;
+	private Integer tileType;
 	@Column(name = "tile_area", table = "tile")
-	private int tileArea;
+	private Integer tileArea;
 
 }

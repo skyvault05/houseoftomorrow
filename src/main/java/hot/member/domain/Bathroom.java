@@ -17,12 +17,12 @@ public class Bathroom{
 	
 	
 	@Column(name = "bathroom_number_of_rooms", table = "bathroom")
-	private int bathroomNumberOfRooms;
+	private Integer bathroomNumberOfRooms;
 	@Column(name = "bathroom_type", table = "bathroom")
-	private int bathroomType;
+	private Integer bathroomType;
 	@Column(name = "bathroom_ceiling", table = "bathroom")
-	private int bathroomCeiling;
+	private Integer bathroomCeiling;
 	@Column(name = "bathroom_tile", table = "bathroom")
-	private int bathroomTile;
+	private Integer bathroomTile;
 
 }

@@ -19,14 +19,14 @@ import lombok.Setter;
 @DynamicUpdate
 public class Kitchen{	
 	@Column(name="kitchen_type", table = "kitchen")
-	private int kitchenType;
+	private Integer kitchenType;
 	@Column(name="kitchen_max_width", table = "kitchen")
-	private int kitchenMaxWidth;
+	private Integer kitchenMaxWidth;
 	@Column(name="kitchen_countertop", table = "kitchen")
-	private int kitchenCountertop;
+	private Integer kitchenCountertop;
 	@Column(name="kitchen_door", table = "kitchen")
-	private int kitchenDoor;
+	private Integer kitchenDoor;
 	@Column(name="kitchen_tile", table = "kitchen")
-	private int kitchenTile;
+	private Integer kitchenTile;
 
 }

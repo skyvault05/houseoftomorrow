@@ -21,16 +21,16 @@ import lombok.Setter;
 public class Linoleum{
 	
 	@Column(name = "linoleum_thick", table = "linoleum")
-	private int linoleumThick;
+	private Integer linoleumThick;
 	@Column(name = "linoleum_area", table = "linoleum")
-	private int linoleumArea;
+	private Integer linoleumArea;
 	@Column(name = "linoleum_number_of_rooms", table = "linoleum")
-	private int linoleumNumberOfRooms;
+	private Integer linoleumNumberOfRooms;
 	@Column(name = "linoleum_veranda", table = "linoleum")
-	private int linoleumVeranda;
+	private Integer linoleumVeranda;
 	@Column(name = "linoleum_current_floor", table = "linoleum")
-	private int linoleumCurrentFloor;
+	private Integer linoleumCurrentFloor;
 	@Column(name = "linoleum_burdon", table = "linoleum")
-	private int linoleumBurdon;
+	private Integer linoleumBurdon;
 
 }

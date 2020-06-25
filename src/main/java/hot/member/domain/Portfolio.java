@@ -50,7 +50,7 @@ public class Portfolio {
 	@Column(name = "port_enddate")
 	private Timestamp portEndDate;
 	@Column(name = "port_status")
-	private int portStatus;
+	private Integer portStatus;
 
 	
 }

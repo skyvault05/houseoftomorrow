@@ -20,16 +20,16 @@ import lombok.Setter;
 @DynamicUpdate
 public class Floor{	
 	@Column(name = "floor_type", table = "floor")
-	private int floorType;
+	private Integer floorType;
 	@Column(name = "floor_area", table = "floor")
-	private int floorArea;
+	private Integer floorArea;
 	@Column(name = "floor_number_of_rooms", table = "floor")
-	private int floorNumberOfRooms;
+	private Integer floorNumberOfRooms;
 	@Column(name = "floor_veranda", table = "floor")
-	private int floorVeranda;
+	private Integer floorVeranda;
 	@Column(name = "floor_current_floor", table = "floor")
-	private int floorCurrentFloor;
+	private Integer floorCurrentFloor;
 	@Column(name = "floor_burdon", table = "floor")
-	private int floorBurdon;
+	private Integer floorBurdon;
 
 }
