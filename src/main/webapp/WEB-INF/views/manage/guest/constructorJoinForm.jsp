@@ -122,7 +122,7 @@ $(function(){
 							<div class="w-100"></div>
 							<input type="text" class="form-control col-md-5" id="postcode" name="postcode" placeholder="우편번호" readonly>
 							&nbsp;&nbsp;
-							<button class="btn btn-info signBtn col-md-3" id="userAddrBtn" type="button">우편번호 찾기</button>
+							<button class="btn btn-info signBtn col-md-4" id="userAddrBtn" type="button">우편번호 찾기</button>
 							<input type="text" class="form-control col-md-12" id="roadAddress" name="reaodAddress" placeholder="도로명주소" readonly>
 							<input class="form-control col-md-4" id="extraAddress" name="extraAddress" type="text" readonly>
 							<input class="form-control col-md-12" id="detailAddress" name="detailAddress" placeholder="상세주소" type="text">
@@ -179,5 +179,4 @@ $(function(){
             
 
 </body>
-
 </html>
