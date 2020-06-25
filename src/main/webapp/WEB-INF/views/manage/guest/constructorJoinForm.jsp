@@ -50,7 +50,7 @@ $(function(){
 <body>
 	<div class="container">
 		<div class="row">
-		 <form class="row" enctype="multipart/form-data" action="/conSignup" method="POST" onsubmit='onSubmit()'>
+		 <form class="row" enctype="multipart/form-data" action="/conSignup" method="POST" onsubmit='addAddr()'>
 		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
 				<div class="form-group col-md-12">
 				<h1>회원 정보</h1>
@@ -105,9 +105,9 @@ $(function(){
 				
 				<div class="form-group col-md-6">
 					<label for='company'>사업자 여부</label><br>
-					<input type="radio" id="company" name="isCompany" value="1" checked>
+					<input type="radio" id="company" name="conIsCompany" value="1" checked>
 					<label for="company">사업자</label>
-					<input type="radio" id="freelancer" name="isCompany" value="0">
+					<input type="radio" id="freelancer" name="conIsCompany" value="0">
 					<label for="freelancer">프리랜서</label>
 				</div>
 				

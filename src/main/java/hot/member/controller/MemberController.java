@@ -58,6 +58,7 @@ public class MemberController {
 		System.out.println(member);
 		System.out.println(constructor);
 		System.out.println(channel);
+		System.out.println();
 		return "common/loginForm";
 	}
 	
