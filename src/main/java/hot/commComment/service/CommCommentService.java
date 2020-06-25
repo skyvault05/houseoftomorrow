@@ -17,11 +17,6 @@ public interface CommCommentService {
 	CommComment selectOneComment(int commentNo);
 	
 	/**
-	 * 수정
-	 * */
-	int updateCommComment(CommComment commComment);
-	
-	/**
 	 * 삭제
 	 * */
 	int deleteCommComment(Integer commCommentNo);

@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import hot.aws.S3Manager;
 import hot.member.domain.CommCategory;
 import hot.member.domain.Community;
+import hot.member.domain.Member;
 import hot.member.repository.CommCategoryRepository;
 import hot.member.repository.CommunityRepository;
 
@@ -24,9 +25,6 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Autowired
 	private CommunityRepository communityRepository;
-	
-	@Autowired
-	private CommCategoryRepository commCateRep;
 	
 	@Autowired
 	S3Manager s3Manager;
@@ -94,8 +92,16 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Override
 	public List<Community> selectCommunityMember(Integer memberNo) {
-		List<Community> commList = communityRepository.findByMemberMemberNo(memberNo);
-		return commList;
+		
+		// 상태값 생각하지 않고 모든 내용을 출력하고자 했을 때
+//		List<Community> commList = communityRepository.findByMemberMemberNo(memberNo);
+//		return commList;
+
+		Member member = new Member();
+		member.setMemberNo(memberNo);
+		List<Community> list = communityRepository.findByMemberEnabled(member, 1);
+		
+		return list;
 	}
 
 }

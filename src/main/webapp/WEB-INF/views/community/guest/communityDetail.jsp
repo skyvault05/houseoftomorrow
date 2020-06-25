@@ -36,6 +36,40 @@ ul, ol { list-style: none; }
 #title{
 	font-size: 30px;
 }
+
+img{
+	width: 960px;
+	height: 400px;
+}
+hr{
+	width: 960px;
+}
+#topTitle{
+	font-size: 20px;
+}
+#commentList{
+	font-size: 20px;
+}
+a{
+	color: black;
+	text-decoration: none;
+}
+.click{
+	font-size: 20px;
+	color: orange;
+	font-weight: bold;
+}
+#content{
+	height: 40px;
+	width: 80%;
+	font-size:20px;
+}
+#btn{
+	height: 50px;
+	width: 10%;
+	font-size: 20px;
+	cursor: pointer;
+}
 </style>
 
 <script>
@@ -88,29 +122,11 @@ ul, ol { list-style: none; }
                 },800)
     });
     
-    
-
 }(window, window.jQuery));
 
-
-$(function(){
-	$('button[name=update]').on('click', function(){
-		console.log($(this).val());
-		
-		var id = "id"+$(this).val
-		var value = $('[name="ddiv"]').attr("value");
-		// var value = $('#id').attr("value");
-		
-		console.log("value" + value);
-		
-		var value2 = $($(this).val().attr("value"));
-		console.log("value2" + value2);
-		
-		$("#content").val(value);
-		
-	});
-	
-});
+function delchk(){
+    return confirm("정말로 삭제하시겠습니까?");
+}
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -119,90 +135,71 @@ $(function(){
 <body>
 	<div id="contents">
 	<img src="${community.commImg}">
-
+	<br><br>
+	<hr><br>
 	${community.commDescription}
     <div class="floating-menu">
         <ul>
             <li class="m">
+            <c:choose>
+				<c:when test="${community.commCategory.commCategoryNo == 5}">
+					<p id="topTitle"><b>온라인 집들이</b></p>
+				</c:when>
+			</c:choose>
             <span id="title"><b>${community.commTitle}</b></span><p>
             <span><fmt:formatDate value="${community.commRegdate}" pattern="yyyy-MM-dd HH:mm"/></span><p>
             <span>조회수: ${community.commReadnum}</span><p>
-            
+            <br>
             <span>글쓴이: ${community.member.memberName}</span><p>
             ★★글쓴이 링크를 둘지 고민하귀★★
             </li>
         </ul>
     </div>
+    <br><br>
+	<hr><br>
     <sec:authentication var="user" property="principal" />
     <%-- 글쓴이: ${community.member.memberNo}<p>
     로그인한사람: ${user.memberNo} --%>
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose>
 			<c:when test="${community.member.memberNo == user.memberNo}">
-				<a href="${pageContext.request.contextPath}/community/updateCommunity?commNo=${community.commNo}"}>게시글 수정하기</a>
-				<a href="${pageContext.request.contextPath}/community/delete?commNo=${community.commNo}&commCategoryNo=${community.commCategory.commCategoryNo}">게시글 삭제하기</a>
+				<a class="click" href="${pageContext.request.contextPath}/community/updateCommunity?commNo=${community.commNo}"}>게시글 수정하기</a> | 
+				<a class="click" onclick="return delchk()" href="${pageContext.request.contextPath}/community/delete?commNo=${community.commNo}&commCategoryNo=${community.commCategory.commCategoryNo}">게시글 삭제하기</a>
 			</c:when>
 <%--   <c:when test="${community.member.memberNo != user.memberNo}">
 			달라용
 			</c:when> --%>
 		</c:choose>
 	</sec:authorize>
-	
+	<br><br>
 	<sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	<div class="container">
-        <label for="content">comment 덧글</label>
         <form id = "commentInsertForm" name="commentInsertForm" method="post" action="${pageContext.request.contextPath}/community/insertComment">
             <div class="input-group">
                <input type="hidden" name="comNo" value="${community.commNo}"/>
                <input type="hidden" name="membNo"  value="${user.memberNo}"/>
                <input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
-               <input type="text" class="form-control" id="content" name="commCommentDescription" placeholder="내용을 입력하세요.">
+               <input type="text" class="form-control" id="content" name="commCommentDescription" placeholder="  덧글을 입력하세요.">
                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit" name="commentInsertBtn">등록</button>
+                    <button id="btn" class="btn btn-default" type="submit" name="commentInsertBtn">등록</button>
                </span>
               </div>
         </form>
     </div>
     </sec:authorize>
     <br><br>
-    	<h3>덧글 모음</h3>
-    	<c:forEach items="${comment}" var="comment" varStatus="status">
-    	
-    	<script>
-			$(document).ready(function(){
-				  $("#update").click(function(){
-				    	$("#content").val("${comment.commCommentDescription}")
-				    	$("#commentInsertForm").attr("action", "${pageContext.request.contextPath}/community/updateComment?commNo=${comment.community.commNo}");
-				  });
-				});
-			
-			
-
-		</script>
-    	
-	<div name="ddiv" id="id${status.count}" value="${comment.commCommentDescription}">${comment.commCommentDescription}</div> | ${comment.member.memberName} | <fmt:formatDate value="${comment.commCommentRegdate}" pattern="yyyy-MM-dd HH:mm"/>
+    	<h2>comment</h2>
+    	<br>
+    	<c:forEach items="${comment}" var="comment" varStatus="status">  	
+	<p id="commentList">${comment.commCommentDescription} | ${comment.member.memberName} | <fmt:formatDate value="${comment.commCommentRegdate}" pattern="yyyy-MM-dd HH:mm"/>
 	<sec:authentication var="user" property="principal" />
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		
 		<c:if test="${comment.member.memberNo == user.memberNo}">
-<%-- 			<a id="update"  href="${pageContext.request.contextPath}/community/updateCommentForm?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}" >덧글 수정하기</a>  --%>
-			<button name="update" value="${status.count}">수정하기</button>
-			<a href="${pageContext.request.contextPath}/community/deleteComment?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}">덧글 삭제하기</a>
+			<a class ="click" href="${pageContext.request.contextPath}/community/deleteComment?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}">덧글 삭제하기</a></p>
 		</c:if>
 	</sec:authorize>
 	<p>
 </c:forEach>
-	
-	<!-- 이건 필요 없는 부분이에요 -->
-    <div class="section-01 scroll">
-        <h2>섹션 1</h2>
-    </div>
-	
-	</div>
-	
-	<div class="footer">
-	    푸터단
-	</div>
-	<!-- 이건 필요 없는 부분이에요 : 여기까지-->
 </body>
 </html>

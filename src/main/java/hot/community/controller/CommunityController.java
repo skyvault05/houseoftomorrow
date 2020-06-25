@@ -162,28 +162,6 @@ public class CommunityController {
 	}
 	
 	/**
-	 * 덧글 수정 폼
-	 * */
-	@RequestMapping("/updateCommentForm")
-	public ModelAndView updateCommentForm(@ModelAttribute("commentNo")Integer commentNo, Integer commNo) {
-		
-	CommComment comment =  commCommentService.selectOneComment(commentNo);
-		
-		return new ModelAndView("redirect:detail/"+commNo, "comment", comment);
-	}
-	
-	/**
-	 * 덧글 수정하기
-	 * */
-	@RequestMapping("/updateComment")
-	public ModelAndView updateComment(CommComment comment, Integer commNo) {
-		
-		commCommentService.updateCommComment(comment);
-		
-		return new ModelAndView("redirect:detail/"+commNo, "comment", comment);
-	}
-	
-	/**
 	 * 덧글 삭제
 	 * */
 	@RequestMapping("/deleteComment")

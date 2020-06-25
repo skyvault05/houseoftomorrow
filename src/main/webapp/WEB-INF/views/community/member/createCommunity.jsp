@@ -9,7 +9,7 @@
 <meta name="_csrf" content="${_csrf.token}"/>
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의 집</title>
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <script>
 var token = $("meta[name='_csrf']").attr("content");
@@ -24,6 +24,7 @@ $(document).ajaxSend(function(e, xhr, options) {
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script src="/plugins/summernote/setsummernote.js"></script>
+ 
 
 <script> 
 function setThumbnail(event) { 
@@ -43,13 +44,17 @@ function setThumbnail(event) {
 	#commTitle{
 		margin-left: 10%;
 		width: 20%;
-		height: 10%
+		height: 40px;
+		font-size: 20px;
 	}
 	#commImg{
 		margin-left: 10%;
 	}
 	#image_container{
 		margin-left: 10%;
+	}
+	input[type=submit]{
+		cursor: pointer;
 	}
 </style>
 </head>
@@ -68,19 +73,20 @@ function setThumbnail(event) {
 <br><br>
 <form name="insertForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/community/insert" >
 
-<input type="text" name="commTitle"  id="commTitle" placeholder="올릴 게시글의 제목을 입력해주세요"/><p>
+<input type="text" name="commTitle"  id="commTitle" placeholder="  올릴 게시글의 제목을 입력해주세요"/><p>
 
 	
 	<sec:authentication var="user" property="principal" />
 	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
-	<input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event);"><p>
-	<div id="image_container"></div>
 
 	<%-- <%=request.getParameter("commCategoryNo")%>${param.commCategoryNo} --%>
 	<input type="hidden" name="commCategoryNo"  value="${param.commCategoryNo}"/>
 	<input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
 	<textarea id="summernote" name="commDescription"></textarea>
-	<input type="submit" value="등록하기"> 
+	<br><br>
+	<input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event);"> <input id="insert"  type="submit" value="등록하기"> 
+	<div  id="image_container"></div>
+	
 </form>
 
 </body>

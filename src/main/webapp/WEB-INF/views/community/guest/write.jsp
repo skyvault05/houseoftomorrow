@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<title>내일의 집</title>
+  <!-- bootstrap-->
+	<script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
+	    
+	<link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
 
 <style>
 	h1{
@@ -24,12 +25,23 @@
 		width: 15%;
 		height: 15%;
 	}
-	section{
-		float: left;
-		boarder: 1px solid;
-	}
 	div:hover{
-		color: blue;
+		color: #cfb997;
+		background-color: beige;
+	}
+	a:hover{
+		color: #cfb997;
+		text-decoration: none;
+	}
+	.div{
+		float: left;
+		margin-left:5%;
+		text-align: center;
+		padding: 20px;
+		border: 1px solid black;
+		border-radius: 50%;
+		font-size: 30px;
+		overflow: hidden;
 	}
 </style>
 </head>
@@ -38,23 +50,16 @@
 <br><br>
 <form>
 
-
-	<section id="one" class="col-sm-6"><a href="/community/member/createCommunity?commCategoryNo=4">
+	<div id="one" class="div col-md-5"><a href="/community/member/createCommunity?commCategoryNo=4">
 	<img src="/plugins/images/icon_camera.png"/>
-	<div>사진</div>
-	</a></section>
-	<section id="two" class="col-sm-6"><a href="/community/member/createCommunity?commCategoryNo=5">
+	<br>
+	<div><b>사진</b></div>
+	</a></div>
+	<div id="two" class="div col-md-5"><a href="/community/member/createCommunity?commCategoryNo=5">
 	<img src="/plugins/images/icon_idea.png"/>
-	<div>노하우</div>
-	</a></section>
-	<section id="two" class="col-sm-6"><a href="/community/member/createCommunity?commCategoryNo=5">
-	<img src="/plugins/images/icon_idea.png"/>
-	<div>전문가/시공리뷰</div>
-	</a></section>
-	<section id="two" class="col-sm-6"><a href="/community/member/createCommunity?commCategoryNo=5">
-	<img src="/plugins/images/icon_idea.png"/>
-	<div>질문하기</div>
-	</a></section>
+	<br>
+	<div><b>노하우</b></div>
+	</a></div>
 </form>
 </body>
 </html>

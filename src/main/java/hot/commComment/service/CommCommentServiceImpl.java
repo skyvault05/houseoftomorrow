@@ -23,14 +23,6 @@ public class CommCommentServiceImpl implements CommCommentService {
 	}
 
 	@Override
-	public int updateCommComment(CommComment commComment) {
-		
-		commComment.setCommCommentDescription(commComment.getCommCommentDescription());
-		
-		return 0;
-	}
-
-	@Override
 	public int deleteCommComment(Integer commCommentNo) {
 		
 		commCommentRepository.deleteById(commCommentNo);
