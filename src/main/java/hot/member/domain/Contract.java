@@ -45,10 +45,10 @@ public class Contract {
 	private Timestamp contractUpdateDate;
 	
 
-	@Column(name = "consul_user_decide")
+	@Column(name = "contract_user_decide")
 	private int consulUserDecide;
 	
-	@Column(name = "consul_con_decide")
+	@Column(name = "contract_con_decide")
 	private int consulConDecide;
 	
 }

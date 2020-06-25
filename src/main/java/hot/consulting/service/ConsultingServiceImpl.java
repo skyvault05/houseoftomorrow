@@ -12,9 +12,9 @@ public class ConsultingServiceImpl implements ConsultingService {
 	private ConsultingRepository consultingRep;
 	
 	@Override
-	public Integer selectByIdNo(String memberId, int chNo) {
-		Integer consulNo = consultingRep.findConsultingParent(memberId, chNo);
-		return consulNo;
+	public Consulting selectByIdNo(String memberId, int chNo) {
+		Consulting consulting = consultingRep.findConsultingParent(memberId, chNo);
+		return consulting;
 	}
 
 }
