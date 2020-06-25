@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <style>
 * { margin: 0; padding: 0; }
 body { width: 1000px; margin: 0 auto;}
@@ -87,8 +87,30 @@ ul, ol { list-style: none; }
                     scrollTop : 0
                 },800)
     });
+    
+    
 
 }(window, window.jQuery));
+
+
+$(function(){
+	$('button[name=update]').on('click', function(){
+		console.log($(this).val());
+		
+		var id = "id"+$(this).val
+		var value = $('[name="ddiv"]').attr("value");
+		// var value = $('#id').attr("value");
+		
+		console.log("value" + value);
+		
+		var value2 = $($(this).val().attr("value"));
+		console.log("value2" + value2);
+		
+		$("#content").val(value);
+		
+	});
+	
+});
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -153,15 +175,18 @@ ul, ol { list-style: none; }
 				    	$("#commentInsertForm").attr("action", "${pageContext.request.contextPath}/community/updateComment?commNo=${comment.community.commNo}");
 				  });
 				});
+			
+			
+
 		</script>
     	
-	<div id="id${status.count}">${comment.commCommentDescription}</div> | ${comment.member.memberName} | <fmt:formatDate value="${comment.commCommentRegdate}" pattern="yyyy-MM-dd HH:mm"/>
+	<div name="ddiv" id="id${status.count}" value="${comment.commCommentDescription}">${comment.commCommentDescription}</div> | ${comment.member.memberName} | <fmt:formatDate value="${comment.commCommentRegdate}" pattern="yyyy-MM-dd HH:mm"/>
 	<sec:authentication var="user" property="principal" />
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		
 		<c:if test="${comment.member.memberNo == user.memberNo}">
 <%-- 			<a id="update"  href="${pageContext.request.contextPath}/community/updateCommentForm?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}" >덧글 수정하기</a>  --%>
-			<button id="update" value="id${status.count}">수정하기</button>
+			<button name="update" value="${status.count}">수정하기</button>
 			<a href="${pageContext.request.contextPath}/community/deleteComment?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}">덧글 삭제하기</a>
 		</c:if>
 	</sec:authorize>
