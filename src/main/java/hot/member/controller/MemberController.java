@@ -36,12 +36,7 @@ public class MemberController {
 	 * 회원가입
 	 */
 	@PostMapping("/signup")
-	public String memberInsert(Member member, String domain, String domainAuto, MemberRole role) {
-		if(domain == null || domain.equals("")) {
-			member.setMemberId(member.getMemberId() + "@" + domainAuto);
-		}else {
-			member.setMemberId(member.getMemberId() + "@" + domain);
-		}
+	public String memberInsert(Member member, MemberRole role) {
 		member.setMemberRole(role);
 		memberService.memberInsert(member);
 		
@@ -82,14 +77,8 @@ public class MemberController {
 	 */
 	@ResponseBody
 	@RequestMapping("/idCheck")
-	public String dupCheck(String memberId, String domain, String domainAuto) {
-		String fullId = memberId + "@";
-		if(domain == null || domain.equals("")) {
-			fullId += domainAuto;
-		}else {
-			fullId += domain;
-		}
-		Member member = memberService.selectMember(fullId);
+	public String dupCheck(String memberId) {
+		Member member = memberService.selectMember(memberId);
 		if(member == null) {
 			return "possible";
 		}else {
