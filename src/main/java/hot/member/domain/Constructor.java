@@ -25,7 +25,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-@ToString
 public class Constructor {
 	@Id
 	private Integer memberNo;

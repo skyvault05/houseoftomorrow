@@ -5,18 +5,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import hot.channel.service.ChannelService;
 import hot.member.domain.Channel;
 import hot.member.domain.Constructor;
 import hot.member.domain.Member;
 import hot.member.domain.MemberRole;
+import hot.member.repository.MemberRoleRepository;
 import hot.member.service.MemberService;
 
 @Controller
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
-	
+	@Autowired
+	private MemberRoleRepository memberRoleRepository;
+	@Autowired
+	private ChannelService channelService;
 	/**
 	 * 회원가입 폼으로
 	 */
@@ -54,11 +60,20 @@ public class MemberController {
 	 * 시공사 회원가입
 	 */
 	@PostMapping("/conSignup")
-	public String ConstructorInsert(Member member, Constructor constructor, Channel channel) {
+	public String ConstructorInsert(Member member, Constructor constructor, Channel channel, MultipartFile chImgFile) {
+		member.setMemberRole(memberRoleRepository.findById(2).orElse(null));
+		constructor.setMember(member);
+		channel.setChImg("test.jsp");
+		channel.setConstructor(constructor);
+		
+		channelService.insertChannel(channel);
+		
+		
 		System.out.println(member);
 		System.out.println(constructor);
 		System.out.println(channel);
-		System.out.println();
+		System.out.println(chImgFile.getOriginalFilename());
+		
 		return "common/loginForm";
 	}
 	

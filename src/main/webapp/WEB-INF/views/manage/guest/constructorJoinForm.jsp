@@ -50,7 +50,6 @@ $(function(){
 
 <body>
 	<div class="container">
-		<div class="row">
 		 <form class="row" enctype="multipart/form-data" action="/conSignup" method="POST">
 		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
 				<div class="form-group col-md-12">
@@ -146,7 +145,6 @@ $(function(){
 			</form>
 			<br><br>
 		</div>
-	</div>
 
 
 

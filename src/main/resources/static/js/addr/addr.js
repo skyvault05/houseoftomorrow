@@ -60,10 +60,9 @@ $(function(){
 	
 	//onSubmit 주소 합치기
 	function addAddrFunc(){
-		let addrStr = $('#postcode').val()+","+$('#roadAddress').val()+","+$('#extraAddress').val()+","+$('#detailAddress').val();
+		let addrStr = $('#postcode').val().trim()+","+$('#roadAddress').val().trim()+","+$('#extraAddress').val().trim()+","+$('#detailAddress').val().trim();
 		let addr = $('<input>').attr('type', 'hidden').attr('name', 'conAddr').val(addrStr);
-		console.log(addr);
-		console.log(4873);
+		$('form > input[name=conAddr]').remove();
 		$('form').append(addr);
 	}
 	

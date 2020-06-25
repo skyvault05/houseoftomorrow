@@ -43,7 +43,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException(username);
 		}
 		
-//		customUser.setPassword(null);
+		customUser.setPassword(null);
 		
 		return new UsernamePasswordAuthenticationToken(customUser, null, customUser.getAuthorities());
 	}
