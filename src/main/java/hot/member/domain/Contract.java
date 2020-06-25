@@ -40,4 +40,10 @@ public class Contract {
 	private Timestamp contractUpdateDate;
 	
 
+	@Column(name = "consul_user_decide")
+	private int consulUserDecide;
+	
+	@Column(name = "consul_con_decide")
+	private int consulConDecide;
+	
 }
