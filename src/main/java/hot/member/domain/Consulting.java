@@ -52,9 +52,8 @@ public class Consulting {
 	@Column(name = "consul_regdate")
 	private Timestamp consulRegDate;
 	
-	@ManyToOne(optional = true)
 	@JoinColumn(name = "consul_parent_no", referencedColumnName = "consul_no", nullable = true)
-	private Consulting consulParentNo;
+	private Integer consulParentNo;
 	
 	@Column(name = "consul_status")
 	private Integer consulStatus;
