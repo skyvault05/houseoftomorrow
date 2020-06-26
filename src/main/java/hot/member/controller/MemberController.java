@@ -1,6 +1,8 @@
 package hot.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,12 +10,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hot.member.domain.Member;
 import hot.member.domain.MemberRole;
+import hot.member.repository.MemberRoleRepository;
 import hot.member.service.MemberService;
 
 @Controller
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	MemberRoleRepository memberRoleRepository;
 	
 	/**
 	 * 회원가입 폼으로
@@ -57,5 +63,19 @@ public class MemberController {
 		}else {
 			return "impossible";
 		}
+	}
+
+	@RequestMapping("/")
+	public void url() {
+		
+	}
+	
+	@RequestMapping("/update")
+	public String memberUpdate(Member member) {
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		System.out.println(member);
+		member = new Member(null, "memberId", encoder.encode("1234"), "memberName", "memberPhone", null, memberRoleRepository.findById(1).orElse(null));
+		memberService.memberUpdate(member);
+	return "index";
 	}
 }

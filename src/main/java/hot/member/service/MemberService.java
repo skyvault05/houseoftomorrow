@@ -12,4 +12,9 @@ public interface MemberService {
 	 * id로 맴버 찾기
 	 */
 	Member selectMember(String memberId);
+	
+	int memberUpdate(Member member);
+	int memberDelete(int memberNo);
+	String findId(String phoneNumber, String name);
+	String findPwd(Member member);
 }
