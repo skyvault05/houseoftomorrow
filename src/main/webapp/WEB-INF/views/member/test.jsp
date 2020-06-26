@@ -18,15 +18,17 @@ $(document).ajaxSend(function(e, xhr, options) {
 });
 </script>
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
+<script src="/plugins/summernote/summernote-lite.min.js"></script>
 <script src="/plugins/summernote/setsummernote.js"></script>
 </head>
 <body>
 <form>
 <sec:authentication var="user" property="principal" />
 <h1>
+<sec:authorize access="isAuthenticated()">
 user:${user.memberNo}
+</sec:authorize>
 </h1>
 <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 <h1>authorized</h1>

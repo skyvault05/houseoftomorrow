@@ -1,6 +1,8 @@
 package hot;
 
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +19,6 @@ import hot.member.domain.Notification;
 import hot.member.domain.Review;
 
 import hot.member.domain.CommCategory;
-import hot.member.domain.CommComment;
 import hot.member.domain.Community;
 
 import hot.member.repository.ChannelRepository;
@@ -170,6 +171,14 @@ class HouseoftomorrowApplicationTests {
 //		commCommentRep.save(new CommComment(commCommentNo, community, member, commCommentDescription, commCommentRegdate, commCommentStatus));
 		
 		
+//		CommCategory commCategory = new CommCategory();
+//		commCategory.setCommCategoryNo(4);
+//		List<Community> list = communityRep.findByCommCategoryEnabled(commCategory, 0);
+//		System.out.println(list);
+//		for(Community com : list) {
+//			System.out.println(com.getCommNo());
+//		}
+		System.out.println(channelRep.findById(1).orElse(null).getConstructor());
 	}
 	
 }

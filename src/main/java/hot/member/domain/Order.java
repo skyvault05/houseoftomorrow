@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +25,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Order {
 	
 	@Id
@@ -45,12 +50,12 @@ public class Order {
 	private Timestamp orderRegdate;
 	
 	@Column(name = "order_payment")
-	private int orderPayment;
+	private Integer orderPayment;
 	
 	@Column(name = "order_method")
 	private String orderMethod;
 	
 	@Column(name = "order_status")
-	private int oderStatus;
+	private Integer oderStatus;
 
 }

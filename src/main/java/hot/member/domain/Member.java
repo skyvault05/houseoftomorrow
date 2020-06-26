@@ -6,23 +6,23 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import net.bytebuddy.dynamic.TypeResolutionStrategy.Lazy;
 
 @Entity
 @Table(name = "member")
@@ -30,7 +30,8 @@ import net.bytebuddy.dynamic.TypeResolutionStrategy.Lazy;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@DynamicInsert
+@DynamicUpdate
 public class Member{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +53,7 @@ public class Member{
 	private MemberRole memberRole;
 	
 	@Column(name = "member_status")
-	private Integer memberStatus = 1;
+	private Integer memberStatus;
 	public Member(Integer memberNo, String memberId, String memberPwd, String memberName, String memberPhone,
 			Timestamp memberRegdate, MemberRole memberRole) {
 		super();
@@ -65,8 +66,9 @@ public class Member{
 		this.memberRole = memberRole;
 	}
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany
 	@JoinColumn(name = "member_no")
+	@Transient
 	private List<Notification> list = new ArrayList<Notification>();
 	
 }

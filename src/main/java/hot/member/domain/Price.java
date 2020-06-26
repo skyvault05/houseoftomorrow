@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +22,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Price {
 	
 	@Id
@@ -28,7 +33,7 @@ public class Price {
 
 	
 	@Column(name = "price_amount")
-	private int priceAmount;
+	private Integer priceAmount;
 	
 	@Column(name = "price_name")
 	private String priceName;

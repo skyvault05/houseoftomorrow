@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.type.TrueFalseType;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +31,8 @@ import lombok.ToString;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Community {
 	
 	@Id
@@ -52,7 +56,7 @@ public class Community {
 	@JoinColumn(name = "comm_category_no")
 	private CommCategory commCategory;
 	@Column(name = "comm_readnum")
-	private int commReadnum;
+	private Integer commReadnum;
 	
 	
 	
@@ -61,7 +65,7 @@ public class Community {
 	private Community commParentNo;
 	
 	@Column(name = "comm_status")
-	private int commStatus;
+	private Integer commStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "commParentNo")
 	private List<Community> commChildNo;

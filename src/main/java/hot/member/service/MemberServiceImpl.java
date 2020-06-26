@@ -33,6 +33,7 @@ public class MemberServiceImpl implements MemberService{
 		return member;
 	}
 
+
 	@Override
 	public int memberUpdate(Member member) {
 		// TODO Auto-generated method stub
@@ -58,4 +59,11 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	
+
+	
+	@Override
+	public Member selectMemberByPhone(String phone) {
+		return memberRep.findByMemberPhone(phone);
+	}
+
 }
