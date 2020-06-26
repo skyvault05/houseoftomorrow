@@ -1,4 +1,4 @@
-package hot.member.domain;
+package hot.estimate.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 @Embeddable
 @Getter
 @Setter
@@ -17,6 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+
 public class Kitchen{	
 	@Column(name="kitchen_type", table = "kitchen")
 	private Integer kitchenType;
