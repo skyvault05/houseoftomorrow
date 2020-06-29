@@ -11,4 +11,5 @@ public interface ReviewService {
 	void deleteReview(int reviewNo); //평점 재평가
 	List<Review> selectReview(int chNo); 
 	Review updateReviewForm(int reviewNo);
+	
 }
