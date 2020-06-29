@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "review")
@@ -27,6 +28,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+@ToString
 public class Review {
 	
 	@Id

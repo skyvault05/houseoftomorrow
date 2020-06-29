@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hot.member.domain.Channel;
+import hot.member.domain.Member;
 import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
 import hot.member.repository.MemberRepository;
@@ -24,9 +25,12 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	
 	@Override
-	public void insertReview(Review review) {
+	public void insertReview(Review review, Integer chNo, Integer memberNo) {
+		Member member = memberRep.findById(memberNo).orElse(null);
+		review.setMember(member);
+		Channel channel = channelRep.findById(chNo).orElse(null);
+		review.setChannel(channel);
 		reviewRep.save(review);
-		
 	}
 
 	@Override
@@ -41,7 +45,7 @@ public class ReviewServiceImpl implements ReviewService {
 	public void deleteReview(int reviewNo) {
 		Review review = reviewRep.findById(reviewNo).orElse(null);
 		if(review!=null) {
-			review.setReviewStatus(1);
+			review.setReviewStatus(0);
 		}
 		
 	}

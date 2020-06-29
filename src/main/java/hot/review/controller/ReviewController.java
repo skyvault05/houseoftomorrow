@@ -3,19 +3,21 @@ package hot.review.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
 import hot.member.repository.MemberRepository;
+import hot.member.repository.ReviewRepository;
 import hot.review.service.ReviewService;
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/review")
+@RequiredArgsConstructor
 public class ReviewController {
 	
 	@Autowired
@@ -27,10 +29,14 @@ public class ReviewController {
 	@Autowired
 	private MemberRepository memberRep;
 	
-	@RequestMapping("/review/reviewform")
-	public String insertReview(Review review) {
-		reviewService.insertReview(review);
-		return "";
+	@Autowired
+	private ReviewRepository reviewRep;
+	
+	@PostMapping("/registerReview")
+	public String insertReview(Review review, Integer chNo, Integer memberNo) {
+		System.out.println(review);
+		reviewService.insertReview(review, chNo, memberNo);
+		return "index";
 	}
 	
 	@RequestMapping("/update")
@@ -39,10 +45,10 @@ public class ReviewController {
 		return "";
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/index")
 	public ModelAndView updateReviewForm(int reviewNo) {
 		Review review = reviewService.updateReviewForm(reviewNo);
-		return new ModelAndView("", "review", review);
+		return new ModelAndView("index", "review", review);
 
 	}
 	
@@ -59,6 +65,7 @@ public class ReviewController {
 		return new ModelAndView("channel", "list", list);
 
 	}
+	
 	
 	
 }

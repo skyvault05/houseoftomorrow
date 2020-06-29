@@ -6,6 +6,15 @@
     <meta charset="UTF-8">
     <title>회원가입 폼</title>
     <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <meta name="_csrf" content="${_csrf.token}" />
+	<meta name="_csrf_header" content="${_csrf.headerName}" />
+	<script>
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content"); 
+		$(document).ajaxSend(function(e, xhr, options) {
+		  xhr.setRequestHeader(header, token);
+		});
+	</script>
     
     <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
@@ -20,31 +29,117 @@
 }
 </style>
 <script>
-function myFunction(){
-	var obj = document.getElementById('mailselect');
-	var obj2 = document.getElementById('aaa');
-	if(obj.value==='person'){
-		obj2.style.display = 'inline-block';
-	} else {
-		obj.style.display = 'inline-block';
-		obj2.style.display = 'none';
-	}	
-}   
-
-$(function(){
-	$('input[name=isCompany]').on('change', function(){
-		console.log($(this).val());
-		if($(this).val()==1){
-			$('label[for=conCertification]').text('사업자 등록번호');
-			$('#conCertification').attr('placeholder', '사업자 등록번호');
-		}else{
-			$('label[for=conCertification]').text('주민등록번호');
-			$('#conCertification').attr('placeholder', '주민등록번호');
-		}
-	});
+		var pwdCheck = false;
+		var idCheck = false;
+		var phoneCheck = false;
+		function isEmail(asValue) {
 	
-});
-</script>
+			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	
+			return regExp.test(asValue); // 형식에 맞는 경우 true 리턴	
+	
+		}
+		// 핸드폰 번호 체크 정규식
+	
+		function isCelluar(asValue) {
+			var regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+			return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
+	
+		}
+		
+		$(function(){
+			$('#dupCheck').click(function(){//id체크
+				if(!isEmail($('#memberId').val())){
+					alert("올바르지 않은 이메일 형식입니다.");
+					return false;
+				}
+				$.ajax({
+					url: "/idCheck",
+					type: "post",
+					dataType: "text",
+					data: {
+						memberId : $('#memberId').val()
+					},
+					success: function(response){
+						if(response == "possible"){
+							idCheck=true;
+						}else{
+							alert("중복된 아이디 입니다.");
+						}
+					},
+					error: function(e){
+						alert(e);
+					}
+				});
+			});
+	
+			$('#phoneCheck').click(function(){//폰 번호 체크
+				if(!isCelluar($('#phone').val())){
+					alert("올바르지 않은 핸드폰 번호입니다.");
+					return false;
+				}
+				$.ajax({
+					url: "/phoneCheck",
+					type: "post",
+					dataType: "text",
+					data: {
+						memberPhone : $('#phone').val()
+					},
+					success: function(response){
+						alert(response);
+						if(response == "possible"){
+							phoneCheck=true;
+						}
+					},
+					error: function(e){
+						alert(e);
+					}
+				});
+			});
+	
+			$('#passwordCheck').keyup(function(){//비밀번호 체크
+				if($('#password').val() == $(this).val()){
+					$('span.checkSpan').hide();
+					pwdCheck = true;
+				}else{
+					$('span.checkSpan').show();
+					pwdCheck = false;
+				}
+			});
+			
+			$('#memberId').keyup(function(){
+				idCheck=false;
+			});
+			
+			$('#password').keyup(function(){
+				if($('#passwordCheck').val() == $(this).val()){
+					$('span.checkSpan').hide();
+					pwdCheck = true;
+				}else{
+					$('span.checkSpan').show();
+					pwdCheck = false;
+				}
+			});
+			
+			$('#phone').keyup(function(){
+				phoneCheck=false;
+			})
+			
+			$('#signupBtn').click(function(){
+				if(!(idCheck && phoneCheck && pwdCheck)){
+					if(!idCheck){
+						alert("id를 확인해 주세요.");
+					}else if(!phoneCheck){
+						alert("전화번호를 확인해 주세요.");
+					}else if(!pwdCheck){
+						alert("비밀번호를 확인해 주세요.");
+					}
+					return false;
+				}
+			});
+			
+		});
+	</script>
    
 </head>
 
@@ -58,31 +153,30 @@ $(function(){
 				<div class="form-group col-md-6">
                     <label for="memberId">이메일</label> 
                     <input type="email" class="form-control" id="memberId" placeholder="이메일" value="" required name="memberId">
+                    <input type="button" id="dupCheck" value="중복 체크">
                 </div>
                 <div class="w-100"></div>
                 <div class="form-group col-md-6">
-                    <label for="memberPwd">비밀번호</label> 
-                    <input type="password" class="form-control" id="memberPwd" placeholder="비밀번호" value="" required name="memberPwd">
-                    <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
+                    <label for="password">비밀번호</label> 
+                    <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="memberPwd">
                 </div>
 
 
                 <div class="form-group col-md-6">
                     <label for="memberPwdChk">비밀번호 확인</label> 
-                    <input type="password" class="form-control" id="memberPwdChk" placeholder="비밀번호 확인" value="" required name="memberPwdChk">
-                    <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
+                    <input type="password" class="form-control" id="passwordCheck" placeholder="비밀번호 확인" value="" required name="memberPwdChk">
                 </div>
                 
                 <div class="col-md-6">
-					<label for="memberPhone">회원 연락처</label> 
-                    <input type="text" class="form-control" id="memberPhone" placeholder="회원 연락처" name="memberPhone" required>
+					<label for="phone">회원 연락처</label> 
+                    <input type="text" class="form-control" id="phone" placeholder="회원 연락처" name="memberPhone" required>
+                    <input type="button" id="phoneCheck" value="인증하기">
 				</div>
            
 
                 <div class="form-group col-md-6">
                     <label for="memberName">이름</label> 
                     <input type="text" class="form-control" id="memberName" placeholder="이름" required name="memberName">
-                    <div class="invalid-feedback">이름을 입력하세요.</div>
                 </div>		
                 	
 				<div class="form-group col-md-12">
