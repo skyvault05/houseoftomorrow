@@ -18,6 +18,9 @@ import javax.persistence.SecondaryTable;
 import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +40,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Estimate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +57,7 @@ public class Estimate {
 	@Column(name = "est_regdate")
 	private Timestamp estRegdate;
 	@Column(name="est_status")
-	private int estStatus;
+	private Integer estStatus;
 	
 	@Embedded
 	private Kitchen kitchen;

@@ -42,9 +42,10 @@ public class  NoticeController {
 	 * */
 	@PostMapping("/insert")
 	public String insertNotice(Notice notice) throws IOException{
+		System.out.println(notice.getNoticeDescription());
 		noticeService.insertNotice(notice);
 		
-		return "noticeList";
+		return "redirect:noticeList";
 	}
 	
 	/**
@@ -76,9 +77,9 @@ public class  NoticeController {
 	 * */
 	@RequestMapping("/read/{noticeNo}")
 	public ModelAndView selectNotice(@PathVariable Integer noticeNo) {
-		Notice notice = (Notice) noticeService.selectNotice(noticeNo);
+		Notice notice = noticeService.selectNotice(noticeNo);
 		
-		return new ModelAndView("notice/read", "notice", notice);
+		return new ModelAndView("notice/noticeRead", "notice", notice);
 	}  //noticeNo이 null이면 전체 조회
 
 	
@@ -97,11 +98,11 @@ public class  NoticeController {
 	 * notice 수정 폼 - community/updateCommunity.jsp
 	 * */
 	@RequestMapping("/noticeUpdate")
-	public ModelAndView updateNoticeForm( int noticeNo) {
+	public ModelAndView updateNoticeForm( Integer noticeNo) {
 		
-		Notice notice = (Notice) noticeService.selectNotice(noticeNo);
+		Notice notice =	 noticeService.selectNotice(noticeNo);
 		
-		return new ModelAndView("notice/noticeList", "notice", notice);
+		return new ModelAndView("notice/noticeUpdate", "notice", notice);
 	}
 	
 	

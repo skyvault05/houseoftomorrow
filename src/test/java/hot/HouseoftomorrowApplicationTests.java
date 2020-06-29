@@ -1,15 +1,13 @@
 package hot;
 
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
-import hot.member.domain.Channel;
-import hot.member.domain.CommComment;
 import hot.member.domain.CommCategory;
 import hot.member.domain.Community;
 import hot.member.domain.Constructor;
@@ -23,9 +21,9 @@ import hot.member.domain.Notification;
 import hot.member.domain.Portfolio;
 import hot.member.domain.Review;
 import hot.member.repository.ChannelRepository;
+import hot.member.repository.CommCategoryRepository;
 import hot.member.repository.CommCommentRepository;
 import hot.member.repository.CommunityRepository;
-import hot.member.repository.CommCategoryRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
@@ -177,6 +175,14 @@ class HouseoftomorrowApplicationTests {
 		
 		
 		
+//		CommCategory commCategory = new CommCategory();
+//		commCategory.setCommCategoryNo(4);
+//		List<Community> list = communityRep.findByCommCategoryEnabled(commCategory, 0);
+//		System.out.println(list);
+//		for(Community com : list) {
+//			System.out.println(com.getCommNo());
+//		}
+		System.out.println(channelRep.findById(1).orElse(null).getConstructor());
 	}
 	
 }

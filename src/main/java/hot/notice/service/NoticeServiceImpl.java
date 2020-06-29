@@ -61,11 +61,11 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 공지사항 조회하기
 	 * */
 	@Override
-	public List<Notice> selectNotice(Integer noticeNo) {
+	public Notice selectNotice(Integer noticeNo) {
 		
 		Notice notice =noticeRep.findById(noticeNo).orElse(null);
 		 
-		return (List<Notice>) notice;
+		return notice;
 	}
 	
 	@Override

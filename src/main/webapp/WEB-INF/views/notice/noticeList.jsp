@@ -25,7 +25,7 @@
       margin-bottom: 10px;
     }
     [class|="col"] {
-      background: #5ad2ff;
+      background: #d2d2ff;
       border: 1px solid #eaeaed;
       height: 50px;
       font-size: .9em;
@@ -64,6 +64,8 @@
 	</div>
 	</c:forEach>
 	
+
+	
 	</div>
-</body>
+</body>	
 </html>

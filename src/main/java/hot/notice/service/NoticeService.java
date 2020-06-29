@@ -24,7 +24,7 @@ public interface NoticeService {
 	/**
 	 * 공지사항 조회하기
 	 * */
-	public List<Notice> selectNotice(Integer noticeNo);  //noticeNo이 null이면 전체 조회
+	public Notice selectNotice(Integer noticeNo);  //noticeNo이 null이면 전체 조회
 
 	/**
 	 * 전체 조회하기
