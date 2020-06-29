@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import hot.constructor.repository.ChannelRepository;
+import hot.constructor.repository.ConstructorRepository;
 import hot.member.domain.Channel;
-import hot.member.repository.ChannelRepository;
-import hot.member.repository.ConstructorRepository;
 
 @Service
 public class ChannelServiceImpl implements ChannelService {
@@ -15,7 +15,7 @@ public class ChannelServiceImpl implements ChannelService {
 	@Autowired
 	private ConstructorRepository constructorRepository;
 	/**
-	 * 채널들록
+	 * 채널등록
 	 */
 	@Override
 	@Transactional
@@ -23,5 +23,16 @@ public class ChannelServiceImpl implements ChannelService {
 		constructorRepository.save(channel.getConstructor());
 		channelRepository.save(channel);
 	}
-
+	
+	
+	/**
+	 * 채널조회
+	 */
+	@Override
+	public Channel selectChannel(int ChNo) {
+		
+		
+		return channelRepository.findById(ChNo).orElse(null);
+		
+	}
 }

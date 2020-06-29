@@ -1,21 +1,17 @@
 package hot;
 
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
-import hot.member.domain.CommCategory;
-import hot.member.domain.Community;
-import hot.member.repository.ChannelRepository;
+import hot.constructor.repository.ChannelRepository;
+import hot.constructor.repository.ConstructorRepository;
 import hot.member.repository.CommCategoryRepository;
 import hot.member.repository.CommCommentRepository;
 import hot.member.repository.CommunityRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
-import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
 import hot.member.repository.ContractRepository;
 import hot.member.repository.EstResponseRepository;

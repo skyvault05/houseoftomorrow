@@ -1,17 +1,11 @@
 package hot.community.service;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import hot.aws.S3Manager;
 import hot.member.domain.CommCategory;
