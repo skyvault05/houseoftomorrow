@@ -54,6 +54,13 @@
     min-height: 1px;
 }
 
+/*----------------add class----------------*/
+.show-contents {
+    display:inline-block;
+}
+.hide-contents {
+    display:none;
+}
 
 /*----------aside category---------------*/
 .sticky-container {
@@ -100,7 +107,7 @@
     color: #33f0c0;
 }
 
-/*-------Íµ¨Î∂ÑÏÑ† divider---------*/
+/*-------±∏∫–º± divider---------*/
 .expert-calculate__divider {
    /* display: block;
     //display: none;
@@ -127,12 +134,12 @@
 }
 
 
-/*----------Í≤¨Ï†ÅÎ¨∏Ïùò form----------------*/
+/*----------∞ﬂ¿˚πÆ¿« form----------------*/
 
 .expert-calculate__content {
     //padding-top: 40px;
     padding-bottom: 30px;
-    padding-right: 6rem;
+    //padding-right: 6rem;
 }
 /*.col-lg-5 {
     position: relative;
@@ -343,13 +350,13 @@ textarea.form-control.form-rounded {
     border-color: #dbdbdb;
     font-size:0.9rem;
 } 
-/*--------papering ÎèÑÎ∞∞-------*/
+/*--------papering µµπË-------*/
 
 .estmate-form-group__row {display: flex;}
 .btn.btn-mint {flex:1; padding:10px 0px; font-size: 1rem;}
 
 
-/*---------bathroom ÏöïÏã§----------------*/
+/*---------bathroom øÂΩ«----------------*/
 .img-box {
     padding-top:10px;
 }

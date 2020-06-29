@@ -1,6 +1,7 @@
 package hot.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,8 @@ public class MemberController {
 	private MemberRoleRepository memberRoleRepository;
 	@Autowired
 	private ChannelService channelService;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	/**
 	 * 회원가입 폼으로
 	 */
@@ -58,17 +61,10 @@ public class MemberController {
 	public String ConstructorInsert(Member member, Constructor constructor, Channel channel, MultipartFile chImgFile) {
 		member.setMemberRole(memberRoleRepository.findById(2).orElse(null));
 		constructor.setMember(member);
-		channel.setChImg("test.jsp");
+		channel.setChImg("sample.jpg");
 		channel.setConstructor(constructor);
 		
-		channelService.insertChannel(channel);
-		
-		
-		System.out.println(member);
-		System.out.println(constructor);
-		System.out.println(channel);
-		System.out.println(chImgFile.getOriginalFilename());
-		
+		channelService.insertChannel(channel, chImgFile);		
 		return "common/loginForm";
 	}
 	

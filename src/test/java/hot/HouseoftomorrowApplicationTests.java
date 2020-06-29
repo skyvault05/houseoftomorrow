@@ -5,9 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
 import hot.constructor.repository.ChannelRepository;
 import hot.constructor.repository.ConstructorRepository;
+
 import hot.member.repository.CommCategoryRepository;
 import hot.member.repository.CommCommentRepository;
 import hot.member.repository.CommunityRepository;
@@ -23,6 +25,7 @@ import hot.member.repository.NotificationRepository;
 import hot.member.repository.ReviewRepository;
 
 @SpringBootTest
+@Transactional
 @Commit
 class HouseoftomorrowApplicationTests {
 	@Autowired
@@ -84,7 +87,7 @@ class HouseoftomorrowApplicationTests {
 //		Member member = new Member(null, "dd", encoder.encode("dd"), "구급차", "000-0000-0112", null, memberRole.findById(1).orElse(null));
 //		memberRep.save(member);
 		
-//		Member memberf = memberRep.findById(2L).orElse(null);
+//		Member memberf = memberRep.findById(2).orElse(null);
 //		System.out.println(memberf);
 		
 //		Notification newNoti = new Notification(null, memberRep.getOne(6L), 6,5);
@@ -159,7 +162,18 @@ class HouseoftomorrowApplicationTests {
 //		for(Community com : list) {
 //			System.out.println(com.getCommNo());
 //		}
-		System.out.println(channelRep.findById(1).orElse(null).getConstructor());
+//		System.out.println(channelRep.findById(1).orElse(null).getConstructor());
+		
+//		memberRep.findall
+		
+		memberRep.dynamicTest("구급차", 1).forEach((m)->{
+			System.out.println(m.getMemberName()+":"+m.getMemberNo());
+		});
+//		System.out.println(22);
+//		List<Member> list = memberRep.dynamicTest("구급차", 1);
+//		for(Member m : list) {
+//			System.out.println(m.getMemberNo());
+//		}
 	}
 	
 }
