@@ -20,7 +20,8 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
 	@Override
 	public List<Member> dynamicTest(String name, Integer status) {
 		return queryFactory
-				.selectFrom(member)
+				.select(member)
+				.from(member)
 				.where(eqStatus(status), eqName(name))
 				.fetch();
 	}

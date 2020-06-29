@@ -157,6 +157,7 @@ function delchk(){
     </div>
     <br><br>
 	<hr><br>
+	<a class="click" href="${pageContext.request.contextPath}/community/list/${community.commCategory.commCategoryNo}">목록으로</a><p>
     <sec:authentication var="user" property="principal" />
     <%-- 글쓴이: ${community.member.memberNo}<p>
     로그인한사람: ${user.memberNo} --%>

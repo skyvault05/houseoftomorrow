@@ -14,11 +14,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import hot.aws.S3Manager;
-import hot.member.domain.CommCategory;
-import hot.member.domain.Community;
+import hot.community.domain.CommCategory;
+import hot.community.domain.Community;
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommunityRepository;
 import hot.member.domain.Member;
-import hot.member.repository.CommCategoryRepository;
-import hot.member.repository.CommunityRepository;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {

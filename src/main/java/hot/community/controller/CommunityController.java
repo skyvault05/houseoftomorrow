@@ -16,11 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import hot.aws.S3Manager;
 import hot.commComment.service.CommCommentService;
+import hot.community.domain.CommComment;
+import hot.community.domain.Community;
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommunityRepository;
 import hot.community.service.CommunityService;
-import hot.member.domain.CommComment;
-import hot.member.domain.Community;
-import hot.member.repository.CommCategoryRepository;
-import hot.member.repository.CommunityRepository;
 import hot.member.repository.MemberRepository;
 
 @Controller

@@ -7,11 +7,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>오늘의 집</title>
+<title>내일의 집</title>
 
 <style>
 	body{
 		margin-left: 10%;
+	}
+	p{
+		font-size: 20px;
 	}
 	.click{
 		font-size: 20px;
@@ -46,9 +49,10 @@
 		<h2>서비스 / 기타</h2>
 	</c:when>
 </c:choose>
-${qna.member.memberName}<p>
-<fmt:formatDate value="${list.qnaRegdate}" pattern="yyyy-MM-dd HH:mm"/><p>
+<p>${qna.member.memberName}</p>
+<p><fmt:formatDate value="${list.qnaRegdate}" pattern="yyyy-MM-dd HH:mm"/></p>
 ${qna.qnaDescription}<p>
+<a class="click" href="${pageContext.request.contextPath}/qna/list/${qna.qnaCategory.qnaCategoryNo}">목록으로</a>
 <sec:authentication var="user" property="principal" />
    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	<c:choose>
@@ -65,6 +69,15 @@ ${qna.qnaDescription}<p>
 </c:when>
 </c:choose>
 </sec:authorize>
-${qna.qnaNo}
+<br>
+<hr><br>
+<c:if test="${not empty qnaParent}">
+<h3>'${qna.qnaTitle}'에 대한 답글</h3>
+<c:forEach items="${qnaParent}" var="qnaParent">
+<h2>${qnaParent.qnaTitle}</h2>
+${qnaParent.qnaDescription }
+</c:forEach>
+</c:if>
+
 </body>
 </html>

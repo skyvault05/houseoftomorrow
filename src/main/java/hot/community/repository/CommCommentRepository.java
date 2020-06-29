@@ -1,11 +1,11 @@
-package hot.member.repository;
+package hot.community.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import hot.member.domain.CommComment;
-import hot.member.domain.Community;
+import hot.community.domain.CommComment;
+import hot.community.domain.Community;
 
 public interface CommCommentRepository extends JpaRepository<CommComment, Integer> {
 

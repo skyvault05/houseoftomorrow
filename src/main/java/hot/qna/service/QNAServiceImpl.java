@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hot.member.domain.Member;
-import hot.member.domain.QNA;
-import hot.member.domain.QNACategory;
-import hot.member.repository.QNARepository;
+import hot.qna.domain.QNA;
+import hot.qna.domain.QNACategory;
+import hot.qna.repository.QNARepository;
 
 @Service
 public class QNAServiceImpl implements QNAService {

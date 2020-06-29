@@ -2,7 +2,7 @@ package hot.commComment.service;
 
 import java.util.List;
 
-import hot.member.domain.CommComment;
+import hot.community.domain.CommComment;
 
 public interface CommCommentService {
 

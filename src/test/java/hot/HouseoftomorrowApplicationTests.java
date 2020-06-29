@@ -9,11 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommCommentRepository;
+import hot.community.repository.CommunityRepository;
 import hot.member.domain.Member;
 import hot.member.repository.ChannelRepository;
-import hot.member.repository.CommCategoryRepository;
-import hot.member.repository.CommCommentRepository;
-import hot.member.repository.CommunityRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
@@ -168,14 +168,16 @@ class HouseoftomorrowApplicationTests {
 		
 //		memberRep.findall
 		
-		memberRep.dynamicTest("구급차", 1).forEach((m)->{
-			System.out.println(m.getMemberName()+":"+m.getMemberNo());
-		});
+//		memberRep.dynamicTest("구급차", 1).forEach((m)->{
+//			System.out.println(m.getMemberName()+":"+m.getMemberNo());
+//		});
 //		System.out.println(22);
-//		List<Member> list = memberRep.dynamicTest("구급차", 1);
-//		for(Member m : list) {
-//			System.out.println(m.getMemberNo());
-//		}
+		
+		List<Member> list = memberRep.dynamicTest(null, 1);
+		
+		for(Member m : list) {
+			System.out.println(m.getMemberNo());
+		}
 	}
 	
 }

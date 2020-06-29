@@ -2,7 +2,7 @@ package hot.qna.service;
 
 import java.util.List;
 
-import hot.member.domain.QNA;
+import hot.qna.domain.QNA;
 
 public interface QNAService {
 	

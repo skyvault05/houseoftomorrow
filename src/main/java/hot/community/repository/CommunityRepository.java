@@ -1,4 +1,4 @@
-package hot.member.repository;
+package hot.community.repository;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import hot.member.domain.CommCategory;
-import hot.member.domain.Community;
+import hot.community.domain.CommCategory;
+import hot.community.domain.Community;
 import hot.member.domain.Member;
 
 public interface CommunityRepository extends JpaRepository<Community, Integer> {

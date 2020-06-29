@@ -12,10 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sun.org.glassfish.gmbal.ParameterNames;
 
-import hot.member.domain.QNA;
 import hot.member.repository.MemberRepository;
-import hot.member.repository.QNACategoryRepository;
-import hot.member.repository.QNARepository;
+import hot.qna.domain.QNA;
+import hot.qna.repository.QNACategoryRepository;
+import hot.qna.repository.QNARepository;
 import hot.qna.service.QNAService;
 
 @Controller
@@ -102,11 +102,7 @@ public class QNAController {
 	 * qnaCategoryNo이 null이면 전체 게시글 조회, 값이 들어가면 각 카테고리에 맞는 게시글 조회
 	 * 관리자만 볼 수 있는 화면이다.
 	 * */
-	/**
-	 * ****************해야될 일: 모두 출력이 가능하게*******************
-	 * ****************각자 출력도 가능하게***************************
-	 * */
-	@RequestMapping(value = { "/list", "list/{qnaCategoryNo}"})
+	@RequestMapping("list/{qnaCategoryNo}")
 	public ModelAndView selectQNA(@ModelAttribute("qnaCategoryNo")Integer qnaCategoryNo) {
 		
 		List<QNA> list = qnaService.selectQNA(qnaCategoryNo);
@@ -139,19 +135,21 @@ public class QNAController {
 	
 	/**
 	 * QNA 게시글 상세보기
-	 * 
-	 * ************여기에 답글 들어가게************
 	 * */
 	@RequestMapping("/detail/{qnaNo}")
 	public ModelAndView detailQNA(@PathVariable("qnaNo")int qnaNo){
-//		
-//		QNA dbQNA = qnaRep.findById(qnaNo).orElse(null);
-//
-//		dbQNA.setQnaParentNo(dbQNA.getQnaParentNo());
+	
+		QNA qnaa = qnaRep.findById(qnaNo).orElse(null);
+		List<QNA> qnaParent = qnaRep.findByQnaParentNoEnabled(qnaa);
 		
 		QNA qna = qnaService.detailQNA(qnaNo);
 		
-		return new ModelAndView("manage/member/QNADetail", "qna", qna);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("qnaParent", qnaParent);
+		mv.addObject("qna", qna);
+		mv.setViewName("manage/member/QNADetail");
+		
+		return mv;
 	}
 	
 	/**
