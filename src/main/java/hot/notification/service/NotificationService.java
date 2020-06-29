@@ -1,4 +1,4 @@
-package hot.temp;
+package hot.notification.service;
 
 import hot.member.domain.Notification;
 

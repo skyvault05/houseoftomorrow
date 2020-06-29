@@ -1,4 +1,4 @@
-package hot.temp;
+package hot.notification.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

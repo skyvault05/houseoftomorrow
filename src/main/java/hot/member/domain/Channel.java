@@ -1,6 +1,7 @@
 package hot.member.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -56,6 +58,9 @@ public class Channel {
 	
 	@Column(name = "ch_grades")
 	private Double chGrades;
+	
+	@OneToMany(mappedBy = "channel")
+	private List<Review> reviews = new ArrayList<Review>();
 	
 	
 	

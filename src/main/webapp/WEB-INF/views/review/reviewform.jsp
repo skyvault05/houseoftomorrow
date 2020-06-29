@@ -180,7 +180,7 @@
 <div class="expert-user-form__form-group__input">
 <div class="photo-input-wrap expert-review-form__photo-input">
 <ul class="photo-input">
-<li class="photo-input__upload">
+
 <button class="photo-input__upload__button" type="button">
 <span class="content">
 <svg class="icon" width="24" height="24" preserveAspectRatio="xMidYMid meet">
@@ -194,7 +194,7 @@
 <div>사진 올리기</div>
 </span>
 </button>
-</li>
+
 </ul>
 </div>
 </div>
@@ -212,6 +212,13 @@
 </div>
 						
 			
+						
+			
+<button class="expert-insert-button" type="submit"value="등록하기">
+					<svg class="reset-icon" viewBox="0 0 10 10" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+					<path fill="#757575" fill-rule="nonzero"></path></svg>등록하기</button>
+			
+
 
 			
 

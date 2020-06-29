@@ -101,11 +101,6 @@ public class MemberController {
 			return "impossible";
 		}
 	}
-
-	@RequestMapping("/")
-	public void url() {
-		
-	}
 	
 	@RequestMapping("/update")
 	public String memberUpdate(Member member) {
