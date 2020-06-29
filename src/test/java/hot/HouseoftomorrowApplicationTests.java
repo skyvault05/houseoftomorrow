@@ -1,15 +1,14 @@
 package hot;
 
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-import hot.member.domain.Member;
+import hot.estimate.repository.EstResponseRepository;
+import hot.estimate.repository.EstimateRepository;
 import hot.member.repository.ChannelRepository;
 import hot.member.repository.CommCategoryRepository;
 import hot.member.repository.CommCommentRepository;
@@ -18,8 +17,6 @@ import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
 import hot.member.repository.ContractRepository;
-import hot.member.repository.EstResponseRepository;
-import hot.member.repository.EstimateRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
