@@ -28,7 +28,7 @@ public interface CommunityRepository extends JpaRepository<Community, Integer> {
 	@Query("SELECT c FROM Community c WHERE commCategory.commCategoryNo = :#{#commCategory.commCategoryNo} AND commStatus = :#{#commStatus}")
 	List<Community> findByCommCategoryEnabled(CommCategory commCategory, Integer commStatus);
 	
-	@Query("SELECT c FROM Community c WHERE member.memberNo = :#{#member.memberNo} AND commStatus = :#{#commStatus}")
-	List<Community> findByMemberEnabled(Member member, int commStatus);
+	@Query("SELECT c FROM Community c WHERE c.member.memberNo = :#{#member.memberNo} AND commStatus = :#{#commStatus}")
+	List<Community> findByMemberEnabled(Member member, Integer commStatus);
 
 }

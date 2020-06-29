@@ -6,25 +6,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <meta charset="UTF-8">
 <title>내일의 집</title>
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
-<script>
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
- 
-$(document).ajaxSend(function(e, xhr, options) {
-    xhr.setRequestHeader(header, token);
-});
-</script>
- 
+<link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
+<script>
+   var token = $("meta[name='_csrf']").attr("content");
+   var header = $("meta[name='_csrf_header']").attr("content"); 
+   $(document).ajaxSend(function(e, xhr, options) {
+     xhr.setRequestHeader(header, token);
+   });
+</script>
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
+<script src="/plugins/summernote/summernote-lite.min.js"></script>
 <script src="/plugins/summernote/setsummernote.js"></script>
- 
 
 <script> 
 function setThumbnail(event) { 
@@ -38,12 +38,13 @@ function setThumbnail(event) {
 
 
 <style>
-	h1{
-		margin-left: 10%
+	h2{
+		margin-left: 10%;
+		font-weight: bold;
 	}
 	#commTitle{
 		margin-left: 10%;
-		width: 20%;
+		width: 30%;
 		height: 40px;
 		font-size: 20px;
 	}
@@ -63,10 +64,10 @@ function setThumbnail(event) {
 
 <c:choose>
 	<c:when test="${param.commCategoryNo == 4}">
-		<h1>사진 올리기</h1>
+		<h2>사진 올리기</h2>
 	</c:when>
 	<c:when test="${param.commCategoryNo == 5}">
-		<h1>노하우 올리기</h1>
+		<h2>노하우 올리기</h2>
 	</c:when>
 </c:choose>
 
@@ -75,7 +76,7 @@ function setThumbnail(event) {
 
 <input type="text" name="commTitle"  id="commTitle" placeholder="  올릴 게시글의 제목을 입력해주세요"/><p>
 
-	
+	<br><br>
 	<sec:authentication var="user" property="principal" />
 	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
 

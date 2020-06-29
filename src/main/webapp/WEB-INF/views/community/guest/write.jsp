@@ -38,10 +38,10 @@
 		margin-left:5%;
 		text-align: center;
 		padding: 20px;
-		border: 1px solid black;
 		border-radius: 50%;
 		font-size: 30px;
 		overflow: hidden;
+		background-color: #dddddd;
 	}
 </style>
 </head>
@@ -50,15 +50,20 @@
 <br><br>
 <form>
 
-	<div id="one" class="div col-md-5"><a href="/community/member/createCommunity?commCategoryNo=4">
+	<div id="one" class="div col-md-3"><a href="/community/member/createCommunity?commCategoryNo=4">
 	<img src="/plugins/images/icon_camera.png"/>
 	<br>
 	<div><b>사진</b></div>
 	</a></div>
-	<div id="two" class="div col-md-5"><a href="/community/member/createCommunity?commCategoryNo=5">
+	<div id="two" class="div col-md-3"><a href="/community/member/createCommunity?commCategoryNo=5">
 	<img src="/plugins/images/icon_idea.png"/>
 	<br>
 	<div><b>노하우</b></div>
+	</a></div>
+	<div id="three" class="div col-md-3"><a href="/qna/insertForm">
+	<img src="/plugins/images/icon_question.png"/>
+	<br>
+	<div><b>질문하기</b></div>
 	</a></div>
 </form>
 </body>
