@@ -1,41 +1,35 @@
 package hot.member.repository;
 
+import static hot.member.domain.QMember.member;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import hot.member.domain.Member;
-import hot.member.domain.QMember;
-@Transactional(readOnly = true)
-public class MemberRepositoryImpl extends QuerydslRepositorySupport implements MemberRepositoryCustom {
+
+public class MemberRepositoryImpl implements MemberRepositoryCustom {
+	
 	@Autowired
 	private JPAQueryFactory queryFactory;
-	
-	private QMember member = QMember.member;
-
-	public MemberRepositoryImpl() {
-		super(Member.class);
-	}
 
 	@Override
-	public List<Member> findByNameAndStatus(String name, String status) {
+	public List<Member> dynamicTest(String name, Integer status) {
 		return queryFactory
 				.selectFrom(member)
-				.where(eqStatus("1"), eqName(name))
+				.where(eqStatus(status), eqName(name))
 				.fetch();
 	}
 	
-	private BooleanExpression eqStatus (String status) {
-		if(StringUtils.isEmpty(status)) {
+	private BooleanExpression eqStatus (Integer status) {
+		if(status==null) {
 			return null;
 		}
-		return member.memberStatus.eq(Integer.parseInt(status));
+		return member.memberStatus.eq(status);
 	}
 	
 	private BooleanExpression eqName (String name) {
