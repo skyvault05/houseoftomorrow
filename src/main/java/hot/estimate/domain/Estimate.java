@@ -1,16 +1,13 @@
-package hot.member.domain;
+package hot.estimate.domain;
 
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -21,10 +18,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import hot.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name="estimate")
@@ -42,6 +41,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+
 public class Estimate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,7 +70,7 @@ public class Estimate {
 	@Embedded
 	private Tile tile;
 	@Embedded
-	private Bathroom bathromm;
+	private Bathroom bathroom;
 
 
 }
