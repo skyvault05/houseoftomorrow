@@ -42,7 +42,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int memberDelete(int memberNo) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub		
 		return 0;
 	}
 

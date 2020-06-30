@@ -36,20 +36,19 @@ public class ReviewController {
 	public String insertReview(Review review, Integer chNo, Integer memberNo) {
 		System.out.println(review);
 		reviewService.insertReview(review, chNo, memberNo);
-		return "index";
+		return "redirect:readReview"+review.getReviewNo();
 	}
 	
-	@RequestMapping("/update")
+	@RequestMapping("/updateReviewF")
 	public String updateReview(Review review) {
 		reviewService.updateReview(review);
 		return "";
 	}
 	
-	@RequestMapping("/index")
+	@RequestMapping("/readReviewF{reviewNo}")
 	public ModelAndView updateReviewForm(int reviewNo) {
 		Review review = reviewService.updateReviewForm(reviewNo);
-		return new ModelAndView("index", "review", review);
-
+		return new ModelAndView("readReviewF", "review", review);
 	}
 	
 	@RequestMapping("/delete")
