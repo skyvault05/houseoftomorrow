@@ -1,4 +1,4 @@
-package hot.member.domain;
+package hot.qna.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
