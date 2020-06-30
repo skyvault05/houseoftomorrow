@@ -59,7 +59,7 @@ public class Consulting {
 	private Integer consulStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "consulParentNo")
-	private List<Consulting> consultChildNo;
+	private List<Consulting> consultChild;
 
 
 }

@@ -26,6 +26,9 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+</style>
 <script>
 	$(function(){
 		$.ajax({
@@ -33,13 +36,11 @@
 			method : "post",
 			type : "json",
 			data : {	//#수정 바람
-				memberNo : $('input[name="memberNo"]').val(),
-				chNo : $('input[name="chNo"]').val()
+				consulNo : $('input[name="consulParentNo"]').val()
 			},
 			success : function(jsonObj){
-				$('input[name="consulParentNo"]').val(jsonObj.consulNo);
-				$('input[name="consulNo"]').val(jsonObj.consulNo);
-				$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + jsonObj.consulDescription + "</div>");
+				$('input[name=chNo]').val(jsonObj.channel.chNo);
+				$('#description').append("<div>" + jsonObj.consulDescription + "</div>");
 				$(jsonObj.consultChild).each(function(item, element){
 					if(element.member.memberNo == $('input[name=memberNo]').val()){
 						$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + element.consulDescription + "</div>");
@@ -49,7 +50,7 @@
 				})
 			},
 			error : function(e){
-				alert(e);
+				alert(e.message);
 			}
 		});
 	})
@@ -59,21 +60,22 @@
 <body>
 	<div class="container">
 		<div class="row">
+		
 			<div class="col-md-12">
 				<h1>시공 상담, 이미 끝난 상담 조회</h1>
 			</div>
 			<div class="col-md-12" id="description">
 			</div>
-			<div class="col-md-12">
+			<div class = "col-md-12">
 				<form action="consulting" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					
 					<!-- #no값들 변경해야함 -->
 					
 					<input type="hidden" name="memberNo" value='<sec:authentication property="principal.memberNo" />'>
-					<input type="hidden" name="chNo" value="${param.chNo}">
+					<input type="hidden" name="chNo">
 					
-					<input type="hidden" name="consulParentNo" value="">
+					<input type="hidden" name="consulParentNo" value="${param.consulNo}">
 					
 					<textarea id="summernote" name="consulDescription"></textarea>
 					<div class="col-md-1" style="float: right;">
@@ -88,6 +90,7 @@
 					<input type="submit" value="계약서 등록">
 				</form>
 			</div>
+			
 			<br>
 			<br>
 			<br>
