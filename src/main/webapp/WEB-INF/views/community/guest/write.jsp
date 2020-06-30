@@ -6,7 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의 집</title>
+  <!-- bootstrap-->
+	<script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
+	    
+	<link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
 <style>
 	h1{
 		margin-left: 10%
@@ -19,11 +25,23 @@
 		width: 15%;
 		height: 15%;
 	}
-	section{
-		float: left;
-	}
 	div:hover{
-		color: blue;
+		color: #cfb997;
+		background-color: beige;
+	}
+	a:hover{
+		color: #cfb997;
+		text-decoration: none;
+	}
+	.div{
+		float: left;
+		margin-left:5%;
+		text-align: center;
+		padding: 20px;
+		border-radius: 50%;
+		font-size: 30px;
+		overflow: hidden;
+		background-color: #dddddd;
 	}
 </style>
 </head>
@@ -32,15 +50,21 @@
 <br><br>
 <form>
 
-
-	<section id="one"><a href="/community/member/createCommunity?commCategoryNo=4">
+	<div id="one" class="div col-md-3"><a href="/community/member/createCommunity?commCategoryNo=4">
 	<img src="/plugins/images/icon_camera.png"/>
-	<div class="word">사진</div>
-	</a></section>
-	<section id="two"><a href="/community/member/createCommunity?commCategoryNo=5">
+	<br>
+	<div><b>사진</b></div>
+	</a></div>
+	<div id="two" class="div col-md-3"><a href="/community/member/createCommunity?commCategoryNo=5">
 	<img src="/plugins/images/icon_idea.png"/>
-	<div class="word">노하우</div>
-	</a></section>
+	<br>
+	<div><b>노하우</b></div>
+	</a></div>
+	<div id="three" class="div col-md-3"><a href="/qna/insertForm">
+	<img src="/plugins/images/icon_question.png"/>
+	<br>
+	<div><b>질문하기</b></div>
+	</a></div>
 </form>
 </body>
 </html>

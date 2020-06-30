@@ -2558,8 +2558,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #5b603c;
-  border-color: #535837;
+  background-color: #33f0c0;
+  border-color: #33f0c0;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -9509,8 +9509,8 @@ textarea.form-control {
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
-  border-color: #8f965f;
-  background: #8f965f;
+  border-color: hsl(165, 86%, 40%)!important;
+  background: hsl(165, 86%, 40%)!important;
 }
 
 .btn.btn-sm, .btn-group-sm > .btn {
@@ -10877,3 +10877,13 @@ figure figcaption {
   background: #e3e3e3;
 }
 /*------------------------------------------------------------------------------------------*/
+/*----submenu------*/
+.submenu_borderbottom {
+  border-bottom: 1px solid #ededed;
+}
+.submenu_nav {
+  height:30px;
+  margin-top:1rem!important;
+  margin-bottom: 0.5rem!important
+}
+

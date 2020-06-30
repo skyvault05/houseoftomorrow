@@ -1,4 +1,4 @@
-package hot.member.domain;
+package hot.community.domain;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -19,6 +19,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.type.TrueFalseType;
 
+import hot.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

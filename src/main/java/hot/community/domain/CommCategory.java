@@ -1,4 +1,4 @@
-package hot.member.domain;
+package hot.community.domain;
 
 import java.util.ArrayList;
 import java.util.List;

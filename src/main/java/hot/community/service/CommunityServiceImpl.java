@@ -14,19 +14,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import hot.aws.S3Manager;
-import hot.member.domain.CommCategory;
-import hot.member.domain.Community;
-import hot.member.repository.CommCategoryRepository;
-import hot.member.repository.CommunityRepository;
+import hot.community.domain.CommCategory;
+import hot.community.domain.Community;
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommunityRepository;
+import hot.member.domain.Member;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
 
 	@Autowired
 	private CommunityRepository communityRepository;
-	
-	@Autowired
-	private CommCategoryRepository commCateRep;
 	
 	@Autowired
 	S3Manager s3Manager;
@@ -94,8 +92,17 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Override
 	public List<Community> selectCommunityMember(Integer memberNo) {
-		List<Community> commList = communityRepository.findByMemberMemberNo(memberNo);
-		return commList;
+		
+		// 상태값 생각하지 않고 모든 내용을 출력하고자 했을 때
+//		List<Community> commList = communityRepository.findByMemberMemberNo(memberNo);
+//		return commList;
+
+		Member member = new Member();
+		member.setMemberNo(memberNo);
+		List<Community> list = communityRepository.findByMemberEnabled(member, 1);
+		
+		return list;
 	}
 
 }
+

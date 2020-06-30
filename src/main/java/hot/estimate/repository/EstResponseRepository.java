@@ -1,8 +1,8 @@
-package hot.member.repository;
+package hot.estimate.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import hot.member.domain.EstResponse;
+import hot.estimate.domain.EstResponse;
 
 public interface EstResponseRepository extends JpaRepository<EstResponse, Integer> {
 

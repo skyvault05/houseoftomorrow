@@ -9,7 +9,7 @@
 <meta name="_csrf" content="${_csrf.token}"/>
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의 집</title>
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <script>
 var token = $("meta[name='_csrf']").attr("content");
@@ -56,25 +56,25 @@ function setThumbnail(event) {
 <body>
 
 
-${param.commNo}번 게시글의 수정폼입니당.
+<h1>${param.commNo}번 게시글 수정하기</h1>
 
 <br><br>
-<form name="insertForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/community/update" >
+<form name="updateForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/community/update" >
 
 <input type="text" name="commTitle"  id="commTitle"  value="${community.commTitle}"/><p>
 
 	
 	<sec:authentication var="user" property="principal" />
 	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
-	<input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event);"><p>
-	<div id="image_container"></div>
 
 	<input type="hidden" name="commNo" value="${param.commNo}"/>
 	<input type='hidden' name='commReadnum' value="${community.commReadnum}">
 	<input type="hidden" name="commCategoryNo"  value="${param.commCategoryNo}"/>
 	<input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
-	<textarea id="summernote" name="commDescription" value="${community. commDescription}"></textarea>
-	<input type="submit" value="수정하기"> 
+	<textarea id="summernote" name="commDescription" value="${community.commDescription}" }></textarea>
+	<br><br>
+	<input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event);"> <input id="insert"  type="submit" value="수정하기"> 
+	<div  id="image_container"></div>
 </form>
 
 </body>

@@ -2,7 +2,7 @@ package hot.commComment.service;
 
 import java.util.List;
 
-import hot.member.domain.CommComment;
+import hot.community.domain.CommComment;
 
 public interface CommCommentService {
 
@@ -15,11 +15,6 @@ public interface CommCommentService {
 	 * 상세
 	 * */
 	CommComment selectOneComment(int commentNo);
-	
-	/**
-	 * 수정
-	 * */
-	int updateCommComment(CommComment commComment);
 	
 	/**
 	 * 삭제

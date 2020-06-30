@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hot.member.domain.CommComment;
-import hot.member.repository.CommCommentRepository;
+import hot.community.domain.CommComment;
+import hot.community.repository.CommCommentRepository;
 
 @Service
 public class CommCommentServiceImpl implements CommCommentService {
@@ -18,14 +18,6 @@ public class CommCommentServiceImpl implements CommCommentService {
 	public int insertCommComment(CommComment commComment) {
 		
 		commCommentRepository.save(commComment);
-		
-		return 0;
-	}
-
-	@Override
-	public int updateCommComment(CommComment commComment) {
-		
-		commComment.setCommCommentDescription(commComment.getCommCommentDescription());
 		
 		return 0;
 	}

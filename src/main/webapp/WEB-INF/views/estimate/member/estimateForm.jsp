@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!doctype html>
 <html lang="ko">
   <head>
@@ -29,6 +30,7 @@
   </head>
   
   <body>
+ <sec:authentication property="principal" var="user"/>
     <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -106,6 +108,7 @@
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 <section class="pt-6">
 <form class="expert-calculate" action="/estimateResult">
+<input type='hidden' name='memberNo' value='${user.memberNo}'>
 <div class="expert-calculate__main-wrap container">
 	<div class="expert-calculate__main row">
 		<div class="col-12 col-md-1 offset-md-1 offset-lg-2"><!--start aside menu-->

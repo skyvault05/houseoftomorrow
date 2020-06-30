@@ -2,7 +2,7 @@ package hot.community.service;
 
 import java.util.List;
 
-import hot.member.domain.Community;
+import hot.community.domain.Community;
 
 public interface CommunityService {
 
@@ -19,3 +19,4 @@ public interface CommunityService {
 	List<Community> selectCommunityMember(Integer memberNo);
 
 }
+

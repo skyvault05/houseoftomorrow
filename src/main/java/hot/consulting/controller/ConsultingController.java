@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import hot.channel.domain.Channel;
 import hot.consulting.service.ConsultingService;
-import hot.member.domain.Channel;
 import hot.member.domain.Consulting;
 import hot.member.domain.Member;
 
