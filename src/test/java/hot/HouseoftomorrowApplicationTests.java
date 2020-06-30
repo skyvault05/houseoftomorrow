@@ -168,14 +168,16 @@ class HouseoftomorrowApplicationTests {
 		
 //		memberRep.findall
 		
-		memberRep.dynamicTest("구급차", 1).forEach((m)->{
-			System.out.println(m.getMemberName()+":"+m.getMemberNo());
-		});
+//		memberRep.dynamicTest("구급차", 1).forEach((m)->{
+//			System.out.println(m.getMemberName()+":"+m.getMemberNo());
+//		});
 //		System.out.println(22);
 //		List<Member> list = memberRep.dynamicTest("구급차", 1);
 //		for(Member m : list) {
 //			System.out.println(m.getMemberNo());
 //		}
+		
+		memberRep.findById(1).orElse(null).setMemberPhone("000-2222-3333");
 	}
 	
 }
