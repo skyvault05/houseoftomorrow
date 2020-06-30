@@ -26,12 +26,6 @@ public class ConsultingServiceImpl implements ConsultingService {
 	@Override
 	public Consulting selectByIdNo(int memberNo, int chNo) {
 		Consulting consulting = consultingRep.findConsultingParent(memberNo, chNo);
-		if(consulting == null) {
-			return null;
-		}
-		List<Consulting> list = consultingRep.findConsultingChild(consulting.getConsulNo());
-		
-		consulting.setConsultChild(list);
 		
 		return consulting;
 	}

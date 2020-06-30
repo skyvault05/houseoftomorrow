@@ -39,10 +39,10 @@
 				consulNo : $('input[name="consulParentNo"]').val()
 			},
 			success : function(jsonObj){
-				$('input[name=chNo]').val(jsonObj.channel.chNo);
+				$('input[name=chNo]').val(jsonObj.chNo);
 				$('#description').append("<div>" + jsonObj.consulDescription + "</div>");
 				$(jsonObj.consultChild).each(function(item, element){
-					if(element.member.memberNo == $('input[name=memberNo]').val()){
+					if(element.memberNo == $('input[name=memberNo]').val()){
 						$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + element.consulDescription + "</div>");
 					}else{
 						$('#description').append("<div>" + element.consulDescription + "</div>");
