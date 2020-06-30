@@ -65,15 +65,8 @@ public class ConsultingController {
 	 * 유저의 상담하기
 	 */
 	@PostMapping("/member/consulting")
-	public String consulting(Consulting consulting, int memberNo, int chNo, RedirectAttributes redirect) throws Exception{
-		Member member = new Member();
-		Channel channel = new Channel();
-		member.setMemberNo(memberNo);
-		channel.setChNo(chNo);
-		
-		redirect.addAttribute("chNo", chNo);
-		consulting.setMember(member);
-		consulting.setChannel(channel);
+	public String consulting(Consulting consulting, RedirectAttributes redirect) throws Exception{
+		redirect.addAttribute("chNo", consulting.getChNo());
 		
 		consultService.insertConsulting(consulting);
 		return "redirect:consultingForm";
@@ -83,14 +76,7 @@ public class ConsultingController {
 	 * 시공사의 상담하기
 	 */
 	@PostMapping("/constructor/consulting")
-	public String conConsulting(Consulting consulting, int memberNo, int chNo, RedirectAttributes redirect) throws Exception{
-		Member member = new Member();
-		Channel channel = new Channel();
-		member.setMemberNo(memberNo);
-		channel.setChNo(chNo);
-		
-		consulting.setMember(member);
-		consulting.setChannel(channel);
+	public String conConsulting(Consulting consulting, RedirectAttributes redirect) throws Exception{
 		redirect.addAttribute("consulNo", consulting.getConsulParentNo());
 		
 		consultService.insertConsulting(consulting);
