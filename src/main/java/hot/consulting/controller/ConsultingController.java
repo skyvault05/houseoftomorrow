@@ -3,20 +3,17 @@ package hot.consulting.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hot.aws.S3Manager;
+import hot.channel.domain.Channel;
 import hot.consulting.service.ConsultingService;
-import hot.member.domain.Channel;
 import hot.member.domain.Consulting;
 import hot.member.domain.Contract;
 import hot.member.domain.Member;

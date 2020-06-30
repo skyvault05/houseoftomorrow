@@ -6,46 +6,35 @@
     <meta charset="UTF-8">
     <title>회원가입 폼</title>
     <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <meta name="_csrf" content="${_csrf.token}" />
+	<meta name="_csrf_header" content="${_csrf.headerName}" />
+	<script>
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content"); 
+		$(document).ajaxSend(function(e, xhr, options) {
+		  xhr.setRequestHeader(header, token);
+		});
+	</script>
     
     <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
 
 	<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/js/addr/addr.js"></script>
+	<script src="/js/main/conSignup.js"></script>
+	
+	<link rel="stylesheet" href="/css/common/common.css">
 	
 <style>
 #addrrow{
 	padding-left:15;
 	padding-right:15;
 }
-</style>
-<script>
-function myFunction(){
-	var obj = document.getElementById('mailselect');
-	var obj2 = document.getElementById('aaa');
-	if(obj.value==='person'){
-		obj2.style.display = 'inline-block';
-	} else {
-		obj.style.display = 'inline-block';
-		obj2.style.display = 'none';
-	}	
-}   
+#signupBtn{
+	font-size:20px;
+}
 
-$(function(){
-	$('input[name=isCompany]').on('change', function(){
-		console.log($(this).val());
-		if($(this).val()==1){
-			$('label[for=conCertification]').text('사업자 등록번호');
-			$('#conCertification').attr('placeholder', '사업자 등록번호');
-		}else{
-			$('label[for=conCertification]').text('주민등록번호');
-			$('#conCertification').attr('placeholder', '주민등록번호');
-		}
-	});
-	
-});
-</script>
-   
+</style>
 </head>
 
 <body>
@@ -58,31 +47,31 @@ $(function(){
 				<div class="form-group col-md-6">
                     <label for="memberId">이메일</label> 
                     <input type="email" class="form-control" id="memberId" placeholder="이메일" value="" required name="memberId">
+                </div>                
+                <div class="form-group col-md-2">
+                	<input type="button" id="dupCheck" class="btn btn-primary col" style="margin-top:39px;" value="중복 체크">
                 </div>
-                <div class="w-100"></div>
                 <div class="form-group col-md-6">
-                    <label for="memberPwd">비밀번호</label> 
-                    <input type="password" class="form-control" id="memberPwd" placeholder="비밀번호" value="" required name="memberPwd">
-                    <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
+                    <label for="password">비밀번호</label> 
+                    <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="memberPwd">
                 </div>
 
 
                 <div class="form-group col-md-6">
                     <label for="memberPwdChk">비밀번호 확인</label> 
-                    <input type="password" class="form-control" id="memberPwdChk" placeholder="비밀번호 확인" value="" required name="memberPwdChk">
-                    <div class="invalid-feedback">유효한 비밀번호가 필요합니다.</div>
+                    <input type="password" class="form-control" id="passwordCheck" placeholder="비밀번호 확인" value="" required name="memberPwdChk">
                 </div>
                 
                 <div class="col-md-6">
-					<label for="memberPhone">회원 연락처</label> 
-                    <input type="text" class="form-control" id="memberPhone" placeholder="회원 연락처" name="memberPhone" required>
+					<label for="phone">회원 연락처</label> 
+                    <input type="text" class="form-control" id="phone" placeholder="회원 연락처" name="memberPhone" required>
+                    <input type="button" id="phoneCheck" class="btn btn-primary col" value="인증하기">
 				</div>
            
 
                 <div class="form-group col-md-6">
                     <label for="memberName">이름</label> 
                     <input type="text" class="form-control" id="memberName" placeholder="이름" required name="memberName">
-                    <div class="invalid-feedback">이름을 입력하세요.</div>
                 </div>		
                 	
 				<div class="form-group col-md-12">
@@ -99,17 +88,18 @@ $(function(){
 				</div>
 				
 				<div class="form-group col-md-6">
-					<label for="conCareer">경력사항</label> 
-                    <input type="text" class="form-control" id="conCareer" placeholder="경력사항 !기간을 입력해주세요." name="conCareer" required>
-				</div>
-				
-				<div class="form-group col-md-6">
 					<label for='company'>사업자 여부</label><br>
-					<input type="radio" id="company" name="conIsCompany" value="1" checked>
+					<input type="radio" id="company"  name="conIsCompany" value="1" checked>
 					<label for="company">사업자</label>
 					<input type="radio" id="freelancer" name="conIsCompany" value="0">
 					<label for="freelancer">프리랜서</label>
 				</div>
+				
+				<div class="form-group col-md-6">
+					<label for="conCareer">경력사항</label> 
+                    <input type="text" class="form-control" id="conCareer" placeholder="경력사항 !기간을 입력해주세요." name="conCareer" required>
+				</div>
+				<div class="w-100"></div>				
 				
 				<div class="form-group col-md-6">
 					<label for="conCertification">사업자 등록번호</label> 
@@ -122,7 +112,7 @@ $(function(){
 							<div class="w-100"></div>
 							<input type="text" class="form-control col-md-5" id="postcode" name="postcode" placeholder="우편번호" readonly>
 							&nbsp;&nbsp;
-							<button class="btn btn-info signBtn col-md-4" id="userAddrBtn" type="button">우편번호 찾기</button>
+							<button class="btn btn-primary signBtn col-md-4" id="userAddrBtn" type="button">우편번호 찾기</button>
 							<input type="text" class="form-control col-md-12" id="roadAddress" name="reaodAddress" placeholder="도로명주소" readonly>
 							<input class="form-control col-md-4" id="extraAddress" name="extraAddress" type="text" readonly>
 							<input class="form-control col-md-12" id="detailAddress" name="detailAddress" placeholder="상세주소" type="text">

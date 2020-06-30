@@ -1,25 +1,28 @@
 package hot;
 
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
-import hot.member.domain.CommCategory;
-import hot.member.domain.Community;
+import hot.channel.domain.Channel;
+import hot.channel.domain.FavoriteChannel;
+import hot.channel.repository.FavoriteChannelRepository;
+import hot.channel.repository.FavoritePortfolioRepository;
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommCommentRepository;
+import hot.community.repository.CommunityRepository;
+import hot.constructor.repository.PortfolioRepository;
+import hot.estimate.repository.EstResponseRepository;
+import hot.estimate.repository.EstimateRepository;
+import hot.member.domain.Member;
 import hot.member.repository.ChannelRepository;
-import hot.member.repository.CommCategoryRepository;
-import hot.member.repository.CommCommentRepository;
-import hot.member.repository.CommunityRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
 import hot.member.repository.ContractRepository;
-import hot.member.repository.EstResponseRepository;
-import hot.member.repository.EstimateRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
@@ -27,6 +30,7 @@ import hot.member.repository.NotificationRepository;
 import hot.member.repository.ReviewRepository;
 
 @SpringBootTest
+@Transactional
 @Commit
 class HouseoftomorrowApplicationTests {
 	@Autowired
@@ -77,6 +81,14 @@ class HouseoftomorrowApplicationTests {
 	@Autowired
 	private CommCategoryRepository commCateRep;
 	
+	@Autowired
+	private PortfolioRepository portRep;
+	
+	@Autowired
+	private FavoritePortfolioRepository fpRep;
+	
+	@Autowired
+	private FavoriteChannelRepository fcRep;
 	
 	@Test
 	void contextLoads() {
@@ -88,7 +100,7 @@ class HouseoftomorrowApplicationTests {
 //		Member member = new Member(null, "dd", encoder.encode("dd"), "구급차", "000-0000-0112", null, memberRole.findById(1).orElse(null));
 //		memberRep.save(member);
 		
-//		Member memberf = memberRep.findById(2L).orElse(null);
+//		Member memberf = memberRep.findById(2).orElse(null);
 //		System.out.println(memberf);
 		
 //		Notification newNoti = new Notification(null, memberRep.getOne(6L), 6,5);
@@ -163,7 +175,36 @@ class HouseoftomorrowApplicationTests {
 //		for(Community com : list) {
 //			System.out.println(com.getCommNo());
 //		}
-		System.out.println(channelRep.findById(1).orElse(null).getConstructor());
+//		System.out.println(channelRep.findById(1).orElse(null).getConstructor());
+		
+//		memberRep.findall
+		
+//		memberRep.dynamicTest("구급차", 1).forEach((m)->{
+//			System.out.println(m.getMemberName()+":"+m.getMemberNo());
+//		});
+//		System.out.println(22);
+//		List<Member> list = memberRep.dynamicTest("구급차", 1);
+//		for(Member m : list) {
+//			System.out.println(m.getMemberNo());
+//		}
+		
+//		memberRep.findById(1).orElse(null).setMemberPhone("000-2222-3333");
+		
+//		Member member = memberRep.findById(14).orElse(null);
+//		Portfolio portfolio = portRep.findById(32).orElse(null);
+//		FavoritePortfolio fp = new FavoritePortfolio();
+//		fp.setMember(member);
+//		fp.setPortfolio(portfolio);
+//		fpRep.save(fp);
+		
+		Member member = memberRep.findById(14).orElse(null);
+		Channel channel = channelRep.findById(1).orElse(null);
+		FavoriteChannel fc = new FavoriteChannel();
+		fc.setMember(member);
+		fc.setChannel(channel);
+		fcRep.save(fc);
+		
+		
 	}
 	
 }
