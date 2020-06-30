@@ -9,46 +9,42 @@
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
-<script>
-	$(function(){
-		$('#idRemember').change(function(){
-			if($(this).prop("checked")){
-				sessionStorage.setItem("id",$('#memberId').val());
-			}else{
-				sessionStorage.removeItem("id");
-			}
-		});
-		$('#memberId').val(sessionStorage.getItem("id"));
-	});
-</script>
+<link rel="stylesheet" href="/css/common/common.css">
+<link rel="stylesheet" href="/css/main/login.css">
+<script src="/js/main/login.js"></script>
+
 <body>
+<div class="container margin-top-100">
+<div class="row justify-content-center">
 <h2>로그인</h2>
 <c:if test="${not empty requestScope.errorMessage}">
 	<span style="color:red">${requestScope.errorMessage}</span>
 </c:if>
-
-<form action="${pageContext.request.contextPath}/login" method="post">
+</div>
+<form class="row justify-content-center	" action="${pageContext.request.contextPath}/login" method="post">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	<div class="mb-3">
-		<table style="width: 350px">
-			<tr>
-				<td width="70px">ID</td>
-				<td><input type="text" name="email" size="30"></td>
-				<td>
-					<input type="checkbox" id="idRemember"> id기억하기
-				</td>
-			</tr>
-			<tr>
-				<td>Password</td>
-				<td><input type=password name="password" size="31"></td>
-			</tr>
-			
-			<tr>
-				<td colspan="2"><input type="submit" value="로그인"></td>
-			</tr>
-		</table>
+	<div class="form-group col-md-6 align-self-center">
+	<label for="email">ID</label>
+	<input id="email" class="form-control" type="text" name="email">
+	</div>
+	<div class="w-100"></div>
+	
+	<div class="form-group col-md-6">
+	<label for="password">Password</label>
+	<input id="password" class="form-control" type=password name="password">
+	</div>
+	<div class="w-100"></div>
+	
+	<div class="form-group col-md-6">
+	<input id="idRemember" type="checkbox" id="idRemember"> 
+	<label for="idRemember">id기억하기</label>
+	</div>
+	<div class="w-100"></div>
+	
+	<div class="form-group col-md-6">
+	<input type="submit" class="form-control btn-primary" value="로그인">
 	</div>
 </form>
-
+</div>
 </body>
 </html>

@@ -1,0 +1,10 @@
+$(function(){
+	$('#idRemember').change(function(){
+		if($(this).prop("checked")){
+			sessionStorage.setItem("id",$('#memberId').val());
+		}else{
+			sessionStorage.removeItem("id");
+		}
+	});
+	$('#memberId').val(sessionStorage.getItem("id"));
+});

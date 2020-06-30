@@ -21,126 +21,20 @@
 
 	<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/js/addr/addr.js"></script>
+	<script src="/js/main/conSignup.js"></script>
+	
+	<link rel="stylesheet" href="/css/common/common.css">
 	
 <style>
 #addrrow{
 	padding-left:15;
 	padding-right:15;
 }
+#signupBtn{
+	font-size:20px;
+}
+
 </style>
-<script>
-		var pwdCheck = false;
-		var idCheck = false;
-		var phoneCheck = false;
-		function isEmail(asValue) {
-	
-			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-	
-			return regExp.test(asValue); // 형식에 맞는 경우 true 리턴	
-	
-		}
-		// 핸드폰 번호 체크 정규식
-	
-		function isCelluar(asValue) {
-			var regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
-			return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
-	
-		}
-		
-		$(function(){
-			$('#dupCheck').click(function(){//id체크
-				if(!isEmail($('#memberId').val())){
-					alert("올바르지 않은 이메일 형식입니다.");
-					return false;
-				}
-				$.ajax({
-					url: "/idCheck",
-					type: "post",
-					dataType: "text",
-					data: {
-						memberId : $('#memberId').val()
-					},
-					success: function(response){
-						if(response == "possible"){
-							idCheck=true;
-						}else{
-							alert("중복된 아이디 입니다.");
-						}
-					},
-					error: function(e){
-						alert(e);
-					}
-				});
-			});
-	
-			$('#phoneCheck').click(function(){//폰 번호 체크
-				if(!isCelluar($('#phone').val())){
-					alert("올바르지 않은 핸드폰 번호입니다.");
-					return false;
-				}
-				$.ajax({
-					url: "/phoneCheck",
-					type: "post",
-					dataType: "text",
-					data: {
-						memberPhone : $('#phone').val()
-					},
-					success: function(response){
-						alert(response);
-						if(response == "possible"){
-							phoneCheck=true;
-						}
-					},
-					error: function(e){
-						alert(e);
-					}
-				});
-			});
-	
-			$('#passwordCheck').keyup(function(){//비밀번호 체크
-				if($('#password').val() == $(this).val()){
-					$('span.checkSpan').hide();
-					pwdCheck = true;
-				}else{
-					$('span.checkSpan').show();
-					pwdCheck = false;
-				}
-			});
-			
-			$('#memberId').keyup(function(){
-				idCheck=false;
-			});
-			
-			$('#password').keyup(function(){
-				if($('#passwordCheck').val() == $(this).val()){
-					$('span.checkSpan').hide();
-					pwdCheck = true;
-				}else{
-					$('span.checkSpan').show();
-					pwdCheck = false;
-				}
-			});
-			
-			$('#phone').keyup(function(){
-				phoneCheck=false;
-			})
-			
-			$('#signupBtn').click(function(){
-				if(!(idCheck && phoneCheck && pwdCheck)){
-					if(!idCheck){
-						alert("id를 확인해 주세요.");
-					}else if(!phoneCheck){
-						alert("전화번호를 확인해 주세요.");
-					}else if(!pwdCheck){
-						alert("비밀번호를 확인해 주세요.");
-					}
-					return false;
-				}
-			});
-			
-		});
-	</script>
-   
 </head>
 
 <body>
@@ -153,9 +47,10 @@
 				<div class="form-group col-md-6">
                     <label for="memberId">이메일</label> 
                     <input type="email" class="form-control" id="memberId" placeholder="이메일" value="" required name="memberId">
-                    <input type="button" id="dupCheck" value="중복 체크">
+                </div>                
+                <div class="form-group col-md-2">
+                	<input type="button" id="dupCheck" class="btn btn-primary col" style="margin-top:39px;" value="중복 체크">
                 </div>
-                <div class="w-100"></div>
                 <div class="form-group col-md-6">
                     <label for="password">비밀번호</label> 
                     <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="memberPwd">
@@ -170,7 +65,7 @@
                 <div class="col-md-6">
 					<label for="phone">회원 연락처</label> 
                     <input type="text" class="form-control" id="phone" placeholder="회원 연락처" name="memberPhone" required>
-                    <input type="button" id="phoneCheck" value="인증하기">
+                    <input type="button" id="phoneCheck" class="btn btn-primary col" value="인증하기">
 				</div>
            
 
@@ -193,17 +88,18 @@
 				</div>
 				
 				<div class="form-group col-md-6">
-					<label for="conCareer">경력사항</label> 
-                    <input type="text" class="form-control" id="conCareer" placeholder="경력사항 !기간을 입력해주세요." name="conCareer" required>
-				</div>
-				
-				<div class="form-group col-md-6">
 					<label for='company'>사업자 여부</label><br>
-					<input type="radio" id="company" name="conIsCompany" value="1" checked>
+					<input type="radio" id="company"  name="conIsCompany" value="1" checked>
 					<label for="company">사업자</label>
 					<input type="radio" id="freelancer" name="conIsCompany" value="0">
 					<label for="freelancer">프리랜서</label>
 				</div>
+				
+				<div class="form-group col-md-6">
+					<label for="conCareer">경력사항</label> 
+                    <input type="text" class="form-control" id="conCareer" placeholder="경력사항 !기간을 입력해주세요." name="conCareer" required>
+				</div>
+				<div class="w-100"></div>				
 				
 				<div class="form-group col-md-6">
 					<label for="conCertification">사업자 등록번호</label> 
@@ -216,7 +112,7 @@
 							<div class="w-100"></div>
 							<input type="text" class="form-control col-md-5" id="postcode" name="postcode" placeholder="우편번호" readonly>
 							&nbsp;&nbsp;
-							<button class="btn btn-info signBtn col-md-4" id="userAddrBtn" type="button">우편번호 찾기</button>
+							<button class="btn btn-primary signBtn col-md-4" id="userAddrBtn" type="button">우편번호 찾기</button>
 							<input type="text" class="form-control col-md-12" id="roadAddress" name="reaodAddress" placeholder="도로명주소" readonly>
 							<input class="form-control col-md-4" id="extraAddress" name="extraAddress" type="text" readonly>
 							<input class="form-control col-md-12" id="detailAddress" name="detailAddress" placeholder="상세주소" type="text">

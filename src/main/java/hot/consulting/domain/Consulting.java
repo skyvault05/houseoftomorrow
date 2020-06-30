@@ -1,4 +1,4 @@
-package hot.member.domain;
+package hot.consulting.domain;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import hot.channel.domain.Channel;
+import hot.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -59,7 +61,7 @@ public class Consulting {
 	private Integer consulStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "consulParentNo")
-	private List<Consulting> consultChildNo;
+	private List<Consulting> consultChild;
 
 
 }

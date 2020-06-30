@@ -1,4 +1,4 @@
-package hot.member.domain;
+package hot.channel.domain;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import hot.member.domain.Constructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
