@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import hot.aws.S3Manager;
 import hot.commComment.service.CommCommentService;
+import hot.community.domain.CommComment;
+import hot.community.domain.Community;
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommunityRepository;
 import hot.community.service.CommunityService;
-import hot.member.domain.CommComment;
-import hot.member.domain.Community;
-import hot.member.repository.CommCategoryRepository;
-import hot.member.repository.CommunityRepository;
 import hot.member.repository.MemberRepository;
 
 @Controller
@@ -159,28 +158,6 @@ public class CommunityController {
 		int commNo = comment.getCommunity().getCommNo();
 		
 		return "redirect:detail/"+commNo;
-	}
-	
-	/**
-	 * 덧글 수정 폼
-	 * */
-	@RequestMapping("/updateCommentForm")
-	public ModelAndView updateCommentForm(@ModelAttribute("commentNo")Integer commentNo, Integer commNo) {
-		
-	CommComment comment =  commCommentService.selectOneComment(commentNo);
-		
-		return new ModelAndView("redirect:detail/"+commNo, "comment", comment);
-	}
-	
-	/**
-	 * 덧글 수정하기
-	 * */
-	@RequestMapping("/updateComment")
-	public ModelAndView updateComment(CommComment comment, Integer commNo) {
-		
-		commCommentService.updateCommComment(comment);
-		
-		return new ModelAndView("redirect:detail/"+commNo, "comment", comment);
 	}
 	
 	/**

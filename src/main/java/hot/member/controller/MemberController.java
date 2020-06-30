@@ -99,6 +99,7 @@ public class MemberController {
 		}
 	}
 	
+
 	@RequestMapping("/update")
 	public String memberUpdate(Member member) {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -106,5 +107,11 @@ public class MemberController {
 		member = new Member(null, "memberId", encoder.encode("1234"), "memberName", "memberPhone", null, memberRoleRepository.findById(1).orElse(null));
 		memberService.memberUpdate(member);
 	return "index";
+	}
+	
+	@RequestMapping("/requestDetail")
+	public String requestDetail() {
+		return "/estimate/member/requestDetail";
+
 	}
 }

@@ -1,5 +1,6 @@
 package hot.channel.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ import hot.member.repository.ChannelRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.ReviewRepository;
 import hot.review.service.ReviewService;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 @RequestMapping("/channel")
@@ -31,4 +36,10 @@ public class ChannelController {
 		return null;
 	}
 	
+	@RequestMapping("/channelDetail")
+	public String chDetail() {
+		return "/channel/guest/channelDetail";
+	}
+
+
 }

@@ -1,41 +1,23 @@
 package hot;
 
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import hot.member.domain.Channel;
-import hot.member.domain.Constructor;
-import hot.member.domain.ConstructorRegisterRequest;
-import hot.member.domain.Consulting;
-import hot.member.domain.Contract;
-import hot.member.domain.EstResponse;
-import hot.member.domain.Member;
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommCommentRepository;
+import hot.community.repository.CommunityRepository;
+import hot.estimate.repository.EstResponseRepository;
+import hot.estimate.repository.EstimateRepository;
 import hot.member.domain.Notification;
-import hot.member.domain.Review;
-
-import hot.member.domain.CommCategory;
-import hot.member.domain.Community;
-
-
-import hot.member.domain.Member;
-
 import hot.member.repository.ChannelRepository;
-import hot.member.repository.CommCategoryRepository;
-import hot.member.repository.CommCommentRepository;
-import hot.member.repository.CommunityRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
 import hot.member.repository.ConsultingRepository;
 import hot.member.repository.ContractRepository;
-import hot.member.repository.EstResponseRepository;
-import hot.member.repository.EstimateRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
