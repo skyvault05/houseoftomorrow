@@ -1,4 +1,4 @@
-package hot.member.repository;
+package hot.community.repository;
 
 import java.util.List;
 
@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import hot.member.domain.CommCategory;
-import hot.member.domain.Community;
+import hot.community.domain.CommCategory;
+import hot.community.domain.Community;
+import hot.member.domain.Member;
 
 public interface CommunityRepository extends JpaRepository<Community, Integer> {
 
@@ -26,5 +27,8 @@ public interface CommunityRepository extends JpaRepository<Community, Integer> {
 
 	@Query("SELECT c FROM Community c WHERE commCategory.commCategoryNo = :#{#commCategory.commCategoryNo} AND commStatus = :#{#commStatus}")
 	List<Community> findByCommCategoryEnabled(CommCategory commCategory, Integer commStatus);
+	
+	@Query("SELECT c FROM Community c WHERE c.member.memberNo = :#{#member.memberNo} AND commStatus = :#{#commStatus}")
+	List<Community> findByMemberEnabled(Member member, Integer commStatus);
 
 }
