@@ -11,10 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import hot.aws.S3Manager;
-import hot.member.domain.Consulting;
-import hot.member.domain.Contract;
-import hot.member.repository.ConsultingRepository;
-import hot.member.repository.ContractRepository;
+import hot.consulting.domain.Consulting;
+import hot.consulting.domain.Contract;
+import hot.consulting.repository.ConsultingRepository;
+import hot.consulting.repository.ContractRepository;
 
 @Service
 public class ConsultingServiceImpl implements ConsultingService {

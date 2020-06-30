@@ -13,9 +13,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hot.aws.S3Manager;
 import hot.channel.domain.Channel;
+import hot.consulting.domain.Consulting;
+import hot.consulting.domain.Contract;
 import hot.consulting.service.ConsultingService;
-import hot.member.domain.Consulting;
-import hot.member.domain.Contract;
 import hot.member.domain.Member;
 
 @Controller

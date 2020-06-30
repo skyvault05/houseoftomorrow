@@ -2,8 +2,8 @@ package hot.consulting.service;
 
 import java.io.IOException;
 
-import hot.member.domain.Consulting;
-import hot.member.domain.Contract;
+import hot.consulting.domain.Consulting;
+import hot.consulting.domain.Contract;
 
 public interface ConsultingService {
 	/**

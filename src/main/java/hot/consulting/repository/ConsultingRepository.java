@@ -1,11 +1,11 @@
-package hot.member.repository;
+package hot.consulting.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import hot.member.domain.Consulting;
+import hot.consulting.domain.Consulting;
 
 public interface ConsultingRepository extends JpaRepository<Consulting, Integer> {
 	@Query("SELECT c FROM Consulting c WHERE c.member.memberNo = ?1 AND c.channel.chNo = ?2 AND c.consulParentNo is null AND c.consulStatus = 1")
