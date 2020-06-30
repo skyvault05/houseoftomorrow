@@ -9,11 +9,7 @@
         $(this).find('.dropdown-menu').css("display", "none");
   });//end hover
 
-
-
 	'use strict';
-
-	// bootstrap dropdown hover
 
   // loader
   var loader = function() {
@@ -24,7 +20,6 @@
     }, 1);
   };
   loader();
-
 	
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);

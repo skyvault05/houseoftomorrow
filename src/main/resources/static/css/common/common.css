@@ -172,6 +172,7 @@ a {
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  
 }
 
 a:hover {
@@ -9682,7 +9683,7 @@ header .navbar .cta-btn a:hover {
 header .search-form {
   position: relative;
 }
-header .icon.ion {font-size:1.5rem; margin:5px; cursor: pointer;}
+header .icon.ion {font-size:1.5rem; margin:5px; cursor: pointer; transition:0.2s;}
 header .search-form .icon {
   position: absolute;
   top: 37%;

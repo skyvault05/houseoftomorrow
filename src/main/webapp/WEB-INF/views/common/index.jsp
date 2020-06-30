@@ -22,11 +22,13 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
   
   <!-- WebFont -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
   </head>
   
   <body>
+
     <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -55,7 +57,7 @@
               <div class="dd-wrap">
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="/common/index">시공홈</a></li>
-                  <li><a class="dropdown-item" href="/estimate/member/requestForm">견적요청</a></li>
+                  <li><a class="dropdown-item" href="/estimate">견적요청</a></li>
                   <li><a class="dropdown-item" href="#">전문가찾기</a></li>
                   <li><a class="dropdown-item" href="#">포트폴리오</a></li>
               	</ul>
@@ -69,7 +71,18 @@
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>
+              
+   <!------------------------------ 로그인/회원가입 -------------------------------->
+
+   			  <div class="header_navigation-bar-login pl-1">
+   			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
+   			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
+   			  </div>
+
+   <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
+   			<div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
+              	
                 <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
                 <!-- <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
                   <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
@@ -90,7 +103,9 @@
                     <a href="#" class="dropdown-item logout">로그아웃</a>
                   </div>
                 </div>
-              </div><!--header icon-->
+                </div>
+              </div><!--end submenu header icon-->
+
             </div>
             <!--END submenu-->
           </div><!--collapse navbar-collapse btnCollapse-->
@@ -436,7 +451,9 @@
     <script src="${pageContext.request.contextPath}/js/common/main.js"></script>
     
 	<!-- ICON -->
-	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+	<!-- <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script> -->
+	<script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
 
   </body>
 </html>
