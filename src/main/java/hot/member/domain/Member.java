@@ -71,4 +71,9 @@ public class Member{
 	@Transient
 	private List<Notification> list = new ArrayList<Notification>();
 	
+	@OneToMany
+	@JoinColumn(name = "member_no")
+	@Transient
+	private List<Channel> interestChannel = new ArrayList<Channel>();
+	
 }

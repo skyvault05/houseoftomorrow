@@ -76,6 +76,10 @@
 	<br>
 	<input type="submit"  value="등록하기"/>
 </form>
-
+<form method="post" action="${pageContext.request.contextPath}/">
+	<input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
+	<input type="membNo" value="${user.memberNo}"/>
+	<input type="chaNo" value=""/>
+</form>
 </body>
 </html>
