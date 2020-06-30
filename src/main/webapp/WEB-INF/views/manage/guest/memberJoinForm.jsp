@@ -6,13 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <title>È¸¿ø°¡ÀÔ Æû</title>
-    <script src="plugins/jquery/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
-	<script src="plugins/bootstrap/bootstrap.min.js"></script>
-	
-	<meta name="_csrf" content="${_csrf.token}"/>
-	<meta name="_csrf_header" content="${_csrf.headerName}"/>
-	<script>
+<script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
+<script>
 		var token = $("meta[name='_csrf']").attr("content");
 		var header = $("meta[name='_csrf_header']").attr("content"); 
 		$(document).ajaxSend(function(e, xhr, options) {

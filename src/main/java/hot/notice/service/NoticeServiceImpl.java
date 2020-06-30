@@ -24,7 +24,10 @@ public class NoticeServiceImpl implements NoticeService {
 	@Transactional
 	@Override
 	public int insertNotice(Notice notice) {
+		
+		if(notice.getNoticeTitle()!="" || notice.getNoticeDescription()!="") {
 		noticeRep.save(notice);
+		}
 		return 0;
 	}
 
@@ -37,8 +40,21 @@ public class NoticeServiceImpl implements NoticeService {
 	public int updateNotice(Notice notice) {
 		Notice dbNotice = noticeRep.findById(notice.getNoticeNo()).orElse(null);
 		
-		dbNotice.setNoticeDescription(notice.getNoticeDescription());
-		dbNotice.setNoticeTitle(notice.getNoticeTitle());
+		
+		if(notice.getNoticeDescription()=="") {
+			dbNotice.setNoticeDescription(dbNotice.getNoticeDescription());
+		}else {
+			dbNotice.setNoticeDescription(notice.getNoticeDescription());
+			  }
+		
+		
+		if(notice.getNoticeTitle()=="") {
+			dbNotice.setNoticeTitle(dbNotice.getNoticeTitle());
+		}else {
+			dbNotice.setNoticeTitle(notice.getNoticeTitle());
+			  
+			
+		}
 		return 0;
 	}
 

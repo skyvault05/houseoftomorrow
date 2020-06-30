@@ -5,31 +5,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+ <meta charset="utf-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-공지사항 수정 페이지
+<p>&nbsp; <p>&nbsp;
 
-<form name="insertForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/notice/noticeUpdate" >
+<div class="container">
+<div class="row">
+<form name="insertForm"  method="post" action="${pageContext.request.contextPath }/notice/update" >
+	<input type="hidden" name="noticeNo" value="${notice.noticeNo}">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<div class="col-xs-2"><h1>제목</h1></div>
+<div class="expert-user-form__form-group__input">
+<input type="text" style="min-height: 10px; height: 40px;" placeholder="${notice.noticeTitle}" class="form-control text-area-input" name="noticeTitle" id="noticeTitle">
+</div>
+</div>
 
-제목: <input type="text" name="commTitle"  id="commTitle"/><p>
-
-	
-	<sec:authentication var="user" property="principal" />
-	${user.memberNo}
-	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
-
-	
-<!-- 	설명: <input type="text" name="commDescription" id="commDescription"/><p> -->
-	
-	
-	<input type="hidden" name="commCategoryNo"  value="<%=request.getParameter("commCategoryNo")%>"/>
-	<input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
-	<textarea id="summernote" name="commDescription"></textarea>
-	<input type="submit" value="등록하기"> 
+<div class="row">
+<div class="col-xs-2"><h1>내용</h1></div>
+<div class="expert-user-form__form-group__input">
+<textarea style="min-height: 120px; height: 135.4px;" placeholder="${notice.noticeDescription}" class="form-control text-area-input" name="noticeDescription" id="noticeDescription">
+</textarea>	
+</div>
+</div>
+<div class="row">
+<div width="450" height="20" align="center"><b><span style="font-size:9pt;">
+		<input type="submit" value="수정하기"> <input type="reset" value="다시쓰기"></span></b></div>
+</div>
+</div>	
 </form>
 <hr>
-<div align=right><span style="font-size:9pt;">&lt;<a href="${pageContext.request.contextPath}/notice/noticeList">리스트로 돌아가기</a>&gt;</span></div>
+<div class="row">
+<div class="col-xs-11" align=right><span style="font-size:9pt;">&lt;<a href="${pageContext.request.contextPath}/notice/noticeList">리스트로 돌아가기</a>&gt;</span></div>
+</div>
 </body>
 </html>

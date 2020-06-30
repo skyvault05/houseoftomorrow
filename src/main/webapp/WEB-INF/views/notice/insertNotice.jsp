@@ -18,13 +18,13 @@
 </head>
 <body>
 
+<p>&nbsp; <p>&nbsp;
 <div class="container">
 <div class="row">
 <form action="/notice/insert" method="post">
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 <div class="col-xs-2"><h1>제목</h1></div>
-<div class="expert-user-form__form-group__input"><textarea style="min-height: 10px; height: 40px;" placeholder="제목을 입력하세요" class="form-control text-area-input" name="noticeTitle" id="noticeTitle">
-</textarea>
+<div class="expert-user-form__form-group__input"><input type="text" style="min-height: 10px; height: 40px;" placeholder="제목을 입력하세요" class="form-control text-area-input" name="noticeTitle" id="noticeTitle">
 </div>
 </div>
 

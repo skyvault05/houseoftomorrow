@@ -18,8 +18,8 @@ $(document).ajaxSend(function(e, xhr, options) {
 });
 </script>
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
+<script src="/plugins/summernote/summernote-lite.min.js"></script>
 <script src="/plugins/summernote/setsummernote.js"></script>
 </head>
 <body>

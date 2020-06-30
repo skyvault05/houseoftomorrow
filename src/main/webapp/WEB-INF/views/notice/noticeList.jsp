@@ -40,13 +40,19 @@
       margin-right: -15px;
       margin-left: -15px;
     }
+    
+     
+      
   </style>
 </head>
 <body>
-공지사항 리스트<p>
 
+<p>&nbsp; <p>&nbsp; <p>&nbsp; <p>&nbsp;
 	
 	<div class="container">
+	<div class="row">
+	<div class="col-xs-12" >공지사항</div>
+	</div>
 	<div class="row">
 	<div class="col-md-3">글번호</div>
 	<div class="col-md-3">제목</div>
@@ -64,8 +70,9 @@
 	</div>
 	</c:forEach>
 	
-
-	
+	<div class="col-xs-2" ><a href="${pageContext.request.contextPath}/notice/insertNotice" >등록하기</a>
 	</div>
+	</div>
+
 </body>	
 </html>

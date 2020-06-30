@@ -52,11 +52,11 @@ public class  NoticeController {
 	 * notice 수정
 	 * */
 	@RequestMapping("/update")
-	public String updateNotice(@ModelAttribute("notice")Notice notice) {
+	public String updateNotice(@ModelAttribute("notice")Notice notice) {//번호,ㅈ ㅔ목, 내용
 		
 		//Integer no = notice.getNoticeNo();
 		noticeService.updateNotice(notice);
-		return "read";
+		return "redirect:read/"+notice.getNoticeNo();
 	}
 	
 	
@@ -68,7 +68,7 @@ public class  NoticeController {
 	public String deleteNotice(int noticeNo) {
 		
 		noticeService.deleteNotice(noticeNo);
-		return null;
+		return "redirect:noticeList";
 	}
 	
 	
@@ -83,6 +83,9 @@ public class  NoticeController {
 	}  //noticeNo이 null이면 전체 조회
 
 	
+	/**
+	 * notice 전체보기
+	 * */
 	@RequestMapping("/noticeList")
 	public ModelAndView selectAll(){
 		List<Notice> list = noticeService.selectAll();
