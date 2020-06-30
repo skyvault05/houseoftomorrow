@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import hot.aws.S3Manager;
-import hot.member.domain.Channel;
+import hot.channel.domain.Channel;
 import hot.member.repository.ChannelRepository;
 import hot.member.repository.ConstructorRepository;
 

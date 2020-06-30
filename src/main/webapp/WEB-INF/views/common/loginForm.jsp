@@ -10,21 +10,11 @@
 <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/common/common.css">
+<link rel="stylesheet" href="/css/main/login.css">
+<script src="/js/main/login.js"></script>
 
-<script>
-	$(function(){
-		$('#idRemember').change(function(){
-			if($(this).prop("checked")){
-				sessionStorage.setItem("id",$('#memberId').val());
-			}else{
-				sessionStorage.removeItem("id");
-			}
-		});
-		$('#memberId').val(sessionStorage.getItem("id"));
-	});
-</script>
 <body>
-<div class="container" style="margin-top:100px;">
+<div class="container margin-top-100">
 <div class="row justify-content-center">
 <h2>로그인</h2>
 <c:if test="${not empty requestScope.errorMessage}">
@@ -46,13 +36,13 @@
 	<div class="w-100"></div>
 	
 	<div class="form-group col-md-6">
-	<label for="idRemember">id기억하기</label>
 	<input id="idRemember" type="checkbox" id="idRemember"> 
+	<label for="idRemember">id기억하기</label>
 	</div>
 	<div class="w-100"></div>
 	
 	<div class="form-group col-md-6">
-	<button>로그인</button>
+	<input type="submit" class="form-control btn-primary" value="로그인">
 	</div>
 </form>
 </div>
