@@ -99,7 +99,7 @@ a.menuicon {color:#424242!important;}
   border-left:1px solid #ededed !important;
 }
 
-/*--------마이페이지--------*/
+/*--------留덉씠�럹�씠吏�--------*/
 .dropdown-toggle.menuicon::after{
   display: inline-block;
   width: 0;
@@ -271,6 +271,7 @@ a.menuicon {color:#424242!important;}
   background-color: #fff;
   border-color: lightgrey;
 }
+
 .btn-mint.submit {
   color: #fff;
   background : hsla(165, 86%, 45%);
@@ -307,7 +308,9 @@ a.menuicon {color:#424242!important;}
   -webkit-box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);
 }
-
+.btn-outline-mint.active {
+	color:#33f0c0;
+}
 /*------------------footer------------------------*/
 .layout-footer__copyright {
   font-size: 0.7rem;

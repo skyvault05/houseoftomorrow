@@ -35,5 +35,12 @@ public class EstimateServiceImpl implements EstimateService {
 		return estimateRep.findByMemberNo(member);
 	}
 	
+	@Override
+	public Estimate selectByEstNo(Integer estNo) {
+		return estimateRep.findById(estNo).orElse(null);
+	}
+
+		
+	
 	
 }

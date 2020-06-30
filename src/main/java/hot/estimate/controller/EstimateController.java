@@ -23,7 +23,7 @@ public class EstimateController {
 	private EstimateService estimateService;
 	@RequestMapping("/estimate")
 	public String estimate() {
-		return "/estimate/member/estimateForm";
+		return "/estimate/member/requestForm";
 	}
 	
 	@RequestMapping("/estimateResult")
@@ -45,6 +45,15 @@ public class EstimateController {
 		List<Estimate> list = estimateService.estList(memberNo);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
+		mv.setViewName("/estimate/member/requestList");
+		return mv;
+	}
+	
+	@RequestMapping("/viewEstimateDetail/{estNo}")
+	public ModelAndView estiPapering(@PathVariable Integer estNo) {
+		Estimate estimate = estimateService.selectByEstNo(estNo);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("estimate", estimate);
 		mv.setViewName("/estimate/member/requestDetail");
 		return mv;
 	}
