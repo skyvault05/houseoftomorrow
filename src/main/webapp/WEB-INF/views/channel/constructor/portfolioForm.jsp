@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -52,6 +53,14 @@ function setThumbnail(event) {
 		margin-left: 10%;
 	}
 </style>
+
+<script type="text/javascript">
+  function check(){
+	  
+	  window.open("${pageContext.request.contextPath}/channel/constructor/payment/importApi","win","width=800,height=700")
+	  //location.href=''
+  }
+</script>
 </head>
 <body>
 <h2> 포트폴리오 등록 폼 </h2>
@@ -66,7 +75,7 @@ function setThumbnail(event) {
 </c:choose>
 
 <br><br>
-<form name="portForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/channel/constructor/insertPort" >
+<form name="portForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/channel/constructor/insertPort2" >
 
  제목 : <input type="text" name="portTitle"  id="portTitle" placeholder="올릴 게시글의 제목을 입력해주세요"/><p>
 
@@ -86,7 +95,25 @@ function setThumbnail(event) {
 	
 	<input type="hidden" name="ChNo" value="1">
 	
-	<input type="submit" value="등록하기"> 
+	
+	<!-- <input type="submit" value="등록하기">  -->
+	
+	<c:choose>
+		
+    	<c:when test="${fn:length(portlist) >= 2}">
+	
+			<button type="button" onclick="check()"> 결제하기(등록)</button>
+			
+		</c:when>
+		
+		<c:otherwise>
+		
+			 <input type="submit" value="등록하기">등록하기
+			
+		</c:otherwise>
+		
+	</c:choose>
+	
 </form>
 
 </body>

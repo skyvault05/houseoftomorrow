@@ -43,9 +43,9 @@ textarea {
 		<p>
 			<input name="address">
 		</p>
-		<span style="width:300px">결제금액 : 20000원 (예시)</span>
+		<span style="width:300px">결제금액 : 100원 (예시)</span>
 		<p>
-			<input type="hidden" name="totalPrice" value="20000">
+			<input type="hidden" name="totalPrice" value="100">
 		</p>
 		<input type="submit" value="결제하기"> <input type="reset"
 			value="취소하기">

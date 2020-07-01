@@ -162,33 +162,7 @@
                   <h2 class="portfolio-title mb-4">추천 포트폴리오 </h2>
                   <!-- 포트폴리오 등록버튼 -->
                   
-                  
-                  <c:choose>
-                  	<c:when test="${fn:length(portlist) != 0 && fn:length(portlist) % 2 == 0}">
-                  	<%-- 	<c:if test="${fn:length(portlist) % 2 == 0}"> --%>
-                  		
-                  			<button type="button" onclick="location.href='${pageContext.request.contextPath}/channel/constructor/payment/inputForm'"> 결제 하기 </button>
-                  	<%-- 	</c:if> --%>
-                  	
-                  		
-                  		 <c:forEach items="${portlist}" var="port">
-                  
-                  		<div>
-                  		<a href="${pageContext.request.contextPath}/constructor/portfolio">
-                  	
-                  		제목 : ${port.portTitle} <p>
-                  		썸네일 : <img src="${port.portImg}"> <p>
-                  	                 	
-                  		</a>
-                   		</div>
-                                                    
-                  		</c:forEach>
-                  	
-                  	
-                  	</c:when>
-                    <c:otherwise>
-                  	
-                  	     
+                                             	     
                   		<button type="button" onclick="location.href='${pageContext.request.contextPath}/channel/constructor/portfolioForm'">포트폴리오 등록</button>
                   
                   
@@ -205,17 +179,7 @@
                                                     
                   		</c:forEach>
                   	
-                  	</c:otherwise>
-                  
-                  </c:choose>
-                  
-             
-                  
-                
-                  
-                  
-                  
-                  
+                            
                   <!-- 웅희 편집 부분 -->
                   
                   
