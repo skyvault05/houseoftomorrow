@@ -4,29 +4,22 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import hot.admin.service.OrderServiceImpl;
 import hot.aws.S3Manager;
+import hot.channel.domain.Channel;
 import hot.channel.service.ChannelServiceImpl;
-import hot.constructor.repository.ChannelRepository;
-import hot.constructor.repository.PortfolioRepository;
 import hot.constructor.service.ConstructorServiceImpl;
 import hot.constructor.service.portfolioServiceImpl;
-import hot.member.domain.Channel;
 import hot.member.domain.Constructor;
 import hot.member.domain.Order;
 import hot.member.domain.Portfolio;
@@ -44,9 +37,9 @@ public class ConstructorController {
 	private final ConstructorServiceImpl constructorService;
 	private final OrderServiceImpl orderService;
 	
-	String pay_method; 
-	String status;
-	String pg_provider;
+	String orderMethod ;
+	String orderStatus ;
+	String orderPayment ;
 	
 	@Autowired
 	S3Manager s3manager;
@@ -71,11 +64,17 @@ public class ConstructorController {
 	//public String insertPortfolio(@RequestParam Map<String,String> map) throws IOException{
 	//폼이랑 name명 잘 맞출 것
 		
+		
 		System.out.println("pay_method = "+pay_method);
 		System.out.println("status = "+status);
+		System.out.println("String = " + pg_provider);
 		
 		
-		return "리턴 값"; 
+		String orderMethod = pay_method;;
+		String orderStatus = status;;
+		String orderPayment = pg_provider;   
+		
+		return "결제 완료"; 
 	}
 	
 
@@ -86,12 +85,11 @@ public class ConstructorController {
 	@RequestMapping("/channel/constructor/insertPort")
 	public ModelAndView insertPortfolio2(String portTitle, 
 			String portDescription, MultipartFile file, 
-			Date portStartDate, Date portEndDate, String portImg, String ChNo,
-			String imp_uid) throws IOException{
+			Date portStartDate, Date portEndDate, String portImg, String ChNo) throws IOException{
 		//폼이랑 name명 잘 맞출 것
 		
 		System.out.println("-------------------------------");
-		System.out.println("imp_uid = "+imp_uid);
+		
 		System.out.println(portDescription);
 		System.out.println(portStartDate);
 		System.out.println(portEndDate);
@@ -132,19 +130,25 @@ public class ConstructorController {
 		order.setConstructor(constructor);
 		order.setPortfolio(portfolio);
 		
+		///////////////////////////
 		Price price = new Price();
+		price.setPriceNo(1);
+		price.setPriceName("등록비");
+		price.setPriceAmount(100);
+		///////////////////////////
+		
 		order.setPrice(price);
 		
 		
-		String orderMethod = pay_method;
-		String orderStatus = status;
-		String orderPayment = pg_provider;
+	
 		
 		// ajax에서 받아올 정보들 
-		order.setOrderMethod(orderMethod);
+		order.setOrderMethod("kakao");
 		order.setOrderStatus(1);
 		order.setOrderPayment(1);
-		orderService.insertOrder(order);
+		
+		
+		//orderService.insertOrder(order);
 		/* 전체검색
 		List<Portfolio> portlist = portfolioService.selectPortfolio();
 		*/

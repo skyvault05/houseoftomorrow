@@ -7,6 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import hot.admin.repository.OrderRepository;
+import hot.admin.service.OrderService;
+import hot.admin.service.OrderServiceImpl;
 import hot.channel.domain.Channel;
 import hot.channel.domain.FavoriteChannel;
 import hot.channel.repository.FavoriteChannelRepository;
@@ -14,14 +17,18 @@ import hot.channel.repository.FavoritePortfolioRepository;
 import hot.community.repository.CommCategoryRepository;
 import hot.community.repository.CommCommentRepository;
 import hot.community.repository.CommunityRepository;
-import hot.constructor.repository.ChannelRepository;
 import hot.constructor.repository.ConstructorRepository;
 import hot.constructor.repository.PortfolioRepository;
 import hot.consulting.repository.ConsultingRepository;
 import hot.consulting.repository.ContractRepository;
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
+import hot.member.domain.Constructor;
 import hot.member.domain.Member;
+import hot.member.domain.Order;
+import hot.member.domain.Portfolio;
+import hot.member.domain.Price;
+import hot.member.repository.ChannelRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
@@ -89,6 +96,8 @@ class HouseoftomorrowApplicationTests {
 	
 	@Autowired
 	private FavoriteChannelRepository fcRep;
+	
+	private OrderRepository orderRep;
 	
 	@Test
 	void contextLoads() {
@@ -197,12 +206,14 @@ class HouseoftomorrowApplicationTests {
 //		fp.setPortfolio(portfolio);
 //		fpRep.save(fp);
 		
-		Member member = memberRep.findById(14).orElse(null);
-		Channel channel = channelRep.findById(1).orElse(null);
-		FavoriteChannel fc = new FavoriteChannel();
-		fc.setMember(member);
-		fc.setChannel(channel);
-		fcRep.save(fc);
+//		Member member = memberRep.findById(14).orElse(null);
+//		Channel channel = channelRep.findById(1).orElse(null);
+//		FavoriteChannel fc = new FavoriteChannel();
+//		fc.setMember(member);
+//		fc.setChannel(channel);
+//		fcRep.save(fc);
+		
+	
 		
 		
 	}

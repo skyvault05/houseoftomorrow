@@ -48,7 +48,7 @@ $(document).ajaxSend(function(e, xhr, options) {
 			if( rsp.success ) {
 			   alert("Ajax 바로 앞")
 				$.ajax({
-					url: "/channel/constructor/insertPort",
+					url: "/channel/constructor/payment/complete",
 					type: 'POST',
 					contentType : 'application/json; charset=UTF-8',
 					dataType:'text',

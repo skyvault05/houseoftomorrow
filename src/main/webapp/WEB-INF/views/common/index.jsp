@@ -179,10 +179,10 @@
                   
            
                   
-                <button type="button" onclick="location.href='${pageContext.request.contextPath}/channel/constructor/myChannel'"> 마이 채널 </button>
+                	<button type="button" onclick="location.href='${pageContext.request.contextPath}/channel/constructor/myChannel'"> 마이 채널 </button>
                   
                   
-                   
+                
                   
                   <!-- 웅희 편집 부분 -->
                   

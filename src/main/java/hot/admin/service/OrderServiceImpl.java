@@ -15,7 +15,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	public void insertOrder(Order order) {
+		System.out.println("OrderServiceImpl");
 		orderRep.save(order);
+		System.out.println("After OrderServiceImpl");
 	}
 
 }

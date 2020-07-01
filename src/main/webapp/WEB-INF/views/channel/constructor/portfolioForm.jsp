@@ -75,7 +75,7 @@ function setThumbnail(event) {
 </c:choose>
 
 <br><br>
-<form name="portForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/channel/constructor/insertPort2" >
+<form name="portForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/channel/constructor/insertPort" >
 
  제목 : <input type="text" name="portTitle"  id="portTitle" placeholder="올릴 게시글의 제목을 입력해주세요"/><p>
 
