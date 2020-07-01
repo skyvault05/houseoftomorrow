@@ -9,6 +9,11 @@ import hot.channel.domain.FavoriteChannel;
 import hot.channel.domain.FavoritePortfolio;
 
 public interface ChannelService {
+
+
+	
+	Channel selectChannel(int ChNo);
+
 	void insertChannel(Channel channel, MultipartFile chImg);
 	
 	void insertFavoriteChannel(Integer membNo, Integer chaNo);

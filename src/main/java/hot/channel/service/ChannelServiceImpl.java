@@ -19,9 +19,10 @@ import hot.channel.repository.FavoritePortfolioRepository;
 import hot.constructor.repository.PortfolioRepository;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
+import hot.constructor.repository.ConstructorRepository;
 import hot.member.repository.ChannelRepository;
-import hot.member.repository.ConstructorRepository;
 import hot.member.repository.MemberRepository;
+
 
 @Service
 public class ChannelServiceImpl implements ChannelService {
@@ -40,7 +41,7 @@ public class ChannelServiceImpl implements ChannelService {
 	@Autowired
 	private PortfolioRepository portRep;
 	/**
-	 * 채널들록
+	 * 채널등록
 	 */
 	@Override
 	@Transactional
@@ -128,4 +129,14 @@ public class ChannelServiceImpl implements ChannelService {
 		return favoritePort;
 	}
 
+	/**
+	 * 채널조회
+	 */
+	@Override
+	public Channel selectChannel(int ChNo) {
+		
+		
+		return channelRepository.findById(ChNo).orElse(null);
+		
+	}
 }

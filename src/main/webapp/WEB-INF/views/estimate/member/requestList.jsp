@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%> 
 <!doctype html> 
@@ -25,6 +25,7 @@
 
   <!-- WebFont -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script >
 
 </script>
@@ -74,14 +75,14 @@
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>
-   <!------------------------------ 로그인/회원가입 -------------------------------->
+               <!------------------------------ 로그인/회원가입 -------------------------------->
    			  <div class="header_navigation-bar-login pl-1">
    			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
    			  </div>
    
    <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
-             <div class="iconmenu pl-1">
+              <div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
               	
                 <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
@@ -144,106 +145,39 @@
 
 <div class="estimateDetail-main-wrap">
 	<div class="container pt-5">
-		<div class="estimateDetail"><!--start 견적상세-->
-			<div class="estimate-detail-wrap">
-			
-<!------------------------- 도배 papering ---------------------------->
-				<div class="estimate-part  col-6"> 
-				    <div class="est-detail-title">도배견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.papering.paperingType}</li>
-					        <li>${estimate.papering.paperingArea}</li>
-					        <li>${estimate.papering.paperingNumberOfRooms}</li>
-					        <li>${estimate.papering.paperingCeiling}</li>
-					        <li>${estimate.papering.paperingVeranda}</li>
-					        <li>${estimate.papering.paperingBurdon}</li>
-				      </ul>
-			      	</div>
-			    </div>
-<!------------------------- 장판 Linoleum ---------------------------->
-			    <div class="estimate-part  col-6"> 
-				    <div class="est-detail-title">장판견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.linoleum.linoleumThick}</li>
-					        <li>${estimate.linoleum.linoleumArea}</li>
-					        <li>${estimate.linoleum.linoleumNumberOfRooms}</li>
-					        <li>${estimate.linoleum.linoleumVeranda}</li>
-					        <li>${estimate.linoleum.linoleumCurrentFloor}</li>
-					        <li>${estimate.linoleum.linoleumBurdon}</li>
-				      </ul>
-			      	</div>
-			    </div>  
-<!------------------------- 마루 floor ---------------------------->
-			    <div class="estimate-part  col-6"> 
-				    <div class="est-detail-title">마루견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.floor.floorType}</li>
-					        <li>${estimate.floor.floorArea}</li>
-					        <li>${estimate.floor.floorNumberOfRooms}</li>
-					        <li>${estimate.floor.floorVeranda}</li>
-					        <li>${estimate.floor.floorCurrentFloor}</li>
-					        <li>${estimate.floor.floorBurdon}</li>
-				      </ul>
-			      	</div>
-			    </div>  
-
-<!-------------------------  욕실 Bathroom ---------------------------->
-			    <div class="estimate-part  col-6"> 
-				    <div class="est-detail-title">욕실견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.bathroom.bathroomNumberOfRooms}</li>
-					        <li>${estimate.bathroom.bathroomType}</li>
-					        <li>${estimate.bathroom.bathroomCeiling}</li>
-					        <li>${estimate.bathroom.bathroomTile}</li>
-				      </ul>
-			      	</div>
-			    </div>  
-
-<!------------------------- 주방 Kitchen ---------------------------->
-			    <div class="estimate-part  col-6"> 
-				    <div class="est-detail-title">주방견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.kitchen.kitchenType}</li>
-					        <li>${estimate.kitchen.kitchenMaxWidth}</li>
-					        <li>${estimate.kitchen.kitchenCountertop}</li>
-					        <li>${estimate.kitchen.kitchenDoor}</li>
-					        <li>${estimate.kitchen.kitchenTile}</li>
-				      </ul>
-			      	</div>
-			    </div>  
-<!------------------------- 타일  Tile ---------------------------->
-			    <div class="estimate-part  col-6"> 
-				    <div class="est-detail-title">타일견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.tile.tileType}</li>
-					        <li>${estimate.tile.tileArea}</li>
-		
-				      </ul>
-			      	</div>
-			    </div>  
-			      			      			      			      
-			      
-<!------------------------ 추가문의 ----------------------------------->
-			      <div class="estimate-item-comment col-6">
-			        <div class="name">추가문의사항</div>
-			          <div class="value">
-			            <div class="input-group">
-			              <textarea class="textarea--style-6" name="message" placeholder="${estimate.estDescription}"></textarea>
-			            </div>
-			          </div>
-			      </div>
- <!---------------------- end 추가문의-------------------------------->
-			
-			    </div>
-			  </div>
+		<div class="estimateBoard"><!--start 견적게시판-->
+			<div class="table-responsive req-detail" style="overflow:hidden;">
+                <table class="table">
+                    <thead>
+                        <tr class="row">
+                            <th class="text-center col-sm-2">#</th>
+                  
+                            <th class="text-center col-sm-6">내용</th>
+                            <th class="text-center col-sm-2">작성일</th>
+                            <th class="text-center col-sm-2">수정/삭제</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<c:forEach items="${list}" var="item" varStatus="status">
+                        <tr class="row">
+                            <td class="text-center col-sm-2">${status.count}</td>
+                            <td class="text-center col-sm-6"><a href="/viewEstimateDetail/${user.memberNo}" class="est-title">견적 요청 내역</a></td>
+                            <td class="text-center col-sm-2">####.##.##</td>
+                            <td class="text-center col-sm-2">
+                                <button type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                </div>
     
-		</div><!--end 견적상세-->
+		</div><!--end 견적게시판-->
 
 	</div>
 	
@@ -285,9 +219,10 @@
 					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/privacy" target="_blank">개인정보처리방침</a></li>
 					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/customer_center" target="_blank">고객센터</a></li>
 					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/new" target="_blank">고객의 소리</a></li>
-					<li><a class="layout-footer__shortcut__item" rel="noopener" href="#" target="_blank">전문가 등록</a></li>
+					<li><a class="layout-footer__shortcut__item" rel="noopener" href="https://pro.ohou.se/?utm_source=ohouse&amp;utm_medium=web&amp;utm_campaign=prosignup&amp;utm_content=footer" target="_blank">전문가 등록</a></li>
+					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/b2b" target="_blank">사업자 구매회원</a></li>
 					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/new?type=request" target="_blank">제휴/광고 문의</a></li>
-
+					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/partner/applications/new" target="_blank">입점신청 문의</a></li>
 				</ul>
 				<address class="layout-footer__info-wrap">
 					<dl class="layout-footer__info">
@@ -323,8 +258,7 @@
     <script src="${pageContext.request.contextPath}/js/common/jquery.waypoints.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/common/jquery.fancybox.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/common/main.js"></script>
-    <script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
-
+	<script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
     
 	<!-- ICON -->
 	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
