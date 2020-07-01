@@ -156,25 +156,27 @@
 			<div class="estimate-detail-wrap wrapper wrapper--w680">
 				<div class="card card-4">
 				<div class="card-body">
+				
 <!------------------------- 도배 papering ---------------------------->
 				<div class="estimate-part"> 
 				    <div class="est-detail-title">도배견적문의</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
-				        	<li>${estimate.papering.paperingType}</li>
-					        <li>${estimate.papering.paperingArea}</li>
-					        <li>${estimate.papering.paperingNumberOfRooms}</li>
-					        <li>${estimate.papering.paperingCeiling}</li>
-					        <li>${estimate.papering.paperingVeranda}</li>
-					        <li>${estimate.papering.paperingBurdon}</li>
+				      <c:forEach items="${estimate.estDetails}" var="item" >
+							<li>${item.key} : ${item.value}</li>
+					  </c:forEach>
+
 				      </ul>
 			      	</div>
 			    </div>
 <!------------------------- 장판 Linoleum ---------------------------->
-			    <div class="estimate-part"> 
+			   <%--  <div class="estimate-part"> 
 				    <div class="est-detail-title">장판견적문의</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
+				      	<c:forEach items="${estimate.estDetails}" var="item" >
+							<li>${item.key} : ${item.value}</li>
+					  	</c:forEach>
 				        	<li>${estimate.linoleum.linoleumThick}</li>
 					        <li>${estimate.linoleum.linoleumArea}</li>
 					        <li>${estimate.linoleum.linoleumNumberOfRooms}</li>
@@ -236,14 +238,14 @@
 				      </ul>
 			      	</div>
 			    </div>  
-			      			      			      			      
+			      			      			       --%>			      
 			      
 <!------------------------ 추가문의 ----------------------------------->
 			      <div class="estimate-item-comment">
 			        <div class="name">추가문의사항</div>
 			          <div class="value">
 			            <div class="input-group">
-			              <textarea class="textarea" name="message" placeholder="${estimate.estDescription}"></textarea>
+			              <textarea class="textarea est-comment" name="message" placeholder="${estimate.estDescription}">${estimate.estDescription}</textarea>
 			            </div>
 			          </div>
 			      </div>

@@ -36,142 +36,146 @@ public class EstimateDetails {
 				switch(fieldName) {
 					case "paperingType" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "합지");break;
-						case 1 : map.put(fieldName, "실크");break;				
-						case 2 : map.put(fieldName, "합지+실크");break;		
+						case 0 : map.put("벽지종류", "합지");break;
+						case 1 : map.put("벽지종류", "실크");break;				
+						case 2 : map.put("벽지종류", "합지+실크");break;		
 						}; break;
 					case "paperingArea" : 
-						map.put(fieldName, fieldValue.toString()); break;
+						map.put("면적", fieldValue.toString()+"m²"); break;
 					case "paperingNumberOfRooms" : 
-						map.put(fieldName, fieldValue.toString()); break;
+						map.put("방 개수", fieldValue.toString()+"개"); break;
 					case "paperingCeiling" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "포함");break;
-						case 1 : map.put(fieldName, "미포함");break;		
+						case 0 : map.put("천장", "포함");break;
+						case 1 : map.put("천장", "미포함");break;		
 						}; break;
 					case "paperingVeranda" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "확장됨");break;
-						case 1 : map.put(fieldName, "확장안됨");break;	
+						case 0 : map.put("베란다", "확장됨");break;
+						case 1 : map.put("베란다", "확장안됨");break;	
 						}; break;
 					case "paperingBurdon" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "짐있음");break;
-						case 1 : map.put(fieldName, "짐없음");break;			
+						case 0 : map.put("현재상태", "짐있음");break;
+						case 1 : map.put("현재상태", "짐없음");break;			
 						}; break;
 				
 					case "linoleumThick" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "1.8");break;
-						case 1 : map.put(fieldName, "2.0");break;				
-						case 2 : map.put(fieldName, "2.2");break;		
+						case 0 : map.put("장판두께", "1.8mm");break;
+						case 1 : map.put("장판두께", "2.0mm");break;				
+						case 2 : map.put("장판두께", "2.2mm");break;		
 						}; break;
 					case "linoleumArea" : 
-						map.put(fieldName, fieldValue.toString()); break;
+						map.put("면적", fieldValue.toString()+"m²"); break;
 					case "linoleumNumberOfRooms" : 
-						map.put(fieldName, fieldValue.toString()); break;
+						map.put("방 개수", fieldValue.toString()+"개"); break;
 					case "linoleumVeranda" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "확장됨");break;
-						case 1 : map.put(fieldName, "확장안됨");break;	
+						case 0 : map.put("베란다", "확장됨");break;
+						case 1 : map.put("베란다", "확장안됨");break;	
 						}; break;
 					case "linoleumCurrentFloor" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "장판");break;
-						case 1 : map.put(fieldName, "마루");break;				
-						case 2 : map.put(fieldName, "없음");break;		
+						case 0 : map.put("현재바닥", "장판");break;
+						case 1 : map.put("현재바닥", "마루");break;				
+						case 2 : map.put("현재바닥", "없음");break;		
 						}; break;
 					case "linoleumBurdon" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "짐있음");break;
-						case 1 : map.put(fieldName, "짐없음");break;			
+						case 0 : map.put("현재상태", "짐있음");break;
+						case 1 : map.put("현재상태", "짐없음");break;			
 						}; break;
 						
 				
 					case "floorType" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "강마루");break;
-						case 1 : map.put(fieldName, "강화마루");break;				
-						case 2 : map.put(fieldName, "원목마루");break;			
-						case 3 : map.put(fieldName, "온돌마루");break;			
+						case 0 : map.put("마루종류", "강마루");break;
+						case 1 : map.put("마루종류", "강화마루");break;				
+						case 2 : map.put("마루종류", "원목마루");break;			
+						case 3 : map.put("마루종류", "온돌마루");break;			
 						}; break;
 					case "floorArea" : 
-						map.put(fieldName, fieldValue.toString()); break;
+						map.put("면적", fieldValue.toString()+"m²"); break;
 					case "floorNumberOfRooms" : 
-						map.put(fieldName, fieldValue.toString()); break;
+						map.put("방 개수", fieldValue.toString()+"개"); break;
 					case "floorVeranda" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "확장됨");break;
-						case 1 : map.put(fieldName, "확장안됨");break;			
+						case 0 : map.put("베란다", "확장됨");break;
+						case 1 : map.put("베란다", "확장안됨");break;			
 						}; break;
 					case "floorCurrentFloor" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "장판");break;
-						case 1 : map.put(fieldName, "마루");break;				
-						case 2 : map.put(fieldName, "없음");break;			
+						case 0 : map.put("현재바닥", "장판");break;
+						case 1 : map.put("현재바닥", "마루");break;				
+						case 2 : map.put("현재바닥", "없음");break;			
 						}; break;
 					case "floorBurdon" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "짐있음");break;
-						case 1 : map.put(fieldName, "짐없음");break;			
+						case 0 : map.put("현재상태", "짐있음");break;
+						case 1 : map.put("현재상태", "짐없음");break;			
 						}; break;
 				
 					case "bathroomNumberOfRooms" : 
-						map.put(fieldName, fieldValue.toString()); break;
+						map.put("욕실 개수", fieldValue.toString()+"개"); break;
 					case "bathroomType" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "욕조형");break;
-						case 1 : map.put(fieldName, "샤워부스형");break;				
-						case 2 : map.put(fieldName, "파우더형");break;			
+						case 0 : map.put("선호유형", "욕조형");break;
+						case 1 : map.put("선호유형", "샤워부스형");break;				
+						case 2 : map.put("선호유형", "파우더형");break;			
 						}; break;
 					case "bathroomCeiling" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "리빙우드");break;
-						case 1 : map.put(fieldName, "SMC돔");break;				
+						case 0 : map.put("천장유형", "리빙우드");break;
+						case 1 : map.put("천장유형", "SMC돔");break;				
 						}; break;
 					case "bathroomTile" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "벽");break;
-						case 1 : map.put(fieldName, "바닥");break;
-						case 2 : map.put(fieldName, "벽+바닥");break;				
+						case 0 : map.put("타일시공장소", "벽");break;
+						case 1 : map.put("타일시공장소", "바닥");break;
+						case 2 : map.put("타일시공장소", "벽+바닥");break;				
 						}; break;	
 				
 					case "kitchenType" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "일자형");break;
-						case 1 : map.put(fieldName, "기억형");break;
-						case 2 : map.put(fieldName, "디귿형");break;				
+						case 0 : map.put("싱크대종류", "일자형");break;
+						case 1 : map.put("싱크대종류", "기억형");break;
+						case 2 : map.put("싱크대종류", "디귿형");break;				
 						}; break;				
 					case "kitchenMaxWidth" : 
-						map.put(fieldName, fieldValue.toString()); break;				
+						switch(fieldValue) {
+						case 0 : map.put("가로사이즈", "240CM");break;
+						case 1 : map.put("가로사이즈", "320CM");break;
+						case 2 : map.put("가로사이즈", "기타");break;				
+						}; break;				
 					case "kitchenCountertop" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "PT");break;
-						case 1 : map.put(fieldName, "인조대리석");break;				
+						case 0 : map.put("상판유형", "PT");break;
+						case 1 : map.put("상판유형", "인조대리석");break;				
 						}; break;
 					case "kitchenDoor" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "하이그로시");break;
-						case 1 : map.put(fieldName, "PET");break;
-						case 2 : map.put(fieldName, "엘전사");break;				
-						case 3 : map.put(fieldName, "UV도장");break;				
-						case 4 : map.put(fieldName, "원목");break;				
+						case 0 : map.put("도어유형", "하이그로시");break;
+						case 1 : map.put("도어유형", "PET");break;
+						case 2 : map.put("도어유형", "엘전사");break;				
+						case 3 : map.put("도어유형", "UV도장");break;				
+						case 4 : map.put("도어유형", "원목");break;				
 						}; break;
 					case "kitchenTile" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "기존유지");break;
-						case 1 : map.put(fieldName, "교체시공");break;			
+						case 0 : map.put("벽타일", "기존유지");break;
+						case 1 : map.put("벽타일", "교체시공");break;			
 						}; break;
 					
 					case "tileType" : 
 						switch(fieldValue) {
-						case 0 : map.put(fieldName, "주방");break;
-						case 1 : map.put(fieldName, "현관");break;
-						case 2 : map.put(fieldName, "발코니");break;				
-						case 3 : map.put(fieldName, "바닥");break;				
+						case 0 : map.put("시공항목", "주방");break;
+						case 1 : map.put("시공항목", "현관");break;
+						case 2 : map.put("시공항목", "발코니");break;				
+						case 3 : map.put("시공항목", "바닥");break;				
 						}; break;
 					case "tileArea" : 
-						map.put(fieldName, fieldValue.toString()); break;
+						map.put("면적", fieldValue.toString()+"m²"); break;
 				}
 			}		
 		}

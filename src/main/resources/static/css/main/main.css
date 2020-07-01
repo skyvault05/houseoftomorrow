@@ -330,8 +330,8 @@ a.menuicon {color:#424242!important;}
 
 .btn-mint.disabled, .btn-mint:disabled {
   color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: #33f0c0;
+  border-color: #33f0c0;
 }
 
 .btn-mint:not(:disabled):not(.disabled):active, .btn-mint:not(:disabled):not(.disabled).active,
