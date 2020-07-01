@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import hot.aws.S3Manager;
+import hot.channel.domain.Channel;
 import hot.constructor.repository.ChannelRepository;
 import hot.constructor.repository.ConstructorRepository;
 
-import hot.member.domain.Channel;
 
 @Service
 public class ChannelServiceImpl implements ChannelService {

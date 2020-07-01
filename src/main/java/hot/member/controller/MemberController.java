@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import hot.channel.domain.Channel;
 import hot.channel.service.ChannelService;
-import hot.member.domain.Channel;
 import hot.member.domain.Constructor;
 import hot.member.domain.Member;
 import hot.member.domain.MemberRole;
@@ -94,5 +94,10 @@ public class MemberController {
 		}else {
 			return "impossible";
 		}
+	}
+	
+	@RequestMapping("/requestDetail")
+	public String requestDetail() {
+		return "/estimate/member/requestDetail";
 	}
 }

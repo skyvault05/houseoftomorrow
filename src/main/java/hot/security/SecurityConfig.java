@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.loginPage("/common/loginForm")
 		.loginProcessingUrl("/login")
 		.failureUrl("/common/loginForm") //실패하면 로그인으로
-		.defaultSuccessUrl("/common/index")	//성공했을때 기본적으로 index로
+		.defaultSuccessUrl("/")	//성공했을때 기본적으로 index로
 		.usernameParameter("email")
 		.passwordParameter("password")
 		.permitAll();

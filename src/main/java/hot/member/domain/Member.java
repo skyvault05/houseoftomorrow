@@ -18,11 +18,12 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import hot.channel.domain.FavoriteChannel;
+import hot.channel.domain.FavoritePortfolio;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "member")
@@ -70,5 +71,13 @@ public class Member{
 	@JoinColumn(name = "member_no")
 	@Transient
 	private List<Notification> list = new ArrayList<Notification>();
+	
+	@OneToMany
+	@JoinColumn(name = "member_no")
+	private List<FavoritePortfolio> favoritePortfolio = new ArrayList<>();
+	
+	@OneToMany
+	@JoinColumn(name = "member_no")
+	private List<FavoriteChannel> favoriteChannel = new ArrayList<>();
 	
 }
