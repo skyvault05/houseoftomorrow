@@ -394,3 +394,19 @@ figcaption.bathroom_caption {
     margin-bottom: 5px;
     border-radius: 12px;
 }
+.wrapper {
+    margin: 0 auto;
+}
+.wrapper--w680 {
+    max-width: 680px;
+}
+.card-4 {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+.card-4 .card-body {
+    padding: 57px 65px;
+    padding-bottom: 65px;
+}
