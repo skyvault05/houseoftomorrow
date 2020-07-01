@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class EstimateDetails {
 	public static Map<String, String> getDetail(Object obj) throws IllegalArgumentException, IllegalAccessException {
-		System.out.println("/////////////////////");
 		Field[] superFields = obj.getClass().getDeclaredFields();
 		Map<String, String> map = new HashMap<>();
 		List<Object> estimateFieldObjs = new ArrayList<>();
