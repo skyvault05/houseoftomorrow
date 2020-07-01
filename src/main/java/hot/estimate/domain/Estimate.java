@@ -41,7 +41,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-
 public class Estimate {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
