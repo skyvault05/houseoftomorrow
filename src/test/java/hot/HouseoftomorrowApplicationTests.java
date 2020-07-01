@@ -7,17 +7,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-import hot.channel.domain.Channel;
-import hot.channel.domain.FavoriteChannel;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
 import hot.community.repository.CommCategoryRepository;
 import hot.community.repository.CommCommentRepository;
 import hot.community.repository.CommunityRepository;
 import hot.constructor.repository.PortfolioRepository;
+import hot.estimate.domain.Estimate;
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
-import hot.member.domain.Member;
 import hot.member.repository.ChannelRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.ConstructorRepository;
@@ -197,13 +195,17 @@ class HouseoftomorrowApplicationTests {
 //		fp.setPortfolio(portfolio);
 //		fpRep.save(fp);
 		
-		Member member = memberRep.findById(14).orElse(null);
-		Channel channel = channelRep.findById(1).orElse(null);
-		FavoriteChannel fc = new FavoriteChannel();
-		fc.setMember(member);
-		fc.setChannel(channel);
-		fcRep.save(fc);
+//		Member member = memberRep.findById(14).orElse(null);
+//		Channel channel = channelRep.findById(1).orElse(null);
+//		FavoriteChannel fc = new FavoriteChannel();
+//		fc.setMember(member);
+//		fc.setChannel(channel);
+//		fcRep.save(fc);
 		
+		Estimate est = estimateRepository.findById(4).orElse(null);
+		est.setEstimateDetails();
+		System.out.println("details: ");
+		est.getEstDetails().keySet().forEach(key -> System.out.println(key+":"+est.getEstDetails().get(key)));
 		
 	}
 	
