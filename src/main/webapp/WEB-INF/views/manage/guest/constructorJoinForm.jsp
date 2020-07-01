@@ -33,6 +33,11 @@
 #signupBtn{
 	font-size:20px;
 }
+#dupCheck, #phoneCheck{
+	margin-top:39px;
+}
+
+
 
 </style>
 </head>
@@ -49,13 +54,12 @@
                     <input type="email" class="form-control" id="memberId" placeholder="이메일" value="" required name="memberId">
                 </div>                
                 <div class="form-group col-md-2">
-                	<input type="button" id="dupCheck" class="btn btn-primary col" style="margin-top:39px;" value="중복 체크">
+                	<input type="button" id="dupCheck" class="btn btn-primary col" value="중복 체크">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password">비밀번호</label> 
                     <input type="password" class="form-control" id="password" placeholder="비밀번호" value="" required name="memberPwd">
                 </div>
-
 
                 <div class="form-group col-md-6">
                     <label for="memberPwdChk">비밀번호 확인</label> 
@@ -65,6 +69,9 @@
                 <div class="col-md-6">
 					<label for="phone">회원 연락처</label> 
                     <input type="text" class="form-control" id="phone" placeholder="회원 연락처" name="memberPhone" required>
+				</div>
+				
+				<div class="col-md-2">
                     <input type="button" id="phoneCheck" class="btn btn-primary col" value="인증하기">
 				</div>
            
@@ -110,11 +117,10 @@
 						<div class='row'>
 							<label class="col-md-4" for="postcode">주소</label>
 							<div class="w-100"></div>
-							<input type="text" class="form-control col-md-5" id="postcode" name="postcode" placeholder="우편번호" readonly>
-							&nbsp;&nbsp;
+							<input type="text" class="form-control col-md-4" id="postcode" name="postcode" placeholder="우편번호" readonly>
+							<input class="form-control col-md-4" id="extraAddress" name="extraAddress" type="text" readonly>
 							<button class="btn btn-primary signBtn col-md-4" id="userAddrBtn" type="button">우편번호 찾기</button>
 							<input type="text" class="form-control col-md-12" id="roadAddress" name="reaodAddress" placeholder="도로명주소" readonly>
-							<input class="form-control col-md-4" id="extraAddress" name="extraAddress" type="text" readonly>
 							<input class="form-control col-md-12" id="detailAddress" name="detailAddress" placeholder="상세주소" type="text">
 						</div>
 					</div>

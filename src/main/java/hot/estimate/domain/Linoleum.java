@@ -20,7 +20,7 @@ import lombok.ToString;
 @DynamicInsert
 @DynamicUpdate
 
-public class Linoleum{
+public class Linoleum implements EstimateSecondaryTable{
 	
 	@Column(name = "linoleum_thick", table = "linoleum")
 	private Integer linoleumThick;

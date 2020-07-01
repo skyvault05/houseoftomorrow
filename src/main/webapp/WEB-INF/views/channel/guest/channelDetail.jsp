@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib uri ="http://java.sun.com/jsp/jstl/core"
-prefix="c" %> <!doctype html> <html lang="ko"> <head> <title>내일의 집</title>
+prefix="c" %> 
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<!doctype html> <html lang="ko"> <head> <title>내일의 집</title>
 <meta charset="utf-8"> <meta name="viewport" content="width=device-width,
 initial-scale=1, shrink-to-fit=no"> <!-- bootstrap--> <link rel="stylesheet"
 href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -31,6 +33,26 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 		});
 	});
 </script>
+
+<script>
+	function changeImage() {
+		$.ajax({
+			url : "${pageContext.request.contextPath}/favoriteChannel/check?membNo=${user.memberNo}&chaNo=1",
+			
+			success : fucntion(){
+				var image = document.getElementById("favoriteChannel");
+				  if (image.src.match("off")) {
+				    image.src = "/plugins/images/heart_on.png";
+				  } else {
+				    image.src = "/plugins/images/heart_off.png";
+				  }
+				}
+			}
+		};
+		
+		
+		  
+	</script>
   </head>
   
   <body>
@@ -175,8 +197,11 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 										<li><a href="#">리뷰쓰기</a><button type="button">팔로우</button></li>
 									</ul>
 								</div>
-							</div>
+							</div>							
+							<img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel" onclick="changeImage()" src="/plugins/images/heart_off.png">
+							
 						</div><!--end 상담하기-->
+						
 						<div class="profile_info_about"><!--업체정보-->
 							<div class="expandable-text user-profile_about">
 								<table class="user-profile_about_table">

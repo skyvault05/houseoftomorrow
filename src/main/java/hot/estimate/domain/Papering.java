@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Embeddable
 @Setter
@@ -20,7 +19,7 @@ import lombok.ToString;
 @DynamicInsert
 @DynamicUpdate
 
-public class Papering {
+public class Papering implements EstimateSecondaryTable {
 
 	
 	@Column(name = "papering_type", table = "papering")
