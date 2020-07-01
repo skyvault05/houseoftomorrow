@@ -11,4 +11,6 @@ import hot.member.domain.Member;
 public interface EstimateRepository extends JpaRepository<Estimate, Integer> {
 	@Query("SELECT e FROM Estimate e WHERE e.member.memberNo = :#{#member.memberNo}")
 	List<Estimate> findByMemberNo(Member member);
+	
+
 }

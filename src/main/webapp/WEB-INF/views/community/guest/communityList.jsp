@@ -64,19 +64,57 @@
 		width: 500px;
 		height:300px;
 	}
+	/* Style the tab */
+	.tab {
+	margin-left: 10%;
+	width: 80%;
+	  overflow: hidden;
+	  border: 1px solid #ccc;
+	  background-color: #f1f1f1;
+	}
+	
+	/* Style the buttons inside the tab */
+	.tab button {
+	  background-color: inherit;
+	  float: left;
+	  border: none;
+	  outline: none;
+	  cursor: pointer;
+	  padding: 14px 16px;
+	  transition: 0.3s;
+	  font-size: 20px;
+	  width: 50%
+	}
+	
+	/* Change background color of buttons on hover */
+	.tab button:hover {
+	  background-color: #ddd;
+	}
+	
+	/* Create an active/current tablink class */
+	.tab button.active {
+	  background-color: #ccc;
+	}
+	
+	/* Style the tab content */
+	.tabcontent {
+	  display: none;
+	  padding: 6px 12px;
+	  border: 1px solid #ccc;
+	  border-top: none;
+	  }
 </style>
 
 </head>
 <body>
-<c:choose>
-	<c:when test="${param.commCategoryNo == 4}">
-		<h1>커뮤니티 - 사진</h1>
-	</c:when>
-	<c:when test="${param.commCategoryNo == 5}">
-		<h1>커뮤니티 - 노하우</h1>
-	</c:when>
-</c:choose>
+
+
 <h1>커뮤니티</h1>
+<br><br>
+<div id="tab" class="tab">
+  <button class="tablinks" onclick="location.href='${pageContext.request.contextPath}/community/list/4'">사진</button>
+  <button class="tablinks" onclick="location.href='${pageContext.request.contextPath}/community/list/5'">노하우</button>
+</div>
 <br><br>
 <section>
 	<c:forEach items="${requestScope.list}" var="list" >

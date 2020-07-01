@@ -54,6 +54,7 @@
 					success: function(response){
 						if(response == "possible"){
 							idCheck=true;
+							alert("사용 가능한 아이디 입니다.");
 						}else{
 							alert("중복된 아이디 입니다.");
 						}
@@ -77,9 +78,11 @@
 						memberPhone : $('#phone').val()
 					},
 					success: function(response){
-						alert(response);
 						if(response == "possible"){
 							phoneCheck=true;
+							alert("사용 가능한 핸드폰 번호 입니다.");
+						}else{
+							alert("이미 사용중인 핸드폰 번호 입니다.");
 						}
 					},
 					error: function(e){

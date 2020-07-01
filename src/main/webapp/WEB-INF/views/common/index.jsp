@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%> 
+
 <!doctype html>
 <html lang="ko">
   <head>
@@ -13,20 +17,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/jquery.fancybox.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
 
   <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
   
   <!-- WebFont -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
   </head>
   
   <body>
+
     <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -55,7 +61,7 @@
               <div class="dd-wrap">
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="/common/index">시공홈</a></li>
-                  <li><a class="dropdown-item" href="/estimate/estimateForm">견적요청</a></li>
+                  <li><a class="dropdown-item" href="/estimate">견적요청</a></li>
                   <li><a class="dropdown-item" href="#">전문가찾기</a></li>
                   <li><a class="dropdown-item" href="#">포트폴리오</a></li>
               	</ul>
@@ -69,7 +75,18 @@
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>
+              
+   <!------------------------------ 로그인/회원가입 -------------------------------->
+
+   			  <div class="header_navigation-bar-login pl-1">
+   			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
+   			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
+   			  </div>
+
+   <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
+   			<div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
+              	
                 <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
                 <!-- <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
                   <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
@@ -84,13 +101,15 @@
                     <ion-icon name="happy-outline" class="icon ion mypage"></ion-icon>
                   </a>
                   <div class="dropdown-menu submenu box shadow">
-                    <a href="#" class="dropdown-item updateInfo">가입정보수정</a>
-                    <a href="#" class="dropdown-item myCounsel">내상담내역</a>
+                    <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
+                    <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
                     <a href="#" class="dropdown-item writeList">내가쓴글</a>
                     <a href="#" class="dropdown-item logout">로그아웃</a>
                   </div>
                 </div>
-              </div><!--header icon-->
+                </div>
+              </div><!--end submenu header icon-->
+
             </div>
             <!--END submenu-->
           </div><!--collapse navbar-collapse btnCollapse-->
@@ -132,9 +151,9 @@
       <div class="container">
         <div class="container expert-home__menu">
       <div class="expert-home__menu__list expert-home__menu__list--no--sticky">
-            <a class="expert-home__menu__list__menu" href="/experts/expert_suggestions/new"><svg class="icon" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"><g fill="none" fill-rule="evenodd"><path d="M0 0h36v36H0z"></path><g fill-rule="nonzero" transform="translate(4 2)"><rect fill="#FFF" id="a" width="22" height="32" rx="4"></rect><rect width="21" height="31" x=".5" y=".5" stroke="#000" stroke-linejoin="square" rx="4"></rect></g><path stroke="#000" stroke-linecap="round" d="M13 5.5h4"></path><g><g fill-rule="nonzero" transform="translate(12.2 8)"><path fill="#E4F2F6" id="c" d="M12 0c5.965 0 10.8 4.126 10.8 9.216 0 5.09-4.835 9.216-10.8 9.216-2.598 0-4.982-.783-6.845-2.087L.302 17.61l2.365-3.753C1.734 12.493 1.2 10.908 1.2 9.216 1.2 4.126 6.035 0 12 0z"></path></g><path fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M24.2 8C30.165 8 35 12.2 35 17.383c0 5.182-4.835 9.383-10.8 9.383-2.512 0-4.824-.745-6.659-1.995l-5.83 1.434 2.909-4.486a8.376 8.376 0 0 1-1.22-4.336C13.4 12.201 18.235 8 24.2 8z"></path><path stroke="#000" stroke-linecap="round" d="M19.4 14.6H29M19.4 17.6H29M19.4 20.6h4.8"></path></g></g></svg><span class="expert-home__menu__list__menu__name">맞춤업체추천</span></a>
-            <a class="expert-home__menu__list__menu" href="/store/category?category=7&amp;is_pro=true&amp;affect_type=ExpertHome&amp;affect_id=0"><svg class="icon" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"><defs></defs><g fill="none" fill-rule="evenodd"><path fill="#FFF" d="M7.9 9.8h25.5L31 22.9a3.4 3.4 0 01-3.2 2.7h-14c-1.5 0-3-1.2-3.3-2.7L8 9.8z"></path><path fill="#EDEDED" d="M33.4 9.8L31 22.9a3.4 3.4 0 01-3.2 2.7h-14c-1.4 0-2.7-1-3.1-2.2l1 .2h15c1 0 1.9-.8 2-1.7L31 9.8h2.4z"></path><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M7.9 9.8h25.5L31 22.9a3.4 3.4 0 01-3.2 2.7h-14c-1.5 0-3-1.2-3.3-2.7L8 9.8zM2.3 7.2c.2-.9 1-1.6 2-1.8h.1c1.4-.3 2.7.6 3 2L8 9.8"></path><path fill="#B1C0CB" d="M14 28.5a2.5 2.5 0 115 0 2.5 2.5 0 11-5 0zm9 0a2.5 2.5 0 115 0 2.5 2.5 0 11-5 0z"></path><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M14 28.5c0-1.4 1.1-2.5 2.5-2.5h0c1.4 0 2.5 1.1 2.5 2.5h0c0 1.4-1.1 2.5-2.5 2.5h0a2.5 2.5 0 01-2.5-2.5h0zm9 0c0-1.4 1.1-2.5 2.5-2.5h0c1.4 0 2.5 1.1 2.5 2.5h0c0 1.4-1.1 2.5-2.5 2.5h0a2.5 2.5 0 01-2.5-2.5h0zM9.6 15.1H32m-18-4.8L15.4 25M26.8 10.3L25.4 25M20.4 10V25m-10.2-4.7h20.6"></path><path d="M0 0h36v36H0z"></path></g></svg><span class="expert-home__menu__list__menu__name">시공스토어</span></a>
-            <a class="expert-home__menu__list__menu" href="/expert_users"><svg class="icon" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"><g fill="none" fill-rule="evenodd"><g><path d="M0 0h36v36H0z"></path><path fill="#FFF" d="M15.2 24.918h5.4a7.2 7.2 0 0 1 7.2 7.2v1.8H8v-1.8a7.2 7.2 0 0 1 7.2-7.2z"></path><path fill="#EDEDED" fill-opacity=".14" d="M20.6 24.918c1.199 0 2.33.293 3.324.811-1.687 1.166-3.843 1.772-6.191 1.772-2.28 0-4.378-.571-6.042-1.67a7.152 7.152 0 0 1 3.509-.913h5.4z"></path><path fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M8 33.587v-1.672c0-3.153 2.35-5.781 5.469-6.377m8.496-.006c3.134.584 5.5 3.22 5.5 6.383v1.672"></path><g fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round"><path d="M13.645 25.606v3.18M21.82 25.606v3.18"></path></g><path fill="#B1C0CB" fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M11.893 33.918l1.062-5.003h9.555l1.062 5.003"></path><path fill="#FFF6E6" fill-rule="nonzero" d="M25.04 15.29c.31.907.479 2.291.479 3.314 0 4.642-3.486 7.197-7.786 7.197-4.3 0-7.786-2.555-7.786-7.197 0-1.023.169-2.407.479-3.314"></path><path fill="#EDE2CD" fill-rule="nonzero" d="M10.426 15.29h14.613c.164.478.288 1.09.37 1.71H10.056c.081-.62.205-1.232.369-1.71z"></path><path fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M25.04 15.29c.31.907.479 2.291.479 3.314 0 4.642-3.486 7.197-7.786 7.197-4.3 0-7.786-2.555-7.786-7.197 0-1.023.169-2.407.479-3.314"></path><path fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M19.29 21.908c-.227.454-.839.779-1.557.779-.72 0-1.331-.325-1.558-.78"></path><g fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"><path d="M15.007 18.547v-.545M20.458 18.547v-.545"></path></g><path fill="#FFDB92" d="M16.753 4.518h1.9a8.1 8.1 0 0 1 8.1 8.1v1.9h-18.1v-1.9a8.1 8.1 0 0 1 8.1-8.1z"></path><path fill="#FFDB92" d="M15 4h5v2h-5z"></path><path fill="#EFC570" d="M12.5 6l2.884 4.723V4.82zM22.937 6l-2.884 4.723V4.82z"></path><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M8.753 12.76c0-4.08 2.893-7.446 6.631-7.939v-.303c0-.553.424-1 .948-1h2.842c.523 0 .947.447.947 1v.303c3.739.493 6.632 3.859 6.632 7.939"></path><path stroke="#000" stroke-linecap="round" d="M15.384 6.518v-2c0-.553.424-1 .948-1h2.842c.523 0 .947.447.947 1v2"></path><path fill="#F5F5F5" fill-rule="nonzero" stroke="#000" stroke-linecap="round" d="M7.208 15.018h20.686"></path></g></g></svg><span class="expert-home__menu__list__menu__name">우리지역업체</span></a>
+            <a class="expert-home__menu__list__menu" href="#"><svg class="icon" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"><g fill="none" fill-rule="evenodd"><path d="M0 0h36v36H0z"></path><g fill-rule="nonzero" transform="translate(4 2)"><rect fill="#FFF" id="a" width="22" height="32" rx="4"></rect><rect width="21" height="31" x=".5" y=".5" stroke="#000" stroke-linejoin="square" rx="4"></rect></g><path stroke="#000" stroke-linecap="round" d="M13 5.5h4"></path><g><g fill-rule="nonzero" transform="translate(12.2 8)"><path fill="#E4F2F6" id="c" d="M12 0c5.965 0 10.8 4.126 10.8 9.216 0 5.09-4.835 9.216-10.8 9.216-2.598 0-4.982-.783-6.845-2.087L.302 17.61l2.365-3.753C1.734 12.493 1.2 10.908 1.2 9.216 1.2 4.126 6.035 0 12 0z"></path></g><path fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M24.2 8C30.165 8 35 12.2 35 17.383c0 5.182-4.835 9.383-10.8 9.383-2.512 0-4.824-.745-6.659-1.995l-5.83 1.434 2.909-4.486a8.376 8.376 0 0 1-1.22-4.336C13.4 12.201 18.235 8 24.2 8z"></path><path stroke="#000" stroke-linecap="round" d="M19.4 14.6H29M19.4 17.6H29M19.4 20.6h4.8"></path></g></g></svg><span class="expert-home__menu__list__menu__name">맞춤업체추천</span></a>
+            <a class="expert-home__menu__list__menu" href="#"><svg class="icon" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"><defs></defs><g fill="none" fill-rule="evenodd"><path fill="#FFF" d="M7.9 9.8h25.5L31 22.9a3.4 3.4 0 01-3.2 2.7h-14c-1.5 0-3-1.2-3.3-2.7L8 9.8z"></path><path fill="#EDEDED" d="M33.4 9.8L31 22.9a3.4 3.4 0 01-3.2 2.7h-14c-1.4 0-2.7-1-3.1-2.2l1 .2h15c1 0 1.9-.8 2-1.7L31 9.8h2.4z"></path><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M7.9 9.8h25.5L31 22.9a3.4 3.4 0 01-3.2 2.7h-14c-1.5 0-3-1.2-3.3-2.7L8 9.8zM2.3 7.2c.2-.9 1-1.6 2-1.8h.1c1.4-.3 2.7.6 3 2L8 9.8"></path><path fill="#B1C0CB" d="M14 28.5a2.5 2.5 0 115 0 2.5 2.5 0 11-5 0zm9 0a2.5 2.5 0 115 0 2.5 2.5 0 11-5 0z"></path><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M14 28.5c0-1.4 1.1-2.5 2.5-2.5h0c1.4 0 2.5 1.1 2.5 2.5h0c0 1.4-1.1 2.5-2.5 2.5h0a2.5 2.5 0 01-2.5-2.5h0zm9 0c0-1.4 1.1-2.5 2.5-2.5h0c1.4 0 2.5 1.1 2.5 2.5h0c0 1.4-1.1 2.5-2.5 2.5h0a2.5 2.5 0 01-2.5-2.5h0zM9.6 15.1H32m-18-4.8L15.4 25M26.8 10.3L25.4 25M20.4 10V25m-10.2-4.7h20.6"></path><path d="M0 0h36v36H0z"></path></g></svg><span class="expert-home__menu__list__menu__name">시공스토어</span></a>
+            <a class="expert-home__menu__list__menu" href="#"><svg class="icon" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet"><g fill="none" fill-rule="evenodd"><g><path d="M0 0h36v36H0z"></path><path fill="#FFF" d="M15.2 24.918h5.4a7.2 7.2 0 0 1 7.2 7.2v1.8H8v-1.8a7.2 7.2 0 0 1 7.2-7.2z"></path><path fill="#EDEDED" fill-opacity=".14" d="M20.6 24.918c1.199 0 2.33.293 3.324.811-1.687 1.166-3.843 1.772-6.191 1.772-2.28 0-4.378-.571-6.042-1.67a7.152 7.152 0 0 1 3.509-.913h5.4z"></path><path fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M8 33.587v-1.672c0-3.153 2.35-5.781 5.469-6.377m8.496-.006c3.134.584 5.5 3.22 5.5 6.383v1.672"></path><g fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round"><path d="M13.645 25.606v3.18M21.82 25.606v3.18"></path></g><path fill="#B1C0CB" fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M11.893 33.918l1.062-5.003h9.555l1.062 5.003"></path><path fill="#FFF6E6" fill-rule="nonzero" d="M25.04 15.29c.31.907.479 2.291.479 3.314 0 4.642-3.486 7.197-7.786 7.197-4.3 0-7.786-2.555-7.786-7.197 0-1.023.169-2.407.479-3.314"></path><path fill="#EDE2CD" fill-rule="nonzero" d="M10.426 15.29h14.613c.164.478.288 1.09.37 1.71H10.056c.081-.62.205-1.232.369-1.71z"></path><path fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M25.04 15.29c.31.907.479 2.291.479 3.314 0 4.642-3.486 7.197-7.786 7.197-4.3 0-7.786-2.555-7.786-7.197 0-1.023.169-2.407.479-3.314"></path><path fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M19.29 21.908c-.227.454-.839.779-1.557.779-.72 0-1.331-.325-1.558-.78"></path><g fill-rule="nonzero" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"><path d="M15.007 18.547v-.545M20.458 18.547v-.545"></path></g><path fill="#FFDB92" d="M16.753 4.518h1.9a8.1 8.1 0 0 1 8.1 8.1v1.9h-18.1v-1.9a8.1 8.1 0 0 1 8.1-8.1z"></path><path fill="#FFDB92" d="M15 4h5v2h-5z"></path><path fill="#EFC570" d="M12.5 6l2.884 4.723V4.82zM22.937 6l-2.884 4.723V4.82z"></path><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M8.753 12.76c0-4.08 2.893-7.446 6.631-7.939v-.303c0-.553.424-1 .948-1h2.842c.523 0 .947.447.947 1v.303c3.739.493 6.632 3.859 6.632 7.939"></path><path stroke="#000" stroke-linecap="round" d="M15.384 6.518v-2c0-.553.424-1 .948-1h2.842c.523 0 .947.447.947 1v2"></path><path fill="#F5F5F5" fill-rule="nonzero" stroke="#000" stroke-linecap="round" d="M7.208 15.018h20.686"></path></g></g></svg><span class="expert-home__menu__list__menu__name">우리지역업체</span></a>
           </div><!-- End expert-home__menu -->
           <a class="expert-home__info" href="/experts/trust_points">
             <div class="expert-home__info__wrap">
@@ -156,10 +175,22 @@
             <div class="row">
                 <div class="col-xl-12">
                   <h2 class="portfolio-title mb-4">추천 포트폴리오 </h2>
+                  <!-- 포트폴리오 등록버튼 -->
+                  
+           
+                  
+                	<button type="button" onclick="location.href='${pageContext.request.contextPath}/channel/constructor/myChannel'"> 마이 채널 </button>
+                  
+                  
+                
+                  
+                  <!-- 웅희 편집 부분 -->
+                  
+                  
                   <div class="card-wrap">
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -172,7 +203,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -185,7 +216,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -198,7 +229,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -219,7 +250,7 @@
                   <div class="card-wrap">
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -232,7 +263,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -245,7 +276,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -258,7 +289,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -288,7 +319,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 pt-5"> 
-          <a href="#"><img src="/images/default/main_company_btn.jpg" class="img-fluid rounded" alt="시공사 회원가입 바로가기"></a>
+          <a href="#"><img src="${pageContext.request.contextPath}/images/default/main_company_btn.jpg" class="img-fluid rounded" alt="시공사 회원가입 바로가기"></a>
                 </div>
             </div>
         </div>
@@ -306,7 +337,7 @@
                   <div class="card-wrap">
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -319,7 +350,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -332,7 +363,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -345,7 +376,7 @@
 
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
+                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
@@ -385,7 +416,7 @@
             <a class="layout-footer__outbound__item" href="https://play.google.com/" target="_blank" rel="noreferrer noopener" title="플레이스토어" aria-label="플레이스토어"><svg class="icon" width="30" height="30" viewBox="0 0 30 30" preserveAspectRatio="xMidYMid meet"><path fill-rule="evenodd" d="M4.22 26.95A2.35 2.35 0 0 1 4 25.9V3.8c0-.42.08-.77.22-1.05l12.1 12.1-12.1 12.1zm.74.68l12.07-12.07 3.7 3.7-14.2 8.1c-.6.34-1.14.42-1.57.27zm15.78-17.2l-3.71 3.71L4.96 2.07c.14-.04.3-.07.45-.07.34 0 .72.1 1.12.34l14.2 8.1zm.9.52l4.32 2.46c1.39.8 1.39 2.09 0 2.88l-4.32 2.46-3.9-3.9 3.9-3.9z"></path></svg></a>
             <a class="layout-footer__outbound__item" href="https://story.kakao.com/ch/" target="_blank" rel="noreferrer noopener" title="카카오스토리" aria-label="카카오스토리"><svg class="icon" width="30" height="30" viewBox="0 0 30 30" preserveAspectRatio="xMidYMid meet"><path fill="#757575" fill-rule="evenodd" d="M19.02 6h-8.04a.96.96 0 0 0-.98.93v8.16c0 .51.44.93.98.93h3.7c-.02.9-.4 1.9-.99 2.77a10.3 10.3 0 0 1-2 2.06l-.03.03c-.11.1-.2.22-.2.38 0 .12.07.21.14.31l.02.02 2.57 2.76s.13.12.23.15c.12.02.25.03.34-.04A12.25 12.25 0 0 0 20 14.79V6.93a.96.96 0 0 0-.98-.93"></path></svg></a>
             <a class="layout-footer__outbound__item" href="https://www.facebook.com/" target="_blank" rel="noreferrer noopener" title="페이스북" aria-label="페이스북"><svg class="icon" width="30" height="30" viewBox="0 0 30 30" preserveAspectRatio="xMidYMid meet"><path fill="#757575" fill-rule="evenodd" d="M16.67 26V15H20v-3.38h-3.33V9.07c-.02-.76.08-1.29 1.66-1.7H20V4h-3.33c-3.2 0-4.46 1.84-4.17 5.08v2.53H10V15h2.5v11h4.17z"></path></svg></a>
-            <a class="layout-footer__outbound__item" href="https://www.instagram.com/" target="_blank" rel="noreferrer noopener" title="인스타그램" aria-label="인스타그램"><svg class="icon" width="30" height="30" viewBox="0 0 30 30" preserveAspectRatio="xMidYMid meet"><path fill="#757575" fill-rule="evenodd" d="M15 3c3.26 0 3.67.02 4.95.08 1.27.05 2.14.26 2.9.55a5.88 5.88 0 0 1 2.13 1.39 5.88 5.88 0 0 1 1.39 2.12c.3.77.5 1.64.55 2.91.06 1.28.08 1.7.08 4.95s-.02 3.67-.08 4.95a8.78 8.78 0 0 1-.55 2.9 5.88 5.88 0 0 1-1.39 2.13 5.88 5.88 0 0 1-2.12 1.39c-.77.3-1.64.5-2.91.55-1.28.06-1.7.08-4.95.08s-3.67-.02-4.95-.08a8.78 8.78 0 0 1-2.9-.55 5.88 5.88 0 0 1-2.13-1.39 5.88 5.88 0 0 1-1.39-2.12c-.3-.77-.5-1.64-.55-2.91C3.02 18.67 3 18.25 3 15s.02-3.67.08-4.95c.05-1.27.26-2.15.55-2.9a5.88 5.88 0 0 1 1.39-2.13 5.88 5.88 0 0 1 2.12-1.39c.76-.3 1.64-.5 2.91-.55C11.33 3.02 11.75 3 15 3zm0 2.17c-3.2 0-3.58 0-4.85.07-1.17.05-1.8.24-2.22.4-.56.23-.96.49-1.38.9a3.7 3.7 0 0 0-.9 1.39 6.64 6.64 0 0 0-.41 2.22A82.92 82.92 0 0 0 5.17 15c0 3.2 0 3.58.07 4.85.05 1.17.24 1.8.4 2.22.23.56.49.96.9 1.38.43.42.83.68 1.39.9.42.17 1.05.36 2.22.41 1.27.06 1.65.07 4.85.07 3.2 0 3.58 0 4.85-.07a6.67 6.67 0 0 0 2.23-.4c.56-.23.96-.49 1.38-.9.42-.43.68-.83.9-1.39.16-.42.35-1.05.4-2.22.06-1.27.07-1.65.07-4.85 0-3.2 0-3.58-.06-4.85a6.66 6.66 0 0 0-.42-2.23 3.72 3.72 0 0 0-.9-1.38 3.7 3.7 0 0 0-1.37-.9 6.64 6.64 0 0 0-2.23-.4A82.92 82.92 0 0 0 15 5.15zm0 3.67a6.16 6.16 0 1 1 0 12.32 6.16 6.16 0 0 1 0-12.32zM15 19a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm7.84-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"></path></svg></a>
+            <a class="layout-footer__outbound__item" href="https://www.instagram.com/" target="_blank" rel="noreferrer noopener" title="인스타그램" aria-label="인스타그램"><svg class="icon" width="30" height="30" viewBox="0 0 30 30" preserveAspectRatio="xMidYMid meet"><path fill="#757575" fill-rule="evenodd" d="M15 3c3.26 0 3.67.02 4.95.08 1.27.05 2.14.26 2.9.55a5.88 5.88 0 0 1 2.13 1.39 5.88 5.88 0 0 1 1.39 2.12c.3.77.5 1.64.55 2.91.06 1.28.08 1.7.08 4.95s-.02 3.67-.08 4.95a8.78 8.78 0 0 1-.55 2.9 5.88 5.88 0 0 1-1.39 2.13 5.88 5.88 0 0 1-2.12 1.39c-.77.3-1.64.5-2.91.55-1.28.06-1.7.08-4.95.08s-3.67-.02-4.95-.08a8.78 8.78 0 0 1-2.9-.55 5.88 5.88 0 0 1-2.13-1.39 5.88 5.88 0 0 1-1.39-2.12c-..3-.77-.5-1.64-.55-2.91C3.02 18.67 3 18.25 3 15s.02-3.67.08-4.95c.05-1.27.26-2.15.55-2.9a5.88 5.88 0 0 1 1.39-2.13 5.88 5.88 0 0 1 2.12-1.39c.76-.3 1.64-.5 2.91-.55C11.33 3.02 11.75 3 15 3zm0 2.17c-3.2 0-3.58 0-4.85.07-1.17.05-1.8.24-2.22.4-.56.23-.96.49-1.38.9a3.7 3.7 0 0 0-.9 1.39 6.64 6.64 0 0 0-.41 2.22A82.92 82.92 0 0 0 5.17 15c0 3.2 0 3.58.07 4.85.05 1.17.24 1.8.4 2.22.23.56.49.96.9 1.38.43.42.83.68 1.39.9.42.17 1.05.36 2.22.41 1.27.06 1.65.07 4.85.07 3.2 0 3.58 0 4.85-.07a6.67 6.67 0 0 0 2.23-.4c.56-.23.96-.49 1.38-.9.42-.43.68-.83.9-1.39.16-.42.35-1.05.4-2.22.06-1.27.07-1.65.07-4.85 0-3.2 0-3.58-.06-4.85a6.66 6.66 0 0 0-.42-2.23 3.72 3.72 0 0 0-.9-1.38 3.7 3.7 0 0 0-1.37-.9 6.64 6.64 0 0 0-2.23-.4A82.92 82.92 0 0 0 15 5.15zm0 3.67a6.16 6.16 0 1 1 0 12.32 6.16 6.16 0 0 1 0-12.32zM15 19a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm7.84-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"></path></svg></a>
             <a class="layout-footer__outbound__item" href="http://naver.me/" target="_blank" rel="noreferrer noopener" title="네이버 포스트" aria-label="네이버 포스트"><svg class="icon" width="30" height="30" viewBox="0 0 30 30" preserveAspectRatio="xMidYMid meet"><path fill="#757575" fill-rule="evenodd" d="M8.5 5h13v13h-13V5zm7.45 4v2.52L14.05 9H12v5h2.05v-2.52l1.9 2.52H18V9h-2.05zm3.11 13h-8.12L8.5 19h13l-2.44 3zm-.81 1L15 27l-3.25-4h6.5z"></path></svg></a>
           </div>
         </div>
@@ -398,9 +429,7 @@
           <li><a class="layout-footer__shortcut__item" rel="noopener" href="/customer_center" target="_blank">고객센터</a></li>
           <li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/new" target="_blank">고객의 소리</a></li>
           <li><a class="layout-footer__shortcut__item" rel="noopener" href="#" target="_blank">전문가 등록</a></li>
-          <li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/b2b" target="_blank">사업자 구매회원</a></li>
           <li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/new?type=request" target="_blank">제휴/광고 문의</a></li>
-          <li><a class="layout-footer__shortcut__item" rel="noopener" href="/partner/applications/new" target="_blank">입점신청 문의</a></li>
         </ul>
         <address class="layout-footer__info-wrap">
           <dl class="layout-footer__info">
@@ -431,14 +460,16 @@
     <!-- scripts -->
 <!-- 	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
     <script src="/plugins/jquery/jquery-3.4.1.min.js"></script> -->
-    <script src="/js/common/popper.min.js"></script>
-    <script src="/js/common/owl.carousel.min.js"></script>
-    <script src="/js/common/jquery.waypoints.min.js"></script>
-    <script src="/js/common/jquery.fancybox.min.js"></script>
-    <script src="/js/common/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/common/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/common/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/common/jquery.waypoints.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/common/jquery.fancybox.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/common/main.js"></script>
     
 	<!-- ICON -->
-	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+	<!-- <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script> -->
+	<script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule="" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>
 
   </body>
 </html>

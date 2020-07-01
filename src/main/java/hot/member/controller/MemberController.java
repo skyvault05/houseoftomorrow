@@ -95,7 +95,7 @@ public class MemberController {
 			return "impossible";
 		}
 	}
-	
+
 	@RequestMapping("/requestDetail")
 	public String requestDetail() {
 		return "/estimate/member/requestDetail";

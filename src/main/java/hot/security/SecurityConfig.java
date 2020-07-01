@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 		.antMatchers("/**/guest/**").permitAll()
 		.antMatchers("/**/member/**").hasRole("MEMBER")
-		.antMatchers("/**/constructor/**").hasRole("CONSTRUCTOR")
+		//.antMatchers("/**/constructor/**").hasRole("CONSTRUCTOR")
 		.antMatchers("/**/admin/**").hasRole("ADMIN")
 		.anyRequest().permitAll();
 		
@@ -42,6 +42,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.logoutUrl("/logout")
 		.logoutSuccessUrl("/common/loginForm")	//로그아웃 성공시 로그인 페이지로
 		.permitAll();
+		
+		http.csrf()
+        .ignoringAntMatchers("/channel/constructor/**")
+        .and();
+		
+		
 		
 		
 	}
