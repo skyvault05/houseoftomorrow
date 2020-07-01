@@ -75,14 +75,19 @@
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>
-               <!------------------------------ 로그인/회원가입 -------------------------------->
+   <!------------------------------ 로그인/회원가입 -------------------------------->
+	<sec:authorize access="isAnonymous()">
    			  <div class="header_navigation-bar-login pl-1">
    			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
    			  </div>
-   
+ 	</sec:authorize>
+
    <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
-              <div class="iconmenu pl-1">
+  
+   	<sec:authorize access="isAuthenticated()">
+   	
+   			<div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
               	
                 <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
@@ -107,6 +112,7 @@
                 </div>
                 </div>
               </div><!--end submenu header icon-->
+	</sec:authorize>
             </div>
             <!--END submenu-->
           </div><!--collapse navbar-collapse btnCollapse-->
@@ -161,8 +167,8 @@
                     	<c:forEach items="${list}" var="item" varStatus="status">
                         <tr class="row">
                             <td class="text-center col-sm-2">${status.count}</td>
-                            <td class="text-center col-sm-6"><a href="/viewEstimateDetail/${user.memberNo}" class="est-title">견적 요청 내역</a></td>
-                            <td class="text-center col-sm-2">####.##.##</td>
+                            <td class="text-center col-sm-6"><a href="/viewEstimateDetail/${item.estNo}" class="est-title">견적 요청 내역</a></td>
+                            <td class="text-center col-sm-2">${item.estRegdate}</td>
                             <td class="text-center col-sm-2">
                                 <button type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
                                     <i class="material-icons">edit</i>

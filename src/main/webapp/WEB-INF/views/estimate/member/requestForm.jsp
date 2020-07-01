@@ -72,14 +72,19 @@
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>
-                 <!------------------------------ 로그인/회원가입 -------------------------------->
+     <!------------------------------ 로그인/회원가입 -------------------------------->
+	<sec:authorize access="isAnonymous()">
    			  <div class="header_navigation-bar-login pl-1">
    			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
    			  </div>
-   
-   <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->	
-              <div class="iconmenu pl-1">
+ 	</sec:authorize>
+
+   <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
+  
+   	<sec:authorize access="isAuthenticated()">
+   	
+   			<div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
               	
                 <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
@@ -104,6 +109,7 @@
                 </div>
                 </div>
               </div><!--end submenu header icon-->
+	</sec:authorize>
             </div>
             <!--END submenu-->
           </div><!--collapse navbar-collapse btnCollapse-->
@@ -117,7 +123,9 @@
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 <section class="pt-6">
 <form class="expert-calculate" action="/estimateResult">
+<sec:authorize access="isAuthenticated()">
 <input type='hidden' name='memberNo' value='${user.memberNo}'>
+</sec:authorize>
 <div class="expert-calculate__main-wrap container">
 	<div class="expert-calculate__main row">
 		<div class="col-12 col-md-1 offset-md-1 offset-lg-2"><!--start aside menu-->
@@ -1105,7 +1113,12 @@
 					</div>
 				</div><!--end comment-->
 			</div><!--END group-->
-			<input type="submit" class="btn btn-mint submit btn-block" value="견적 요청하기"> 
+			<sec:authorize access="isAuthenticated()">
+			<input type="submit" class="btn btn-mint submit btn-block" value="견적 요청하기">
+			</sec:authorize>
+			<sec:authorize access="isAnonymous()">
+			<input type="submit" class="btn btn-mint submit btn-block" value="로그인 후 이용 가능합니다." disabled>
+			</sec:authorize>
 <!---------------------------------------------------------------------------------------------------------------->
 
 		</section><!--end section-->

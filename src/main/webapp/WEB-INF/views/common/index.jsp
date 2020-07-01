@@ -78,8 +78,6 @@
               
    <!------------------------------ 로그인/회원가입 -------------------------------->
 	<sec:authorize access="isAnonymous()">
-	
-
    			  <div class="header_navigation-bar-login pl-1">
    			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
@@ -88,7 +86,7 @@
 
    <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
   
-   	<sec:authorize access="hasRole('ROLE_MEMBER')">
+   	<sec:authorize access="isAuthenticated()">
    	
    			<div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
@@ -110,7 +108,7 @@
                     <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
                     <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
                     <a href="#" class="dropdown-item writeList">내가쓴글</a>
-                    <a href="#" class="dropdown-item logout">로그아웃</a>
+                    <a href="/logout" class="dropdown-item logout">로그아웃</a>
                   </div>
                 </div>
                 </div>
