@@ -74,14 +74,21 @@
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>
-   <!------------------------------ 로그인/회원가입 -------------------------------->
+     <!------------------------------ 로그인/회원가입 -------------------------------->
+	<sec:authorize access="isAnonymous()">
+	
+
    			  <div class="header_navigation-bar-login pl-1">
    			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
    			  </div>
-   
+ 	</sec:authorize>
+
    <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
-             <div class="iconmenu pl-1">
+  
+   	<sec:authorize access="hasRole('ROLE_MEMBER')">
+   	
+   			<div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
               	
                 <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
@@ -106,6 +113,7 @@
                 </div>
                 </div>
               </div><!--end submenu header icon-->
+	</sec:authorize>
             </div>
             <!--END submenu-->
           </div><!--collapse navbar-collapse btnCollapse-->
@@ -144,28 +152,31 @@
 
 <div class="estimateDetail-main-wrap">
 	<div class="container pt-5">
-		<div class="estimateDetail"><!--start 견적상세-->
-			<div class="estimate-detail-wrap">
-			
+		<div class="estimateDetail page-wrapper p-t-130 p-b-100"><!--start 견적상세-->
+			<div class="estimate-detail-wrap wrapper wrapper--w680">
+				<div class="card card-4">
+				<div class="card-body">
+				
 <!------------------------- 도배 papering ---------------------------->
-				<div class="estimate-part  col-6"> 
+				<div class="estimate-part"> 
 				    <div class="est-detail-title">도배견적문의</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
-				        	<li>${estimate.papering.paperingType}</li>
-					        <li>${estimate.papering.paperingArea}</li>
-					        <li>${estimate.papering.paperingNumberOfRooms}</li>
-					        <li>${estimate.papering.paperingCeiling}</li>
-					        <li>${estimate.papering.paperingVeranda}</li>
-					        <li>${estimate.papering.paperingBurdon}</li>
+				      <c:forEach items="${estimate.estDetails}" var="item" >
+							<li>${item.key} : ${item.value}</li>
+					  </c:forEach>
+
 				      </ul>
 			      	</div>
 			    </div>
 <!------------------------- 장판 Linoleum ---------------------------->
-			    <div class="estimate-part  col-6"> 
+			   <%--  <div class="estimate-part"> 
 				    <div class="est-detail-title">장판견적문의</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
+				      	<c:forEach items="${estimate.estDetails}" var="item" >
+							<li>${item.key} : ${item.value}</li>
+					  	</c:forEach>
 				        	<li>${estimate.linoleum.linoleumThick}</li>
 					        <li>${estimate.linoleum.linoleumArea}</li>
 					        <li>${estimate.linoleum.linoleumNumberOfRooms}</li>
@@ -176,7 +187,7 @@
 			      	</div>
 			    </div>  
 <!------------------------- 마루 floor ---------------------------->
-			    <div class="estimate-part  col-6"> 
+			    <div class="estimate-part"> 
 				    <div class="est-detail-title">마루견적문의</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
@@ -191,7 +202,7 @@
 			    </div>  
 
 <!-------------------------  욕실 Bathroom ---------------------------->
-			    <div class="estimate-part  col-6"> 
+			    <div class="estimate-part"> 
 				    <div class="est-detail-title">욕실견적문의</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
@@ -204,7 +215,7 @@
 			    </div>  
 
 <!------------------------- 주방 Kitchen ---------------------------->
-			    <div class="estimate-part  col-6"> 
+			    <div class="estimate-part"> 
 				    <div class="est-detail-title">주방견적문의</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
@@ -217,7 +228,7 @@
 			      	</div>
 			    </div>  
 <!------------------------- 타일  Tile ---------------------------->
-			    <div class="estimate-part  col-6"> 
+			    <div class="estimate-part"> 
 				    <div class="est-detail-title">타일견적문의</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
@@ -227,21 +238,29 @@
 				      </ul>
 			      	</div>
 			    </div>  
-			      			      			      			      
+			      			      			       --%>			      
 			      
 <!------------------------ 추가문의 ----------------------------------->
-			      <div class="estimate-item-comment col-6">
+			      <div class="estimate-item-comment">
 			        <div class="name">추가문의사항</div>
 			          <div class="value">
 			            <div class="input-group">
-			              <textarea class="textarea--style-6" name="message" placeholder="${estimate.estDescription}"></textarea>
+			              <textarea class="textarea est-comment" name="message" placeholder="${estimate.estDescription}">${estimate.estDescription}</textarea>
 			            </div>
 			          </div>
 			      </div>
  <!---------------------- end 추가문의-------------------------------->
+ 
+ 
+ 				</div><!-- card body -->
+ 
+			</div><!-- end card  -->
 			
-			    </div>
-			  </div>
+			
+			
+			
+			    </div><!-- end estimate-detail-wrap  -->
+			  </div><!-- end estimateDetail -->
     
 		</div><!--end 견적상세-->
 

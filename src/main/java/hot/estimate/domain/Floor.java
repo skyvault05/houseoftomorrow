@@ -20,7 +20,7 @@ import lombok.ToString;
 @DynamicInsert
 @DynamicUpdate
 
-public class Floor{	
+public class Floor implements EstimateSecondaryTable{	
 	@Column(name = "floor_type", table = "floor")
 	private Integer floorType;
 	@Column(name = "floor_area", table = "floor")

@@ -52,6 +52,7 @@ public class EstimateController {
 	@RequestMapping("/viewEstimateDetail/{estNo}")
 	public ModelAndView estiPapering(@PathVariable Integer estNo) {
 		Estimate estimate = estimateService.selectByEstNo(estNo);
+		estimate.setEstimateDetails();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("estimate", estimate);
 		mv.setViewName("/estimate/member/requestDetail");

@@ -1,4 +1,4 @@
-package hot.member.repository;
+package hot.channel.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
