@@ -48,7 +48,7 @@ public class ChannelServiceImpl implements ChannelService {
 	@Override
 	public void updateGrade(Integer chNo) {
 		//평균 구하기
-		List<Review> list = reviewService.selectReview(chNo);
+		List<Review> list = reviewService.selectReviewChNo(chNo);
 		Double avg = 0D;
 		for(Review re : list) {
 			avg += re.getReviewGrade();
