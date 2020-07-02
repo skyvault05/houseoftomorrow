@@ -1,4 +1,4 @@
-package hot.member.domain;
+package hot.channel.domain;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import hot.member.domain.Constructor;
+import hot.member.domain.Review;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -61,8 +63,6 @@ public class Channel {
 	
 	@OneToMany(mappedBy = "channel")
 	private List<Review> reviews = new ArrayList<Review>();
-	
-	
 	
 	
 //	public Channel(Long chNo, String chImg, String chDescription, Timestamp chRegdate, Constructor constructor,

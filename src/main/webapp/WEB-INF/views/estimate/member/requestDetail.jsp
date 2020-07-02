@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib uri ="http://java.sun.com/jsp/jstl/core"
-prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%> 
-<!doctype html> <html lang="ko"> <head> <title>내일의 집</title>
-<meta charset="utf-8"> <meta name="viewport" content="width=device-width,
-initial-scale=1, shrink-to-fit=no"> <!-- bootstrap--> <link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!doctype html> 
+<html lang="ko"> 
+  <head>
+    <title>내일의 집</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- bootstrap-->
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/plugins/bootstrap/bootstrap.min.css">
+  <script src="${pageContext.request.contextPath}/plugins/jquery/jquery-3.4.1.min.js"></script>
+  <script src="${pageContext.request.contextPath }/js/common/popper.min.js"></script>
+  <script src="${pageContext.request.contextPath }/js/bootstrap/bootstrap.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
@@ -21,6 +21,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/channel/channel.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estimate/estimate.css">
 
   <!-- WebFont -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
@@ -34,7 +35,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
     <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand " href="/index">HOT</a>
+          <a class="navbar-brand " href="/common/index">HOT</a>
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       		<span class="navbar-toggler-icon"></span>
     	</button>
@@ -58,8 +59,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
               <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">인테리어시공</a>
               <div class="dd-wrap">
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">시공홈</a></li>
-                  <li><a class="dropdown-item" href="#">견적요청</a></li>
+                  <li><a class="dropdown-item" href="/common/index">시공홈</a></li>
+                  <li><a class="dropdown-item" href="/estimate">견적요청</a></li>
                   <li><a class="dropdown-item" href="#">전문가찾기</a></li>
                   <li><a class="dropdown-item" href="#">포트폴리오</a></li>
               	</ul>
@@ -73,21 +74,46 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>
+     <!------------------------------ 로그인/회원가입 -------------------------------->
+	<sec:authorize access="isAnonymous()">
+	
+
+   			  <div class="header_navigation-bar-login pl-1">
+   			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
+   			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
+   			  </div>
+ 	</sec:authorize>
+
+   <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
+  
+   	<sec:authorize access="hasRole('ROLE_MEMBER')">
+   	
+   			<div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
+              	
                 <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
+                <!-- <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
+                  <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
+                </a>
+                <div class="dropdown-menu submenu">
+                  <a href="#" class="dropdown-item favoriteChannel">관심채널</a>
+                  <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
+                </div> -->
                 <ion-icon name="notifications-outline" class="icon ion"></ion-icon>
                 <div class="dropdown submenu">  
                   <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
                     <ion-icon name="happy-outline" class="icon ion mypage"></ion-icon>
                   </a>
                   <div class="dropdown-menu submenu box shadow">
-                    <a href="#" class="dropdown-item updateInfo">가입정보수정</a>
-                    <a href="#" class="dropdown-item myCounsel">내상담내역</a>
+                    <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
+                    <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
                     <a href="#" class="dropdown-item writeList">내가쓴글</a>
                     <a href="#" class="dropdown-item logout">로그아웃</a>
                   </div>
                 </div>
-              </div><!--header icon-->
+                </div>
+              </div><!--end submenu header icon-->
+	</sec:authorize>
             </div>
             <!--END submenu-->
           </div><!--collapse navbar-collapse btnCollapse-->
@@ -106,7 +132,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 						<a href="" class="nav-link" target="_self">회원정보수정</a>
 					</li>
 					<li class="nav-item">
-						<a href="/myEstimateList/1" class="nav-link" target="_self">견적 요청 내역</a>
+						<a href="/myEstimateList/${user.memberNo }" class="nav-link" target="_self">견적 요청 내역</a>
 					</li>
 					<li class="nav-item">
 						<a href="" class="nav-link" target="_self">내 상담 내역</a>
@@ -126,38 +152,117 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 
 <div class="estimateDetail-main-wrap">
 	<div class="container pt-5">
-		<div class="estimateBoard"><!--start 견적게시판-->
-			<div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="text-center">#</th>
-                            <th>요청 내용</th>
-                            <th>작성일</th>
-                            <th class="text-right">수정/삭제</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach items="${list}" var="item" varStatus="status">
-                        <tr>
-                            <td class="text-center">${status.count}</td>
-                            <td class="text-center"><a href="/...../${user.memberNo}">${item.estRegdate}</a></td>
-                            <td class="text-center"><a href="/...../${user.memberNo}">${item.estRegdate}</a></td>
-                            <td class="td-actions text-center"">
-                                <button type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
-                                    <i class="material-icons">delete</i>
-                                </button>
-                            </td>
-                        </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-                </div>
+		<div class="estimateDetail page-wrapper p-t-130 p-b-100"><!--start 견적상세-->
+			<div class="estimate-detail-wrap wrapper wrapper--w680">
+				<div class="card card-4">
+				<div class="card-body">
+				
+<!------------------------- 도배 papering ---------------------------->
+				<div class="estimate-part"> 
+				    <div class="est-detail-title">도배견적문의</div>
+				    <div class="est-detail-contents">
+				      <ul class="estimate-item">
+				      <c:forEach items="${estimate.estDetails}" var="item" >
+							<li>${item.key} : ${item.value}</li>
+					  </c:forEach>
+
+				      </ul>
+			      	</div>
+			    </div>
+<!------------------------- 장판 Linoleum ---------------------------->
+			   <%--  <div class="estimate-part"> 
+				    <div class="est-detail-title">장판견적문의</div>
+				    <div class="est-detail-contents">
+				      <ul class="estimate-item">
+				      	<c:forEach items="${estimate.estDetails}" var="item" >
+							<li>${item.key} : ${item.value}</li>
+					  	</c:forEach>
+				        	<li>${estimate.linoleum.linoleumThick}</li>
+					        <li>${estimate.linoleum.linoleumArea}</li>
+					        <li>${estimate.linoleum.linoleumNumberOfRooms}</li>
+					        <li>${estimate.linoleum.linoleumVeranda}</li>
+					        <li>${estimate.linoleum.linoleumCurrentFloor}</li>
+					        <li>${estimate.linoleum.linoleumBurdon}</li>
+				      </ul>
+			      	</div>
+			    </div>  
+<!------------------------- 마루 floor ---------------------------->
+			    <div class="estimate-part"> 
+				    <div class="est-detail-title">마루견적문의</div>
+				    <div class="est-detail-contents">
+				      <ul class="estimate-item">
+				        	<li>${estimate.floor.floorType}</li>
+					        <li>${estimate.floor.floorArea}</li>
+					        <li>${estimate.floor.floorNumberOfRooms}</li>
+					        <li>${estimate.floor.floorVeranda}</li>
+					        <li>${estimate.floor.floorCurrentFloor}</li>
+					        <li>${estimate.floor.floorBurdon}</li>
+				      </ul>
+			      	</div>
+			    </div>  
+
+<!-------------------------  욕실 Bathroom ---------------------------->
+			    <div class="estimate-part"> 
+				    <div class="est-detail-title">욕실견적문의</div>
+				    <div class="est-detail-contents">
+				      <ul class="estimate-item">
+				        	<li>${estimate.bathroom.bathroomNumberOfRooms}</li>
+					        <li>${estimate.bathroom.bathroomType}</li>
+					        <li>${estimate.bathroom.bathroomCeiling}</li>
+					        <li>${estimate.bathroom.bathroomTile}</li>
+				      </ul>
+			      	</div>
+			    </div>  
+
+<!------------------------- 주방 Kitchen ---------------------------->
+			    <div class="estimate-part"> 
+				    <div class="est-detail-title">주방견적문의</div>
+				    <div class="est-detail-contents">
+				      <ul class="estimate-item">
+				        	<li>${estimate.kitchen.kitchenType}</li>
+					        <li>${estimate.kitchen.kitchenMaxWidth}</li>
+					        <li>${estimate.kitchen.kitchenCountertop}</li>
+					        <li>${estimate.kitchen.kitchenDoor}</li>
+					        <li>${estimate.kitchen.kitchenTile}</li>
+				      </ul>
+			      	</div>
+			    </div>  
+<!------------------------- 타일  Tile ---------------------------->
+			    <div class="estimate-part"> 
+				    <div class="est-detail-title">타일견적문의</div>
+				    <div class="est-detail-contents">
+				      <ul class="estimate-item">
+				        	<li>${estimate.tile.tileType}</li>
+					        <li>${estimate.tile.tileArea}</li>
+		
+				      </ul>
+			      	</div>
+			    </div>  
+			      			      			       --%>			      
+			      
+<!------------------------ 추가문의 ----------------------------------->
+			      <div class="estimate-item-comment">
+			        <div class="name">추가문의사항</div>
+			          <div class="value">
+			            <div class="input-group">
+			              <textarea class="textarea est-comment" name="message" placeholder="${estimate.estDescription}">${estimate.estDescription}</textarea>
+			            </div>
+			          </div>
+			      </div>
+ <!---------------------- end 추가문의-------------------------------->
+ 
+ 
+ 				</div><!-- card body -->
+ 
+			</div><!-- end card  -->
+			
+			
+			
+			
+			    </div><!-- end estimate-detail-wrap  -->
+			  </div><!-- end estimateDetail -->
     
-		</div><!--end 견적게시판-->
+		</div><!--end 견적상세-->
 
 	</div>
 	
@@ -199,10 +304,9 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/privacy" target="_blank">개인정보처리방침</a></li>
 					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/customer_center" target="_blank">고객센터</a></li>
 					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/new" target="_blank">고객의 소리</a></li>
-					<li><a class="layout-footer__shortcut__item" rel="noopener" href="https://pro.ohou.se/?utm_source=ohouse&amp;utm_medium=web&amp;utm_campaign=prosignup&amp;utm_content=footer" target="_blank">전문가 등록</a></li>
-					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/b2b" target="_blank">사업자 구매회원</a></li>
+					<li><a class="layout-footer__shortcut__item" rel="noopener" href="#" target="_blank">전문가 등록</a></li>
 					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/contacts/new?type=request" target="_blank">제휴/광고 문의</a></li>
-					<li><a class="layout-footer__shortcut__item" rel="noopener" href="/partner/applications/new" target="_blank">입점신청 문의</a></li>
+
 				</ul>
 				<address class="layout-footer__info-wrap">
 					<dl class="layout-footer__info">
@@ -238,6 +342,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
     <script src="${pageContext.request.contextPath}/js/common/jquery.waypoints.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/common/jquery.fancybox.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/common/main.js"></script>
+    <script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
 
     
 	<!-- ICON -->

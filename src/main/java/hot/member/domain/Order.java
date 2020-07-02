@@ -56,6 +56,6 @@ public class Order {
 	private String orderMethod;
 	
 	@Column(name = "order_status")
-	private Integer oderStatus;
+	private Integer orderStatus;
 
 }

@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hot.member.domain.Channel;
+import hot.channel.domain.Channel;
+import hot.channel.repository.ChannelRepository;
+import hot.channel.repository.ReviewRepository;
 import hot.member.domain.Member;
 import hot.member.domain.Review;
-import hot.member.repository.ChannelRepository;
 import hot.member.repository.MemberRepository;
-import hot.member.repository.ReviewRepository;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {

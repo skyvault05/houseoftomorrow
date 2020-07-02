@@ -79,7 +79,46 @@ header .icon.ion:hover {
   color:#33f0c0;
 }
 
-/*---------submenu----------*/
+/*-----------------------submenu----------------------*/
+/*----로그인/회원가입------*/
+.header_navigation-bar-login {
+	
+	//display:none;	
+	//margin: 20px -9px 16px -7px;
+	margin-top:7px;
+    white-space: nowrap;
+    display: inline-block;
+}
+.navigation-bar-login__item {
+    position: relative;
+    display: inline-block;
+    margin: 0 0px 0 11px;
+    padding: 2px;
+    color: #757575;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+}
+.navigation-bar-login__item.aftermenu:after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 100%;
+    bottom: 3px;
+    margin-left: 8px;
+    border-right: 1px solid #757575;
+}
+.navigation-bar-login__item.signup-margin-right {
+	margin-right:0px!important;
+}
+.navigation-bar-login__item:hover {
+	color:#33f0c0;
+	transition:0.2s;
+}
+
+/*-------마이페이지--------*/
+//.iconmenu {display:none;}
 a.menuicon {color:#424242!important;}
 .dropdown-menu.submenu {
   width:10%;
@@ -99,7 +138,7 @@ a.menuicon {color:#424242!important;}
   border-left:1px solid #ededed !important;
 }
 
-/*--------마이페이지--------*/
+/*--------mypage--------*/
 .dropdown-toggle.menuicon::after{
   display: inline-block;
   width: 0;
@@ -271,6 +310,7 @@ a.menuicon {color:#424242!important;}
   background-color: #fff;
   border-color: lightgrey;
 }
+
 .btn-mint.submit {
   color: #fff;
   background : hsla(165, 86%, 45%);
@@ -290,8 +330,8 @@ a.menuicon {color:#424242!important;}
 
 .btn-mint.disabled, .btn-mint:disabled {
   color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: #33f0c0;
+  border-color: #33f0c0;
 }
 
 .btn-mint:not(:disabled):not(.disabled):active, .btn-mint:not(:disabled):not(.disabled).active,
@@ -307,7 +347,9 @@ a.menuicon {color:#424242!important;}
   -webkit-box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5);
 }
-
+.btn-outline-mint.active {
+	color:#33f0c0;
+}
 /*------------------footer------------------------*/
 .layout-footer__copyright {
   font-size: 0.7rem;

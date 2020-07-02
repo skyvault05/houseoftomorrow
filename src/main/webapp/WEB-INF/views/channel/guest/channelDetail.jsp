@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib uri ="http://java.sun.com/jsp/jstl/core"
-prefix="c" %> <!doctype html> <html lang="ko"> <head> <title>내일의 집</title>
+prefix="c" %> 
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<!doctype html> <html lang="ko"> <head> <title>내일의 집</title>
 <meta charset="utf-8"> <meta name="viewport" content="width=device-width,
-initial-scale=1, shrink-to-fit=no"> <!-- bootstrap--> <link rel="stylesheet"
+initial-scale=1, shrink-to-fit=no">
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
+ <!-- bootstrap--> <link rel="stylesheet"
 href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,14 +27,60 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 
   <!-- WebFont -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
+<sec:authentication var="user" property="principal" />
 <script >
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content"); 
+	$(document).ajaxSend(function(e, xhr, options) {
+	  xhr.setRequestHeader(header, token);
+	});
+
 	$(document).ready(function() {
 			$('.user-profile_actions__etc').click(function() {
 			
 			$('.drop-down__list').toggleClass('open');
 			//$('.drop-down__list').removeClass('open');
 		});
-	});
+	
+	function pageLoad(){
+		$.ajax({
+			type:"POST",
+			url:"${pageContext.request.contextPath}/favoriteChannel/checkHeart",
+			data: "membNo="+${user.memberNo}+"&&chaNo="+1,
+			dataType:"json",
+			success:function(result){
+				var image = document.getElementById("favoriteChannel");
+				  if (result==1) {
+				    image.src = "/plugins/images/heart_off.png";
+				  } else {
+				    image.src = "/plugins/images/heart_on.png";
+				  }
+			}
+		});
+    };
+    
+    window.onload = pageLoad;
+    
+    function changeImage(){
+		$.ajax({
+			type:"POST",
+			url:"${pageContext.request.contextPath}/favoriteChannel/check",
+			data: "membNo="+${user.memberNo}+"&&chaNo="+1,
+			dataType:"json",
+			success:function(result){
+				var image = document.getElementById("favoriteChannel");
+				  if (image.src.match("off")) {
+				    image.src = "/plugins/images/heart_on.png";
+				  } else {
+				    image.src = "/plugins/images/heart_off.png";
+				  }
+			}
+		});}
+
+		$('#favoriteChannel').on('click', changeImage);
+		
+});
+
 </script>
   </head>
   
@@ -175,8 +226,12 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 										<li><a href="/expert_reviews/new?expert_id=2732&amp;source=4">리뷰쓰기</a><button type="button">팔로우</button></li>
 									</ul>
 								</div>
-							</div>
+							</div>		
+											
+							<img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel"  src="/plugins/images/heart_off.png"/>
+							
 						</div><!--end 상담하기-->
+						
 						<div class="profile_info_about"><!--업체정보-->
 							<div class="expandable-text user-profile_about">
 								<table class="user-profile_about_table">

@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import hot.channel.repository.ChannelRepository;
+import hot.channel.repository.ReviewRepository;
 import hot.member.domain.Review;
-import hot.member.repository.ChannelRepository;
+
 import hot.member.repository.MemberRepository;
-import hot.member.repository.ReviewRepository;
 import hot.review.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 

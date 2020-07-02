@@ -1,6 +1,8 @@
 package hot.estimate.domain;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -14,16 +16,14 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import hot.member.domain.Member;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name="estimate")
@@ -36,9 +36,7 @@ import lombok.ToString;
 	@SecondaryTable(name = "bathroom", pkJoinColumns = @PrimaryKeyJoinColumn(name = "est_no"))
 })
 @Getter
-@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
 public class Estimate {
@@ -70,6 +68,72 @@ public class Estimate {
 	private Tile tile;
 	@Embedded
 	private Bathroom bathroom;
+	
+	@Transient
+	private Map<String, String> estDetails = new HashMap<>();
+	
+	public void setEstimateDetails() {
+		try {
+			this.estDetails = EstimateDetails.getDetail(this);
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+	}
 
+	public void setEstNo(Integer estNo) {
+		this.estNo = estNo;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public void setEstDescription(String estDescription) {
+		this.estDescription = estDescription;
+	}
+
+	public void setEstRegdate(Timestamp estRegdate) {
+		this.estRegdate = estRegdate;
+	}
+
+	public void setEstStatus(Integer estStatus) {
+		this.estStatus = estStatus;
+	}
+
+	public void setKitchen(Kitchen kitchen) {
+		this.kitchen = kitchen;
+		this.setEstimateDetails();
+	}
+
+	public void setFloor(Floor floor) {
+		this.floor = floor;
+		this.setEstimateDetails();
+	}
+
+	public void setLinoleum(Linoleum linoleum) {
+		this.linoleum = linoleum;
+		this.setEstimateDetails();
+	}
+
+	public void setPapering(Papering papering) {
+		this.papering = papering;
+		this.setEstimateDetails();
+	}
+
+	public void setTile(Tile tile) {
+		this.tile = tile;
+		this.setEstimateDetails();
+	}
+
+	public void setBathroom(Bathroom bathroom) {
+		this.bathroom = bathroom;
+		this.setEstimateDetails();
+	}
+
+	public void setEstDetails(Map<String, String> estDetails) {
+		this.estDetails = estDetails;
+	}
+	
+	
 
 }

@@ -19,7 +19,7 @@ import lombok.ToString;
 @DynamicInsert
 @DynamicUpdate
 
-public class Kitchen{	
+public class Kitchen implements EstimateSecondaryTable{	
 	@Column(name="kitchen_type", table = "kitchen")
 	private Integer kitchenType;
 	@Column(name="kitchen_max_width", table = "kitchen")
@@ -30,5 +30,4 @@ public class Kitchen{
 	private Integer kitchenDoor;
 	@Column(name="kitchen_tile", table = "kitchen")
 	private Integer kitchenTile;
-
 }
