@@ -8,8 +8,10 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import hot.admin.repository.OrderRepository;
+import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
+import hot.channel.repository.ReviewRepository;
 import hot.channel.service.ChannelService;
 import hot.community.repository.CommCategoryRepository;
 import hot.community.repository.CommCommentRepository;
@@ -21,13 +23,11 @@ import hot.consulting.repository.ContractRepository;
 import hot.estimate.domain.Estimate;
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
-import hot.member.repository.ChannelRepository;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
 import hot.member.repository.NotificationRepository;
-import hot.member.repository.ReviewRepository;
 
 
 @SpringBootTest

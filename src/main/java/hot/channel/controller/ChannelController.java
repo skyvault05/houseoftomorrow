@@ -12,13 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 import hot.channel.domain.Channel;
 import hot.channel.domain.FavoriteChannel;
 import hot.channel.domain.FavoritePortfolio;
+import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
 import hot.channel.service.ChannelService;
 import hot.constructor.repository.PortfolioRepository;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
-import hot.member.repository.ChannelRepository;
 import hot.member.repository.MemberRepository;
 
 @Controller
