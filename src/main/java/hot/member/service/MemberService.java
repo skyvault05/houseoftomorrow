@@ -13,6 +13,12 @@ public interface MemberService {
 	 */
 	Member selectMember(String memberId);
 	
+
+	int memberUpdate(Member member);
+	int memberDelete(int memberNo);
+	String findId(String phoneNumber, String name);
+	String findPwd(Member member);
+
 	/**
 	 * phone번호 인증 (중복 불가)
 	 */

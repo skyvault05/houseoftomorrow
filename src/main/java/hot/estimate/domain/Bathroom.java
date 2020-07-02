@@ -15,7 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Bathroom{
+public class Bathroom implements EstimateSecondaryTable{
 	
 	
 	@Column(name = "bathroom_number_of_rooms", table = "bathroom")

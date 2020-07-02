@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import hot.channel.domain.Channel;
+import hot.channel.repository.ChannelRepository;
 import hot.member.domain.Member;
 import hot.member.repository.MemberRepository;
 
@@ -19,18 +21,28 @@ import hot.member.repository.MemberRepository;
 public class UserSecurityService implements UserDetailsService {
 	@Autowired
 	MemberRepository memberRep;
+	@Autowired
+	ChannelRepository channelRep;
 	
 	private final String[] roles = {"ROLE_MEMBER", "ROLE_CONSTRUCTOR", "ROLE_ADMIN"};
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Member member = memberRep.findByMemberId(username);
+		
 		if(member == null) {
 			throw new UsernameNotFoundException(username + "is not found");
 		}
+		Integer memberNo = member.getMemberNo();
+		Channel channel = channelRep.selectByMemberNo(memberNo);
+		
 		CustomUser customUser = new CustomUser();
 		customUser.setUsername(member.getMemberId());
 		customUser.setPassword(member.getMemberPwd());
 		customUser.setMemberNo(member.getMemberNo());
+		if(channel!=null) {
+			Integer chNo = channel.getChNo();
+			customUser.setChNo(chNo);
+		}
         customUser.setAuthorities(getAuthorities(username, member));
         customUser.setEnabled(true);
         customUser.setAccountNonExpired(true);

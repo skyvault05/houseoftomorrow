@@ -1,6 +1,9 @@
 package hot.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -95,9 +98,24 @@ public class MemberController {
 			return "impossible";
 		}
 	}
+
 	
+
+	@RequestMapping("/update")
+	public String memberUpdate(Member member) {
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		System.out.println(member);
+		member = new Member(null, "memberId", encoder.encode("1234"), "memberName", "memberPhone", null, memberRoleRepository.findById(1).orElse(null));
+		memberService.memberUpdate(member);
+	return "index";
+	}
+	
+
+
+
 	@RequestMapping("/requestDetail")
 	public String requestDetail() {
 		return "/estimate/member/requestDetail";
+
 	}
 }

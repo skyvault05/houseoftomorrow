@@ -13,6 +13,7 @@ public class CustomUser implements UserDetails {
 	private String username;
     private String password;
     private Integer memberNo;
+    private Integer chNo;
     private boolean isEnabled;
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;

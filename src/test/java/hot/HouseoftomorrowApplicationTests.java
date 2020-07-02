@@ -7,44 +7,39 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
-
-import hot.member.domain.Constructor;
-import hot.member.domain.ConstructorRegisterRequest;
-import hot.member.domain.Consulting;
-import hot.member.domain.Contract;
-import hot.member.domain.Member;
-import hot.member.domain.Notice;
-import hot.member.domain.Notification;
-import hot.member.domain.Portfolio;
-import hot.member.domain.Review;
-
-
-import hot.channel.domain.Channel;
-import hot.channel.domain.FavoriteChannel;
-import hot.channel.repository.FavoriteChannelRepository;
-import hot.channel.repository.FavoritePortfolioRepository;
 import hot.community.repository.CommCategoryRepository;
 import hot.community.repository.CommCommentRepository;
 import hot.community.repository.CommunityRepository;
+
+import hot.admin.repository.OrderRepository;
+import hot.channel.repository.ChannelRepository;
+import hot.channel.repository.FavoriteChannelRepository;
+import hot.channel.repository.FavoritePortfolioRepository;
+import hot.channel.repository.ReviewRepository;
+import hot.channel.service.ChannelService;
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommCommentRepository;
+import hot.community.repository.CommunityRepository;
+import hot.constructor.repository.ConstructorRepository;
 import hot.constructor.repository.PortfolioRepository;
+import hot.consulting.repository.ConsultingRepository;
+import hot.consulting.repository.ContractRepository;
+import hot.estimate.domain.Estimate;
+
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
 
-import hot.member.domain.Member;
-import hot.member.repository.ChannelRepository;
+
+import hot.member.domain.Notification;
+
+
+
 import hot.member.repository.ConstructorRegisterRequestRepository;
-import hot.member.repository.ConstructorRepository;
-import hot.member.repository.ConsultingRepository;
-import hot.member.repository.ContractRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
 import hot.member.repository.NotificationRepository;
-import hot.constructor.repository.PortfolioRepository;
-import hot.member.repository.PriceRepository;
-import hot.member.repository.ReviewRepository;
+
 
 @SpringBootTest
 @Transactional
@@ -107,6 +102,11 @@ class HouseoftomorrowApplicationTests {
 	@Autowired
 	private FavoriteChannelRepository fcRep;
 
+	
+	@Autowired
+	private ChannelService channelService;
+
+	private OrderRepository orderRep;
 	
 	@Test
 	void contextLoads() {
@@ -178,6 +178,10 @@ class HouseoftomorrowApplicationTests {
 //			System.out.println(com.getCommNo());
 //		}
 		
+		notificationRep.save(new Notification(null, memberRep.findById(1).orElse(null), 1, 1));
+		
+		//notificationRep.deleteById(4);
+	
 		
 //		noticeRep.save(new Notice(null, "타이틀", "설명", null));
 		
@@ -219,15 +223,46 @@ class HouseoftomorrowApplicationTests {
 //		fp.setPortfolio(portfolio);
 //		fpRep.save(fp);
 		
-		Member member = memberRep.findById(14).orElse(null);
-		Channel channel = channelRep.findById(1).orElse(null);
-		FavoriteChannel fc = new FavoriteChannel();
-		fc.setMember(member);
-		fc.setChannel(channel);
-		fcRep.save(fc);
+//		Member member = memberRep.findById(14).orElse(null);
+// 	Channel channel = channelRep.findById(1).orElse(null);
+//		FavoriteChannel fc = new FavoriteChannel();
+//		fc.setMember(member);
+//		fc.setChannel(channel);
+//		fcRep.save(fc);
+
+//		Channel channel = channelRep.findById(1).orElse(null);
+//		FavoriteChannel fc = new FavoriteChannel();
+//		fc.setMember(member);
+//		fc.setChannel(channel);
+//		fcRep.save(fc);
 		
+		Estimate est = estimateRepository.findById(4).orElse(null);
+		est.setEstimateDetails();
+		System.out.println("details: ");
+		est.getEstDetails().keySet().forEach(key -> System.out.println(key+":"+est.getEstDetails().get(key)));
+		System.out.println(est.getTile());
+
 		
+//		Channel channel= channelRep.findById(1).orElse(null);
+//		Member member = memberRep.findById(8).orElse(null);		
+//		FavoriteChannel favChannel = fcRep.findByMemberAndChannel(member, channel);		
+//		if(favChannel == null) { // 등록한다.
+//			FavoriteChannel favoriteChannel = new FavoriteChannel();		
+//			favoriteChannel.setChannel(channelRep.findById(1).orElse(null));
+//			favoriteChannel.setMember(memberRep.findById(8).orElse(null));			
+//			channelService.insertFavoriteChannel(8, 1);
+//		} else { // 삭제한다
+//			channelService.deleteFavoriteChannel(8, 1);
+//		}
+		
+//		Member member = memberRep.findById(14).orElse(null);
+//		Portfolio portfolio = portRep.findById(32).orElse(null);	
+//		FavoritePortfolio favPort = fpRep.findByMemberAndPortfolio(member, portfolio);
+//		if(favPort==null) {
+//			channelService.insertFavoritePortfolio(14, 32);
+//		} else {
+//			channelService.deleteFavoritePortfolio(14, 32);
+//		}
 	}
-	
 }
 	

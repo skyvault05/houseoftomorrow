@@ -1,4 +1,4 @@
-package hot.member.domain;
+package hot.consulting.domain;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -17,7 +17,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import hot.channel.domain.Channel;
+import hot.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,13 +44,11 @@ public class Consulting {
 	@Column(name = "consul_no")
 	private Integer consulNo;
 	
-	@ManyToOne
 	@JoinColumn(name = "member_no")
-	private Member member;
+	private Integer memberNo;
 	
-	@ManyToOne
 	@JoinColumn(name = "ch_no")
-	private Channel channel;
+	private Integer chNo;
 	
 	@Column(name = "consul_description")
 	private String consulDescription;
@@ -60,7 +63,6 @@ public class Consulting {
 	private Integer consulStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "consulParentNo")
-	private List<Consulting> consultChildNo;
-
+	private List<Consulting> consultChild;
 
 }

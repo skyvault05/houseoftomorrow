@@ -1,15 +1,11 @@
 package hot.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import lombok.extern.java.Log;
 
@@ -37,11 +33,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.passwordParameter("password")
 		.permitAll();
 		
+//		http.logout()
+//		.invalidateHttpSession(true)
+//		.logoutUrl("/logout")
+//		.logoutSuccessUrl("/")
+//		.permitAll();
+		
 		http.logout()
-		.invalidateHttpSession(true)
-		.logoutUrl("/logout")
-		.logoutSuccessUrl("/common/loginForm")	//로그아웃 성공시 로그인 페이지로
-		.permitAll();
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))            
+        .logoutSuccessUrl("/")
+        .invalidateHttpSession(true)        // set invalidation state when logout
+        .deleteCookies("JSESSIONID")        
+        .and();
+		
+		http.csrf()
+        .ignoringAntMatchers("/channel/constructor/**")
+        .and();
+		
+		
 		
 		
 	}

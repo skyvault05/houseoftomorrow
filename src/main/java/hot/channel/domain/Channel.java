@@ -1,6 +1,7 @@
 package hot.channel.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,6 +20,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import hot.member.domain.Constructor;
+import hot.member.domain.Review;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -58,7 +61,8 @@ public class Channel {
 	@Column(name = "ch_grades")
 	private Double chGrades;
 	
-	
+	@OneToMany(mappedBy = "channel")
+	private List<Review> reviews = new ArrayList<Review>();
 	
 	
 //	public Channel(Long chNo, String chImg, String chDescription, Timestamp chRegdate, Constructor constructor,
