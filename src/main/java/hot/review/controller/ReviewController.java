@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,32 +37,34 @@ public class ReviewController {
 	public String insertReview(Review review, Integer chNo, Integer memberNo) {
 		System.out.println(review);
 		reviewService.insertReview(review, chNo, memberNo);
-		return "redirect:readReview"+review.getReviewNo();
+		return "redirect:readReviewF"+review.getReviewNo();
 	}
 	
-	@RequestMapping("/updateReviewF")
+	@RequestMapping("/updateReview")
 	public String updateReview(Review review) {
+		
 		reviewService.updateReview(review);
 		return "";
 	}
 	
-	@RequestMapping("/readReviewF{reviewNo}")
-	public ModelAndView updateReviewForm(int reviewNo) {
-		Review review = reviewService.updateReviewForm(reviewNo);
-		return new ModelAndView("readReviewF", "review", review);
+	@RequestMapping("/readReview/{reviewNo}")
+	public ModelAndView readReview(@PathVariable("reviewNo") Integer reviewNo) {
+		System.out.println("들어옴");
+		Review review = reviewService.readReview(reviewNo);
+		return new ModelAndView("/review/readReview", "review", review);
 	}
 	
 	@RequestMapping("/delete")
-	public String deleteReview(int reviewNo) {
+	public String deleteReview(Integer reviewNo) {
 		reviewService.deleteReview(reviewNo);		
 		return "index";
 	}
 	
-	@RequestMapping("/select")
-	public ModelAndView selectReview(int chNo) {
-		List<Review> list = reviewService.selectReview(chNo);
+	@RequestMapping("/reviewList")
+	public ModelAndView selectReview(Integer chNo) {
+		List<Review> list = reviewService.selectReviewChNo(1);
 		
-		return new ModelAndView("channel", "list", list);
+		return new ModelAndView("review/reviewList", "review", list);
 
 	}
 	

@@ -160,7 +160,7 @@
 			<div class="expert-user-form__form-group__label"><h6>시공 전문가 상호 / 작업자명</h6></div>
 			<div class="expert-user-form__form-group__input">
 			<div class="input-group telephone-input expert-review-form__telephone-input">
-			<input type="constructionName" name="constructionName" class="form-control name-input__input" size="1"  value="" placeholder="${review.reviewDescription}">
+			<input type="constructionName" name="constructionName" class="form-control name-input__input" size="1"  value="" >
 			</div>
 			</div>
 			</div>
@@ -197,7 +197,7 @@
 
 
 			
-<button class="expert-insert-button" type="submit"value="수정하기">수정하기</button>
+<button class="expert-insert-button" type="submit"value="등록하기">등록하기</button>
 <button type="button" name="delete">삭제</button>
 			
 

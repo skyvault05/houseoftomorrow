@@ -42,7 +42,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public void deleteReview(int reviewNo) {
+	public void deleteReview(Integer reviewNo) {
 		Review review = reviewRep.findById(reviewNo).orElse(null);
 		if(review!=null) {
 			review.setReviewStatus(0);
@@ -51,7 +51,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<Review> selectReview(int chNo) {
+	public List<Review> selectReviewChNo(Integer chNo) {
 		List<Review> list = null;
 		Channel channel = channelRep.findById(chNo).orElse(null);
 		if(channel != null) {
@@ -59,11 +59,24 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		return list;
 	}
+	
+	@Override
+	public Review selectReviewRe(Integer reviewNo) {
+		Review review = reviewRep.findById(reviewNo).orElse(null);
+		
+		return null;
+	}
 
 	@Override
-	public Review updateReviewForm(int reviewNo) {
+	public Review updateReviewForm(Integer reviewNo) {
 		Review review = reviewRep.findById(reviewNo).orElse(null);
 		return review;
+	}
+
+	@Override
+	public Review readReview(Integer reviewNo) {
+		System.out.println(reviewNo);
+		return reviewRep.findById(reviewNo).orElse(null);
 	}
 
 }
