@@ -52,10 +52,7 @@ public class ChannelController {
 	 * */
 	@ResponseBody
 	@RequestMapping("/favoriteChannel/check")
-	public void favorateChannel(Integer membNo, Integer chaNo) {
-		System.out.println("컨트롤러 들어옴");
-		System.out.println("membNo: " + membNo);
-		System.out.println("chaNo: " + chaNo);
+	public Integer favorateChannel(Integer membNo, Integer chaNo) {
 		Channel channel= channelRep.findById(chaNo).orElse(null);
 		Member member = memberRep.findById(membNo).orElse(null);
 		
@@ -71,7 +68,27 @@ public class ChannelController {
 		} else { // 삭제한다.
 			channelService.deleteFavoriteChannel(membNo, chaNo);
 		}
+		return 1;
 	}
+	
+	/**
+	 * 새로고침할 때 하트 값 설정
+	 * */
+	@ResponseBody
+	@RequestMapping("/favoriteChannel/checkHeart")
+	public Integer favorateChannelCheck(Integer membNo, Integer chaNo) {
+		Channel channel= channelRep.findById(chaNo).orElse(null);
+		Member member = memberRep.findById(membNo).orElse(null);
+		
+		FavoriteChannel favChannel = fcRep.findByMemberAndChannel(member, channel);
+		
+		if(favChannel == null) { // 빈하트
+			return 1;
+		} else { // 꽉찬하트
+			return 2;
+		}
+	}
+	
 	
 	/**
 	 * 로그인한 회원의 관심채널 목록
