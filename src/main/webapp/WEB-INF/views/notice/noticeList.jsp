@@ -61,12 +61,13 @@
 	</div>
 	
 	<c:forEach items="${requestScope.notice}" var="notice" >
+	
 	<div class="row">
 	
  	<div class="col-xs-12 col-sm-6 col-md-3"><a href="${pageContext.request.contextPath}/notice/read/${notice.noticeNo}">${notice.noticeNo}</a></div>
- 	<div class="col-xs-12 col-sm-6 col-md-3">${notice.noticeTitle}</div>
-	<div class="col-xs-12 col-sm-6 col-md-3">${notice.noticeDescription}</div>
-	<div class="col-xs-12 col-sm-6 col-md-3">${notice.noticeRegdate} </div>
+ 	<div class="col-xs-12 col-sm-6 col-md-3">${notice.noticeTitle} </div>
+	<div class="col-xs-12 col-sm-6 col-md-3">${notice.noticeDescription} </div>
+	<div class="col-xs-12 col-sm-6 col-md-3">${notice.noticeRegdate}  </div>
 	</div>
 	</c:forEach>
 	

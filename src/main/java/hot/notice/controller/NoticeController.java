@@ -52,7 +52,7 @@ public class  NoticeController {
 	 * notice 수정
 	 * */
 	@RequestMapping("/update")
-	public String updateNotice(@ModelAttribute("notice")Notice notice) {//번호,ㅈ ㅔ목, 내용
+	public String updateNotice(@ModelAttribute("notice")Notice notice) {//번호,제목, 내용
 		
 		//Integer no = notice.getNoticeNo();
 		noticeService.updateNotice(notice);
