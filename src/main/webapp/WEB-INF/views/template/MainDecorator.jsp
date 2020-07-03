@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title><sitemesh:write property='title' /></title>
+<link rel="stylesheet" type="text/css" href="/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="/css/main/main.css">
 <sitemesh:write property='head' />
 </head>
 <body>
@@ -155,5 +157,19 @@
         <div class="toast-message-root"></div>
       </div><!-- container end -->
     </footer>
+     <!-- END footer -->
+
+    <!-- scripts -->
+<!--    <script src="/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/plugins/jquery/jquery-3.4.1.min.js"></script> -->
+    <script src="/js/common/popper.min.js"></script>
+    <script src="/js/common/owl.carousel.min.js"></script>
+    <script src="/js/common/jquery.waypoints.min.js"></script>
+    <script src="/js/common/jquery.fancybox.min.js"></script>
+    <script src="/js/common/main.js"></script>
+
+    
+   <!-- ICON -->
+   <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </body>
 </html>

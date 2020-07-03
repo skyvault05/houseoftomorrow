@@ -23,8 +23,6 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
   <link rel="stylesheet" type="text/css" href="/css/main/jquery.fancybox.min.css">
 
   <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/main.css">
   <link rel="stylesheet" type="text/css" href="/css/channel/channel.css">
 
   <!-- WebFont -->
@@ -290,20 +288,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <div class="empty-space"></div>
 <!-- start footer -->
     
-    <!-- END footer -->
-
-    <!-- scripts -->
-<!--    <script src="/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="/plugins/jquery/jquery-3.4.1.min.js"></script> -->
-    <script src="/js/common/popper.min.js"></script>
-    <script src="/js/common/owl.carousel.min.js"></script>
-    <script src="/js/common/jquery.waypoints.min.js"></script>
-    <script src="/js/common/jquery.fancybox.min.js"></script>
-    <script src="/js/common/main.js"></script>
-
-    
-   <!-- ICON -->
-   <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+   
 
   </body>
 </html>
