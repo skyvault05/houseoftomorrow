@@ -54,6 +54,15 @@ public class CommunityController {
 	public void url3() {}
 	
 	/**
+	 * commuity main
+	 * */
+	@RequestMapping("/community/guest/communityMain")
+	public String communityMain() {
+		return "community/guest/communityMain";
+	}
+
+	
+	/**
 	 * write.jsp에서 qna등록 폼으로 이동하게
 	 * */
 	@RequestMapping("/manage/member/QNAForm")
