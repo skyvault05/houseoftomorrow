@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,14 +18,19 @@ import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
 import hot.channel.service.ChannelService;
 import hot.constructor.repository.PortfolioRepository;
+import hot.consulting.domain.Consulting;
+import hot.consulting.domain.Contract;
+import hot.consulting.repository.ConsultingRepository;
+import hot.consulting.repository.ContractRepository;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
 import hot.member.repository.MemberRepository;
+import hot.review.domain.Review;
+import hot.review.repository.ReviewRepository;
 
 @Controller
 @RequestMapping("/channel")
 public class ChannelController {
-
 
 	@Autowired
 	private ChannelService channelService;
@@ -38,17 +44,45 @@ public class ChannelController {
 	@Autowired
 	private FavoritePortfolioRepository fpRep;
 	
-	
 	@Autowired
 	private ChannelRepository channelRep;
 	
 	@Autowired
 	private PortfolioRepository portRep;
-
 	
-	@RequestMapping("/channelDetail")
-	public String chDetail() {
-		return "/channel/guest/channelDetail";
+	@Autowired
+	private ConsultingRepository consultingRep;
+	
+	@Autowired
+	private ReviewRepository reviewRep;
+	
+	/**
+	 * 채널 목록
+	 * */
+	@RequestMapping("/channelAll")
+	public ModelAndView channelAll() {
+		System.out.println("컨트롤러");
+		List<Channel> list = channelService.channelList();
+		
+		return new ModelAndView("channel/guest/channelAll", "list", list);
+	}
+	
+	/**
+	 * 채널 상세 페이지
+	 * 
+	 * + 채널 상세에 두 개만 나오는 리뷰
+	 * */
+	@RequestMapping("/channelDetail/{chNo}")
+	public ModelAndView chDetail(@PathVariable(name="chNo")int chNo) {
+
+		Channel channel = channelService.selectChannel(chNo);
+		List<Review> list = reviewRep.findByChannelNoAndReviewStatusTop2ByOrderBySeqDesc(channel, 1);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/channel/guest/channelDetail");
+		mv.addObject("channel", channel);
+		mv.addObject("list", list);
+		return mv;
 	}
 
 
@@ -101,7 +135,6 @@ public class ChannelController {
 		}
 	}
 	
-	
 	/**
 	 * 로그인한 회원의 관심채널 목록
 	 * */
@@ -140,6 +173,30 @@ public class ChannelController {
 		List<FavoritePortfolio> fport = channelService.myFavoritePortfolio(membNo);
 		
 		return new ModelAndView("channel/member/favoritePortfolio", "fport", fport);
+	}
+	
+	/**
+	 * 리뷰 등록 가능 여부 확인
+	 * */
+	@RequestMapping("/check/impossibleReview")
+	public ModelAndView checkReview(Integer memberNo, Integer chNo) {
+
+		int consultingCount = consultingRep.findCountByMemberNoAndChNo(memberNo, chNo);
+		int reviewCount = reviewRep.findCountByMemberNoAndChNo(memberNo, chNo);
+		
+		System.out.println("consultingCount: "  + consultingCount);
+		System.out.println("reviewCount: "  + reviewCount);
+		
+		//Consulting consulting = consultingRep.findByMemberNoAndChNo(memberNo, chNo);
+		Channel channel = channelRep.findById(chNo).orElse(null);
+		
+		if(consultingCount != reviewCount) { // 상담 후, 시공이 확정된 수만큼 리뷰가 없다는 뜻(더 많을 수는 없잖아 원래)
+			return new ModelAndView("review/member/reviewform", "channel", channel); 
+		} else { // 상담 후, 시공이 확정된 수만큼 리뷰가 있다는 것이기 때문에 모든 리뷰 다 등록됨
+			return new ModelAndView("redirect:../channelDetail/"+chNo);
+			// ../를 사용하지 않으면 channel/check/channelDetail로 간다.
+			// 여기 뒤에 chNo 들어가야된다. 안그러면 엄한 페이지로 넘어감 !!!!
+		}
 	}
 
 }

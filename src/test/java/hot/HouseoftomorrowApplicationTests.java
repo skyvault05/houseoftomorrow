@@ -1,22 +1,19 @@
 package hot;
 
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import hot.community.repository.CommCategoryRepository;
-import hot.community.repository.CommCommentRepository;
-import hot.community.repository.CommunityRepository;
-
 import hot.admin.repository.OrderRepository;
+import hot.channel.domain.Channel;
 import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
-import hot.channel.repository.ReviewRepository;
 import hot.channel.service.ChannelService;
 import hot.community.repository.CommCategoryRepository;
 import hot.community.repository.CommCommentRepository;
@@ -26,18 +23,16 @@ import hot.constructor.repository.PortfolioRepository;
 import hot.consulting.repository.ConsultingRepository;
 import hot.consulting.repository.ContractRepository;
 import hot.estimate.domain.Estimate;
-
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
-
 import hot.member.domain.Notification;
-
-
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
 import hot.member.repository.NotificationRepository;
+import hot.review.domain.Review;
+import hot.review.repository.ReviewRepository;
 
 
 @SpringBootTest
@@ -257,6 +252,8 @@ class HouseoftomorrowApplicationTests {
 //		} else {
 //			channelService.deleteFavoritePortfolio(14, 32);
 //		}
+		
+		
 	}
 }
 	

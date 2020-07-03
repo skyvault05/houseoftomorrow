@@ -16,16 +16,14 @@ import hot.channel.domain.FavoritePortfolio;
 import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
-import hot.channel.repository.ReviewRepository;
 import hot.constructor.repository.ConstructorRepository;
 import hot.constructor.repository.PortfolioRepository;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
-import hot.member.domain.Review;
 import hot.member.repository.MemberRepository;
+import hot.review.domain.Review;
+import hot.review.repository.ReviewRepository;
 import hot.review.service.ReviewService;
-
-
 
 @Service
 public class ChannelServiceImpl implements ChannelService {
@@ -38,9 +36,8 @@ public class ChannelServiceImpl implements ChannelService {
 	@Autowired
 	private S3Manager s3Manager;
 	@Autowired
-
-	private ReviewService reviewService;
-
+	private ReviewService reviewService;	
+	@Autowired
 	private MemberRepository memberRep;
 	@Autowired
 	private FavoriteChannelRepository fcRep;
@@ -96,6 +93,8 @@ public class ChannelServiceImpl implements ChannelService {
 	 * */
 	@Override
 	public void insertFavoriteChannel(Integer membNo, Integer chaNo) {
+		System.out.println("서비스 들어옴");
+		System.out.println("membNo: " + membNo);
 		Member member = memberRep.findById(membNo).orElse(null);
 		Channel channel = channelRepository.findById(chaNo).orElse(null);
 		FavoriteChannel fc = new FavoriteChannel();
@@ -109,7 +108,7 @@ public class ChannelServiceImpl implements ChannelService {
 	 * */
 	@Transactional(dontRollbackOn=Exception.class)
 	@Override
-	public void deleteFavoriteChannel(int membNo, int chaNo) {
+	public void deleteFavoriteChannel(Integer membNo, Integer chaNo) {
 		Member member = memberRep.findById(membNo).orElse(null);
 		Channel channel = channelRepository.findById(chaNo).orElse(null);
 		
@@ -163,7 +162,7 @@ public class ChannelServiceImpl implements ChannelService {
 	}
 
 	/**
-	 * 채널조회
+	 * 채널상세 조회
 	 */
 	@Override
 	public Channel selectChannel(int ChNo) {
@@ -171,5 +170,15 @@ public class ChannelServiceImpl implements ChannelService {
 		
 		return channelRepository.findById(ChNo).orElse(null);
 		
+	}
+
+	/**
+	 * 채널 목록 조회
+	 * */
+	@Override
+	public List<Channel> channelList() {
+		System.out.println("서비스");
+		List<Channel> list = channelRepository.findByChStatus(0); // 기본값이 1이 아닌 0인가봄.
+		return list;
 	}
 }
