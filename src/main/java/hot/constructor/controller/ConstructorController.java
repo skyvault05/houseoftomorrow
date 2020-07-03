@@ -124,6 +124,8 @@ public class ConstructorController {
 		order.setConstructor(constructor);
 		order.setPortfolio(portfolio);
 		
+		
+		
 		// ajax에서 받아올 정보들 
 		
 		
