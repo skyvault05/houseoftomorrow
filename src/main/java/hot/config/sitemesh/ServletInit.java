@@ -1,11 +1,9 @@
-package hot.security;
+package hot.config.sitemesh;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import hot.config.sitemesh.CustomSiteMeshFilter;
 
 @Configuration
 public class ServletInit extends SpringBootServletInitializer {
