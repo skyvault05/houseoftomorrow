@@ -138,10 +138,12 @@
 
 
 
-<form class="expert-calculate" novalidate action="/review/updateReviewF" method="post">
+<form class="expert-calculate" novalidate action="${pageContext.request.contextPath}/review/updateReview" method="post">
  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
  <input type="hidden" name="memberNo" value="${user.memberNo}">
- <input type="hidden" name="chNo" value="1">
+ <input type="hidden" name="chaNo" value="1"><!-- 여기 꼭 value 값 바꿔야된다. -->
+ <input type="hidden" name="reviewNo" value="${param.reviewNo}"/>
+ <input type="hidden" name="reviewRegdate" value="${review.reviewRegdate}"/>
 <div class="expert-calculate__main-wrap container">
 	<div class="expert-calculate__main row">
 		
@@ -157,10 +159,9 @@
 			
 			<div>
 			<div class="expert-user-form__form-group">
-			<div class="expert-user-form__form-group__label"><h6>시공 전문가 상호 / 작업자명</h6></div>
+			<div class="expert-user-form__form-group__label"><h3> [ ${review.channel.constructor.conName} ]  시공사 리뷰</h3></div>
 			<div class="expert-user-form__form-group__input">
 			<div class="input-group telephone-input expert-review-form__telephone-input">
-			<input type="constructionName" name="constructionName" class="form-control name-input__input" size="1"  value="" >
 			</div>
 			</div>
 			</div>
@@ -175,11 +176,11 @@
 
 <div class="container">
          <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
-            <input type="radio" id="star5" name="reviewGrade" value="5" /><label for="star5" title="5 star"></label>
-            <input type="radio" id="star4" name="reviewGrade" value="4" /><label for="star4" title="4 star"></label>
-            <input type="radio" id="star3" name="reviewGrade" value="3" /><label for="star3" title="3 star"></label>
-            <input type="radio" id="star2" name="reviewGrade" value="2" /><label for="star2" title="2 star"></label>
-            <input type="radio" id="star1" name="reviewGrade" value="1" /><label for="star1" title="1 star"></label>
+				<input type="radio" id="star5" name="reviewGrade" value="5" /><label for="star5" title="5 star"></label>
+	            <input type="radio" id="star4" name="reviewGrade" value="4" /><label for="star4" title="4 star"></label>
+	            <input type="radio" id="star3" name="reviewGrade" value="3" /><label for="star3" title="3 star"></label>
+	            <input type="radio" id="star2" name="reviewGrade" value="2" /><label for="star2" title="2 star"></label>
+	            <input type="radio" id="star1" name="reviewGrade" value="1" /><label for="star1" title="1 star"></label>
         </div>
   </div>
 
@@ -189,24 +190,15 @@
 <div class="expert-user-form__form-group">
 <div class="expert-user-form__form-group__label"><h6>총평</h6></div>
 <div class="expert-user-form__form-group__description">인테리어 시공 전문가님의 서비스와 작업물 전반에 대하여 간단한 총평을 부탁드립니다.</div>
-<div class="expert-user-form__form-group__input"><textarea id="summernote" name="reviewDescription">
-</textarea>
+<div class="expert-user-form__form-group__input">
+<textarea id="summernote" name="reviewDescription" >${review.reviewDescription}</textarea>
 </div>
 </div>
 </div>
 
 
 			
-<button class="expert-insert-button" type="submit"value="등록하기">등록하기</button>
-<button type="button" name="delete">삭제</button>
-			
-
-
-			
-
-
-
-
+<button class="expert-insert-button" type="submit"value="수정하기">수정하기</button>		
 		</section><!--end section-->
 	</div><!--end main row-->
 </div>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,19 +54,17 @@
    <div class="col-xs-12" >리뷰list</div>
    </div>
    <div class="row">
-   <div class="col-md-6">글번호</div>
-   
-   <div class="col-md-6">날짜</div>
+   <div class="col-md-4">글쓴이</div>
+   <div class="col-md-4">평점</div>
+   <div class="col-md-4">날짜</div>
    </div>
    
    <c:forEach items="${requestScope.review}" var="review" >
    
    <div class="row">
-   
-    <div class="col-xs-12 col-sm-6 "><a href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}">${review.reviewNo}</a></div>
-   
-   
-   <div class="col-xs-12 col-sm-6 ">${review.reviewRegdate}  </div>
+   <div class="col-xs-12 col-sm-4 "><a href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}">${review.member.memberName}</a></div>
+   <div class="col-xs-12 col-sm-4 "><a href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}">${review.reviewGrade}</a></div>
+   <div class="col-xs-12 col-sm-4 "><a href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}"><fmt:formatDate value="${review.reviewRegdate}" pattern="yyyy-MM-dd HH:mm"/></a></div>
    </div>
    </c:forEach>
    

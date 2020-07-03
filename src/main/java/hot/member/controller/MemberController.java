@@ -63,6 +63,7 @@ public class MemberController {
 	@PostMapping("/conSignup")
 	public String ConstructorInsert(Member member, Constructor constructor, Channel channel, MultipartFile chImgFile) {
 		member.setMemberRole(memberRoleRepository.findById(2).orElse(null));
+		member.setMemberPwd(passwordEncoder.encode(member.getMemberPwd()));
 		constructor.setMember(member);
 		channel.setChImg("sample.jpg");
 		channel.setConstructor(constructor);

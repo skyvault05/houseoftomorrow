@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +23,6 @@ import hot.constructor.service.portfolioServiceImpl;
 import hot.member.domain.Constructor;
 import hot.member.domain.Order;
 import hot.member.domain.Portfolio;
-import hot.member.domain.Price;
 import hot.security.CustomUser;
 import lombok.RequiredArgsConstructor;
 
@@ -46,14 +45,18 @@ public class ConstructorController {
 	
 	
 	@RequestMapping("/channel/constructor/portfolioForm")
-	ModelAndView portfolioForm() {
-		System.out.println("폼 진입");
+	public String portfolioForm() {
+		return "/channel/constructor/portfolioForm";
+	}
+	
+	@RequestMapping("/channel/constructor/pttest")
+	public ModelAndView test() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
+		Integer chNo = ((CustomUser)principal).getChNo();
+		List<Portfolio> portlist = portfolioService.selectPortfolioChNo(chNo);
 		
-		int ChNo = 1;
-		List<Portfolio> portlist = portfolioService.selectPortfolioChNo(ChNo);
-		
-		return new ModelAndView("/channel/constructor/portfolioForm", "portlist", portlist);
-	};
+		return new ModelAndView("/channel/constructor/myChannel","portlist", portlist);
+	}
 	
 	
 	
@@ -85,17 +88,8 @@ public class ConstructorController {
 	@RequestMapping("/channel/constructor/insertPort")
 	public ModelAndView insertPortfolio2(String portTitle, 
 			String portDescription, MultipartFile file, 
-			Date portStartDate, Date portEndDate, String portImg, String ChNo) throws IOException{
-		//폼이랑 name명 잘 맞출 것
-		
-		System.out.println("-------------------------------");
-		
-		System.out.println(portDescription);
-		System.out.println(portStartDate);
-		System.out.println(portEndDate);
-		System.out.println(ChNo);
-		
-		int ChannelNo = Integer.parseInt(ChNo); 
+			Date portStartDate, Date portEndDate, String portImg, String chNo) throws IOException{	
+		int ChannelNo = Integer.parseInt(chNo); 
 		
 		Long sd=portStartDate.getTime();
 		Long ed=portEndDate.getTime();
@@ -130,22 +124,7 @@ public class ConstructorController {
 		order.setConstructor(constructor);
 		order.setPortfolio(portfolio);
 		
-		///////////////////////////
-		Price price = new Price();
-		price.setPriceNo(1);
-		price.setPriceName("등록비");
-		price.setPriceAmount(100);
-		///////////////////////////
-		
-		order.setPrice(price);
-		
-		
-	
-		
 		// ajax에서 받아올 정보들 
-		order.setOrderMethod("kakao");
-		order.setOrderStatus(1);
-		order.setOrderPayment(1);
 		
 		
 		//orderService.insertOrder(order);
@@ -160,19 +139,19 @@ public class ConstructorController {
 		
 		System.out.println("포트폴리오 : " + portlist.size());
 		
-		return new ModelAndView("channel/constructor/myChannel", "portlist", portlist); 
+		return new ModelAndView("redirect:/channel/guest/channelDetail", "portlist", portlist); 
 	}
 	
 	////////////////////////////////////////////////////////////
 	
-	@RequestMapping("/channel/constructor/myChannel")
-	public ModelAndView myChannel(Model model) {
+	@RequestMapping("/channel/guest/channelDetail/{chNo}")
+	public ModelAndView myChannel(@PathVariable Integer chNo) {
+		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
+		Channel channel = channelService.selectChannel(chNo);
 		
-		int chNo =1;
-		List<Portfolio> portlist = portfolioService.selectPortfolioChNo(chNo);
-		
-		return new ModelAndView("/channel/constructor/myChannel","portlist", portlist);
-		
+		ModelAndView mv = new ModelAndView("/channel/guest/channelDetail","portList", portList);
+		mv.addObject("channel", channel);
+		return mv;
 	}
 	
 		

@@ -10,18 +10,17 @@ import hot.channel.domain.FavoritePortfolio;
 
 public interface ChannelService {
 
-
+	List<Channel> channelList();
 	
 	Channel selectChannel(int ChNo);
 
 	void insertChannel(Channel channel, MultipartFile chImg);
 	
-
 	void updateGrade(Integer chNo);
 
 	void insertFavoriteChannel(Integer membNo, Integer chaNo);
 	
-	void deleteFavoriteChannel(int membNo, int chaNo);
+	void deleteFavoriteChannel(Integer membNo, Integer chaNo);
 	
 	List<FavoriteChannel> myFavoriteChannel(int membNo);
 	
