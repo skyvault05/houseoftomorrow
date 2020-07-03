@@ -6,7 +6,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,10 +16,12 @@ import hot.channel.domain.FavoritePortfolio;
 import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
+import hot.constructor.repository.ConstructorRepository;
 import hot.constructor.repository.PortfolioRepository;
+import hot.member.domain.ConstructorRegisterRequest;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
-import hot.constructor.repository.ConstructorRepository;
+import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 
 
@@ -40,6 +41,8 @@ public class ChannelServiceImpl implements ChannelService {
 	private FavoritePortfolioRepository fpRep;
 	@Autowired
 	private PortfolioRepository portRep;
+	@Autowired
+	ConstructorRegisterRequestRepository conRegiRequestRep;
 	/**
 	 * 채널등록
 	 */
@@ -50,8 +53,11 @@ public class ChannelServiceImpl implements ChannelService {
 			if (chImg.isEmpty())throw new RuntimeException("파일이 없습니다.");
 			String fileName = s3Manager.saveUploadedFiles(chImg);
 			channel.setChImg(fileName);
+			ConstructorRegisterRequest conRegiRequest = new ConstructorRegisterRequest();
+			conRegiRequest.setChannel(channel);
 			constructorRepository.save(channel.getConstructor());
 			channelRepository.save(channel);
+			conRegiRequestRep.save(conRegiRequest);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

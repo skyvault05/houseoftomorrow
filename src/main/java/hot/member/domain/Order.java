@@ -42,10 +42,6 @@ public class Order {
 	@JoinColumn(name = "port_no")
 	private Portfolio Portfolio;
 	
-	@ManyToOne
-	@JoinColumn(name = "price_no")
-	private Price price;
-	
 	@Column(name = "order_regdate")
 	private Timestamp orderRegdate;
 	

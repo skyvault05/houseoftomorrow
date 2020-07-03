@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib uri ="http://java.sun.com/jsp/jstl/core"
 prefix="c" %> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!doctype html> <html lang="ko"> <head> <title>내일의 집</title>
 <meta charset="utf-8"> <meta name="viewport" content="width=device-width,
@@ -37,9 +38,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <script>
 	function changeImage() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/favoriteChannel/check?membNo=${user.memberNo}&chaNo=1",
-			
-			success : fucntion(){
+			url : "${pageContext.request.contextPath}/favoriteChannel/check?membNo=${user.memberNo}&chaNo=1",			
+			success : fucntion(){				
 				var image = document.getElementById("favoriteChannel");
 				  if (image.src.match("off")) {
 				    image.src = "/plugins/images/heart_on.png";
@@ -56,6 +56,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
   </head>
   
   <body>
+  <sec:authentication property="principal" var="user"/>
     <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -168,27 +169,21 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 							</div>
 							<div class="user_profile__info">
 								<div class="profile_name">
-									<span>The_dana_design</span>
+									<span>${channel.constructor.conName}</span>
 								</div>
 								<div class="profile_info_reviews">
 									<a class="profile_info_reviews__link" href="#/users/2112978/reviews"><span class="profile_info_reviews_stars" aria-label="별점 5.0점">
+										<c:forEach begin="1" end="${channel.chGrades}">
 										<svg fill="#35C5F0" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
-										<svg fill="#35C5F0" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
-										<svg fill="#35C5F0" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
-										<svg fill="#35C5F0" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
-										<svg fill="#35C5F0" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg></span> 
-										<span class="profile-info_reviews__count">n개</span>
+										</c:forEach>
 									</a>
-									<span class="expert-review-popup-button">
-										<a class="profile-info_reviews_write" href="/expert_reviews/new?expert_id=2732&amp;source=4">리뷰쓰기</a>
-									</span>
 								</div><!-- end profile_info_reviews-->
 							</div><!--user_proifle__info-->
 						</div><!--user_proifle__conatiner-->
 
 						<div class="user_profile__consultation pb-4"><!--상담하기-->
 							<div class="user_profile__btn-actions">
-								<a class="btn btn-primary user-profile_actions_action" href="#">상담신청</a>
+								<a class="btn btn-primary user-profile_actions_action col-md-8" href="#">상담신청</a>
 								<div class="drop-down user-profile_actions_etc-wrap">
 									<button class="btn user-profile_actions__etc" type="button">
 										<svg class="icon" width="24" height="24" preserveAspectRatio="xMidYMid meet"><path d="M6 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#000" fill-opacity=".7" fill-rule="evenodd"></path></svg>
@@ -205,20 +200,21 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 						<div class="profile_info_about"><!--업체정보-->
 							<div class="expandable-text user-profile_about">
 								<table class="user-profile_about_table">
+								<c:set var="addrSplit" value="${fn:split(channel.constructor.conAddr, ' ')}" />
 										<tr>
 											<th>위치</th>
-											<td>경기 용인시 기흥구</td>
+											<td>${addrSplit[1]} ${addrSplit[2]} ${addrSplit[3]}</td>
 										</tr>
 										<tr>
 											<th>경력</th>
-											<td>5-10년</td>
+											<td>${channel.constructor.conCareer}년</td>
 										</tr>
 										<tr>
 											<th>A/S</th>
 											<td>12<!-- -->개월</td>
 										</tr>
 									</table>
-									<div class="user-profile_about_about">life  is  story 공감가득한 삶의 이야기</div>
+									<div class="user-profile_about_about">${channel.chDescription}</div>
 								</div>
 						</div><!--end 업체정보-->
 
@@ -284,87 +280,30 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 
 				<!--포트폴리오-->
 				<section class="post post--projects">
-					<h5 class="post__title">포트폴리오 <strong>17</strong>
-						<a class="post__title__show-all" href="#">전체보기</a>
+					<h5 class="post__title">포트폴리오 <strong>${portList.size()}</strong>
+						<span class="post__title__show-all">
+						<c:if test="${user.memberNo == channel.constructor.member.memberNo}">
+						<a class="" href="/channel/constructor/portfolioForm">포트폴리오 쓰기</a>
+						</c:if>
+						<a class="" href="#">전체보기</a>
+						</span>
 					</h5>
 					<div class="post--contents__list-wrap">
 						<div class="row post--contents__list" style="transform:translateX(-0px)">
-							<div class="col-6 col-md-3 post--contents__item-wrap">
-								<a href="#">
-									<div class="post--contents__item">
-										<div style="position:relative">
-											<img class="post--contents__item__img" src="${pageContext.request.contextPath}/images/default/portfolio_thumb.png"/>
+							<c:forEach items="${portList}" var="port">
+								<div class="col-6 col-md-3 post--contents__item-wrap">
+									<a href="#">
+										<div class="post--contents__item">
+											<div style="position:relative">
+												<img class="post--contents__item__img" src="${port.portImg}"/>
+											</div>
+											<p class="post--contents__item__title">${port.portTitle}</p>
 										</div>
-										<p class="post--contents__item__title">Lorem ipsum dolor sit amet</p>
-									</div>
-								</a>
-							</div>
-							<div class="col-6 col-md-3 post--contents__item-wrap">
-								<a href="#">
-									<div class="post--contents__item">
-										<div style="position:relative">
-											<img class="post--contents__item__img" src="${pageContext.request.contextPath}/images/default/portfolio_thumb.png"/>
-										</div>
-										<p class="post--contents__item__title">01</p>
-									</div>
-								</a>
-							</div>
-							<div class="col-6 col-md-3 post--contents__item-wrap">
-								<a href="#">
-									<div class="post--contents__item">
-										<div style="position:relative">
-											<img class="post--contents__item__img" src="${pageContext.request.contextPath}/images/default/portfolio_thumb.png"/>
-										</div>
-										<p class="post--contents__item__title">01</p>
-									</div>
-								</a>
-							</div>
-							<div class="col-6 col-md-3 post--contents__item-wrap">
-								<a href="#">
-									<div class="post--contents__item">
-										<div style="position:relative">
-											<img class="post--contents__item__img" src="${pageContext.request.contextPath}/images/default/portfolio_thumb.png"/>
-										</div>
-										<p class="post--contents__item__title">01</p>
-									</div>
-								</a>
-							</div>
-							<div class="col-6 col-md-3 post--contents__item-wrap">
-								<a href="#">
-									<div class="post--contents__item">
-										<div style="position:relative">
-											<img class="post--contents__item__img" src="${pageContext.request.contextPath}/images/default/portfolio_thumb.png"/>
-										</div>
-										<p class="post--contents__item__title">01</p>
-									</div>
-								</a>
-							</div>
-							<div class="col-6 col-md-3 post--contents__item-wrap">
-								<a href="#">
-									<div class="post--contents__item">
-										<div style="position:relative">
-											<img class="post--contents__item__img" src="${pageContext.request.contextPath}/images/default/portfolio_thumb.png"/>
-										</div>
-										<p class="post--contents__item__title">01</p>
-									</div>
-								</a>
-							</div>
-							<div class="col-6 col-md-3 post--contents__item-wrap">
-								<a href="#">
-									<div class="post--contents__item">
-										<div style="position:relative">
-											<img class="post--contents__item__img" src="${pageContext.request.contextPath}/images/default/portfolio_thumb.png"/>
-										</div>
-										<p class="post--contents__item__title">01</p>
-									</div>
-								</a>
-							</div>
-							<div class="col-6 post--contents__item--more--sm"><div><a href="#"><span class="icon--page-mypage" style="margin-bottom:10px;background-position-x:-0px;background-position-y:-120px;width:40px;height:40px"></span>더 보기</a></div></div><div class="col-6 col-md-3 post--contents__item--more-wrap"><a href="#"><div class="post--contents__item post--contents__item--more"><img class="post--contents__item__img" src="${pageContext.request.contextPath}/images/default/portfolio_thumb.png"/><p class="post--contents__item__count">+<!-- -->10</p></div></a></div>
-							
-							
-
+									</a>
+								</div>
+							</c:forEach>
+						</div>
 					</div>
-				</div>
 			</section>
 			</div>
 
@@ -431,11 +370,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                   by 내일의집, All Rights Reserved
               </p>
             </div>
-        
         <div class="toast-message-root"></div>
-   
-
-
       </div><!-- container end -->
     </footer>
     <!-- END footer -->
