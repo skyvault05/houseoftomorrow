@@ -135,13 +135,9 @@
 <div class="empty-space"></div>
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
+<div class="container">
+<div class="py-5 text-left">
 
-
-
-<form class="expert-calculate" action="/review/registerReview" method="post">
- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
- <input type="hidden" name="memberNo" value="${user.memberNo}">
- <input type="hidden" name="chNo" value="1">
 <div class="expert-calculate__main-wrap container">
 	<div class="expert-calculate__main row">
 		
@@ -149,18 +145,18 @@
 
 		<!--start 견적폼-->
 		<section class="expert-calculate__content col-12 col-md-7 col-lg-8">
+		<p>
 				<div class="expert-calculate__content__header">
-					<h1 class="expert-calculate__content__header__title">시공 전문가 리뷰 쓰기</h1>
-					<button class="expert-reset-button" type="reset"><svg class="reset-icon" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid meet"><path fill="#757575" fill-rule="nonzero" d="M15.4 8.78a6.52 6.52 0 1 0-1.8 5.83.74.74 0 0 1 1.06 1.05 8 8 0 1 1 2.12-7.56l.87-2.12a.75.75 0 0 1 1.39.57l-1.9 4.57-4.57-1.9a.75.75 0 1 1 .58-1.38l2.26.94z"></path></svg>초기화</button>
+					<h1 class="expert-calculate__content__header__title">리뷰 상세</h1><p>
+					
 				</div>
 				
 			
 			<div>
 			<div class="expert-user-form__form-group">
-			<div class="expert-user-form__form-group__label"><h6>시공 전문가 상호 / 작업자명</h6></div>
+			<div class="expert-user-form__form-group__label"><h3>시공사 이름: [ ${review.channel.constructor.conName} ] </h3></div>
 			<div class="expert-user-form__form-group__input">
 			<div class="input-group telephone-input expert-review-form__telephone-input">
-			<input type="constructionName" name="constructionName" class="form-control name-input__input" size="1"  value="" >
 			</div>
 			</div>
 			</div>
@@ -169,17 +165,46 @@
 
 
 <div class="expert-user-form__form-group">
-<div class="expert-user-form__form-group__label"><h6>퀄리티</h6></div>
-<div class="expert-user-form__form-group__description">전문가님이 진행해주신 인테리어 시공의 최종 퀄리티는 만족스러웠나요?</div>
+<div class="expert-user-form__form-group__label"><h6>평점</h6></div>
 <div class="expert-user-form__form-group__input">
 
 <div class="container">
-         <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
-            <input type="radio" id="star5" name="reviewGrade" value="5" /><label for="star5" title="5 star"></label>
-            <input type="radio" id="star4" name="reviewGrade" value="4" /><label for="star4" title="4 star"></label>
-            <input type="radio" id="star3" name="reviewGrade" value="3" /><label for="star3" title="3 star"></label>
-            <input type="radio" id="star2" name="reviewGrade" value="2" /><label for="star2" title="2 star"></label>
-            <input type="radio" id="star1" name="reviewGrade" value="1" /><label for="star1" title="1 star"></label>
+         <div class="starrating risingstar d-flex justify-content-center flex-row-reverse" >
+            <c:choose>
+            	<c:when test="${review.reviewGrade == 0}">
+            		<br>'0'점 입니다.
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 1}">
+            		<label for="star1" title="1 star"></label>
+            		<br>'1'점 입니다.
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 2}">
+            		<label for="star2" title="2 star"></label>
+		            <label for="star1" title="1 star"></label>
+		            <br>'2'점 입니다.
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 3}">
+            		<label for="star3" title="3 star"></label>
+		            <label for="star2" title="2 star"></label>
+		            <label for="star1" title="1 star"></label>
+		            <br>'3'점 입니다.
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 4}">
+            		 <label for="star4" title="4 star"></label>
+		            <label for="star3" title="3 star"></label>
+		            <label for="star2" title="2 star"></label>
+		            <label for="star1" title="1 star"></label>
+		            <br>'4'점 입니다.
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 5}">
+            		<label for="star5" title="5 star"></label>
+		            <label for="star4" title="4 star"></label>
+		            <label for="star3" title="3 star"></label>
+		            <label for="star2" title="2 star"></label>
+		            <label for="star1" title="1 star"></label>
+		            <br>'5'점 입니다.
+            	</c:when>
+            </c:choose>
         </div>
   </div>
 
@@ -188,30 +213,23 @@
 
 <div class="expert-user-form__form-group">
 <div class="expert-user-form__form-group__label"><h6>총평</h6></div>
-<div class="expert-user-form__form-group__description">인테리어 시공 전문가님의 서비스와 작업물 전반에 대하여 간단한 총평을 부탁드립니다.</div>
-<div class="expert-user-form__form-group__input"><textarea id="summernote" name="reviewDescription">
+${review.reviewDescription}
 </textarea>
 </div>
 </div>
 </div>
+<sec:authentication var="user" property="principal" />
+<sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
+		<c:choose>
+			<c:when test="${review.member.memberNo == user.memberNo}">
+				<button class="expert-insert-button" onclick="location.href='${pageContext.request.contextPath}/review/updateReviewform?reviewNo=${review.reviewNo}'" value="수정하기">수정하기</button>
+				<button type="button"  onclick="location.href='${pageContext.request.contextPath}/review/deleteReview?reviewNo=${review.reviewNo}'"  name="delete">삭제</button>
+			</c:when>
+		</c:choose>
+	</sec:authorize>
 
-
-			
-<button class="expert-insert-button" type="submit"value="등록하기">등록하기</button>
-			
-
-
-			
-
-
-
-
-		</section><!--end section-->
-	</div><!--end main row-->
 </div>
-</form><!--END form-->
-<!--END papering 도배-->
-
+</div>
 
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->

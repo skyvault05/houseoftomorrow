@@ -34,6 +34,15 @@ public class QNAController {
 	@Autowired
 	private QNARepository qnaRep;
 	
+	@RequestMapping("/{url}")
+	public void url1() {}
+	
+	@RequestMapping("/{url1}/{url2}")
+	public void url2() {}
+	
+	@RequestMapping("/{url1}/{url2}/{url3}")
+	public void url3() {}
+	
 	/**
 	 * QNA 등록 입력 폼
 	 * */
