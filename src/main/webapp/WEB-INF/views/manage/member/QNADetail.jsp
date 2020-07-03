@@ -18,12 +18,18 @@
 	}
 	.click{
 		font-size: 20px;
-		color: orange;
 		font-weight: bold;
 	}
 	a{
 		text-decoration: none;
 	}
+	.border {
+	    display: inline-block;
+		padding: 20px;
+	  }
+	  #line{
+	  	border: 2px solid #33f0c0;
+	  }
 </style>
 
 <script type="text/javascript">
@@ -32,27 +38,58 @@
 	}
 </script>
 
+<!-- bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
+
+  <!-- Theme Style -->
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
+  
+  <!-- WebFont -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<h1>${qna.qnaTitle}</h1>
+<div  class="container margin-top-100">
+<div class="row justify-content-center">
+	<h2>${qna.qnaTitle}</h2>
+</div>
+<div class="row">
 <c:choose>
 	<c:when test="${qna.qnaCategory.qnaCategoryNo==14}">
-		<h2>결제</h2>
+		<h4>[ 결제 ]</h4>
 	</c:when>
 	<c:when test="${qna.qnaCategory.qnaCategoryNo==15}">
-		<h2>환불</h2>
+		<h4>[ 환불 ]</h4>
 	</c:when>
 	<c:when test="${qna.qnaCategory.qnaCategoryNo==16}">
-		<h2>회원정보 변경</h2>
+		<h4>[ 회원정보 변경 ]</h4>
 	</c:when>
 	<c:when test="${qna.qnaCategory.qnaCategoryNo==17}">
-		<h2>서비스 / 기타</h2>
+		<h4>[ 서비스 / 기타 ]</h4>
 	</c:when>
 </c:choose>
-<p>${qna.member.memberName}</p>
-<p><fmt:formatDate value="${list.qnaRegdate}" pattern="yyyy-MM-dd HH:mm"/></p>
-${qna.qnaDescription}<p>
+</div>
+<div class="row">
+<p>${qna.member.memberName}</p>&nbsp;&nbsp;&nbsp;&nbsp; 
+<p><fmt:formatDate value="${qna.qnaRegdate}" pattern="yyyy-MM-dd HH:mm"/></p>
+</div>
+<span class="row border">
+${qna.qnaDescription}
+</span><!-- span row end -->
+<div class="row"><br><br></div>
+<div class="row">
 <a class="click" href="${pageContext.request.contextPath}/qna/list/${qna.qnaCategory.qnaCategoryNo}">목록으로</a>
+</div><!-- row end -->
+<div class="row">
 <sec:authentication var="user" property="principal" />
    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	<c:choose>
@@ -61,6 +98,8 @@ ${qna.qnaDescription}<p>
 		</c:when>
 	</c:choose><p>
 </sec:authorize>
+</div><!-- row end -->
+<div class="row">
 <sec:authorize access="hasRole('ROLE_ADMIN') and isAuthenticated()">
 <a class="click"   href="${pageContext.request.contextPath}/qna/replyForm?qnaParentNo=${qna.qnaNo}">답글달기</a>
 <c:choose>
@@ -69,15 +108,18 @@ ${qna.qnaDescription}<p>
 </c:when>
 </c:choose>
 </sec:authorize>
-<br>
-<hr><br>
+</div>
+<br><hr id="line"><br>
+<div class="row">
 <c:if test="${not empty qnaParent}">
-<h3>'${qna.qnaTitle}'에 대한 답글</h3>
+<h3 class="col-md-12">'${qna.qnaTitle}'에 대한 답글</h3>
 <c:forEach items="${qnaParent}" var="qnaParent">
-<h2>${qnaParent.qnaTitle}</h2>
-${qnaParent.qnaDescription }
+<h2 class="col-md-12">${qnaParent.qnaTitle}</h2>
+<span class="row border col-md-12">
+${qnaParent.qnaDescription}
+</span>
 </c:forEach>
 </c:if>
-
+</div>
 </body>
 </html>

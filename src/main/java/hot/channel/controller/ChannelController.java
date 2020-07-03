@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,7 @@ import hot.member.domain.Portfolio;
 import hot.member.repository.MemberRepository;
 import hot.review.domain.Review;
 import hot.review.repository.ReviewRepository;
+import hot.review.service.ReviewService;
 
 @Controller
 @RequestMapping("/channel")
@@ -61,6 +63,9 @@ public class ChannelController {
 	@Autowired
 	private ReviewRepository reviewRep;
 	
+	@Autowired
+	private ReviewService reviewService;
+	
 	/**
 	 * 채널 목록
 	 * */
@@ -77,18 +82,17 @@ public class ChannelController {
 	 * + 채널 상세에 두 개만 나오는 리뷰
 	 * */
 	@RequestMapping("/channelDetail/{chNo}")
-	public ModelAndView chDetail(@PathVariable(name="chNo")int chNo, @RequestParam(defaultValue = "0")int nowPage) {
+	public ModelAndView chDetail(@PathVariable(name="chNo")int chNo, @RequestParam(defaultValue = "0")int nowPage, Model model) {
 
 		Channel channel = channelService.selectChannel(chNo);
-		List<Review> list = reviewRep.findTop2ByChannelNoAndReviewStatusByOrderBySeqDesc(channel, 1);
 		
 		Pageable page =PageRequest.of(nowPage, 2, Direction.DESC, "reviewNo");
-		//Page<Review> pageReview = reviewRep
+		Page<Review> pageReview = reviewService.selectAll(page, channel);
 
+		model.addAttribute("list", pageReview.getContent());
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/channel/guest/channelDetail");
 		mv.addObject("channel", channel);
-		mv.addObject("list", list);
 		return mv;
 	}
 
