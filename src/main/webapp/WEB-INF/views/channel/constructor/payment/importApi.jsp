@@ -52,26 +52,25 @@ $(document).ajaxSend(function(e, xhr, options) {
 					type: 'POST',
 					contentType : 'application/json; charset=UTF-8',
 					dataType:'text',
-					data: { 
-						
+					data: {						
 						"pay_method" : rsp.pay_method,
 						"status" : rsp.status,
 						"pg_provider" : rsp.pg_provider
 					},
 					success:function(data){
-						console.log('Ajax 성공')
-						alert('Ajax 성공 && data : ' + data)
+						console.log('Ajax 성공 :');
+						alert('Ajax 성공 && data : ' + data);
 						
 						msg = '결제가 완료되었습니다.';
 						msg +='\n 고유 ID ' + rsp.imp_uid;
 						msg +='\n 상점 거래 ID : ' + rsp.merchant_uid;
 						msg +='\n결제 금액 : ' + rsp.paid_amount;
 						msg +='\n카트 승인번호 : ' + rsp.apply_num;
+						alert(msg);
+						console.log(msg);
 						
-						alert(msg); 
 						
-						
-						alert('최종 성공 알림');	
+						alert('최종 성공 알림'+msg);	
 				        opener.document.portForm.submit();
 		                self.close();
 											

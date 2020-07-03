@@ -54,6 +54,14 @@ public class CommunityController {
 	public void url3() {}
 	
 	/**
+	 * write.jsp에서 qna등록 폼으로 이동하게
+	 * */
+	@RequestMapping("/manage/member/QNAForm")
+	public String qnaForm() {
+		return "manage/member/QNAForm";
+	}
+	
+	/**
 	 * 실제 community  글 등록
 	 * @throws IOException 
 	 * */

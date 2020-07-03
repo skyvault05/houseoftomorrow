@@ -138,10 +138,10 @@
 
 
 
-<form class="expert-calculate" action="/review/registerReview" method="post">
+<form class="expert-calculate" action="${pageContext.request.contextPath}/review/registerReview" method="post">
  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
  <input type="hidden" name="memberNo" value="${user.memberNo}">
- <input type="hidden" name="chNo" value="1">
+ <input type="hidden" name="chNo" value="${param.chNo}">
 <div class="expert-calculate__main-wrap container">
 	<div class="expert-calculate__main row">
 		
@@ -157,10 +157,9 @@
 			
 			<div>
 			<div class="expert-user-form__form-group">
-			<div class="expert-user-form__form-group__label"><h6>시공 전문가 상호 / 작업자명</h6></div>
+			<div class="expert-user-form__form-group__label"><h3> [ ${channel.constructor.conName} ]  시공사 리뷰</h3></div>
 			<div class="expert-user-form__form-group__input">
 			<div class="input-group telephone-input expert-review-form__telephone-input">
-			<input type="constructionName" name="constructionName" class="form-control name-input__input" size="1"  value="" >
 			</div>
 			</div>
 			</div>
@@ -198,14 +197,6 @@
 
 			
 <button class="expert-insert-button" type="submit"value="등록하기">등록하기</button>
-			
-
-
-			
-
-
-
-
 		</section><!--end section-->
 	</div><!--end main row-->
 </div>
