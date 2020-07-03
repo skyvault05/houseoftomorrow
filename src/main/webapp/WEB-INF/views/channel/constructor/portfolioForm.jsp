@@ -57,8 +57,7 @@ function setThumbnail(event) {
 <script type="text/javascript">
   function check(){
 	  
-	  window.open("${pageContext.request.contextPath}/channel/constructor/payment/importApi","win","width=800,height=700")
-	  //location.href=''
+	  window.open("${pageContext.request.contextPath}/channel/constructor/payment/importApi","win","width=800,height=700");
   }
 </script>
 </head>
@@ -76,24 +75,20 @@ function setThumbnail(event) {
 
 <br><br>
 <form name="portForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/channel/constructor/insertPort" >
+	<sec:authentication var="user" property="principal" />
+	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
+	<input type="hidden" name="chNo"  value="${user.chNo}"/>
 
  제목 : <input type="text" name="portTitle"  id="portTitle" placeholder="올릴 게시글의 제목을 입력해주세요"/><p>
 
 	
-	<sec:authentication var="user" property="principal" />
-	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
  썸네일:	<input type="file" name="file"  id="portImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event);"><p>
 	<div id="image_container"></div>
-
-	<%-- <%=request.getParameter("commCategoryNo")%>${param.commCategoryNo} --%>
-	<%-- <input type="hidden" name="commCategoryNo"  value="${param.commCategoryNo}"/> --%>
 	<input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
 	<textarea id="summernote" name="portDescription"></textarea> <p>
 	
   시작일 : 	<input type="date" name="portStartDate">
   마감일 : 	<input type="date" name="portEndDate"> <p>
-	
-	<input type="hidden" name="ChNo" value="1">
 	
 	
 	<!-- <input type="submit" value="등록하기">  -->

@@ -25,6 +25,6 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	List<Review> findByChannelNoAndReviewStatus(Channel channel, Integer reviewStatus);
 	
 	@Query("SELECT r FROM Review r WHERE channel.chNo = :#{#channel.chNo} AND r.reviewStatus =:#{#reviewStatus}")
-	List<Review> findByChannelNoAndReviewStatusTop2ByOrderBySeqDesc(Channel channel, Integer reviewStatus);
+	List<Review> findTop2ByChannelNoAndReviewStatusByOrderBySeqDesc(Channel channel, Integer reviewStatus);
 
 }

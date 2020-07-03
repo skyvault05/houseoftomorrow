@@ -60,7 +60,7 @@
 	<br>
 	<div><b>노하우</b></div>
 	</a></div>
-	<div id="three" class="div col-md-3"><a href="/qna/insertForm">
+	<div id="three" class="div col-md-3"><a href="${pageContext.request.contextPath}/community/manage/member/QNAForm">
 	<img src="/plugins/images/icon_question.png"/>
 	<br>
 	<div><b>질문하기</b></div>

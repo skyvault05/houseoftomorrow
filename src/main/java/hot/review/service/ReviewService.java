@@ -2,6 +2,9 @@ package hot.review.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import hot.review.domain.Review;
 
 public interface ReviewService {
@@ -13,5 +16,5 @@ public interface ReviewService {
 	Review updateReviewForm(Integer reviewNo);
 	Review readReview(Integer reviewNo);
 	List<Review> myReview(Integer memberNo);
-	
+	Page<Review> selectAll(Pageable pageable);
 }

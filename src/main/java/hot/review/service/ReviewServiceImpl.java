@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import hot.channel.domain.Channel;
@@ -119,5 +121,11 @@ public class ReviewServiceImpl implements ReviewService {
 		Member member = memberRep.findById(memberNo).orElse(null);		
 		List<Review> list = reviewRep.findByMemberAndReviewStatus(member, 1);
 		return list;
+	}
+
+	@Override
+	public Page<Review> selectAll(Pageable pageable) {
+		
+		return null;
 	}
 }

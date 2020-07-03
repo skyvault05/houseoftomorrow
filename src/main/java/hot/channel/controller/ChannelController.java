@@ -3,10 +3,15 @@ package hot.channel.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -61,7 +66,6 @@ public class ChannelController {
 	 * */
 	@RequestMapping("/channelAll")
 	public ModelAndView channelAll() {
-		System.out.println("컨트롤러");
 		List<Channel> list = channelService.channelList();
 		
 		return new ModelAndView("channel/guest/channelAll", "list", list);
@@ -73,11 +77,14 @@ public class ChannelController {
 	 * + 채널 상세에 두 개만 나오는 리뷰
 	 * */
 	@RequestMapping("/channelDetail/{chNo}")
-	public ModelAndView chDetail(@PathVariable(name="chNo")int chNo) {
+	public ModelAndView chDetail(@PathVariable(name="chNo")int chNo, @RequestParam(defaultValue = "0")int nowPage) {
 
 		Channel channel = channelService.selectChannel(chNo);
-		List<Review> list = reviewRep.findByChannelNoAndReviewStatusTop2ByOrderBySeqDesc(channel, 1);
+		List<Review> list = reviewRep.findTop2ByChannelNoAndReviewStatusByOrderBySeqDesc(channel, 1);
 		
+		Pageable page =PageRequest.of(nowPage, 2, Direction.DESC, "reviewNo");
+		//Page<Review> pageReview = reviewRep
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/channel/guest/channelDetail");
 		mv.addObject("channel", channel);
