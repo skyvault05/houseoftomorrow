@@ -32,9 +32,38 @@ public class MemberServiceImpl implements MemberService{
 		Member member = memberRep.findByMemberId(memberId);
 		return member;
 	}
+
+
+	@Override
+	public int memberUpdate(Member member) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int memberDelete(int memberNo) {
+		// TODO Auto-generated method stub		
+		return 0;
+	}
+
+	@Override
+	public String findId(String phoneNumber, String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String findPwd(Member member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
 	
 	@Override
 	public Member selectMemberByPhone(String phone) {
 		return memberRep.findByMemberPhone(phone);
 	}
+
 }

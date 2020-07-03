@@ -34,10 +34,16 @@ public class Notification {
 	@Column(name = "notification_no")
 	private Integer notificationNo;
 	
+	
+	@JoinColumn(name = "member_no")
+	@ManyToOne
+	private Member memberNo;
+	
 	@Column(name = "notification_category")
 	private Integer notificationCategory;
 	
 	@Column(name = "notification_count")
 	private Integer notificationCount;
+	
 	
 }

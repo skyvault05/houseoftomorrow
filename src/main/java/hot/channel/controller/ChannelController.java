@@ -22,40 +22,49 @@ import hot.member.domain.Portfolio;
 import hot.member.repository.MemberRepository;
 
 @Controller
+@RequestMapping("/channel")
 public class ChannelController {
-	
+
+
 	@Autowired
 	private ChannelService channelService;
 	
+	@Autowired
+	private MemberRepository memberRep;
+		
 	@Autowired
 	private FavoriteChannelRepository fcRep;
 	
 	@Autowired
 	private FavoritePortfolioRepository fpRep;
 	
-	@Autowired
-	private MemberRepository memberRep;
 	
 	@Autowired
 	private ChannelRepository channelRep;
 	
 	@Autowired
 	private PortfolioRepository portRep;
+
 	
 	@RequestMapping("/channelDetail")
 	public String chDetail() {
 		return "/channel/guest/channelDetail";
 	}
+
+
+	@RequestMapping("/update")
+	public ModelAndView updateChannel(Integer chNo) {
+		channelService.updateGrade(chNo);
+		return null;
+	}
+
 	
 	/**
 	 * 관심채널 등록 / 삭제
 	 * */
 	@ResponseBody
 	@RequestMapping("/favoriteChannel/check")
-	public void favorateChannel(Integer membNo, Integer chaNo) {
-		System.out.println("컨트롤러 들어옴");
-		System.out.println("membNo: " + membNo);
-		System.out.println("chaNo: " + chaNo);
+	public Integer favorateChannel(Integer membNo, Integer chaNo) {
 		Channel channel= channelRep.findById(chaNo).orElse(null);
 		Member member = memberRep.findById(membNo).orElse(null);
 		
@@ -71,7 +80,27 @@ public class ChannelController {
 		} else { // 삭제한다.
 			channelService.deleteFavoriteChannel(membNo, chaNo);
 		}
+		return 1;
 	}
+	
+	/**
+	 * 새로고침할 때 하트 값 설정
+	 * */
+	@ResponseBody
+	@RequestMapping("/favoriteChannel/checkHeart")
+	public Integer favorateChannelCheck(Integer membNo, Integer chaNo) {
+		Channel channel= channelRep.findById(chaNo).orElse(null);
+		Member member = memberRep.findById(membNo).orElse(null);
+		
+		FavoriteChannel favChannel = fcRep.findByMemberAndChannel(member, channel);
+		
+		if(favChannel == null) { // 빈하트
+			return 1;
+		} else { // 꽉찬하트
+			return 2;
+		}
+	}
+	
 	
 	/**
 	 * 로그인한 회원의 관심채널 목록
@@ -112,4 +141,5 @@ public class ChannelController {
 		
 		return new ModelAndView("channel/member/favoritePortfolio", "fport", fport);
 	}
+
 }

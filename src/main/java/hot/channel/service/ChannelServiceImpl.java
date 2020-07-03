@@ -16,13 +16,17 @@ import hot.channel.domain.FavoritePortfolio;
 import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
+import hot.channel.repository.ReviewRepository;
 import hot.constructor.repository.ConstructorRepository;
 import hot.constructor.repository.PortfolioRepository;
 import hot.member.domain.ConstructorRegisterRequest;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
 import hot.member.repository.ConstructorRegisterRequestRepository;
+import hot.member.domain.Review;
 import hot.member.repository.MemberRepository;
+import hot.review.service.ReviewService;
+
 
 
 @Service
@@ -32,8 +36,13 @@ public class ChannelServiceImpl implements ChannelService {
 	@Autowired
 	private ConstructorRepository constructorRepository;
 	@Autowired
+	private ReviewRepository reviewRepository;
+	@Autowired
 	private S3Manager s3Manager;
 	@Autowired
+
+	private ReviewService reviewService;
+
 	private MemberRepository memberRep;
 	@Autowired
 	private FavoriteChannelRepository fcRep;
@@ -43,6 +52,7 @@ public class ChannelServiceImpl implements ChannelService {
 	private PortfolioRepository portRep;
 	@Autowired
 	ConstructorRegisterRequestRepository conRegiRequestRep;
+
 	/**
 	 * 채널등록
 	 */
@@ -63,6 +73,30 @@ public class ChannelServiceImpl implements ChannelService {
 		}
 		
 	}
+
+	@Override
+	public void updateGrade(Integer chNo) {
+		//평균 구하기
+		List<Review> list = reviewService.selectReviewChNo(chNo);
+		Double avg = 0D;
+		for(Review re : list) {
+			avg += re.getReviewGrade();
+		}
+		avg = avg/list.size();
+		
+		//채널 가져오기		
+		Channel channel = channelRepository.findById(chNo).orElse(null);
+		
+		//채널에 평균 넣기
+		channel.setChGrades(avg);
+		
+		//채널 업데이트하기
+		channelRepository.save(channel);
+		
+	}
+	
+	
+
 	
 	/**
 	 * 관심채널 추가

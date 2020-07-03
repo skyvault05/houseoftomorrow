@@ -19,3 +19,4 @@ public interface CommunityService {
 	List<Community> selectCommunityMember(Integer memberNo);
 
 }
+

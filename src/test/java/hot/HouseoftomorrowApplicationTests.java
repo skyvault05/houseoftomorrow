@@ -7,6 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommCommentRepository;
+import hot.community.repository.CommunityRepository;
+
 import hot.admin.repository.OrderRepository;
 import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
@@ -21,8 +25,15 @@ import hot.constructor.repository.PortfolioRepository;
 import hot.consulting.repository.ConsultingRepository;
 import hot.consulting.repository.ContractRepository;
 import hot.estimate.domain.Estimate;
+
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
+
+
+import hot.member.domain.Notification;
+
+
+
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
@@ -90,6 +101,7 @@ class HouseoftomorrowApplicationTests {
 	
 	@Autowired
 	private FavoriteChannelRepository fcRep;
+
 	
 	@Autowired
 	private ChannelService channelService;
@@ -166,12 +178,20 @@ class HouseoftomorrowApplicationTests {
 //			System.out.println(com.getCommNo());
 //		}
 		
+		notificationRep.save(new Notification(null, memberRep.findById(1).orElse(null), 1, 1));
+		
+		//notificationRep.deleteById(4);
+	
 		
 //		noticeRep.save(new Notice(null, "타이틀", "설명", null));
 		
 //		commCommentRep.save(new CommComment(null, communityRep.findById(2).orElse(null), memberRep.findById(6).orElse(null), "설명", null, 1));
 		
 //		commCommentRep.save(new CommComment(commCommentNo, community, member, commCommentDescription, commCommentRegdate, commCommentStatus));
+		
+		
+//		portfolioRep.save(new Portfolio(null, channelRep.findById(1).orElse(null), "타이틀", "이미지", "설명", null, null, null, 1));
+		
 		
 		
 //		CommCategory commCategory = new CommCategory();

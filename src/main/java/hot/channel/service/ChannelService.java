@@ -16,6 +16,9 @@ public interface ChannelService {
 
 	void insertChannel(Channel channel, MultipartFile chImg);
 	
+
+	void updateGrade(Integer chNo);
+
 	void insertFavoriteChannel(Integer membNo, Integer chaNo);
 	
 	void deleteFavoriteChannel(int membNo, int chaNo);
