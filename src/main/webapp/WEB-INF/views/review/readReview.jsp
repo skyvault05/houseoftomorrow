@@ -1,43 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%> 
 <!doctype html>
 <html lang="ko">
   <head>
-    <title>TEST-HOT</title>
+    <title>내일의 집</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="_csrf" content="${_csrf.token}"/>
-	<meta name="_csrf_header" content="${_csrf.headerName}"/>
-
-	<!-- bootstrap-->
+  <!-- bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <!--ver3-->
-  <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+  
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
 
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-
-    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-    <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="./css/estimate-style.css">
+<!-- Theme Style -->
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
+  
      <link rel="stylesheet" href="/css/review/star.css">
 	<!-- WebFont -->
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-	
-	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+	 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
+
+	<!-- <script src="/plugins/bootstrap/bootstrap.min.js"></script> -->
 	<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
 	<script src="/plugins/summernote/summernote-lite.min.js"></script>
 	<script src="/plugins/summernote/setsummernote.js"></script>
@@ -62,83 +53,107 @@
 	
 	
 
-</script>
-<style>
+</script> 
 
-</style>
 
   </head>
-  <body class="pt-6">
-  <sec:authentication property="principal" var="user"/>
-  <noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK8DN2Q" height="0" width="0" style="display:none;visibility:hidden" allowfullscreen></iframe>
-  </noscript>
-    
+ <body>
+
     <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand " href="test.html">HOT</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+          <a class="navbar-brand " href="/common/index">HOT</a>
+    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      		<span class="navbar-toggler-icon"></span>
+    	</button>
+    
+    <!--------------------------------------main menu--------------------------------------------->
           <div class="collapse navbar-collapse btnCollapse" >
             <ul class="navbar-nav ">
-            	<li class="nav-item dropdown pl-md-5">
-		          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
-		         <div class="dd-wrap">
-		          <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
-		            <li><a class="dropdown-item" href="#" >커뮤니티홈</a></li>
-		            <li><a class="dropdown-item" href="#">사진</a></li>
-		            <li><a class="dropdown-item" href="#">집들이</a></li>
-		            <li><a class="dropdown-item" href="#">노하우</a></li>
-		          </ul>
-		          </div>
-		        </li>
+              <li class="nav-item dropdown pl-md-5">
+              <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
+             <div class="dd-wrap">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#" >커뮤니티홈</a></li>
+                <li><a class="dropdown-item" href="#">사진</a></li>
+                <li><a class="dropdown-item" href="#">집들이</a></li>
+                <li><a class="dropdown-item" href="#">노하우</a></li>
+              </ul>
+              </div>
+            </li>
 
-		        <li class="nav-item dropdown ">
-		          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">인테리어시공</a>
-		          <div class="dd-wrap">
-		          	<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-			            <li><a class="dropdown-item" href="#">시공홈</a></li>
-			            <li><a class="dropdown-item" href="#">견적요청</a></li>
-			            <li><a class="dropdown-item" href="#">전문가찾기</a></li>
-			            <li><a class="dropdown-item" href="#">포트폴리오</a></li>
-		          </ul>
-		          </div>
-		        </li>
-
-            </ul>
-
+            <li class="nav-item dropdown ">
+              <a href="/common/index" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">인테리어시공</a>
+              <div class="dd-wrap">
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/common/index">시공홈</a></li>
+                  <li><a class="dropdown-item" href="/estimate">견적요청</a></li>
+                  <li><a class="dropdown-item" href="#">전문가찾기</a></li>
+                  <li><a class="dropdown-item" href="#">포트폴리오</a></li>
+              	</ul>
+              </div>
+            </li>
+           </ul>
+    <!--------------------------------------sub menu--------------------------------------------->
             <div class="navbar-nav ml-auto">
               <form method="post" class="search-form" >
-                <span class="icon ion ion-search"></span>
-                <input type="text" class="form-control col-sm-12" placeholder="Search...">
+                <span class="icon ion ion-search pt-2"><ion-icon name="search-outline"></ion-icon></span>
+                <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>
-              <div class="header_social_icon">
-              	<!-- <span class="icon ion ion-bookmark-outline"></span>
-              	<span class="icon ion ion-notifications-outline"></span>
-              	<span class="icon ion ion-happy-outline"></span> -->
-              	<ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
-              	<ion-icon name="notifications-outline" class="icon ion"></ion-icon>
-              	<ion-icon name="happy-outline" class="icon ion mypage"></ion-icon>
-              </div>
+              
+   <!------------------------------ 로그인/회원가입 -------------------------------->
+	<sec:authorize access="isAnonymous()">
+   			  <div class="header_navigation-bar-login pl-1">
+   			  	<a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
+   			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
+   			  </div>
+ 	</sec:authorize>
+
+   <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
+  
+   	<sec:authorize access="isAuthenticated()">
+   	
+   			<div class="iconmenu pl-1">
+              <div class="header_social_icon d-flex">
+              	
+                <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
+                <!-- <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
+                  <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
+                </a>
+                <div class="dropdown-menu submenu">
+                  <a href="#" class="dropdown-item favoriteChannel">관심채널</a>
+                  <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
+                </div> -->
+                <ion-icon name="notifications-outline" class="icon ion"></ion-icon>
+                <div class="dropdown submenu">  
+                  <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
+                    <ion-icon name="happy-outline" class="icon ion mypage"></ion-icon>
+                  </a>
+                  <div class="dropdown-menu submenu box shadow">
+                    <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
+                    <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
+                    <a href="#" class="dropdown-item writeList">내가쓴글</a>
+                    <a href="/logout" class="dropdown-item logout">로그아웃</a>
+                  </div>
+                </div>
+                </div>
+              </div><!--end submenu header icon-->
+	</sec:authorize>
             </div>
-            
-          </div>
-        </div>
+            <!--END submenu-->
+          </div><!--collapse navbar-collapse btnCollapse-->
+        </div><!--end container-->
       </nav>
-    </header>
+  <!--END main menu--->
+  </header>
   <!-- END header -->
-<div class="empty-space"></div>
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 <div class="container">
 <div class="py-5 text-left">
 
-<form class="expert-calculate" novalidate action="/review/readReviewF" method="post">
+<form class="expert-calculate" novalidate action="/review/readReview" method="post">
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
  <input type="hidden" name="memberNo" value="${user.memberNo}">
  <input type="hidden" name="chNo" value="1">
@@ -148,7 +163,7 @@
 		
 
 		<!--start 견적폼-->
-		<section class="expert-calculate__content col-12 col-md-7 col-lg-8">
+		<div class="expert-calculate__content col-12 col-md-7 col-lg-8">
 		<p>
 				<div class="expert-calculate__content__header">
 					<h1 class="expert-calculate__content__header__title">내가 쓴 리뷰 상세보기</h1><p>
@@ -203,7 +218,7 @@
 <div class="expert-user-form__form-group__label"><h6>총평</h6></div>
 <div class="expert-user-form__form-group__description">인테리어 시공 전문가님의 서비스와 작업물 전반에 대하여 간단한 총평을 부탁드립니다.</div>
 ${review.reviewDescription}
-</textarea>
+
 </div>
 </div>
 </div>
@@ -213,7 +228,7 @@ ${review.reviewDescription}
 </div>
 </div>
 </form>
-
+</div>
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
 <div class="empty-space"></div>

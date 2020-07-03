@@ -33,7 +33,7 @@
   
   <body>
 
-    <header role="banner"><!--  -->
+    <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand " href="/common/index">HOT</a>
