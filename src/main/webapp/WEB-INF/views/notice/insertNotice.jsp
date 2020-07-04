@@ -209,9 +209,10 @@ function setThumbnail(event) {
 <form action="/notice/insert" method="post">
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
-<div class="col-xs-12"><h1>제목</h1></div>
+<div class="col-sm-2"><h1>제목</h1></div>
 
-<div class="col-xs-12"><input type="text" style="min-height: 10px; height: 40px;" placeholder="제목을 입력하세요" class="form-control text-area-input" name="noticeTitle" id="noticeTitle"></div>
+<div class="col-xs-12"><textarea style="min-height: 10px; height: 50px; width: 1100px;"  placeholder="제목을 입력하세요" class="form-control text-area-input" name="noticeTitle" id="noticeTitle">
+</textarea></div>
 
 </div>
 <p><br>

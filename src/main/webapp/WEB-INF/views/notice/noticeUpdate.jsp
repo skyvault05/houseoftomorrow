@@ -210,9 +210,10 @@ function setThumbnail(event) {
 <input type="hidden" name="noticeNo" value="${notice.noticeNo}">
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
-<div class="col-xs-12"><h1>제목</h1></div>
+<div class="col-sm-2"><h1>제목</h1></div>
 
-<div class="col-xs-12"><input type="text" style="min-height: 10px; height: 40px;" placeholder="${notice.noticeTitle}" class="form-control text-area-input" name="noticeTitle" id="noticeTitle"></div>
+<div class="col-xs-12"><textarea style="min-height: 10px; height: 50px; width: 1100px;"  placeholder="${notice.noticeTitle}" class="form-control text-area-input" name="noticeTitle" id="noticeTitle">
+</textarea></div>
 
 </div>
 <p><br>
@@ -250,21 +251,7 @@ function setThumbnail(event) {
 
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
-<div class="empty-space"></div>
 
-
-    <!-- scripts -->
-<!-- 	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="/plugins/jquery/jquery-3.4.1.min.js"></script> -->
-    <script src="${pageContext.request.contextPath}/js/common/popper.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/jquery.waypoints.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/jquery.fancybox.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/main.js"></script>
-	<script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
-    
-	<!-- ICON -->
-	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
   </body>
 </html>
