@@ -32,7 +32,7 @@ function setThumbnail(event) {
 	reader.onload = function(event) { 
 		var img = document.createElement("img"); 
 		img.setAttribute("src", event.target.result); 
-		document.querySelector("div#image_container").appendChild(img); }; 
+		document.querySelector("div#image_container").appendChild(img)}; 
 		reader.readAsDataURL(event.target.files[0]); } 
 </script>
 
@@ -56,7 +56,6 @@ function setThumbnail(event) {
 
 <script type="text/javascript">
   function check(){
-	  
 	  window.open("${pageContext.request.contextPath}/channel/constructor/payment/importApi","win","width=800,height=700");
   }
 </script>
@@ -95,7 +94,7 @@ function setThumbnail(event) {
 	
 	<c:choose>
 		
-    	<c:when test="${fn:length(portlist) >= 2}">
+    	<c:when test="${fn:length(portList) >= 2}">
 	
 			<button type="button" onclick="check()"> 결제하기(등록)</button>
 			
