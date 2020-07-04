@@ -194,7 +194,7 @@
                 <span class="card-item-comment__writer__separator">:</span>
               </address>
               <a href="" class="card-item-comment__link">
-                <p class="card-item-comment__content">${list.commentList.commCommentDescription}</p>
+                <p class="card-item-comment__content">외않되 쉬익,,</p>
               </a>
             </article>
           </div>
