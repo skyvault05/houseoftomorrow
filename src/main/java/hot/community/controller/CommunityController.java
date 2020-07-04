@@ -130,7 +130,13 @@ public class CommunityController {
 		
 		List<Community> communityList = communityService.selectCommunityCategory(commCategoryNo);
 		
-		return new ModelAndView("community/guest/communityList", "list", communityList);
+		if(commCategoryNo == 4) {
+			return new ModelAndView("community/guest/communityPic", "list", communityList);
+		} else if(commCategoryNo == 5) {
+			return new ModelAndView("community/guest/communityList", "list", communityList);
+		}
+		
+		return new ModelAndView("community/guest/communityPic", "list", communityList);
 	}
 	
 	/**
