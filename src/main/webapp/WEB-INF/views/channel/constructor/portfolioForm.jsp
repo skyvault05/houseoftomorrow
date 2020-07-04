@@ -1,8 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<!doctype html> 
+<html lang="ko"> 
+  <head>
+    <title>내일의 집</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
 
 <!DOCTYPE html>
 <html>
@@ -39,13 +46,38 @@ $(document).ready(function() {
 		
 document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);});
 </script>
-
 <style>
 	#portTitle{
 		height: 50px;
 		font-size: 20px;
 	}
 </style>
+  </head>
+  
+  <body>
+  <sec:authentication property="principal" var="user"/>
+    <header role="banner">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand " href="/common/index">HOT</a>
+    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      		<span class="navbar-toggler-icon"></span>
+    	</button>
+    
+    <!--------------------------------------main menu--------------------------------------------->
+          <div class="collapse navbar-collapse btnCollapse" >
+            <ul class="navbar-nav ">
+              <li class="nav-item dropdown pl-md-5">
+              <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
+             <div class="dd-wrap">
+              <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#" >커뮤니티홈</a></li>
+                <li><a class="dropdown-item" href="#">사진</a></li>
+                <li><a class="dropdown-item" href="#">집들이</a></li>
+                <li><a class="dropdown-item" href="#">노하우</a></li>
+              </ul>
+              </div>
+            </li>
 
 <script type="text/javascript">
   function check(){
@@ -80,6 +112,7 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
 <h2>포트폴리오 등록</h2>
 </div>
 <br><br>
+<div class="container">
 <form name="portForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/channel/constructor/insertPort" >
 	<sec:authentication var="user" property="principal" />
 	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
