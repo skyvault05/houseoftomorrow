@@ -55,16 +55,7 @@ function setThumbnail(event) {
 		reader.readAsDataURL(event.target.files[0]); } 
 </script>
 <script>
-	$.document(function(
-		alert(1)
-	 $("button").onclick(function(
-	 
-	 	
-	 ));
-	
-	
-	
-	));
+
 </script>
 
 <style>
