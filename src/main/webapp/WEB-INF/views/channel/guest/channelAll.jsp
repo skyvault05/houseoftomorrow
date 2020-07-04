@@ -24,27 +24,33 @@
   <!-- WebFont -->
   
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <c:forEach items="${list}" var="list">
- <div class="col-xl-12 pt-3">
-<div class="card-wrap">
- 	<div class="main_recomm card">
-	     <div class="card-img">
-	     <a href="${pageContext.request.contextPath}/channel/channelDetail/${list.chNo}">
-	         <img src="${list.chImg}" class="card-img-top rounded">
-	     </a>
-	     </div>
-	     <div class="card-body">
-	       <a href="${pageContext.request.contextPath}/channel/channelDetail/${list.chNo}">
-	       <p class="card-text title">${list.constructor.conName}</p>
-	       <div class="card-text content">★ ${list.chGrades}</div>
-	       </a>
-	     </div>
-	 </div>
- </div>
-</div>
-
+ <section class="recommendation portfolio">
+     <div class="container">
+         <div class="row">
+			<div class="col-xl-12 pt-3">
+			<div class="card-wrap">
+			 	<div class="main_recomm card">
+				     <div class="card-img">
+				     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}">
+				         <img src="${list.chImg}" class="card-img-top rounded">
+				     </a>
+				     </div>
+				     <div class="card-body">
+				       <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}">
+				       <p class="card-text title">${list.constructor.conName}</p>
+				       <div class="card-text content">★ ${list.chGrades}</div>
+				       </a>
+				     </div>
+				 </div>
+			 </div>
+			</div>
+		</div>
+	</div>
+</section>
 </c:forEach>
 </body>
 </html>

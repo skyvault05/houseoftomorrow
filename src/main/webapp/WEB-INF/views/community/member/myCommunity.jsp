@@ -68,9 +68,12 @@ h1{
 </head>
 <body>
 
-
+<div class="container pt-6">
+<div class="row">
 <%-- ${community.member.memberNo} --%>
-<h1>${param.member.memberNo}</h1>
+
+
+
 
 <c:forEach items="${community}" var="list" >
 
@@ -93,6 +96,7 @@ h1{
 				</c:when>
 			</c:choose>
 </c:forEach>
-
+</div>
+</div>
 </body>
 </html>

@@ -42,8 +42,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          //$('.drop-down__list').removeClass('open');
       });
    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-         
-         
+
    function pageLoad(){
       $.ajax({
          type:"POST",
@@ -102,6 +101,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
   <body>
   <div class="empty-space"></div>
   <div class="container-flude submenu_borderbottom">
+
    <div class="wrap-submenu">
       <div class="mypage-nav">
          <nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
@@ -119,8 +119,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          </nav>
       </div>
    </div><!--end wrap-submenu-->
+</div>
 
-</div> 
 
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
@@ -177,6 +177,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                      </div>      
                      <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
                      <img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel"  src="/plugins/images/heart_off.png"/>
+                     <strong>${fn:length(favCh)}</strong>
                      </sec:authorize>
                   </div><!--end 상담하기-->
                   
@@ -212,7 +213,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          <div class="channel_review">
             <!--고객리뷰-->
             <section class="post post--reviews">
-               <h5 class="post__title">고객들의 리뷰 <strong>5</strong>
+               <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(list)}+</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
                      <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
@@ -221,20 +222,18 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                </h5>
                <div class="row post--reviews__list">
                <c:forEach items="${list}" var="list">
-                  <a class="col-12 col-md-6 post--reviews__item-wrap" href="/users/5007120/reviews">
+                  <a style="text-decoration: none" class="col-12 col-md-6 post--reviews__item-wrap" href="${pageContext.request.contextPath}/review/readReview/${list.reviewNo}">
                      <div class="post--reviews__item">
                         <div class="post--reviews__contents">
                            <div class="post--reviews__contents__text">
                               <p>${list.reviewDescription}</p>
                               <div class="post--reviews__writer">
                                  <img class="post--reviews__writer__profile" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/users/profile_images/1538013509935_tT9Yvz9ao.jpg?gif=1&amp;w=36" srcSet="https://image.ohou.se/i/bucketplace-v2-development/uploads/users/profile_images/1538013509935_tT9Yvz9ao.jpg?gif=1&amp;w=36 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/users/profile_images/1538013509935_tT9Yvz9ao.jpg?gif=1&amp;w=72 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/users/profile_images/1538013509935_tT9Yvz9ao.jpg?gif=1&amp;w=72 3x"/>
-                                 <span class="post--reviews__writer__name">0**4 고객님</span>
-                                 <span class="post--reviews__writer__rating" aria-label="별점 4.8점">
-                                    <svg fill="#35C5F0" width="16" height="16" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
-                                    <svg fill="#35C5F0" width="16" height="16" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
-                                    <svg fill="#35C5F0" width="16" height="16" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
-                                    <svg fill="#35C5F0" width="16" height="16" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
-                                    <svg fill="#35C5F0" width="16" height="16" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-0.800" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-0.800"><rect x="0" y="0" width="12.799999999999997" height="16"></rect></clipPath></defs><use xlink:href="#star-path-0.800" fill="#DBDBDB"></use><use clip-path="url(#star-clip-0.800)" xlink:href="#star-path-0.800"></use></svg>
+                                 <span class="post--reviews__writer__name">${list.member.memberName} 고객님</span>
+                                 <span class="post--reviews__writer__rating" aria-label="별점 ${list.reviewGrade}점">
+                                 <c:forEach begin="1" end="${list.reviewGrade}">
+	                             	 <svg fill="#35C5F0" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
+	                              </c:forEach>
                                  </span>
                               </div>
                            </div>

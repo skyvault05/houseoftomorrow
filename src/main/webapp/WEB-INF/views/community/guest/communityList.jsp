@@ -8,27 +8,29 @@
 <meta charset="UTF-8">
 <title>내일의 집</title>
 
-	<script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
-	    
-	<link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
-	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
+
+  <!-- Theme Style -->
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
+  
+  <!-- WebFont -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
 <style>
-	h1{
-		margin-left: 10%;
-		font-weight: bold;
-	}
+
 	img{
- 		width: 20%; 
- 		height: 20%;
-	}
-	a{
-		color: black;
-		text-decoration: none;
-	}
-	a:hover{
-		color: black;
-		text-decoration: none;
+ 		width: 500px;
+		height:300px;
 	}
 	.scale  img {
 		-webkit-transform:scale(1);
@@ -52,74 +54,31 @@
 	.scale{
 		overflow: hidden;
 	}
-	.list{
-		text-align: center;
-		float: left;
-	}
-	section{
-		margin-left: 10%;
-		margin-right: 10%
-	}
-	img{
-		width: 500px;
-		height:300px;
-	}
-	/* Style the tab */
-	.tab {
-	margin-left: 10%;
-	width: 80%;
-	  overflow: hidden;
-	  border: 1px solid #ccc;
-	  background-color: #f1f1f1;
-	}
-	
-	/* Style the buttons inside the tab */
-	.tab button {
-	  background-color: inherit;
-	  float: left;
-	  border: none;
-	  outline: none;
-	  cursor: pointer;
-	  padding: 14px 16px;
-	  transition: 0.3s;
-	  font-size: 20px;
-	  width: 50%
-	}
-	
-	/* Change background color of buttons on hover */
-	.tab button:hover {
-	  background-color: #ddd;
-	}
-	
-	/* Create an active/current tablink class */
-	.tab button.active {
-	  background-color: #ccc;
-	}
-	
-	/* Style the tab content */
-	.tabcontent {
-	  display: none;
-	  padding: 6px 12px;
-	  border: 1px solid #ccc;
-	  border-top: none;
-	  }
 </style>
 
 </head>
 <body>
-
-
-<h1>커뮤니티</h1>
 <br><br>
-<div id="tab" class="tab">
-  <button class="tablinks" onclick="location.href='${pageContext.request.contextPath}/community/list/4'">사진</button>
-  <button class="tablinks" onclick="location.href='${pageContext.request.contextPath}/community/list/5'">노하우</button>
+<div class="container margin-top-100">
+<div class="row justify-content-center">
+<h2>
+커뮤니티
+</h2>
 </div>
-<br><br>
-<section>
+<div class="row justify-content-center">
+<c:choose>
+	<c:when test="${commCategoryNo==4}"><h3>사진</h3></c:when>
+</c:choose>
+<c:choose>
+	<c:when test="${commCategoryNo==5}"><h3>노하우</h3></c:when>
+</c:choose>
+</div>
+<div class="row"><br><br></div>
+<section class="rows">
 	<c:forEach items="${requestScope.list}" var="list" >
-	<div class="list col-md-4"><a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
-	<div class="scale"><img src="${list.commImg}"></div><!-- 이미지 크기 조정 --><br>
+	<div class="col-md-4">
+	<a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
+	<div class="scale"><img class="card-img-top rounded" src="${list.commImg}"></div><!-- 이미지 크기 조정 --><br>
 	<b>${list.commTitle}</b><p>
 	${list.member.memberId}<p>
 	조회수: ${list.commReadnum }<p>
@@ -127,5 +86,6 @@
 	</div>
 	</c:forEach>
 </section>
+</div>
 </body>
 </html>

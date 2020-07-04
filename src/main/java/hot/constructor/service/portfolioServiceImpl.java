@@ -33,6 +33,18 @@ public class portfolioServiceImpl implements PortfolioService{
 		
 		return portRep.findPortfolioByChNo(ChNo);
 	}
+
+	@Override
+	public List<Portfolio> findAllPortfolio() {
+		List<Portfolio> port = portRep.findByPortStatus(1);
+		return port;
+	}
+
+	@Override
+	public Portfolio portfolioDetail(int portNo) {
+		Portfolio portfolio = portRep.findById(portNo).orElse(null);
+		return portfolio;
+	}
 	
 	
 	

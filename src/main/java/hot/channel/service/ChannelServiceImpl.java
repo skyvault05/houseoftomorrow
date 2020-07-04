@@ -100,7 +100,6 @@ public class ChannelServiceImpl implements ChannelService {
 	 * */
 	@Override
 	public void insertFavoriteChannel(Integer membNo, Integer chaNo) {
-		System.out.println("서비스 들어옴");
 		System.out.println("membNo: " + membNo);
 		Member member = memberRep.findById(membNo).orElse(null);
 		Channel channel = channelRepository.findById(chaNo).orElse(null);
@@ -145,8 +144,7 @@ public class ChannelServiceImpl implements ChannelService {
 		
 		favoritePortfolio.setMember(member);
 		favoritePortfolio.setPortfolio(portfolio);
-		fpRep.save(favoritePortfolio);
-		
+		fpRep.save(favoritePortfolio);		
 	}
 
 	@Transactional(dontRollbackOn=Exception.class) // 오류 없애려고 추가한 코드
