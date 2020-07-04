@@ -54,13 +54,20 @@ public class CommunityController {
 	public void url3() {}
 	
 	/**
-	 * commuity main
+	 * community main
 	 * */
 	@RequestMapping("/community/guest/communityMain")
 	public String communityMain() {
 		return "community/guest/communityMain";
 	}
-
+	
+	/**
+	 * communityPicture
+	 */
+	@RequestMapping("/community/guest/communityPic")
+	public String communityPic() {
+		return "/community/guest/communityPic";
+	}
 	
 	/**
 	 * write.jsp에서 qna등록 폼으로 이동하게
