@@ -38,7 +38,7 @@
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 
 <div class="empty-space"> </div>
-  <div class="container card-feed pt-5">
+<%--   <div class="container card-feed pt-5">
   	<div class="virtualized-list card-feed__content row">
   	
  <!-------------------- START communityPic ------------------------->
@@ -121,13 +121,10 @@
 
     </div><!--end row-->
   </div><!-- end container -->
-  
+   --%>
   <!----------------------------------------- TEST ----------------------------------------->
   <hr/>
-  
-  <c:choose>
-	<c:when test="${commCategoryNo==4}"><h3>사진</h3></c:when>
-</c:choose>
+  <div class="container">
   <div class="virtualized-list card-feed__content row">
 <c:forEach items="${requestScope.list}" var="list" >
  <!-------------------- START communityPic ------------------------->
@@ -142,7 +139,7 @@
                   <!----작성자사진쓰----->
                    <img class="card-item-writer__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="작성자사진">
                    	<!-- 작성자이름 -->
-                   <span class="card-item-writer__name">이웃집토르</span>
+                   <span class="card-item-writer__name">${list.member.memberId}</span>
                  </a>
                  <span class="card-item-writer__separator">
                    
@@ -182,8 +179,8 @@
           </aside>
           <!------사용자 정보가져오긔----->
           <div class="card-item__content" id="">
-            <a href="#여기누르면상세페이지ㄱㄱ" class="card-item__content__link"></a>
-            <div class="expandable-text card-item-description card-item__description expandable">${list.commTitle}</div>
+            <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}" class="card-item__content__link"></a>
+            <div class="expandable-text card-item-description card-item__description expandable">${list.commDescription}</div>
           </div>
 
 <!---------------------댓글보여주긔☆-------------------->
@@ -192,12 +189,12 @@
               <address class="card-item-comment__writer">
                 <a href="" class="card-item-comment__writer__link">
                   <img class="card-item-comment__writer__image" src="${pageContext.request.contextPath}/images/default/user_comment.png" alt="댓글단사람사진">
-                  <span class="card-item-comment__writer__name">댓글돌이</span>
+                  <span class="card-item-comment__writer__name">${list.member.memberName}</span>
                 </a>
                 <span class="card-item-comment__writer__separator">:</span>
               </address>
               <a href="" class="card-item-comment__link">
-                <p class="card-item-comment__content">댓글내용,,</p>
+                <p class="card-item-comment__content">${list.commentList.commCommentDescription}</p>
               </a>
             </article>
           </div>
@@ -209,6 +206,7 @@
      </div><!-- END community Pic-->
 </c:forEach>
     </div><!--end row-->
+    </div>
  
 
 
