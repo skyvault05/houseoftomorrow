@@ -101,6 +101,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
   <body>
   <div class="empty-space"></div>
   <div class="container-flude submenu_borderbottom">
+
    <div class="wrap-submenu">
       <div class="mypage-nav">
          <nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
@@ -118,8 +119,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          </nav>
       </div>
    </div><!--end wrap-submenu-->
+</div>
 
-</div> 
 
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
