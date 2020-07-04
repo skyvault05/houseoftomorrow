@@ -120,7 +120,7 @@ public class ChannelController {
 	@RequestMapping("/update")
 	public String updateChannel(Constructor constructor, Channel channel, Integer chaNo, Integer membNo, MultipartFile file) throws IOException {
 		channelService.updateChannel(constructor, channel, chaNo, file);
-		return "redirect:guest/channelDetail/"+chaNo;
+		return "redirect:constructor/myChannel/"+membNo;
 	}
 	
 	/**
