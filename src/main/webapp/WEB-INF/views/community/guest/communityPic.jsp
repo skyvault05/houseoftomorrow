@@ -125,7 +125,9 @@
   <!----------------------------------------- TEST ----------------------------------------->
   <hr/>
   
-  
+  <c:choose>
+	<c:when test="${commCategoryNo==4}"><h3>사진</h3></c:when>
+</c:choose>
   <div class="virtualized-list card-feed__content row">
 <c:forEach items="${requestScope.list}" var="list" >
  <!-------------------- START communityPic ------------------------->
