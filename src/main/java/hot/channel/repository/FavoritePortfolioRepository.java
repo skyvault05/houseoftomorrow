@@ -16,4 +16,6 @@ public interface FavoritePortfolioRepository extends JpaRepository<FavoritePortf
 	
 	List<FavoritePortfolio> findByMember(Member member);
 	
+	List<FavoritePortfolio> findByPortfolio(Portfolio portfolio);
+	
 }

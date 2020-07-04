@@ -124,8 +124,8 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public Page<Review> selectAll(Pageable pageable) {
-		
-		return null;
+	public Page<Review> selectAll(Pageable pageable, Channel channel) {		
+		Page<Review> page = reviewRep.findByChannelNoAndReviewStatus(pageable, channel, 1);
+		return page;
 	}
 }

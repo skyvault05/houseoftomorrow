@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import hot.admin.service.OrderServiceImpl;
 import hot.aws.S3Manager;
 import hot.channel.domain.Channel;
+import hot.channel.domain.FavoritePortfolio;
+import hot.channel.repository.FavoritePortfolioRepository;
 import hot.channel.service.ChannelServiceImpl;
 import hot.constructor.service.ConstructorServiceImpl;
 import hot.constructor.service.portfolioServiceImpl;
@@ -35,6 +37,7 @@ public class ConstructorController {
 	private final portfolioServiceImpl portfolioService;
 	private final ConstructorServiceImpl constructorService;
 	private final OrderServiceImpl orderService;
+	private final FavoritePortfolioRepository favoritePortRep;
 	
 	String orderMethod ;
 	String orderStatus ;
@@ -146,17 +149,6 @@ public class ConstructorController {
 	
 	////////////////////////////////////////////////////////////
 	
-	@RequestMapping("/channel/guest/channelDetail/{chNo}")
-	public ModelAndView myChannel(@PathVariable Integer chNo) {
-		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
-		Channel channel = channelService.selectChannel(chNo);
-		
-		ModelAndView mv = new ModelAndView("/channel/guest/channelDetail","portList", portList);
-		mv.addObject("channel", channel);
-		return mv;
-	}
-	
-		
 	
 	@RequestMapping("/channel/constructor/payment/inputForm")
 	public void inputForm() {
@@ -191,9 +183,34 @@ public class ConstructorController {
 		return "error/error";
 	}
 	
+	/**
+	 * 포트폴리오 전체 목록
+	 * */
+	@RequestMapping("/channel/guest/portfolioAll")
+	public ModelAndView portfolioList() {
+		
+		List<Portfolio> portList = portfolioService.findAllPortfolio();
+		
+		return new ModelAndView("channel/guest/portfolioAll", "portList", portList);
+	}
 	
-	
-	
+	/**
+	 * 포트폴리오 상세 페이지
+	 * */
+	@RequestMapping("/channel/guest/portfolioDetail/{portNo}")
+	public ModelAndView portfolioDetail(@PathVariable(name="portNo")int portNo) {
+		
+		Portfolio port = portfolioService.portfolioDetail(portNo);
+		
+		List<FavoritePortfolio> favPort = favoritePortRep.findByPortfolio(port);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("channel/guest/portfolioDetail");
+		mv.addObject("port", port);
+		mv.addObject("favPort", favPort);
+		
+		return mv;
+	}
 	
 	
 	
