@@ -45,13 +45,13 @@
           <div class="collapse navbar-collapse btnCollapse" >
             <ul class="navbar-nav ">
               <li class="nav-item dropdown pl-md-5">
-              <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
+              <a href="/community/guest/communityMain" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
              <div class="dd-wrap">
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#" >커뮤니티홈</a></li>
+                <li><a class="dropdown-item" href="/community/guest/communityMain" >커뮤니티홈</a></li>
                 <li><a class="dropdown-item" href="#">사진</a></li>
-                <li><a class="dropdown-item" href="#">집들이</a></li>
                 <li><a class="dropdown-item" href="#">노하우</a></li>
+                <li><a class="dropdown-item" href="#">질문과답변</a></li>
               </ul>
               </div>
             </li>
