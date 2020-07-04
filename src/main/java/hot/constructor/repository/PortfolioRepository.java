@@ -12,4 +12,6 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Integer> {
 	@Query("select p from Portfolio p where p.channel.chNo = ?1")
 	List<Portfolio> findPortfolioByChNo(int chNo);
 	
+	List<Portfolio> findByPortStatus(Integer portStatus);
+	
 }

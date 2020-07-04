@@ -34,10 +34,10 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <div class="container margin-top-100">
 <br><br>
 <div class="row justify-content-center">
-<h2>관심 채널</h2>
+<h2>관심 포트폴리오</h2>
 </div>
 <div class="row"><br><br></div>
-<c:forEach items="${fvChannel}" var="fvChannel">
+<c:forEach items="${fport}" var="port">
  <section class="recommendation portfolio">
      <div class="container">
          <div class="row">
@@ -46,13 +46,13 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 			 	<div class="main_recomm card">
 				     <div class="card-img">
 				     <a href="${pageContext.request.contextPath}/channel/channelDetail/${fvChannel.channel.chNo}">
-				         <img src="${fvChannel.channel.chImg}" class="card-img-top rounded">
+				         <img src="${port.portfolio.portImg}" class="card-img-top rounded">
 				     </a>
 				     </div>
 				     <div class="card-body">
-				       <a href="${pageContext.request.contextPath}/channel/channelDetail/${fvChannel.channel.chNo}">
-				       <p class="card-text title">${fvChannel.channel.constructor.conName}</p>
-				       <div class="card-text content">★ ${fvChannel.channel.chGrades}</div>
+				       <a href="${pageContext.request.contextPath}/수정하삼~~~~">
+				       <p class="card-text title">${port.portfolio.portTitle}</p>
+				       <div class="card-text title">${port.portfolio.channel.constructor.conName}</div>
 				       </a>
 				     </div>
 				 </div>
