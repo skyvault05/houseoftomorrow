@@ -59,8 +59,8 @@ function setThumbnail(event) {
 		alert(1)
 	 $("button").onclick(function(
 	 
-	 	
-	 ));
+
+ ));
 	
 	
 	
