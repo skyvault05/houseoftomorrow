@@ -6,10 +6,16 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +31,8 @@ import hot.constructor.service.portfolioServiceImpl;
 import hot.member.domain.Constructor;
 import hot.member.domain.Order;
 import hot.member.domain.Portfolio;
+import hot.review.domain.Review;
+import hot.review.service.ReviewServiceImpl;
 import hot.security.CustomUser;
 import lombok.RequiredArgsConstructor;
 
@@ -38,6 +46,7 @@ public class ConstructorController {
 	private final ConstructorServiceImpl constructorService;
 	private final OrderServiceImpl orderService;
 	private final FavoritePortfolioRepository favoritePortRep;
+	private final ReviewServiceImpl reviewService;
 	
 	String orderMethod ;
 	String orderStatus ;
@@ -52,13 +61,24 @@ public class ConstructorController {
 		return "/channel/constructor/portfolioForm";
 	}
 	
-	@RequestMapping("/channel/constructor/pttest")
-	public ModelAndView test() {
+	@RequestMapping("/channel/constructor/myChannel")
+	public ModelAndView myChannel(@RequestParam(defaultValue = "0")int nowPage, Model model) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
-		Integer chNo = ((CustomUser)principal).getChNo();
-		List<Portfolio> portlist = portfolioService.selectPortfolioChNo(chNo);
+		//Integer chNo = ((CustomUser)principal).getChNo();
+		//System.out.println(chNo);
+		List<Portfolio> portList = portfolioService.selectPortfolioChNo(1);
 		
-		return new ModelAndView("/channel/constructor/myChannel","portlist", portlist);
+		
+		Channel channel = channelService.selectChannel(1);
+		Pageable page =PageRequest.of(nowPage, 2, Direction.DESC, "reviewNo");
+		Page<Review> pageReview = reviewService.selectAll(page, channel);
+
+		model.addAttribute("list", pageReview.getContent());
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/channel/constructor/myChannel");
+		mv.addObject("channel", channel);
+		mv.addObject("portList", portList);
+		return mv;
 	}
 	
 	
