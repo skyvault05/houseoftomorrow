@@ -44,7 +44,6 @@
 		font-weight: bold;
 	}
 	#qnaTitle{
-		width: 60%;
 		height: 50px;
 		font-size: 20px;
 	}
@@ -66,15 +65,16 @@
 </head>
 <body>
 <div class="container">
+<br><br>
 <div class="row justify-content-center">
 <h2>문의하기</h2>
 </div>
 <div class="row"><br></div>
 <form action="${pageContext.request.contextPath}/qna/insert" method ="post">
-	<input type="text" name="qnaTitle"  id="qnaTitle" placeholder="  올릴 문의글의 제목을 입력해주세요"/><p>
+	<input class="col-md-6" type="text" name="qnaTitle"  id="qnaTitle" placeholder="  올릴 문의글의 제목을 입력해주세요"/><p>
 	<br>
-	<h3>문의 카테고리 설정</h3>
-	<select name="qnaCateNo">
+	<h4>문의 카테고리 설정</h4>
+	<select class="col-md-3" name="qnaCateNo">
 		<option value="14">결제</option>
 		<option value="15">환불</option>
 		<option value="16">회원정보 변경</option>
@@ -87,7 +87,7 @@
 	<sec:authentication var="user" property="principal" />
 	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
 	<br>
-	<input class="btn btn-outline-primary" type="submit"  value="등록하기"/>
+	<input class="btn btn-outline-primary" style="font-size:18px;" type="submit"  value="등록하기"/>
 </form>
 </div>
 

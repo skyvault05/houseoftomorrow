@@ -24,10 +24,6 @@
   <!-- WebFont -->
   
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-  
-  <style>
-
-  </style>
 
 </head>
 <body>
@@ -39,12 +35,12 @@
 			<div class="card-wrap">
 			 	<div class="main_recomm card">
 				     <div class="card-img">
-				     <a href="${pageContext.request.contextPath}/channel/channelDetail/${list.chNo}">
+				     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}">
 				         <img src="${list.chImg}" class="card-img-top rounded">
 				     </a>
 				     </div>
 				     <div class="card-body">
-				       <a href="${pageContext.request.contextPath}/channel/channelDetail/${list.chNo}">
+				       <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}">
 				       <p class="card-text title">${list.constructor.conName}</p>
 				       <div class="card-text content">★ ${list.chGrades}</div>
 				       </a>

@@ -32,6 +32,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 	a{
 		color: black;
 		text-decoration: none;
+		font-size: 15px;
 	}
 	/* Style the tab */
 	.tab {
@@ -51,7 +52,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 	  cursor: pointer;
 	  padding: 14px 16px;
 	  transition: 0.3s;
-	  font-size: 20px;
+	  font-size: 18px;
 	  width: 25%
 	}
 	
@@ -80,10 +81,10 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 		    color: white;
 		}
 </style>
-
 </head>
 <body>
-<div class="container margin-top-100">
+<div class="container">
+<br><br>
 <div class="row justify-content-center">
 <h2>문의사항</h2>
 </div>

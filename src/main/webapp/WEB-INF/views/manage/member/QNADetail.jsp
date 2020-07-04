@@ -59,6 +59,7 @@
 </head>
 <body>
 <div  class="container margin-top-100">
+<br><br>
 <div class="row justify-content-center">
 	<h2>${qna.qnaTitle}</h2>
 </div>
@@ -121,5 +122,6 @@ ${qnaParent.qnaDescription}
 </c:forEach>
 </c:if>
 </div>
+<br><br>
 </body>
 </html>
