@@ -33,6 +33,8 @@ public class ReviewController {
 	@Autowired
 	private ReviewRepository reviewRep;
 	
+	
+	
 	/**
 	 * 리뷰 등록 기능
 	 * */

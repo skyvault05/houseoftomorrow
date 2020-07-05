@@ -727,3 +727,8 @@
     display: inline;
 }
 
+
+/*-------------TEST -----------*/
+.card-item__content img{
+	display:none;
+}
