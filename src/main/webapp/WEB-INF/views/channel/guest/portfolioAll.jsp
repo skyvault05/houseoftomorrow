@@ -51,7 +51,11 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 		margin-top:5px;
 	}
 	
-	
+	#page{
+		
+		margin-left:40%;
+		margin-top:30px;
+	}
 
 </style>  
 </head>

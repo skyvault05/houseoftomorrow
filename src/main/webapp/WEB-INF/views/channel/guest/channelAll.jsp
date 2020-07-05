@@ -25,6 +25,15 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
+
+<style>
+	#page{
+		margin-top:30px;
+		margin-left:40%
+	
+	}
+
+</style>
 </head>
 <body>
 
@@ -75,7 +84,7 @@
 </div>
 
 <!-- 페이징 처리 -->
-<div>
+<div id="page">
 <c:forEach begin="0" end="${totalPage-1}" var="i">
 	<c:choose>
 		<c:when test="${i==nowPageNum }">
