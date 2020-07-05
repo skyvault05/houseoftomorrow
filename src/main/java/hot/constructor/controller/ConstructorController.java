@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -57,8 +58,11 @@ public class ConstructorController {
 	
 	
 	@RequestMapping("/channel/constructor/portfolioForm")
-	public String portfolioForm() {
-		return "/channel/constructor/portfolioForm";
+	public ModelAndView portfolioForm() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
+		Integer chNo = ((CustomUser)principal).getChNo();
+		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
+		return new ModelAndView("/channel/constructor/portfolioForm","portList", portList);
 	}
 	
 	@RequestMapping("/channel/constructor/myChannel")
@@ -83,22 +87,17 @@ public class ConstructorController {
 	
 	
 	
-	@RequestMapping("/channel/constructor/payment/complete")
+	@PostMapping("/channel/constructor/payment/complete")
 	@ResponseBody
-	//@CrossOrigin
-	public String insertPortfolio(String pg_provider, String pay_method , String status) throws IOException{
-	//public String insertPortfolio(@RequestParam Map<String,String> map) throws IOException{
-	//폼이랑 name명 잘 맞출 것
-		
-		
+	public String insertPortfolio(String pg, String pay_method , String status) throws IOException{
 		System.out.println("pay_method = "+pay_method);
 		System.out.println("status = "+status);
-		System.out.println("String = " + pg_provider);
+		System.out.println("String = " + pg);
 		
 		
 		String orderMethod = pay_method;;
 		String orderStatus = status;;
-		String orderPayment = pg_provider;   
+		String orderPayment = pg;   
 		
 		return "결제 완료"; 
 	}
@@ -108,7 +107,7 @@ public class ConstructorController {
 	 * 포트폴리오 등록
 	 */
 	
-	@RequestMapping("/channel/constructor/insertPort")
+	@PostMapping("/channel/constructor/insertPort")
 	public ModelAndView insertPortfolio2(String portTitle, 
 			String portDescription, MultipartFile file, 
 			Date portStartDate, Date portEndDate, String portImg, String chNo) throws IOException{	
