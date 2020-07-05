@@ -1,36 +1,34 @@
 package hot;
 
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
-import hot.community.repository.CommCategoryRepository;
-import hot.community.repository.CommCommentRepository;
-import hot.community.repository.CommunityRepository;
+
 import hot.admin.repository.OrderRepository;
-import hot.channel.domain.Channel;
 import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
 import hot.channel.service.ChannelService;
+import hot.community.repository.CommCategoryRepository;
+import hot.community.repository.CommCommentRepository;
+import hot.community.repository.CommunityRepository;
 import hot.constructor.repository.ConstructorRepository;
 import hot.constructor.repository.PortfolioRepository;
 import hot.consulting.repository.ConsultingRepository;
 import hot.consulting.repository.ContractRepository;
-import hot.estimate.domain.Estimate;
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
-import hot.member.domain.Notification;
+import hot.member.domain.Member;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
 import hot.member.repository.NotificationRepository;
-import hot.review.domain.Review;
 import hot.review.repository.ReviewRepository;
 
 
@@ -98,9 +96,12 @@ class HouseoftomorrowApplicationTests {
 	
 	@Autowired
 	private ChannelService channelService;
-
+	
+	@Autowired
 	private OrderRepository orderRep;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	@Test
 	void contextLoads() {
 //		System.out.println(memberRole);
@@ -171,7 +172,7 @@ class HouseoftomorrowApplicationTests {
 //			System.out.println(com.getCommNo());
 //		}
 		
-		notificationRep.save(new Notification(null, memberRep.findById(1).orElse(null), 1, 1));
+//		notificationRep.save(new Notification(null, memberRep.findById(1).orElse(null), 1, 1));
 		
 		//notificationRep.deleteById(4);
 	
@@ -229,11 +230,11 @@ class HouseoftomorrowApplicationTests {
 //		fc.setChannel(channel);
 //		fcRep.save(fc);
 		
-		Estimate est = estimateRepository.findById(4).orElse(null);
-		est.setEstimateDetails();
-		System.out.println("details: ");
-		est.getEstDetails().keySet().forEach(key -> System.out.println(key+":"+est.getEstDetails().get(key)));
-		System.out.println(est.getTile());
+//		Estimate est = estimateRepository.findById(4).orElse(null);
+//		est.setEstimateDetails();
+//		System.out.println("details: ");
+//		est.getEstDetails().keySet().forEach(key -> System.out.println(key+":"+est.getEstDetails().get(key)));
+//		System.out.println(est.getTile());
 
 		
 //		Channel channel= channelRep.findById(1).orElse(null);
@@ -257,7 +258,9 @@ class HouseoftomorrowApplicationTests {
 //			channelService.deleteFavoritePortfolio(14, 32);
 //		}
 		
-		
+//		PasswordEncoder encoder = new BCryptPasswordEncoder();
+//		Member member = new Member(null, "admin1", encoder.encode("dd"), "admin1", "000-0300-0112", null, memberRole.findById(3).orElse(null));
+//		memberRep.save(member);
 	}
 }
 	

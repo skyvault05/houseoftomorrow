@@ -34,12 +34,17 @@ $(document).ajaxSend(function(e, xhr, options) {
 <script src="/plugins/summernote/setsummernote.js"></script>
 
 <script> 
+function check(){
+	  
+	  window.open("${pageContext.request.contextPath}/channel/constructor/payment/importApi","win","width=800,height=700");
+}
+
 function setThumbnail(event) { 
 	var reader = new FileReader(); 
 	reader.onload = function(event) { 
 		var img = document.createElement("img"); 
 		img.setAttribute("src", event.target.result); 
-		document.querySelector("div#image_container").appendChild(img); }; 
+		document.querySelector("div#image_container").appendChild(img)}; 
 		reader.readAsDataURL(event.target.files[0]); } 
 		
 $(document).ready(function() {
@@ -78,13 +83,7 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
               </ul>
               </div>
             </li>
-
-<script type="text/javascript">
-  function check(){
-	  
-	  window.open("${pageContext.request.contextPath}/channel/constructor/payment/importApi","win","width=800,height=700");
-  }
-</script>
+</ul></div>
 
 <!-- bootstrap-->
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
@@ -136,7 +135,7 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
 	<!-- <input type="submit" value="등록하기">  -->
 	
 	<c:choose>		
-    	<c:when test="${fn:length(portlist) >= 2}">	
+    	<c:when test="${fn:length(portList) >= 2}">	
 			<button class="btn btn-outline-primary"  type="button" onclick="check()"> 결제하기(등록)</button>
 		</c:when>
 		<c:otherwise>

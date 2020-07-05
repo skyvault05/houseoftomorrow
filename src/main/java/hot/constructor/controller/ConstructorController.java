@@ -13,7 +13,9 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -55,10 +57,12 @@ public class ConstructorController {
 	@Autowired
 	S3Manager s3manager;
 	
-	
 	@RequestMapping("/channel/constructor/portfolioForm")
-	public String portfolioForm() {
-		return "/channel/constructor/portfolioForm";
+	public ModelAndView portfolioForm() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
+		Integer chNo = ((CustomUser)principal).getChNo();
+		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
+		return new ModelAndView("/channel/constructor/portfolioForm","portList", portList);
 	}
 	
 	@RequestMapping("/channel/constructor/myChannel")
@@ -83,22 +87,17 @@ public class ConstructorController {
 	
 	
 	
-	@RequestMapping("/channel/constructor/payment/complete")
+	@PostMapping("/channel/constructor/payment/complete")
 	@ResponseBody
-	//@CrossOrigin
-	public String insertPortfolio(String pg_provider, String pay_method , String status) throws IOException{
-	//public String insertPortfolio(@RequestParam Map<String,String> map) throws IOException{
-	//폼이랑 name명 잘 맞출 것
-		
-		
+	public String insertPortfolio(String pg, String pay_method , String status) throws IOException{
 		System.out.println("pay_method = "+pay_method);
 		System.out.println("status = "+status);
-		System.out.println("String = " + pg_provider);
+		System.out.println("String = " + pg);
 		
 		
 		String orderMethod = pay_method;;
 		String orderStatus = status;;
-		String orderPayment = pg_provider;   
+		String orderPayment = pg;   
 		
 		return "결제 완료"; 
 	}
@@ -108,23 +107,30 @@ public class ConstructorController {
 	 * 포트폴리오 등록
 	 */
 	
-	@RequestMapping("/channel/constructor/insertPort")
+	@PostMapping("/channel/constructor/insertPort")
 	public ModelAndView insertPortfolio2(String portTitle, 
 			String portDescription, MultipartFile file, 
-			Date portStartDate, Date portEndDate, String portImg, String chNo) throws IOException{	
-		int ChannelNo = Integer.parseInt(chNo); 
+			Date portStartDate, Date portEndDate, String portImg, Integer chNo, 
+			Order order,
+			String pay_method, String status, Integer amount) throws IOException{	
+		System.out.println("포트폴리오 등록 동작 컨트롤러 들어옴");
+		System.out.println("pay_method: " + pay_method);
+		System.out.println("status: " + status);
+		System.out.println("amount: " + amount);
+
+		//int ChannelNo = Integer.parseInt(chNo); 
 		
 		Long sd=portStartDate.getTime();
 		Long ed=portEndDate.getTime();
-		
+
 		Timestamp startDate = new Timestamp(sd);
 		Timestamp endDate = new Timestamp(ed);
 		
-		
 		Portfolio portfolio = new Portfolio();
-		
-		Channel channel = channelService.selectChannel(ChannelNo);
-		System.out.println(channel);
+		//Channel channel = channelService.selectChannel(ChannelNo);
+		System.out.println("chNo: " + chNo);
+		Channel channel = channelService.selectChannel(chNo);
+		System.out.println("channel.getChDescription(): " + channel.getChDescription());
 		String imgpath = s3manager.saveUploadedFiles(file);
 		
 		portfolio.setPortTitle(portTitle);
@@ -142,29 +148,31 @@ public class ConstructorController {
 		portfolioService.insertPortfolio(portfolio);
 		Constructor constructor = constructorService.selectConstructor(memberNo);
 		
+		//int orderStatus = Integer.parseInt(status);
 		
-		Order order = new Order();
 		order.setConstructor(constructor);
 		order.setPortfolio(portfolio);
+		order.setOrderMethod(pay_method);
+		order.setOrderPayment(amount);
+		order.setOrderStatusName(status);
 		
+		System.out.println("orderStatusName: " + order.getOrderStatusName());
+		System.out.println("getOrderPayment: " + order.getOrderPayment());
 		
+		System.out.println("status1: " + order.getOrderStatus());
 		
-		// ajax에서 받아올 정보들 
+		portfolioService.insertOrder(order);
 		
+		System.out.println("status2: " + order.getOrderStatus());
 		
-		//orderService.insertOrder(order);
-		/* 전체검색
-		List<Portfolio> portlist = portfolioService.selectPortfolio();
-		*/
-		
-		
+		System.out.println("다 된건가 ....");
 		// chNo 채널별 포트폴리오 검색
 		
-		List<Portfolio> portlist = portfolioService.selectPortfolioChNo(ChannelNo);
-		
+		//List<Portfolio> portlist = portfolioService.selectPortfolioChNo(ChannelNo);
+		List<Portfolio> portlist = portfolioService.selectPortfolioChNo(chNo);
 		System.out.println("포트폴리오 : " + portlist.size());
 		
-		return new ModelAndView("redirect:/channel/guest/channelDetail", "portlist", portlist); 
+		return new ModelAndView("redirect:/channel/guest/channelDetail/"+chNo, "portlist", portlist); 
 	}
 	
 	////////////////////////////////////////////////////////////

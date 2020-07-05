@@ -23,4 +23,9 @@ public interface MemberService {
 	 * phone번호 인증 (중복 불가)
 	 */
 	Member selectMemberByPhone(String phone);
+	
+	/**
+	 * 상담하기의 유저 이름 가져오기
+	 */
+	String findMemberName(int memberNo);
 }

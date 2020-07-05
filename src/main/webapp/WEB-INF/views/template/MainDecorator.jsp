@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,9 @@
 <sitemesh:write property='head' />
 </head>
 <body>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="user"/>
+</sec:authorize>
 <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -45,52 +50,53 @@
               </div>
             </li>
            </ul>
+           
+           
     <!--------------------------------------sub menu--------------------------------------------->
             <div class="navbar-nav ml-auto">
               <form method="post" class="search-form" >
                 <span class="icon ion ion-search pt-2"><ion-icon name="search-outline"></ion-icon></span>
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
-              <button type="button" class="btn btn-outline-primary">글쓰기</button>
               
-   <!------------------------------ 로그인/회원가입 -------------------------------->
+                 <!------------------------------ 로그인/회원가입 -------------------------------->
 	<sec:authorize access="isAnonymous()">
    			  <div class="header_navigation-bar-login pl-1">
+<<<<<<< HEAD
    			  	<a class="navigation-bar-login__item aftermenu" href="/common/loginForm">로그인</a>
+   			  	<a class="navigation-bar-login__item signup-margin-right" href="/choiceJoin">회원가입</a>
+=======
+   			  	<a class="navigation-bar-login__item aftermenu" href="/loginForm">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
+>>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
    			  </div>
  	</sec:authorize>
 
    <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
   
-   	<sec:authorize access="isAuthenticated()">
+   	<sec:authorize access="isAuthenticated()">   
    	
-   			<div class="iconmenu pl-1">
-              <div class="header_social_icon d-flex">
-              	
-                <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
-                <!-- <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
-                  <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
-                </a>
-                <div class="dropdown-menu submenu">
-                  <a href="#" class="dropdown-item favoriteChannel">관심채널</a>
-                  <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
-                </div> -->
-                <ion-icon name="notifications-outline" class="icon ion"></ion-icon>
-                <div class="dropdown submenu">  
-                  <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
-                    <ion-icon name="happy-outline" class="icon ion mypage"></ion-icon>
-                  </a>
-                  <div class="dropdown-menu submenu box shadow">
-                    <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
-                    <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
-                    <a href="#" class="dropdown-item writeList">내가쓴글</a>
-                    <a href="/logout" class="dropdown-item logout">로그아웃</a>
-                  </div>
-                </div>
-                </div>
-              </div><!--end submenu header icon-->
+   			<!-- Example single danger button -->
+		<div class="btn-group">
+		  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    마이메뉴
+		  </button>
+		  <div class="dropdown-menu">
+		  	<a href="#" class="dropdown-item favoriteChannel">관심채널</a>
+            <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
+            <div class="dropdown-divider"></div>
+            <sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
+            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
+            </sec:authorize>
+            <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
+            <a href="#" class="dropdown-item writeList">내가쓴글</a>
+            <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
+            <div class="dropdown-divider"></div>
+            <a href="/logout" class="dropdown-item logout">로그아웃</a>
+		  </div>
+		</div>
 	</sec:authorize>
+              <button type="button" class="btn btn-outline-primary">글쓰기</button>              
             </div>
             <!--END submenu-->
           </div><!--collapse navbar-collapse btnCollapse-->
@@ -99,7 +105,7 @@
   <!--END main menu--->
   </header>
 
-<div style="height:65px;"></div>
+<div style="height:90px;"></div>
 <sitemesh:write property='body' />
 
 
