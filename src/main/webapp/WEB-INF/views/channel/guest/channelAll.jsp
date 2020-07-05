@@ -71,8 +71,8 @@
                     </div>
                 	 </div>
                  </c:forEach>
-</div> <!-- row -->
-</div> <!-- container -->
+</div> 
+</div>
 
 <!-- 페이징 처리 -->
 <div>
