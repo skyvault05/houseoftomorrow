@@ -1,5 +1,6 @@
 package hot.channel.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -7,21 +8,21 @@ import org.springframework.web.multipart.MultipartFile;
 import hot.channel.domain.Channel;
 import hot.channel.domain.FavoriteChannel;
 import hot.channel.domain.FavoritePortfolio;
+import hot.member.domain.Constructor;
 
 public interface ChannelService {
 
-
+	List<Channel> channelList();
 	
 	Channel selectChannel(int ChNo);
 
 	void insertChannel(Channel channel, MultipartFile chImg);
 	
-
 	void updateGrade(Integer chNo);
 
 	void insertFavoriteChannel(Integer membNo, Integer chaNo);
 	
-	void deleteFavoriteChannel(int membNo, int chaNo);
+	void deleteFavoriteChannel(Integer membNo, Integer chaNo);
 	
 	List<FavoriteChannel> myFavoriteChannel(int membNo);
 	
@@ -35,4 +36,8 @@ public interface ChannelService {
 	 * 시공사 상호명 가져오기
 	 */
 	String findConName(int chNo);
+
+	Channel myChannel(Integer memberNo);
+
+	void updateChannel(Constructor constructor, Channel channel, Integer chaNo, MultipartFile file) throws IOException;
 }

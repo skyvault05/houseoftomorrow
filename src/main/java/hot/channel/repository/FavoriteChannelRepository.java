@@ -17,4 +17,6 @@ public interface FavoriteChannelRepository extends JpaRepository<FavoriteChannel
 	List<FavoriteChannel> findByMember(Member member);
 	
 	void deleteByMemberAndChannel(Member member, Channel channel);
+	
+	List<FavoriteChannel> findByChannel(Channel channel);
 }

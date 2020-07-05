@@ -14,9 +14,11 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String index() {
-		
-		
-		
 		return "/common/index";
+	}
+	
+	@RequestMapping("/loginForm")
+	public String loginForm() {
+		return "/common/loginForm";
 	}
 }
