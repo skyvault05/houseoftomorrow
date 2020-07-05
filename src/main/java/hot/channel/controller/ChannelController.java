@@ -87,20 +87,29 @@ public class ChannelController {
 	public ModelAndView chDetail(@PathVariable(name="chNo")int chNo, @RequestParam(defaultValue = "0")int nowPage, Model model) {
 
 		Channel channel = channelService.selectChannel(chNo);
-		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
+		List<Review> realReviewList = reviewService.selectReviewChNo(chNo);
+		List<Portfolio> realPortList = portfolioService.selectPortfolioChNo(chNo);
 		
 		Pageable page =PageRequest.of(nowPage, 2, Direction.DESC, "reviewNo");
 		Page<Review> pageReview = reviewService.selectAll(page, channel);
 
 		model.addAttribute("list", pageReview.getContent());
 		
+		Portfolio port = portfolioService.portfolioDetail(chNo);
+		
+		Pageable portPage = PageRequest.of(nowPage, 8, Direction.DESC, "portNo");
+		Page<Portfolio> pagePort = portfolioService.selectAll(portPage, channel);
+		
+		model.addAttribute("portList", pagePort.getContent());
+		
 		List<FavoriteChannel> favCh = fcRep.findByChannel(channel);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/channel/guest/channelDetail");
 		mv.addObject("channel", channel);
-		mv.addObject("portList", portList);
+		mv.addObject("realPortList", realPortList);
 		mv.addObject("favCh", favCh);
+		mv.addObject("realReviewList", realReviewList);
 		return mv;
 	}
 
@@ -121,7 +130,7 @@ public class ChannelController {
 	@RequestMapping("/update")
 	public String updateChannel(Constructor constructor, Channel channel, Integer chaNo, Integer membNo, MultipartFile file) throws IOException {
 		channelService.updateChannel(constructor, channel, chaNo, file);
-		return "redirect:constructor/myChannel/"+membNo;
+		return "redirect:guest/channelDetail/"+chaNo;
 	}
 	
 	/**
@@ -131,20 +140,29 @@ public class ChannelController {
 	public ModelAndView myChannel(@ModelAttribute(name="memberNo")Integer memberNo, Model model, @RequestParam(defaultValue = "0")int nowPage) {
 		
 		Channel channel = channelService.myChannel(memberNo);
-		List<Portfolio> portList = portfolioService.selectPortfolioChNo(channel.getChNo());
+		List<Review> realReviewList = reviewService.selectReviewChNo(channel.getChNo());
+		List<Portfolio> realPortList = portfolioService.selectPortfolioChNo(channel.getChNo());
 		
 		Pageable page =PageRequest.of(nowPage, 2, Direction.DESC, "reviewNo");
 		Page<Review> pageReview = reviewService.selectAll(page, channel);
 
 		model.addAttribute("list", pageReview.getContent());
 		
+		Portfolio port = portfolioService.portfolioDetail(channel.getChNo());
+		
+		Pageable portPage = PageRequest.of(nowPage, 8, Direction.DESC, "portNo");
+		Page<Portfolio> pagePort = portfolioService.selectAll(portPage, channel);
+		
+		model.addAttribute("portList", pagePort.getContent());
+		
 		List<FavoriteChannel> favCh = fcRep.findByChannel(channel);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/channel/constructor/myChannel");
 		mv.addObject("channel", channel);
-		mv.addObject("portList", portList);
+		mv.addObject("realPortList", realPortList);
 		mv.addObject("favCh", favCh);
+		mv.addObject("realReviewList", realReviewList);
 		return mv;
 	}
 
