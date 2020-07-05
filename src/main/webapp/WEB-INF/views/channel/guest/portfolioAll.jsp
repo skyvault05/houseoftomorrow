@@ -30,6 +30,28 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
   <!-- WebFont -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
   
+<style>
+	h3{
+		margin-top: 5px;
+		margin-left: 10px; 
+		margin
+	}
+	
+	.title{
+		font-size:20px;
+		margin-top:3px;
+		margin-bottom:0px;
+	}
+	
+	.content{
+		
+	}
+	img{
+	
+		margin-top:5px;
+	}
+
+</style>  
 </head>
 <body>
 <div class="container">
@@ -41,19 +63,23 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 </div> <!-- row -->
 <div class="row" style="transform:translateX(-0px)"><br><br>
     
-               
+             
                 <c:forEach items="${portList}" var="portList" varStatus="status">   
+                
                    <div class="col-md-4">     
+                    
                    <div style="relative">       
                         <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${portList.portNo}"><img src="${portList.portImg}" class="card-img-top rounded" alt="blog"></a>
                          
                                                
                         <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${portList.portNo}">
-                          <p class="card-text title">${portList.portTitle}</p>
-                          <div class="card-text content">${portList.channel.constructor.conName}${status.count}</div>
+                       <p class="title">${portList.portTitle}</p>
+                        <div class="content">${portList.channel.constructor.conName}${status.count}</div>
+                         <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
+                       
                         </a>
                    
-                    <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
+                 
                     </div>
                 	 </div>
                     

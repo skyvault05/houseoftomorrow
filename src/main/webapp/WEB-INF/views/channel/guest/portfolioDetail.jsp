@@ -210,24 +210,24 @@ img{
 </style>
 
 </head>
-<body>
+<%-- <body>
 <div class="container">
-<div class="row col-md-12">
+<div class="row col-md-9">
 	<img src="${port.portImg}">
 </div><br><br>
-<span class="row border col-md-11">
+<span class="row border col-md-9">
 ${port.portDescription}
 </span><!-- span row end -->
 	
     <div class="rows floating-menu">
         <ul>
-            <li class="m">
-			<p id="topTitle"><b>온라인 집들이</b></p>
-            <span id="title"><b>${port.portTitle}</b></span><p>
+            <li class="m" style="margin-left: 100px;">
+			<p id="topTitle"><b>포트폴리오 상세보기</b></p>
+			<span id="title"><b>${port.portTitle}</b></span><p>
             <span><fmt:formatDate value="${port.portRegdate}" pattern="yyyy년 MM월 dd일 HH시 mm분"/></span><p>
             <span>시공사: ${port.channel.constructor.conName}</span><p>
             <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
-                     <img style="cursor: pointer; width: 10%; height: 10%;" id="favoritePortfolio"  src="/plugins/images/heart_off.png"/>
+                     <img style="cursor: pointer; width: 8%; height: 8%;" id="favoritePortfolio"  src="/plugins/images/heart_off.png"/>
                      <strong>${fn:length(favPort)}</strong>
             </sec:authorize>
             </li>
@@ -235,7 +235,7 @@ ${port.portDescription}
     </div>
     <br><br>
     <div class="rows">
-    <hr id = "line" class="col-md-10"><br>
+    <hr id = "line" class="col-md-9"><br>
     </div>
     <div class="user_profile__conatiner">
      <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${port.channel.chNo}"><img class="user_proifle__image" src="${port.channel.chImg}"/></a><p>
@@ -246,7 +246,7 @@ ${port.portDescription}
 	<br>
 	</div>
 	<div class="rows">
-    <hr id = "line" class="col-md-10"><br>
+    <hr id = "line" class="col-md-9"><br>
     </div>
 	<div class="rows">
 	<a class="click" href="${pageContext.request.contextPath}/channel/guest/portfolioAll">목록으로</a><p>
@@ -254,8 +254,8 @@ ${port.portDescription}
 	<div class="rows">
 	★★★★★★? 게시자로 로그인했을 때 포트폴리오 수정 / 삭제 어케할지 ?★★★★★★
     <sec:authentication var="user" property="principal" />
-    <%-- 글쓴이: ${community.member.memberNo}<p>
-    로그인한사람: ${user.memberNo} --%>
+    글쓴이: ${community.member.memberNo}<p>
+    로그인한사람: ${user.memberNo}
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose>
 			<c:when test="${community.member.memberNo == user.memberNo}">
@@ -267,5 +267,83 @@ ${port.portDescription}
 	</div>
 	<br><br>
 </div>
+</body> --%>
+
+<body>
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+
+<img src="${port.portImg}">
+<br><br>
+<span class="row border col-md-12">
+${port.portDescription}
+</span><!-- span row end -->	
+	
+ <div class="rows">
+    <hr id = "line" class="col-md-12"><br>
+    </div>
+    <div class="user_profile__conatiner">
+     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${port.channel.chNo}"><img class="user_proifle__image" src="${port.channel.chImg}"/></a><p>
+     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${port.channel.chNo}">${port.channel.constructor.conName}</a><p>
+     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${port.channel.chNo}">${port.channel.chDescription}</a>
+     </div>
+	<div class="rows">
+	<br>
+	</div>
+	<div class="rows">
+    <hr id = "line" class="col-md-12"><br>
+    </div>
+	<div class="rows">
+	<a class="click" href="${pageContext.request.contextPath}/channel/guest/portfolioAll">목록으로</a><p>
+	</div>
+	<div class="rows">
+	★★★★★★? 게시자로 로그인했을 때 포트폴리오 수정 / 삭제 어케할지 ?★★★★★★
+    <sec:authentication var="user" property="principal" />
+    글쓴이: ${community.member.memberNo}<p>
+    로그인한사람: ${user.memberNo}
+    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
+		<c:choose>
+			<c:when test="${community.member.memberNo == user.memberNo}">
+				<a class="click" href="${pageContext.request.contextPath}/community/updateCommunity?commNo=${community.commNo}"}>게시글 수정하기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a class="click" onclick="return delchk()" href="${pageContext.request.contextPath}/community/delete?commNo=${community.commNo}&commCategoryNo=${community.commCategory.commCategoryNo}">게시글 삭제하기</a>
+			</c:when>
+		</c:choose>
+	</sec:authorize>
+	</div>
+	<br><br>	
+	
+</div>
+
+
+
+</div>
+
+<div class="col-md-4">
+
+   <div class="rows floating-menu" style="margin-right: 130px;">
+        <ul>
+            <li class="m" style="margin-left: 100px;">
+			<p id="topTitle"><b>포트폴리오 상세보기</b></p>
+			<span id="title"><b>${port.portTitle}</b></span><p>
+            <span><fmt:formatDate value="${port.portRegdate}" pattern="yyyy년 MM월 dd일 HH시 mm분"/></span><p>
+            <span>시공사: ${port.channel.constructor.conName}</span><p>
+            <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
+                     <img style="cursor: pointer; width: 8%; height: 8%;" id="favoritePortfolio"  src="/plugins/images/heart_off.png"/>
+                     <strong>${fn:length(favPort)}</strong>
+            </sec:authorize>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+ 
+ 
 </body>
+
+
+
+
+
 </html>

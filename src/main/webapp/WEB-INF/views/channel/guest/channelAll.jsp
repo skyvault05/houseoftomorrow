@@ -27,10 +27,11 @@
 
 </head>
 <body>
-<%-- <c:forEach items="${list}" var="list">
+ <c:forEach items="${list}" var="list">
  <section class="recommendation portfolio">
-     <div class="container">
-         <div class="row">
+     <div class="container" style="background-color: blue">
+         <div class="row" style="backgroud-color: green">
+         	
 			<div class="col-md-12 pt-3">
 			<div class="card-wrap">
 			 	<div class="main_recomm card">
@@ -48,11 +49,12 @@
 				 </div>
 			 </div>
 			</div>
+			
 		</div>
 	</div>
 </section>
-</c:forEach> --%>
-<div class="container">
+</c:forEach> 
+<%-- <div class="container">
     <div class="post--contents__list-wrap">
                   <div class="row post--contents__list" style="transform:translateX(-0px)">
                      <c:forEach items="${list}" var="list">
@@ -69,8 +71,8 @@
                         </div>
                      </c:forEach>
                   </div> <!-- row -->
-               </div> 
-
+               </div>  --%>
+<br><br>
 <!--  페이징 처리  -->
 <c:forEach begin="0" end="${totalPage-1}" var="i">
 	<c:choose>
