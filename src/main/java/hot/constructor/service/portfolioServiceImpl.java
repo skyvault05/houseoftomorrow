@@ -42,11 +42,19 @@ public class portfolioServiceImpl implements PortfolioService{
 	}
 
 	@Override
-	public List<Portfolio> findAllPortfolio() {
-		List<Portfolio> port = portRep.findByPortStatus(1);
+	public Page<Portfolio> findAllPortfolio(Pageable pageable) {
+				
+		Page<Portfolio> port = portRep.findByPortStatus(pageable,1);
+		
 		return port;
 	}
-
+	
+	@Override
+	public List<Portfolio> findAllPortfolio() {
+		
+		return null;
+	}
+	
 	@Override
 	public Portfolio portfolioDetail(int portNo) {
 		Portfolio portfolio = portRep.findById(portNo).orElse(null);

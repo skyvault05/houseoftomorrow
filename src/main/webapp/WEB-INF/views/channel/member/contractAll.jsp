@@ -24,40 +24,81 @@
 <script>
 $(function(){
 	if($('#myChNo').val() == "null"){ //유저
-		alert($('#myMemberNo').val());
-		alert("유저");
-// 		$.ajax({
-// 			url : "/member/consultingAll",
-// 			data : {
-// 				memberNo : $('#myMemberNo').val()
-// 			},
-// 			type : "json",
-// 			method : "post",
-// 			success : function(obj){
-// 				$(obj).each
-// 			},
-// 			error : funtion(e){
-// 				alert(e);	
-// 			}
-// 		})
+		$.ajax({
+			url : "/member/consultingComplete",
+			data : {
+				memberNo : $('#myMemberNo').val()
+			},
+			type : "json",
+			method : "post",
+			success : function(obj){
+				$(obj).each(function(index, element){
+					var str = "<tr><td>";
+					str += index + 1;
+					str += "</td><td><a href='#'>" + element.constructorName + "시공사</a>";
+					str += "<input type='hidden' name='consulNo' value='" + element.consulting.consulNo + "'></td><td>";
+					var date = new Date(element.contractTime);
+					var year = date.getFullYear();
+					var month = date.getMonth()+1;
+					var day = date.getDay();
+					var hour = date.getHours();
+					var min = date.getMinutes();
+					var sec = date.getSeconds();
+					var retVal = year + "/" + (month < 10 ? "0" + month : month) + "/" 
+						+ (day < 10 ? "0" + day : day) + " " 
+						+ (hour < 10 ? "0" + hour : hour) + ":"
+						+ (min < 10 ? "0" + min : min) + ":" 
+						+ (sec < 10 ? "0" + sec : sec);
+					str += retVal;
+					str += "</td></tr>";
+					$('#contractList').append(str);
+				});
+			},
+			error : function(e){
+				alert(e);	
+			}
+		})
 	}else{	//시공사
-		alert($('#myChNo').val());
-		alert("시공사");
-// 		$.ajax({
-// 			url : "",
-// 			data : {
-// 				chNo : $("#myChNo").val()
-// 			},
-// 			type : "json",
-// 			method : "post",
-// 			success : function(obj){
-				
-// 			},
-// 			error : function(e){
-// 				alert(e);
-// 			}
-// 		})
+		$.ajax({
+			url : "/constructor/consultingComplete",
+			data : {
+				chNo : $("#myChNo").val()
+			},
+			type : "json",
+			method : "post",
+			success : function(obj){
+				$(obj).each(function(index, element){
+					var str = "<tr><td>";
+					str += index + 1;
+					str += "</td><td><a href='#'>" + element.memberName + "님</a>";
+					str += "<input type='hidden' name='consulNo' value='" + element.consulting.consulNo + "'></td><td>";
+					var date = new Date(element.contractTime);
+					var year = date.getFullYear();
+					var month = date.getMonth()+1;
+					var day = date.getDay();
+					var hour = date.getHours();
+					var min = date.getMinutes();
+					var sec = date.getSeconds();
+					var retVal = year + "/" + (month < 10 ? "0" + month : month) + "/" 
+						+ (day < 10 ? "0" + day : day) + " " 
+						+ (hour < 10 ? "0" + hour : hour) + ":"
+						+ (min < 10 ? "0" + min : min) + ":" 
+						+ (sec < 10 ? "0" + sec : sec);
+					str += retVal;
+					str += "</td></tr>";
+					$('#contractList').append(str);
+				});
+			},
+			error : function(e){
+				alert(e);
+			}
+		})
 	}
+	
+	$('table').on("click","a",function(){
+		$('input[name=consulNo]').val($(this).siblings('input').val());
+		$('form').submit();
+	})
 });
 </script>
 <style>
@@ -84,7 +125,7 @@ $(function(){
 				</table>
 			</div>
 			<form action="/member/contractView" method="post">
-				<input type="hidden" name="consulNo" value="${param.consulNo}">
+				<input type="hidden" name="consulNo" value="">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			</form>
 		</div>

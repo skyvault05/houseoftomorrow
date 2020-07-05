@@ -5,6 +5,7 @@ import java.util.List;
 
 import hot.consulting.domain.Consulting;
 import hot.consulting.domain.Contract;
+import hot.consulting.dto.ContractDTO;
 
 public interface ConsultingService {
 	/**
@@ -48,7 +49,12 @@ public interface ConsultingService {
 	List<Consulting> selectConConsulting(int chNo);
 	
 	/**
-	 * 완료된 계약 목록 가져오기
+	 * 유저 완료된 상담 가져오기
 	 */
-	Contract contractComplete(int consulNo);
+	List<ContractDTO> selectUserContractComplete(int memberNo);
+	
+	/**
+	 * 시공사 완료된 상담 가져오기
+	 */
+	List<ContractDTO> selectConContractComplete(int chNo);
 }
