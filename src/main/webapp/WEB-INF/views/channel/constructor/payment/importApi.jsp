@@ -49,7 +49,9 @@ function addInput(form, name, value){
          				
 		}, function(rsp) { 
 			if(rsp.success) {
-				
+				addInput(opener.document.portForm, "pay_method", rsp.pay_method);
+				addInput(opener.document.portForm, "status", rsp.status);
+				addInput(opener.document.portForm, "amount",  <%=totalPrice%>);
 				opener.document.portForm.submit();
                 self.close();			
 			}else{ // if 끝 
