@@ -17,7 +17,11 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Integer> {
 	
 	List<Portfolio> findByPortStatus(Integer portStatus);
 	
+
+	Page<Portfolio> findByPortStatus(Pageable pageable, Integer portStatus);
+
 	@Query("SELECT f FROM Portfolio f WHERE channel.chNo = :#{#channel.chNo} AND f.portStatus =:#{#portStatus}")
 	Page<Portfolio> findByChannelNoAndPortStatus(Pageable pageable, Channel channel, Integer portStatus);
+
 	
 }

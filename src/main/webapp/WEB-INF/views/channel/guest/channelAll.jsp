@@ -25,8 +25,40 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
+
+<style>
+	#page{
+		margin-top:30px;
+		margin-left:40%
+	
+	}
+
+</style>
 </head>
 <body>
+
+<%-- <div class="container">
+    <div class="post--contents__list-wrap">
+                  <div class="row post--contents__list" style="transform:translateX(-0px)">
+                     <c:forEach items="${list}" var="list">
+                        <div class="col-md-4 post--contents__item-wrap">
+                           <a href="#">
+                              <div class="post--contents__item">
+                                 <div style="position:relative">
+                                    <img class="post--contents__item__img" src="${list.chImg}"/>
+                                 </div>
+                                 <p class="post--contents__item__title">${list.constructor.conName}</p>
+                                 <p class="post--contents__item__grades">${list.chGrades}</p>
+                              </div>
+                           </a>
+                        </div>
+                     </c:forEach>
+                  </div> <!-- row -->
+               </div>  --%>
+<br><br>
+<!--  페이징 처리  -->
+
+
 
 <div class="container">
 <br><br>
@@ -48,9 +80,23 @@
                     </div>
                 	 </div>
                  </c:forEach>
-</div> <!-- row -->
-</div> <!-- container -->
+</div> 
+</div>
 
+<!-- 페이징 처리 -->
+<div id="page">
+<c:forEach begin="0" end="${totalPage-1}" var="i">
+	<c:choose>
+		<c:when test="${i==nowPageNum }">
+			[<a href="${pageContext.request.contextPath}/channel/channelAll?nowPage=${i}" style="color:red"> ${i+1} </a>] &nbsp;
+		</c:when>
+		<c:otherwise>
+			[<a href="${pageContext.request.contextPath}/channel/channelAll?nowPage=${i}">${i+1}</a>] &nbsp;
+		</c:otherwise>
+	</c:choose>
+</c:forEach>  
+</div>
 
+ 
 </body>
 </html>
