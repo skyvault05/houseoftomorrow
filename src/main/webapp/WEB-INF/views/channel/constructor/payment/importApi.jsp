@@ -33,7 +33,6 @@ function addInput(form, name, value){
 </head>
 <body>
 <sec:authentication property="principal" var="user"/>
-<h2> 결제 페이지 </h2>
 	<script>
 	$(function(){
 		var IMP = window.IMP; // 생략가능

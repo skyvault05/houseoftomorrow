@@ -37,6 +37,11 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <h2>관심 포트폴리오</h2>
 </div>
 <div class="row"><br><br></div>
+<div class="row">
+	<c:if test="empty ${requestScope.fport}">
+		<p>관심 포트폴리오 목록이 없습니다.</p>
+	</c:if>
+</div>
 <c:forEach items="${fport}" var="port">
  <section class="recommendation portfolio">
      <div class="container">

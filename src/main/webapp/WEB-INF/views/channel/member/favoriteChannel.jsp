@@ -37,7 +37,12 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <h2>관심 채널</h2>
 </div>
 <div class="row"><br><br></div>
-<c:forEach items="${fvChannel}" var="fvChannel">
+<div class="row">
+	<c:if test="empty ${fvChannel}">
+		<p>관심 채널 목록이 없습니다.</p>
+	</c:if>
+</div>
+<c:forEach items="${requestScope.fvChannel}" var="fvChannel">
  <section class="recommendation portfolio">
      <div class="container">
          <div class="row">

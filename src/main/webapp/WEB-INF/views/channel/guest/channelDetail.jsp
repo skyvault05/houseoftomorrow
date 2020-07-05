@@ -260,7 +260,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                   <div class="row post--contents__list" style="transform:translateX(-0px)">
                      <c:forEach items="${portList}" var="port">
                         <div class="col-6 col-md-3 post--contents__item-wrap">
-                           <a href="#">
+                           <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
                               <div class="post--contents__item">
                                  <div style="position:relative">
                                     <img class="post--contents__item__img" src="${port.portImg}"/>

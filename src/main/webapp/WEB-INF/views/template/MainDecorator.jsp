@@ -82,8 +82,8 @@
 		    마이메뉴
 		  </button>
 		  <div class="dropdown-menu">
-		  	<a href="#" class="dropdown-item favoriteChannel">관심채널</a>
-            <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
+		  	<a href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}" class="dropdown-item favoriteChannel">관심채널</a>
+            <a href="${pageContext.request.contextPath}/channel/myFavoritePortfolio/${user.memberNo}" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
             <div class="dropdown-divider"></div>
             <sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
             	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>

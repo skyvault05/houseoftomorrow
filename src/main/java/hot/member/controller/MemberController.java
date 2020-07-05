@@ -6,10 +6,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import hot.channel.domain.Channel;
 import hot.channel.service.ChannelService;
@@ -131,5 +133,18 @@ public class MemberController {
 	public String findMemberName(Integer memberNo) {
 		String name = memberService.findMemberName(memberNo);
 		return name;
+	}
+	
+	/**
+	 * 내가 쓴 글
+	 * 
+	 * 리뷰, 커뮤니티, qna
+	 * */
+	@RequestMapping("/manage/member/myPage/{memberNo}")
+	public ModelAndView myPage(@ModelAttribute(name="memberNo")Integer memberNo) {		
+		
+		
+		
+		return null;
 	}
 }
