@@ -4,7 +4,6 @@ package hot;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +13,8 @@ import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
 import hot.channel.service.ChannelService;
+import hot.community.domain.CommComment;
+import hot.community.domain.Community;
 import hot.community.repository.CommCategoryRepository;
 import hot.community.repository.CommCommentRepository;
 import hot.community.repository.CommunityRepository;
@@ -23,7 +24,7 @@ import hot.consulting.repository.ConsultingRepository;
 import hot.consulting.repository.ContractRepository;
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
-import hot.member.domain.Member;
+import hot.member.domain.Order;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
@@ -102,6 +103,7 @@ class HouseoftomorrowApplicationTests {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
 	@Test
 	void contextLoads() {
 //		System.out.println(memberRole);
@@ -261,6 +263,14 @@ class HouseoftomorrowApplicationTests {
 //		PasswordEncoder encoder = new BCryptPasswordEncoder();
 //		Member member = new Member(null, "admin1", encoder.encode("dd"), "admin1", "000-0300-0112", null, memberRole.findById(3).orElse(null));
 //		memberRep.save(member);
+		
+//		Community comm = communityRep.findById(2).orElse(null);
+//		for(CommComment cc : comm.getCommentList()) {
+//			System.out.println(cc.getMember().getMemberName()+":"+cc.getCommCommentDescription());
+//		}
+		
+//		orderRep.save(new Order(null, constructorRepository.findById(26).orElse(null), portRep.findById(78).orElse(null), null, 1000, "card", "card", 1));
+		
 	}
 }
 	

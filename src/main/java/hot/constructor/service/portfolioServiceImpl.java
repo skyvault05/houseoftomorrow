@@ -68,19 +68,19 @@ public class portfolioServiceImpl implements PortfolioService{
 	}
 
 	@Override
-	public void insertOrder(Order order) {
-		System.out.println("order.getOrderStatusName(): " + order.getOrderStatusName());
+	public void insertOrder(Order order, String orderStatusName) {
+		System.out.println("order.getOrderStatusName(): " + orderStatusName);
 		
-		if(order.getOrderStatusName() == "ready") {
+		if(orderStatusName == "ready") {
 			System.out.println("**************ready**************");
 			order.setOrderStatus(0);
-		} else if(order.getOrderStatusName() == "paid") {
+		} else if(orderStatusName == "paid") {
 			System.out.println("**************paid**************");
 			order.setOrderStatus(1);
-		} else if(order.getOrderStatusName() == "cancelled") {
+		} else if(orderStatusName == "cancelled") {
 			
 			order.setOrderStatus(2);
-		} else if(order.getOrderStatusName() == "failed") {
+		} else if(orderStatusName == "failed") {
 			order.setOrderStatus(3);
 		}
 		

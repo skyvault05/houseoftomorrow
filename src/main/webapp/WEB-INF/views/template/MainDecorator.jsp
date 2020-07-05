@@ -53,6 +53,7 @@
            
            
     <!--------------------------------------sub menu--------------------------------------------->
+    
             <div class="navbar-nav ml-auto">
               <form method="post" class="search-form" >
                 <span class="icon ion ion-search pt-2"><ion-icon name="search-outline"></ion-icon></span>
@@ -62,13 +63,8 @@
                  <!------------------------------ 로그인/회원가입 -------------------------------->
 	<sec:authorize access="isAnonymous()">
    			  <div class="header_navigation-bar-login pl-1">
-<<<<<<< HEAD
-   			  	<a class="navigation-bar-login__item aftermenu" href="/common/loginForm">로그인</a>
-   			  	<a class="navigation-bar-login__item signup-margin-right" href="/choiceJoin">회원가입</a>
-=======
    			  	<a class="navigation-bar-login__item aftermenu" href="/loginForm">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
->>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
    			  </div>
  	</sec:authorize>
 
@@ -95,6 +91,25 @@
             <a href="/logout" class="dropdown-item logout">로그아웃</a>
 		  </div>
 		</div>
+		<div class="btn-group">
+		  <button type="button" class="btn btn-primary dropdown-toggle fas fa-bolt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    마이메뉴
+		  </button>
+		  <div class="dropdown-menu">
+		  	<a href="#" class="dropdown-item favoriteChannel">관심채널</a>
+            <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
+            <div class="dropdown-divider"></div>
+            <sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
+            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
+            </sec:authorize>
+            <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
+            <a href="#" class="dropdown-item writeList">내가쓴글</a>
+            <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
+            <div class="dropdown-divider"></div>
+            <a href="/logout" class="dropdown-item logout">로그아웃</a>
+		  </div>
+		</div>
+		
 	</sec:authorize>
               <button type="button" class="btn btn-outline-primary">글쓰기</button>              
             </div>
