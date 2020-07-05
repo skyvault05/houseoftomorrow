@@ -19,7 +19,7 @@ var header = $("meta[name='_csrf_header']").attr("content");
 $(document).ajaxSend(function(e, xhr, options) {
     xhr.setRequestHeader(header, token);
 });
-function(form, name, value){
+function addInput(form, name, value){
 	$("<input />").attr("type", "hidden")
     .attr("name", name)
     .attr("value", value)

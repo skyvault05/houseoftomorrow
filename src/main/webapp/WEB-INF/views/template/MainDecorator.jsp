@@ -58,18 +58,16 @@
    <!------------------------------ 로그인/회원가입 -------------------------------->
 	<sec:authorize access="isAnonymous()">
    			  <div class="header_navigation-bar-login pl-1">
-   			  	<a class="navigation-bar-login__item aftermenu" href="/common/loginForm">로그인</a>
+   			  	<a class="navigation-bar-login__item aftermenu" href="/loginForm">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
    			  </div>
  	</sec:authorize>
 
    <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
   
-   	<sec:authorize access="isAuthenticated()">
-   	
+   	<sec:authorize access="isAuthenticated()">   	
    			<div class="iconmenu pl-1">
-              <div class="header_social_icon d-flex">
-              	
+              <div class="header_social_icon d-flex">              	
                 <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
                 <!-- <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
                   <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
