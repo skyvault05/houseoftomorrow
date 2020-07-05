@@ -110,8 +110,15 @@ public class ConstructorController {
 	@PostMapping("/channel/constructor/insertPort")
 	public ModelAndView insertPortfolio2(String portTitle, 
 			String portDescription, MultipartFile file, 
-			Date portStartDate, Date portEndDate, String portImg, String chNo) throws IOException{	
-		int ChannelNo = Integer.parseInt(chNo); 
+			Date portStartDate, Date portEndDate, String portImg, Integer chNo, 
+			Order order,
+			String pay_method, String status, Integer amount, String orderStatusName) throws IOException{	
+		System.out.println("포트폴리오 등록 동작 컨트롤러 들어옴");
+		System.out.println("pay_method: " + pay_method);
+		System.out.println("status: " + status);
+		System.out.println("amount: " + amount);
+
+		//int ChannelNo = Integer.parseInt(chNo); 
 		
 		Long sd=portStartDate.getTime();
 		Long ed=portEndDate.getTime();
@@ -145,10 +152,13 @@ public class ConstructorController {
 		Order order = new Order();
 		order.setConstructor(constructor);
 		order.setPortfolio(portfolio);
+		order.setOrderMethod(pay_method);
+		order.setOrderPayment(amount);
+		
+		System.out.println("getOrderPayment: " + order.getOrderPayment());
 		
 		
-		
-		// ajax에서 받아올 정보들 
+		portfolioService.insertOrder(order, orderStatusName);
 		
 		
 		//orderService.insertOrder(order);

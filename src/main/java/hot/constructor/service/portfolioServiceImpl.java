@@ -45,7 +45,32 @@ public class portfolioServiceImpl implements PortfolioService{
 		Portfolio portfolio = portRep.findById(portNo).orElse(null);
 		return portfolio;
 	}
-	
-	
-	
+
+	@Override
+	public Page<Portfolio> selectAll(Pageable portPage, Channel channel) {
+		Page<Portfolio> port = portRep.findByChannelNoAndPortStatus(portPage, channel, 1);
+		return port;
+	}
+
+	@Override
+	public void insertOrder(Order order, String orderStatusName) {
+		System.out.println("order.getOrderStatusName(): " + orderStatusName);
+		
+		if(orderStatusName == "ready") {
+			System.out.println("**************ready**************");
+			order.setOrderStatus(0);
+		} else if(orderStatusName == "paid") {
+			System.out.println("**************paid**************");
+			order.setOrderStatus(1);
+		} else if(orderStatusName == "cancelled") {
+			
+			order.setOrderStatus(2);
+		} else if(orderStatusName == "failed") {
+			order.setOrderStatus(3);
+		}
+		
+		order.setOrderStatus(1);
+		System.out.println("강제로 status 값 줌");
+		orderRep.save(order);		
+	}
 }

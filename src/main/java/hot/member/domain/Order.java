@@ -53,5 +53,22 @@ public class Order {
 	
 	@Column(name = "order_status")
 	private Integer orderStatus;
+	
+	public String getOrderStatusName() {
+		if(this.getOrderStatus() == 0) {
+			System.out.println("**************ready**************");
+			return "ready";
+		} else if(this.getOrderStatus() == 1) {
+			System.out.println("**************paid**************");
+			return "paid";
+		} else if(this.getOrderStatus() == 2) {
+			System.out.println("**************cancelled**************");
+			return "cancelled";
+		} else if(this.getOrderStatus() == 3) {
+			System.out.println("**************failed**************");
+			return "failed";
+		}
+		return null;
+	}
 
 }
