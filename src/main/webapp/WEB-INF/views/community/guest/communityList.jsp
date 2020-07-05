@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -151,163 +151,40 @@
 
 <!-- recommendation portfolio -->
 
-    <section class="recommendation portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                  <h2 class="portfolio-title mb-4">추천 포트폴리오 </h2>
-                  <!-- 포트폴리오 등록버튼 -->
-                  
-           
-                  
-                	<button type="button" onclick="location.href='${pageContext.request.contextPath}/channel/constructor/myChannel'"> 마이 채널 </button>
-                  
-                  
-                
-                  
-                  <!-- 웅희 편집 부분 -->
-                  
-                  
-                  <div class="card-wrap">
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
+
+
+
+
+<div class="container">
+<br><br>
+<div class="row justify-content-center">
+<c:choose>
+	<c:when test="${commCategoryNo==4}"><h3>사진</h3></c:when>
+</c:choose>
+<c:choose>
+	<c:when test="${commCategoryNo==5}"><h3>노하우</h3></c:when>
+</c:choose>
+&nbsp;
+
+</div> <!-- row -->
+<div class="row" style="transform:translateX(-0px)"><br><br>
+                <c:forEach items="${requestScope.list}" var="list" varStatus="status">
+                   <div class="col-md-3">
+                   <div style="relative">
+                        <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}"><img src="${list.commImg}" class="card-img-top rounded" alt="blog"></a>
+                        <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
+                          <p class="card-text title">${list.commTitle}</p>
+                          <div class="card-text content">조회수 ${list.commReadnum}</div>
+                        </a>
                     </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                   
-
-                </div><!--end card -->
-    
-            </div>
-
-            <div class="col-xl-12 pt-5">
-                  <div class="card-wrap">
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                   
-
-                </div><!--end card -->
-    
-            </div>
+                	 </div>
+                 </c:forEach>
+</div> <!-- row -->
+</div> <!-- container -->
 
 
 
-            </div><!--end row-->
-        </div><!--end container-->
-    </section>
-    <!-- END recommendation portfolio -->
-
-
-
-<div class="empty-space"></div>
-
-
-
-            
-                </div><!--end card -->
-               </div>
-              </div><!--row-->
-             </div><!--container-->
-         </section>
-<!-- END recomm constructor  -->
-<!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
+   <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
 
   </body>
@@ -323,88 +200,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////
-<style>
-
-	img{
- 		width: 500px;
-		height:300px;
-	}
-	.scale  img {
-		-webkit-transform:scale(1);
-		-moz-transform:scale(1);
-		-ms-transform:scale(1);	
-		-o-transform:scale(1);	
-		transform:scale(1);
-		-webkit-transition:.3s;
-		-moz-transition:.3s;
-		-ms-transition:.3s;
-		-o-transition:.3s;
-		transition:.3s;
-	}
-	.scale:hover  img {
-		-webkit-transform:scale(1.2);
-		-moz-transform:scale(1.2);
-		-ms-transform:scale(1.2);	
-		-o-transform:scale(1.2);
-		transform:scale(1.2);
-	}
-	.scale{
-		overflow: hidden;
-	}
-</style>
-
-</head>
-<body>
-<br><br>
-<div class="container margin-top-100">
-<div class="row justify-content-center">
-<h2>
-커뮤니티
-</h2>
-</div>
-<div class="row justify-content-center">
-<c:choose>
-	<c:when test="${commCategoryNo==4}"><h3>사진</h3></c:when>
-</c:choose>
-<c:choose>
-	<c:when test="${commCategoryNo==5}"><h3>노하우</h3></c:when>
-</c:choose>
-</div>
-<div class="row"><br><br></div>
-<section class="rows">
-	<c:forEach items="${requestScope.list}" var="list" >
-	<div class="col-md-4">
-	<a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
-	<div class="scale"><img class="card-img-top rounded" src="${list.commImg}"></div><!-- 이미지 크기 조정 --><br>
-	<b>${list.commTitle}</b><p>
-	${list.member.memberId}<p>
-	조회수: ${list.commReadnum }<p>
-	</a>
-	</div>
-	</c:forEach>
-</section>
-</div>
-</body>
-</html>
