@@ -54,6 +54,22 @@ public class CommunityController {
 	public void url3() {}
 	
 	/**
+	 * community main
+	 * */
+	@RequestMapping("/community/guest/communityMain")
+	public String communityMain() {
+		return "community/guest/communityMain";
+	}
+	
+	/**
+	 * communityPicture
+	 */
+	@RequestMapping("/community/guest/communityPic")
+	public String communityPic() {
+		return "/community/guest/communityPic";
+	}
+	
+	/**
 	 * write.jsp에서 qna등록 폼으로 이동하게
 	 * */
 	@RequestMapping("/manage/member/QNAForm")
@@ -121,7 +137,13 @@ public class CommunityController {
 		
 		List<Community> communityList = communityService.selectCommunityCategory(commCategoryNo);
 		
-		return new ModelAndView("community/guest/communityList", "list", communityList);
+		if(commCategoryNo == 4) {
+			return new ModelAndView("community/guest/communityPic", "list", communityList);
+		} else if(commCategoryNo == 5) {
+			return new ModelAndView("community/guest/communityList", "list", communityList);
+		}
+		
+		return new ModelAndView("community/guest/communityPic", "list", communityList);
 	}
 	
 	/**

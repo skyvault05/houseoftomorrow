@@ -2,6 +2,8 @@ package hot.review.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -27,4 +29,6 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	@Query("SELECT r FROM Review r WHERE channel.chNo = :#{#channel.chNo} AND r.reviewStatus =:#{#reviewStatus}")
 	List<Review> findTop2ByChannelNoAndReviewStatusByOrderBySeqDesc(Channel channel, Integer reviewStatus);
 
+	@Query("SELECT r FROM Review r WHERE channel.chNo = :#{#channel.chNo} AND r.reviewStatus =:#{#reviewStatus}")
+	Page<Review> findByChannelNoAndReviewStatus(Pageable pageable, Channel channel, Integer reviewStatus);
 }

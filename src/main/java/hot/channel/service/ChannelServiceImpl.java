@@ -18,6 +18,7 @@ import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
 import hot.constructor.repository.ConstructorRepository;
 import hot.constructor.repository.PortfolioRepository;
+import hot.member.domain.Constructor;
 import hot.member.domain.ConstructorRegisterRequest;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
@@ -92,15 +93,11 @@ public class ChannelServiceImpl implements ChannelService {
 		
 	}
 	
-	
-
-	
 	/**
 	 * 관심채널 추가
 	 * */
 	@Override
 	public void insertFavoriteChannel(Integer membNo, Integer chaNo) {
-		System.out.println("서비스 들어옴");
 		System.out.println("membNo: " + membNo);
 		Member member = memberRep.findById(membNo).orElse(null);
 		Channel channel = channelRepository.findById(chaNo).orElse(null);
@@ -145,8 +142,7 @@ public class ChannelServiceImpl implements ChannelService {
 		
 		favoritePortfolio.setMember(member);
 		favoritePortfolio.setPortfolio(portfolio);
-		fpRep.save(favoritePortfolio);
-		
+		fpRep.save(favoritePortfolio);		
 	}
 
 	@Transactional(dontRollbackOn=Exception.class) // 오류 없애려고 추가한 코드
@@ -174,7 +170,6 @@ public class ChannelServiceImpl implements ChannelService {
 	@Override
 	public Channel selectChannel(int ChNo) {		
 		return channelRepository.findById(ChNo).orElse(null);
-		
 	}
 
 	/**
@@ -185,5 +180,40 @@ public class ChannelServiceImpl implements ChannelService {
 		System.out.println("서비스");
 		List<Channel> list = channelRepository.findByChStatus(0); // 기본값이 1이 아닌 0인가봄.
 		return list;
+	}
+
+	/**
+	 * 로그인한 유저가 자기 페이지를 볼 수 있게
+	 * */
+	@Override
+	public Channel myChannel(Integer memberNo) {
+		Channel channel = channelRepository.selectByMemberNo(memberNo);
+		return channel;
+	}
+
+	/**
+	 * 채널 수정
+	 * @throws IOException 
+	 * */
+	@Override
+	@Transactional // 절대 까먹지마.....
+	public void updateChannel(Constructor constructor, Channel channel, Integer chaNo, MultipartFile file) throws IOException {
+		
+		Channel channelDB = channelRepository.findById(chaNo).orElse(null);		
+		int memberNo = channelDB.getConstructor().getMemberNo();
+		Constructor conDB = constructorRepository.findById(memberNo).orElse(null);
+
+		conDB.setConName(constructor.getConName());
+		conDB.setConPhone(constructor.getConPhone());
+		conDB.setConIsCompany(constructor.getConIsCompany());
+		conDB.setConCareer(constructor.getConCareer());
+		conDB.setConCertification(constructor.getConCertification());
+		conDB.setConAddr(constructor.getConAddr());
+		channelDB.setChDescription(channel.getChDescription());
+		channelDB.setChRegdate(channel.getChRegdate());
+		channelDB.setChDescription(channel.getChDescription());
+		
+		String imgPath = s3Manager.saveUploadedFiles(file);
+		channelDB.setChImg(imgPath);
 	}
 }
