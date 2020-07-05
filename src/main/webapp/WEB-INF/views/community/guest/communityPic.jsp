@@ -25,14 +25,10 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/community/community.css">
+  <!-- WebFont -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
-
- <script>
- $(document).ready(function() {
-	 $(".card-item__description p")
-	 
- });//end
- </script>
   </head>
   
   <body>
@@ -68,6 +64,7 @@
                <p class="card-item-writer__introduction">발망치주겨버려</p>
              </address>
            </div>
+
 <!--------사진들어가는부분☆------------->
 		 <!-------사진들어가는부분쓰------->
           <div class="card-item__image">
@@ -90,13 +87,16 @@
             <!--댓글-->
             <a href="" class="card-item-action-list__action">
               <svg class="icon" aria-label="댓글 달기" fill="#fff" width="24" height="24" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"><path fill="currentColor" fill-rule="nonzero" d="M13.665 18.434l.53-.066C19.69 17.679 23 14.348 23 10c0-4.942-4.235-8.5-11-8.5S1 5.058 1 10c0 4.348 3.31 7.68 8.804 8.368l.531.066L12 21.764l1.665-3.33zm-3.985.926C3.493 18.585 0 14.69 0 10 0 4.753 4.373.5 12 .5S24 4.753 24 10c0 4.69-3.493 8.585-9.68 9.36l-1.647 3.293c-.374.75-.974.744-1.346 0L9.68 19.36z"></path></svg>
+
             </a>
+
           </aside>
           <!------사용자 정보가져오긔----->
           <div class="card-item__content" id="">
             <a href="#여기누르면상세페이지ㄱㄱ" class="card-item__content__link"></a>
             <div class="expandable-text card-item-description card-item__description expandable">설명쓰 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
           </div>
+
 <!---------------------댓글보여주긔☆-------------------->
           <div class="card-item-comment-wrap">
             <article class="card-item-comment">
@@ -113,10 +113,12 @@
             </article>
           </div>
   <!-----end comment------>
+
          </article><!----end card-item----->
        </div><!--end card-feed__item-->
        
      </div><!-- END community Pic-->
+
     </div><!--end row-->
   </div><!-- end container -->
    --%>
@@ -216,4 +218,5 @@
 
 
   </body>
+
 </html>
