@@ -92,6 +92,8 @@ public class ChannelController {
 	 * 
 	 * + 채널 상세에 두 개만 나오는 리뷰
 	 * 
+	 *+ 채널 리뷰 수와 상담 완료 수에 따라 버튼 보이게
+	 * 
 	 * + 포트폴리오
 	 * */
 	@RequestMapping("/guest/channelDetail/{chNo}")

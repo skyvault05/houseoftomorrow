@@ -13,7 +13,7 @@ public interface PortfolioService {
 	
 	void insertPortfolio(Portfolio portfolio);
 	
-	void insertOrder(Order order, String orderStatusName);
+	void insertOrder(Order order);
 	
 	List<Portfolio> selectPortfolio();
 		
