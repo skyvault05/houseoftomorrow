@@ -57,7 +57,7 @@
 	<sec:authorize access="isAnonymous()">
    			  <div class="header_navigation-bar-login pl-1">
    			  	<a class="navigation-bar-login__item aftermenu" href="/common/loginForm">로그인</a>
-   			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
+   			  	<a class="navigation-bar-login__item signup-margin-right" href="/choiceJoin">회원가입</a>
    			  </div>
  	</sec:authorize>
 

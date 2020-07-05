@@ -30,6 +30,15 @@ public class MemberController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	/**
+	 * 
+	 * */
+	@RequestMapping("/choiceJoin")
+	public String choiceJoin() {
+		return "manage/guest/choiceJoinForm";
+	}
+	
+	
+	/**
 	 * 회원가입 폼으로
 	 */
 	@RequestMapping("/memberSignup")
