@@ -51,7 +51,12 @@ public class Order {
 	@Column(name = "order_method")
 	private String orderMethod;
 	
+	@Column(name = "order_status_name")
+	private String orderStatusName;
+	
 	@Column(name = "order_status")
 	private Integer orderStatus;
+	
+
 
 }
