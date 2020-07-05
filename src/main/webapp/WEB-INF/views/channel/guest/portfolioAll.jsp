@@ -50,6 +50,8 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 	
 		margin-top:5px;
 	}
+	
+	
 
 </style>  
 </head>
@@ -87,6 +89,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                  
                  
 <!--  페이징 처리  -->
+<div id="page""> 
 <c:forEach begin="0" end="${totalPage-1}" var="i">
 	<c:choose>
 		<c:when test="${i==nowPageNum }">
@@ -97,7 +100,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 		</c:otherwise>
 	</c:choose>
 </c:forEach>  
-     
+</div>     
 </div> <!-- row -->    
 </div> <!-- container -->
 </body>

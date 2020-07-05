@@ -247,5 +247,8 @@ ${community.commDescription}
 	</div>
 </div>
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
 </html>

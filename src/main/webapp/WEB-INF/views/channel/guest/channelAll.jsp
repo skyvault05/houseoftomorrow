@@ -27,33 +27,7 @@
 
 </head>
 <body>
- <c:forEach items="${list}" var="list">
- <section class="recommendation portfolio">
-     <div class="container" style="background-color: blue">
-         <div class="row" style="backgroud-color: green">
-         	
-			<div class="col-md-12 pt-3">
-			<div class="card-wrap">
-			 	<div class="main_recomm card">
-				     <div class="card-img">
-				     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}">
-				         <img src="${list.chImg}" class="card-img-top rounded">
-				     </a>
-				     </div>
-				     <div class="card-body">
-				       <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}">
-				       <p class="card-text title">${list.constructor.conName}</p>
-				       <div class="card-text content">★ ${list.chGrades}</div>
-				       </a>
-				     </div>
-				 </div>
-			 </div>
-			</div>
-			
-		</div>
-	</div>
-</section>
-</c:forEach> 
+
 <%-- <div class="container">
     <div class="post--contents__list-wrap">
                   <div class="row post--contents__list" style="transform:translateX(-0px)">
@@ -74,6 +48,34 @@
                </div>  --%>
 <br><br>
 <!--  페이징 처리  -->
+
+
+
+<div class="container">
+<br><br>
+<div class="row justify-content-center">
+<h2></h2>
+&nbsp;
+<h5 class="post__title"><strong></strong></h5>
+</div> <!-- row -->
+<div class="row" style="transform:translateX(-0px)"><br><br>
+                <c:forEach items="${list}" var="list" varStatus="status">
+                   <div class="col-md-3">
+                   <div style="relative">
+                        <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}"><img src="${list.chImg}" class="card-img-top rounded" alt="blog" width="255px" height="255px"></a>
+                        
+                          <p class="card-text title">${list.constructor.conName}</p>
+                          <div class="card-text content">${portList.channel.constructor.conName}★ ${list.chGrades}</div>
+                        
+                    <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
+                    </div>
+                	 </div>
+                 </c:forEach>
+</div> <!-- row -->
+</div> <!-- container -->
+
+<!-- 페이징 처리 -->
+<div>
 <c:forEach begin="0" end="${totalPage-1}" var="i">
 	<c:choose>
 		<c:when test="${i==nowPageNum }">
@@ -84,8 +86,8 @@
 		</c:otherwise>
 	</c:choose>
 </c:forEach>  
+</div>
 
-
-</div> <!-- container -->
+ 
 </body>
 </html>
