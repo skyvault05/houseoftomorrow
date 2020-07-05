@@ -48,7 +48,7 @@ $(document).ajaxSend(function(e, xhr, options) {
 			if( rsp.success ) {
 			   alert("Ajax 바로 앞")
 				$.ajax({
-					url: "/channel/constructor/payment/complete",
+					url: "${pageContext.request.contextPath}/channel/constructor/payment/complete",
 					type: 'POST',
 					contentType : 'application/json; charset=UTF-8',
 					dataType:'text',
@@ -66,6 +66,9 @@ $(document).ajaxSend(function(e, xhr, options) {
 						msg +='\n 상점 거래 ID : ' + rsp.merchant_uid;
 						msg +='\n결제 금액 : ' + rsp.paid_amount;
 						msg +='\n카트 승인번호 : ' + rsp.apply_num;
+						msg +='\n결제 방법 : ' + rsp.pay_method;
+						msg +='\n상태값 : ' + rsp.status;
+						msg +='\n제공자? : ' + rsp.pg_provider;
 						alert(msg);
 						console.log(msg);
 						
