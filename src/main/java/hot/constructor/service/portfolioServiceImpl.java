@@ -64,6 +64,7 @@ public class portfolioServiceImpl implements PortfolioService{
 	@Override
 	public Page<Portfolio> selectAll(Pageable portPage, Channel channel) {
 		Page<Portfolio> port = portRep.findByChannelNoAndPortStatus(portPage, channel, 1);
+		
 		return port;
 	}
 

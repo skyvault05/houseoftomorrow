@@ -40,4 +40,8 @@ public interface ChannelService {
 	Channel myChannel(Integer memberNo);
 
 	void updateChannel(Constructor constructor, Channel channel, Integer chaNo, MultipartFile file) throws IOException;
+	
+	Page<Channel> selectAllChannel(Pageable pageable);
+	
+	
 }

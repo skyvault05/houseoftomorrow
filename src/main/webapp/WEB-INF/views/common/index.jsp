@@ -82,24 +82,37 @@
 <!--End main sub btns-->
 
 <!-- recommendation portfolio -->
-
+	<!--     
+     <button type="button" onclick="location.href='${pageContext.request.contextPath}/channel/constructor/myChannel'"> 마이 채널 </button>
+ 	-->
     <section class="recommendation portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                   <h2 class="portfolio-title mb-4">추천 포트폴리오 </h2>
-                  <!-- 포트폴리오 등록버튼 -->
-                  
-           
-                  
-                	<button type="button" onclick="location.href='${pageContext.request.contextPath}/channel/constructor/myChannel'"> 마이 채널 </button>
-                  
-                  
-                
-                  
-                  <!-- 웅희 편집 부분 -->
-                  
-                  
+                   <div class="card-wrap">
+                   
+             <%--       <c:forEach items="${portList}" var=portList>
+                    <div class="main_recomm card">
+                        <div class="card-img">
+                            <img src="${portList.portImg}" class="card-img-top rounded" alt="blog">
+                            <div class="social_connect_overlay rounded">
+                                <a href="#"><span class="ti-instagram"></span></a> 
+                            </div>
+                        </div>
+                        <div class="card-body">
+                          <p class="card-text title"></p>
+                          <div class="card-text content"></div>
+                        </div>
+                    </div>
+				    </c:forEach>            
+                    --%>
+
+                </div><!--end card --> <!-- 포트폴리오 한줄 -->
+    
+            </div>
+
+          <%--   <div class="col-xl-12 pt-5">
                   <div class="card-wrap">
                     <div class="main_recomm card">
                         <div class="card-img">
@@ -157,67 +170,7 @@
 
                 </div><!--end card -->
     
-            </div>
-
-            <div class="col-xl-12 pt-5">
-                  <div class="card-wrap">
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                   
-
-                </div><!--end card -->
-    
-            </div>
+            </div> --%>
 
 
 
