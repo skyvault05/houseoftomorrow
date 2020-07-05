@@ -25,37 +25,30 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">  
      <link rel="stylesheet" href="/css/review/star.css">
 	<!-- WebFont -->
-	 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/font/fontawesome/css/font-awesome.min.css">
+    
+	<link rel="stylesheet" href="/css/font/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
 	<!-- <script src="/plugins/bootstrap/bootstrap.min.js"></script> -->
 	<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
 	<script src="/plugins/summernote/summernote-lite.min.js"></script>
 	<script src="/plugins/summernote/setsummernote.js"></script>
 
-<script>
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content"); 
-	$(document).ajaxSend(function(e, xhr, options) {
-	  xhr.setRequestHeader(header, token);
-	});
 
-	$(document).ready(function() {
-		$('.dropdown').hover(function() {
-  		$(this).find('.dd-wrap').css("display","block");
-  		$(this).find('.dropdown-menu').css("display","block");
-		}, function() {
-  		$(this).find('.dd-wrap').css("display","none");
-  		$(this).find('.dropdown-menu').css("display", "none");
-		});//end
+<style>
+.starrating > label:before {
+    content: "\f005";
+    margin: 2px;
+    font-size: 3em;
+    font-family: FontAwesome;
+    display: inline-block;
+    color: gold;
+}
 
-	}); //end
-	
-	
-
-</script> 
-
-
+</style>
   </head>
+  
  <body>
 
     
@@ -75,13 +68,13 @@
 		
 
 		<!--start 견적폼-->
-		<div class="expert-calculate__content">
+		<div class="center" style="margin: 0 auto;">
 		<p>
 				
 				
 			<div>
 			<div class="expert-user-form__form-group">
-			<div class="expert-user-form__form-group__label" ><h3 >시공사 : ${review.channel.constructor.conName} </h3></div>
+			<div class="expert-user-form__form-group__label" ><h3 >${review.channel.constructor.conName} </h3></div>
 			<div class="expert-user-form__form-group__input">
 			<div class="input-group telephone-input expert-review-form__telephone-input">
 			</div>
@@ -94,15 +87,18 @@
 
 
 <div class="expert-user-form__form-group">
-<div class="expert-user-form__form-group__label"><h5>평점</h5></div>
-<div class="expert-user-form__form-group__description">인테리어 시공의 최종 퀄리티 평점</div>
+<div class="expert-user-form__form-group__label"><h5>퀄리티</h5></div>
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>☆</strong> 인테리어 시공의 최종 퀄리티 평점
+</div>
 <div class="expert-user-form__form-group__input">
 
 <div class="container">
          <div class="starrating risingstar d-flex justify-content-center flex-row-reverse" >
             <c:choose>
             	<c:when test="${review.reviewGrade == 0}">
-            		<label for="star1" title="1 star"></label>
+            		평점을 주지 않으셨습니다.. 0점
             		
             	</c:when>
             	<c:when test="${review.reviewGrade == 1}">
@@ -144,17 +140,22 @@
 
 <div class="expert-user-form__form-group">
 <div class="expert-user-form__form-group__label"><h5>총평</h5></div>
-<div class="expert-user-form__form-group__description">인테리어 시공 전문가님의 서비스와 작업물 전반에 대하여 간단한 총평</div>
-<br><h6>${review.reviewDescription}</h6>
 
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>내가 쓴글 !</strong> 인테리어 시공 전문가님의 서비스와 작업물 전반에 대하여 간단한 총평
 </div>
+<div class="alert alert-success" role="alert">
+
+<h6>${review.reviewDescription}</h6>
 </div>
 </div>
 
-<sec:authentication var="user" property="principal" />
+
+<sec:authentication var="user" property="principal"  />
 <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose>
-			<c:when test="${review.member.memberNo == user.memberNo}">
+			<c:when test="${review.member.memberNo == user.memberNo}" >
 				<button class="btn btn-outline-primary" onclick="location.href='${pageContext.request.contextPath}/review/updateReviewform?reviewNo=${review.reviewNo}'" value="수정하기">수정하기</button>
 				<button class="btn btn-outline-primary" type="button"  onclick="location.href='${pageContext.request.contextPath}/review/deleteReview?reviewNo=${review.reviewNo}'"  name="delete">삭제</button>
 			</c:when>
@@ -163,13 +164,13 @@
 
 </div>
 </div>
-
+</div>
+</div>
 </div>
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
 <div class="empty-space"></div>
-<!-- start footer -->
-    
+
 
     <!-- loader -->
    

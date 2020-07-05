@@ -28,30 +28,17 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">  
      <link rel="stylesheet" href="/css/review/star.css">
 	<!-- WebFont -->
-	 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/font/fontawesome/css/font-awesome.min.css">
+    
+	<link rel="stylesheet" href="/css/font/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
 	<!-- <script src="/plugins/bootstrap/bootstrap.min.js"></script> -->
 	<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
 	<script src="/plugins/summernote/summernote-lite.min.js"></script>
 	<script src="/plugins/summernote/setsummernote.js"></script>
 
-<script>
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content"); 
-	$(document).ajaxSend(function(e, xhr, options) {
-	  xhr.setRequestHeader(header, token);
-	});
 
-	$(document).ready(function() {
-		$('.dropdown').hover(function() {
-  		$(this).find('.dd-wrap').css("display","block");
-  		$(this).find('.dropdown-menu').css("display","block");
-		}, function() {
-  		$(this).find('.dd-wrap').css("display","none");
-  		$(this).find('.dropdown-menu').css("display", "none");
-		});//end
-
-	}); //end
 	
 	
 
@@ -69,6 +56,7 @@
 <div class="container pt-5" >
 <div class="py-5 text-left">
 
+<sec:authentication var="user" property="principal" />
 
 <form class="expert-calculate" novalidate action="${pageContext.request.contextPath}/review/updateReview" method="post">
  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -82,25 +70,28 @@
 		
 
 		<!--start 견적폼-->
-		<section class="expert-calculate">
+		<section class="expert-calculate" style="margin: 0 auto;">
 				
 				
 			
 			<div>
-			<div class="expert-user-form__form-group">
-			<div class="expert-user-form__form-group__label"><h3> [ ${review.channel.constructor.conName} ]  시공사 리뷰</h3></div>
+			<div class="expert-user-form__form-group"><h3>리뷰 수정하기</h3>
+			<div class="expert-user-form__form-group__label"><h3>  ${review.channel.constructor.conName} </h3></div>
 			<div class="expert-user-form__form-group__input">
 			<div class="input-group telephone-input expert-review-form__telephone-input">
 			</div>
 			</div>
 			</div>
 			</div>
-<p>
+<br>
 
 
 <div class="expert-user-form__form-group">
-<div class="expert-user-form__form-group__label"><h6>퀄리티</h6></div>
-<div class="expert-user-form__form-group__description">전문가님이 진행해주신 인테리어 시공의 최종 퀄리티는 만족스러웠나요?</div>
+<div class="expert-user-form__form-group__label"><h5>퀄리티</h5></div>
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>별점을 주세요!</strong> 전문가님이 진행해주신 인테리어 시공의 최종 퀄리티는 만족스러웠나요?
+</div>
 <div class="expert-user-form__form-group__input">
 
 <div class="container">
@@ -117,24 +108,27 @@
 </div>
 
 <div class="expert-user-form__form-group">
-<div class="expert-user-form__form-group__label"><h6>총평</h6></div>
-<div class="expert-user-form__form-group__description">인테리어 시공 전문가님의 서비스와 작업물 전반에 대하여 간단한 총평을 부탁드립니다.</div>
+<div class="expert-user-form__form-group__label"><h5>총평</h5></div>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>총평!</strong> 인테리어 시공 전문가님의 서비스와 작업물 전반에 대하여 간단한 총평을 부탁드립니다.
+</div>
 <div class="expert-user-form__form-group__input">
 <textarea id="summernote" name="reviewDescription" >${review.reviewDescription}</textarea>
 </div>
 </div>
-</div>
+
 
 <br>
 			
-<button class="btn btn-outline-primary" type="submit"value="등록하기">수정완료</button>		
+<button class="btn btn-outline-primary"  type="submit"value="등록하기">수정완료</button>		
 		</section><!--end section-->
 	</div><!--end main row-->
 </div>
 </form><!--END form-->
 <!--END papering 도배-->
 </div>
-
+</div>
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
 <div class="empty-space"></div>
