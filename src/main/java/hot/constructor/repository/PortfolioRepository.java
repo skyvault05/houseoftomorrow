@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import hot.channel.domain.Channel;
 import hot.member.domain.Portfolio;
-import hot.review.domain.Review;
 
 public interface PortfolioRepository extends JpaRepository<Portfolio, Integer> {
 	

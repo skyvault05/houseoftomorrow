@@ -44,7 +44,7 @@ function setThumbnail(event) {
 	reader.onload = function(event) { 
 		var img = document.createElement("img"); 
 		img.setAttribute("src", event.target.result); 
-		document.querySelector("div#image_container").appendChild(img); }; 
+		document.querySelector("div#image_container").appendChild(img)}; 
 		reader.readAsDataURL(event.target.files[0]); } 
 		
 $(document).ready(function() {

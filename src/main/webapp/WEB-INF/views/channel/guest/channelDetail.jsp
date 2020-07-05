@@ -250,7 +250,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	                  <c:if test="${user.memberNo == channel.constructor.member.memberNo}">
-	                  	<a class="" href="/channel/constructor/portfolioForm/${channel.chNo}">포트폴리오 쓰기</a>
+	                  	<a class="" href="/channel/constructor/portfolioForm">포트폴리오 쓰기</a>
 	                  </c:if>
                   </sec:authorize>
                   <a class="" href="#">전체보기</a>

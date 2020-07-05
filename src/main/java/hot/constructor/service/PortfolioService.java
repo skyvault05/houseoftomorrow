@@ -6,11 +6,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import hot.channel.domain.Channel;
+import hot.member.domain.Order;
 import hot.member.domain.Portfolio;
 
 public interface PortfolioService {
 	
 	void insertPortfolio(Portfolio portfolio);
+	
+	void insertOrder(Order order);
 	
 	List<Portfolio> selectPortfolio();
 		
@@ -21,5 +24,6 @@ public interface PortfolioService {
 	Portfolio portfolioDetail(int portNo);
 
 	Page<Portfolio> selectAll(Pageable portPage, Channel channel);
+
 	
 }

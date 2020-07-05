@@ -6,8 +6,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import hot.admin.repository.OrderRepository;
 import hot.channel.domain.Channel;
 import hot.constructor.repository.PortfolioRepository;
+import hot.member.domain.Order;
 import hot.member.domain.Portfolio;
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +18,8 @@ import lombok.RequiredArgsConstructor;
 public class portfolioServiceImpl implements PortfolioService{
 	
 	private final PortfolioRepository portRep;
+	
+	private final OrderRepository orderRep;
 	
 	@Override
 	public void insertPortfolio(Portfolio portfolio) {
@@ -54,7 +58,26 @@ public class portfolioServiceImpl implements PortfolioService{
 		Page<Portfolio> port = portRep.findByChannelNoAndPortStatus(portPage, channel, 1);
 		return port;
 	}
-	
-	
-	
+
+	@Override
+	public void insertOrder(Order order) {
+		System.out.println("order.getOrderStatusName(): " + order.getOrderStatusName());
+		
+		if(order.getOrderStatusName() == "ready") {
+			System.out.println("**************ready**************");
+			order.setOrderStatus(0);
+		} else if(order.getOrderStatusName() == "paid") {
+			System.out.println("**************paid**************");
+			order.setOrderStatus(1);
+		} else if(order.getOrderStatusName() == "cancelled") {
+			
+			order.setOrderStatus(2);
+		} else if(order.getOrderStatusName() == "failed") {
+			order.setOrderStatus(3);
+		}
+		
+		order.setOrderStatus(1);
+		System.out.println("강제로 status 값 줌");
+		orderRep.save(order);		
+	}
 }
