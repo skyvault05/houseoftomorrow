@@ -27,32 +27,45 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
+	table{
+		width:100%;
+	}
+	img{
+		max-width:100%;
+	}
 </style>
 <script>
 	$(function(){
 		$.ajax({
-			url : "preConsulting",
+			url : "/constructor/preConsulting",
 			method : "post",
 			type : "json",
 			data : {	//#수정 바람
 				consulNo : $('input[name="consulParentNo"]').val()
 			},
 			success : function(jsonObj){
-				$('input[name=chNo]').val(jsonObj.chNo);
-				$('#description').append("<div>" + jsonObj.consulDescription + "</div>");
-				$(jsonObj.consultChild).each(function(item, element){
-					if(element.memberNo == $('input[name=memberNo]').val()){
-						$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + element.consulDescription + "</div>");
-					}else{
-						$('#description').append("<div>" + element.consulDescription + "</div>");
-					}
-				})
+				if(!jsonObj){
+					$('#description').append("<div><p>상담 중인 내역이 없습니다.</p></div>");
+				}else{
+					$('input[name=chNo]').val(jsonObj.chNo);
+					$('#description').append("<div>" + jsonObj.consulDescription + "</div>");
+					$(jsonObj.consultChild).each(function(item, element){
+						if(element.memberNo == $('input[name=memberNo]').val()){
+							$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + element.consulDescription + "</div>");
+						}else{
+							$('#description').append("<div>" + element.consulDescription + "</div>");
+						}
+					})
+				}
 			},
 			error : function(e){
 				alert(e.message);
 			}
 		});
+		
+		$('#noteBtn').click(function(){
+			$("#noteForm").submit();
+		})
 	})
 </script>
 
@@ -67,7 +80,7 @@
 			<div class="col-md-12" id="description">
 			</div>
 			<div class = "col-md-12">
-				<form action="consulting" method="post">
+				<form action="/constructor/consulting" id="noteForm" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					
 					<!-- #no값들 변경해야함 -->
@@ -78,17 +91,23 @@
 					<input type="hidden" name="consulParentNo" value="${param.consulNo}">
 					
 					<textarea id="summernote" name="consulDescription"></textarea>
-					<div class="col-md-1" style="float: right;">
-						<input type="submit" value="작성">
-					</div>
 				</form>
 			</div>
 			<div class="col-md-12">
-				<form action="contractView" method="post">
-					<input type="hidden" name="consulNo" value="${param.consulNo}">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					<input type="submit" value="계약서 등록">
-				</form>
+				<table>
+					<tr>
+						<td>
+							<form action="/constructor/contractView" method="post">
+								<input type="hidden" name="consulNo" value="${param.consulNo}">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+								<input type="submit" value="계약서 보기">
+							</form>
+						</td>
+						<td style="float:right;">
+							<input type="button" id="noteBtn" value="작성">
+						</td>
+					</tr>
+				</table>
 			</div>
 			
 			<br>
