@@ -261,6 +261,8 @@ class HouseoftomorrowApplicationTests {
 //		PasswordEncoder encoder = new BCryptPasswordEncoder();
 //		Member member = new Member(null, "admin1", encoder.encode("dd"), "admin1", "000-0300-0112", null, memberRole.findById(3).orElse(null));
 //		memberRep.save(member);
+		
+		communityRep.findById(2);
 	}
 }
 	
