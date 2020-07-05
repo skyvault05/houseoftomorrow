@@ -112,7 +112,7 @@ public class ConstructorController {
 			String portDescription, MultipartFile file, 
 			Date portStartDate, Date portEndDate, String portImg, Integer chNo, 
 			Order order,
-			String pay_method, String status, Integer amount) throws IOException{	
+			String pay_method, String status, Integer amount, String orderStatusName) throws IOException{	
 		System.out.println("포트폴리오 등록 동작 컨트롤러 들어옴");
 		System.out.println("pay_method: " + pay_method);
 		System.out.println("status: " + status);
@@ -154,14 +154,12 @@ public class ConstructorController {
 		order.setPortfolio(portfolio);
 		order.setOrderMethod(pay_method);
 		order.setOrderPayment(amount);
-		order.setOrderStatusName(status);
 		
-		System.out.println("orderStatusName: " + order.getOrderStatusName());
 		System.out.println("getOrderPayment: " + order.getOrderPayment());
 		
 		System.out.println("status1: " + order.getOrderStatus());
 		
-		portfolioService.insertOrder(order);
+		portfolioService.insertOrder(order, orderStatusName);
 		
 		System.out.println("status2: " + order.getOrderStatus());
 		
