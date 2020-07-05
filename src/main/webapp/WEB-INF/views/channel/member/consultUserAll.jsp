@@ -151,6 +151,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<!-- --------------------------------------------------------------------------------- -->
+
+
 	<input type="hidden" id="myChNo" value='<sec:authentication property="principal.chNo"/>'>
 	<input type="hidden" id="myMemberNo" value='<sec:authentication property="principal.memberNo"/>'>
 	<div class="container">

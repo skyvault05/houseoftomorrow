@@ -95,7 +95,7 @@
     <script src="/js/jquery.waypoints.min.js"></script>
     <script src="/js/jquery.fancybox.min.js"></script>
      <script src="/js/review/star.js"></script>
-    </script>
+    
 <!-- ICON -->
 <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
