@@ -43,7 +43,6 @@ public class UserSecurityService implements UserDetailsService {
 			Integer chNo = channel.getChNo();
 			customUser.setChNo(chNo);
 		}
-        customUser.setAuthorities(getAuthorities(username, member));
         customUser.setEnabled(true);
         customUser.setAccountNonExpired(true);
         customUser.setAccountNonLocked(true);

@@ -1,6 +1,8 @@
 package hot.consulting.controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,7 @@ public class ConsultingController {
 	/**
 	 * 유저의 상담하기 페이지
 	 */
-	@RequestMapping("/member/consultingForm")
+	@PostMapping("/member/consultingForm")
 	public ModelAndView consultForm(int chNo) {
 		return new ModelAndView("channel/member/consultUserDetail", "chNo", chNo);
 	}
@@ -34,7 +36,7 @@ public class ConsultingController {
 	/**
 	 * 시공사의 상담하기 페이지
 	 */
-	@RequestMapping("/constructor/consultingForm")
+	@PostMapping("/constructor/consultingForm")
 	public ModelAndView conConsultForm(Integer consulNo) {
 		return new ModelAndView("channel/constructor/consultConDetail", "consulNo", consulNo);
 	}
@@ -43,7 +45,7 @@ public class ConsultingController {
 	 * 유저의 상담내역 불러오기
 	 */
 	@ResponseBody
-	@RequestMapping("/member/preConsulting")
+	@PostMapping("/member/preConsulting")
 	public Consulting consultList(int memberNo, int chNo) {
 		Consulting consulting = consultService.selectByIdNo(memberNo, chNo);
 		
@@ -54,9 +56,9 @@ public class ConsultingController {
 	 * 시공사의 상담내역 불러오기
 	 */
 	@ResponseBody
-	@RequestMapping("constructor/preConsulting")
+	@PostMapping("/constructor/preConsulting")
 	public Consulting consultList(int consulNo) {
-		Consulting consulting = consultService.selectByNo(consulNo);
+		Consulting consulting = consultService.selectByNoConsulting(consulNo);
 		
 		return consulting;
 	}
@@ -86,17 +88,17 @@ public class ConsultingController {
 	/**
 	 * 시공사의 계약서 등록하기
 	 */
-	@RequestMapping("/{every}/contractView")
+	@PostMapping(value = {"/constructor/contractView", "/member/contractView"})
 	public ModelAndView contract(int consulNo) {
 		return new ModelAndView("channel/member/contractDetail", "consulNo", consulNo);
 	}
 	
+	@Autowired
+	S3Manager s3Manager;
+
 	/**
 	 * 계약서 등록하기
 	 */
-	@Autowired
-	S3Manager s3Manager;
-	
 	@PostMapping("/constructor/contractRegist")
 	public String handleImageUpload(int consulNo, MultipartFile file, RedirectAttributes redirect) throws Exception {
 		String fileName;
@@ -121,5 +123,97 @@ public class ConsultingController {
 		redirect.addAttribute("consulNo", consulNo);
 		
 		return "redirect:contractView";
+	}
+	
+	/**
+	 * 계약서 가져오기
+	 */
+	@ResponseBody
+	@PostMapping(value= {"/member/contractImg","/constructor/contractImg"})
+	public Contract imgUrl(Integer consulNo) {
+		Contract contract = consultService.selectContractByNo(consulNo);
+		
+		return contract;
+	}
+	
+	/**
+	 * 계약 수락/취소 하기
+	 */
+	@PostMapping(value= {"/member/contractUpdate","/constructor/contractUpdate"})
+	public String contract(Contract contract, RedirectAttributes redirect) {
+		Contract preContract = consultService.selectContractByNo(contract.getConsulNo());
+		if(contract.getConsulConDecide() == 2) {
+			preContract.setConsulConDecide(preContract.getConsulConDecide() == 1 ? 2 : 1);
+		}else {
+			preContract.setConsulUserDecide(preContract.getConsulUserDecide() == 1 ? 2 : 1);
+		}
+		consultService.insertContract(preContract);
+
+		redirect.addAttribute("consulNo", contract.getConsulNo());
+		return "redirect:contractView";
+	}
+	
+	/**
+	 * 계약 완료된 상담 내용 페이지 가기
+	 */
+	@PostMapping(value= {"/member/consultingView","/constructor/consultingView"})
+	public ModelAndView completeConsulting(Integer consulNo) {
+		return new ModelAndView("channel/member/preConsultDetail", "consulNo", consulNo);
+	}
+	
+	/**
+	 * 계약 완료된 상담 내용 보기
+	 */
+	@ResponseBody
+	@PostMapping(value= {"/constructor/completeConsulting", "/member/completeConsulting"})
+	public Consulting consultCom(int consulNo) {
+		Consulting consulting = consultService.selectByNo(consulNo);
+		return consulting;
+	}
+	
+	/**
+	 * 상담 목록 페이지
+	 */
+	@PostMapping("/member/consultingAllPage")
+	public String consultingAllPage() {
+		return "channel/member/consultUserAll";
+	}
+	
+	/**
+	 * 유저 상담 목록 보기
+	 */
+	@ResponseBody
+	@PostMapping("/member/consultingAll")
+	public List<Consulting> consultingAll(Integer memberNo) {
+		List<Consulting> list = consultService.selectUserConsulting(memberNo);
+		return list;
+	}
+	
+	/**
+	 * 시공사 상담 목록 보기
+	 */
+	@ResponseBody
+	@PostMapping("/constructor/consultingAll")
+	public List<Consulting> consultingConAll(Integer chNo){
+		List<Consulting> list = consultService.selectConConsulting(chNo);
+		return list;
+	}
+	
+	/**
+	 * 완료된 계약 목록 페이지
+	 */
+	@RequestMapping("/member/contractAll")
+	public String contractAll() {
+		return "channel/member/contractAll";
+	}
+	
+	/**
+	 * 완료된 계약 목록 보기
+	 */
+	@ResponseBody
+	@PostMapping("/member/contractDate")
+	public Timestamp contractDate(Integer consulNo){
+
+		return null;
 	}
 }

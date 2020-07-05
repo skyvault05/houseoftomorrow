@@ -66,4 +66,13 @@ public class MemberServiceImpl implements MemberService{
 		return memberRep.findByMemberPhone(phone);
 	}
 
+	@Override
+	public String findMemberName(int memberNo) {
+		Member member = memberRep.findById(memberNo).orElse(null);
+		String name = null;
+		if(member != null) {
+			name = member.getMemberName();
+		}
+		return name;
+	}
 }

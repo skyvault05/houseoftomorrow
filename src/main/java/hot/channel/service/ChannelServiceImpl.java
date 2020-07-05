@@ -227,4 +227,15 @@ public class ChannelServiceImpl implements ChannelService {
 		String imgPath = s3Manager.saveUploadedFiles(file);
 		channelDB.setChImg(imgPath);
 	}
+	
+	
+	@Override
+	public String findConName(int chNo) {
+		Channel channel = channelRepository.findById(chNo).orElse(null);
+		String conName = null;
+		if(channel != null) {
+			conName = channel.getConstructor().getConName();
+		}
+		return conName;
+	}
 }
