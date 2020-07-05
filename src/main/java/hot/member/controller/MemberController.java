@@ -30,6 +30,15 @@ public class MemberController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	/**
+	 * 
+	 * */
+	@RequestMapping("/choiceJoin")
+	public String choiceJoin() {
+		return "manage/guest/choiceJoinForm";
+	}
+	
+	
+	/**
 	 * 회원가입 폼으로
 	 */
 	@RequestMapping("/memberSignup")
@@ -99,9 +108,7 @@ public class MemberController {
 			return "impossible";
 		}
 	}
-
 	
-
 	@RequestMapping("/update")
 	public String memberUpdate(Member member) {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -111,12 +118,18 @@ public class MemberController {
 	return "index";
 	}
 	
-
-
-
 	@RequestMapping("/requestDetail")
 	public String requestDetail() {
 		return "/estimate/member/requestDetail";
-
+	}
+	
+	/**
+	 * 유저 이름 가져오기
+	 */
+	@ResponseBody
+	@RequestMapping("/constructor/memberId")
+	public String findMemberName(Integer memberNo) {
+		String name = memberService.findMemberName(memberNo);
+		return name;
 	}
 }

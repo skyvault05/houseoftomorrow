@@ -32,6 +32,11 @@ public interface ChannelService {
 	
 	List<FavoritePortfolio> myFavoritePortfolio(int membNo);
 	
+	/**
+	 * 시공사 상호명 가져오기
+	 */
+	String findConName(int chNo);
+
 	Channel myChannel(Integer memberNo);
 
 	void updateChannel(Constructor constructor, Channel channel, Integer chaNo, MultipartFile file) throws IOException;
