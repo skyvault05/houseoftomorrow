@@ -63,6 +63,7 @@ public class ConstructorController {
 		Integer chNo = ((CustomUser)principal).getChNo();
 		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
 		return new ModelAndView("/channel/constructor/portfolioForm","portList", portList);
+
 	}
 	
 	@RequestMapping("/channel/constructor/myChannel")
@@ -71,6 +72,8 @@ public class ConstructorController {
 		//Integer chNo = ((CustomUser)principal).getChNo();
 		//System.out.println(chNo);
 		List<Portfolio> portList = portfolioService.selectPortfolioChNo(1);
+		
+		///////// chNo 다시 손볼 것 
 		
 		
 		Channel channel = channelService.selectChannel(1);
@@ -112,7 +115,7 @@ public class ConstructorController {
 			String portDescription, MultipartFile file, 
 			Date portStartDate, Date portEndDate, String portImg, Integer chNo, 
 			Order order,
-			String pay_method, String status, Integer amount) throws IOException{	
+			String pay_method, String status, Integer amount, String orderStatusName) throws IOException{	
 		System.out.println("포트폴리오 등록 동작 컨트롤러 들어옴");
 		System.out.println("pay_method: " + pay_method);
 		System.out.println("status: " + status);
@@ -154,14 +157,12 @@ public class ConstructorController {
 		order.setPortfolio(portfolio);
 		order.setOrderMethod(pay_method);
 		order.setOrderPayment(amount);
-		order.setOrderStatusName(status);
 		
-		System.out.println("orderStatusName: " + order.getOrderStatusName());
 		System.out.println("getOrderPayment: " + order.getOrderPayment());
 		
 		System.out.println("status1: " + order.getOrderStatus());
 		
-		portfolioService.insertOrder(order);
+		portfolioService.insertOrder(order, orderStatusName);
 		
 		System.out.println("status2: " + order.getOrderStatus());
 		
@@ -215,11 +216,18 @@ public class ConstructorController {
 	 * 포트폴리오 전체 목록
 	 * */
 	@RequestMapping("/channel/guest/portfolioAll")
-	public ModelAndView portfolioList() {
+	public ModelAndView portfolioList(@RequestParam(defaultValue = "0")int nowPage) {
 		
-		List<Portfolio> portList = portfolioService.findAllPortfolio();
+		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "portNo");
+		Page<Portfolio> portList = portfolioService.findAllPortfolio(page);
 		
-		return new ModelAndView("channel/guest/portfolioAll", "portList", portList);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("channel/guest/portfolioAll");
+		mv.addObject("portList", portList.getContent());
+		mv.addObject("totalPage", portList.getTotalPages());
+		mv.addObject("nowPageNum", portList.getNumber());
+		
+		return mv;
 	}
 	
 	/**

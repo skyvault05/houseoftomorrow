@@ -1,8 +1,11 @@
 package hot.channel.service;
 
+
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 import hot.channel.domain.Channel;
@@ -40,4 +43,6 @@ public interface ChannelService {
 	Channel myChannel(Integer memberNo);
 
 	void updateChannel(Constructor constructor, Channel channel, Integer chaNo, MultipartFile file) throws IOException;
+	
+	Page<Channel> selectAllChannel(Pageable pageable);
 }

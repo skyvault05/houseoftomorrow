@@ -13,7 +13,7 @@ public interface PortfolioService {
 	
 	void insertPortfolio(Portfolio portfolio);
 	
-	void insertOrder(Order order);
+	void insertOrder(Order order, String orderStatusName);
 	
 	List<Portfolio> selectPortfolio();
 		
@@ -25,5 +25,6 @@ public interface PortfolioService {
 
 	Page<Portfolio> selectAll(Pageable portPage, Channel channel);
 
+		Page<Portfolio> findAllPortfolio(Pageable pageable);
 	
 }
