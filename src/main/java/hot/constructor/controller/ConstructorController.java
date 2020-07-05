@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,13 +57,13 @@ public class ConstructorController {
 	@Autowired
 	S3Manager s3manager;
 	
-	
 	@RequestMapping("/channel/constructor/portfolioForm")
 	public ModelAndView portfolioForm() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
 		Integer chNo = ((CustomUser)principal).getChNo();
 		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
 		return new ModelAndView("/channel/constructor/portfolioForm","portList", portList);
+
 	}
 	
 	@RequestMapping("/channel/constructor/myChannel")
@@ -71,6 +72,8 @@ public class ConstructorController {
 		//Integer chNo = ((CustomUser)principal).getChNo();
 		//System.out.println(chNo);
 		List<Portfolio> portList = portfolioService.selectPortfolioChNo(1);
+		
+		///////// chNo 다시 손볼 것 
 		
 		
 		Channel channel = channelService.selectChannel(1);
@@ -122,15 +125,15 @@ public class ConstructorController {
 		
 		Long sd=portStartDate.getTime();
 		Long ed=portEndDate.getTime();
-		
+
 		Timestamp startDate = new Timestamp(sd);
 		Timestamp endDate = new Timestamp(ed);
 		
-		
 		Portfolio portfolio = new Portfolio();
-		
-		Channel channel = channelService.selectChannel(ChannelNo);
-		System.out.println(channel);
+		//Channel channel = channelService.selectChannel(ChannelNo);
+		System.out.println("chNo: " + chNo);
+		Channel channel = channelService.selectChannel(chNo);
+		System.out.println("channel.getChDescription(): " + channel.getChDescription());
 		String imgpath = s3manager.saveUploadedFiles(file);
 		
 		portfolio.setPortTitle(portTitle);
@@ -148,8 +151,8 @@ public class ConstructorController {
 		portfolioService.insertPortfolio(portfolio);
 		Constructor constructor = constructorService.selectConstructor(memberNo);
 		
+		//int orderStatus = Integer.parseInt(status);
 		
-		Order order = new Order();
 		order.setConstructor(constructor);
 		order.setPortfolio(portfolio);
 		order.setOrderMethod(pay_method);
@@ -157,23 +160,20 @@ public class ConstructorController {
 		
 		System.out.println("getOrderPayment: " + order.getOrderPayment());
 		
+		System.out.println("status1: " + order.getOrderStatus());
 		
 		portfolioService.insertOrder(order, orderStatusName);
 		
+		System.out.println("status2: " + order.getOrderStatus());
 		
-		//orderService.insertOrder(order);
-		/* 전체검색
-		List<Portfolio> portlist = portfolioService.selectPortfolio();
-		*/
-		
-		
+		System.out.println("다 된건가 ....");
 		// chNo 채널별 포트폴리오 검색
 		
-		List<Portfolio> portlist = portfolioService.selectPortfolioChNo(ChannelNo);
-		
+		//List<Portfolio> portlist = portfolioService.selectPortfolioChNo(ChannelNo);
+		List<Portfolio> portlist = portfolioService.selectPortfolioChNo(chNo);
 		System.out.println("포트폴리오 : " + portlist.size());
 		
-		return new ModelAndView("redirect:/channel/guest/channelDetail", "portlist", portlist); 
+		return new ModelAndView("redirect:/channel/guest/channelDetail/"+chNo, "portlist", portlist); 
 	}
 	
 	////////////////////////////////////////////////////////////
@@ -216,11 +216,18 @@ public class ConstructorController {
 	 * 포트폴리오 전체 목록
 	 * */
 	@RequestMapping("/channel/guest/portfolioAll")
-	public ModelAndView portfolioList() {
+	public ModelAndView portfolioList(@RequestParam(defaultValue = "0")int nowPage) {
 		
-		List<Portfolio> portList = portfolioService.findAllPortfolio();
+		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "portNo");
+		Page<Portfolio> portList = portfolioService.findAllPortfolio(page);
 		
-		return new ModelAndView("channel/guest/portfolioAll", "portList", portList);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("channel/guest/portfolioAll");
+		mv.addObject("portList", portList.getContent());
+		mv.addObject("totalPage", portList.getTotalPages());
+		mv.addObject("nowPageNum", portList.getNumber());
+		
+		return mv;
 	}
 	
 	/**
