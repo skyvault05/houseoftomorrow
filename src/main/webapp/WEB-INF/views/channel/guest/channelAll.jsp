@@ -63,7 +63,7 @@
 <div class="container">
 <br><br>
 <div class="row justify-content-center">
-<h2></h2>
+<h2>모든 시공사</h2>
 &nbsp;
 <h5 class="post__title"><strong></strong></h5>
 </div> <!-- row -->
