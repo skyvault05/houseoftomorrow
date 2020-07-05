@@ -99,9 +99,7 @@ public class MemberController {
 			return "impossible";
 		}
 	}
-
 	
-
 	@RequestMapping("/update")
 	public String memberUpdate(Member member) {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -111,12 +109,18 @@ public class MemberController {
 	return "index";
 	}
 	
-
-
-
 	@RequestMapping("/requestDetail")
 	public String requestDetail() {
 		return "/estimate/member/requestDetail";
-
+	}
+	
+	/**
+	 * 유저 이름 가져오기
+	 */
+	@ResponseBody
+	@RequestMapping("/constructor/memberId")
+	public String findMemberName(Integer memberNo) {
+		String name = memberService.findMemberName(memberNo);
+		return name;
 	}
 }

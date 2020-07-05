@@ -30,4 +30,9 @@ public interface ChannelService {
 	void deleteFavoritePortfolio(int membNo, int portNo);
 	
 	List<FavoritePortfolio> myFavoritePortfolio(int membNo);
+	
+	/**
+	 * 시공사 상호명 가져오기
+	 */
+	String findConName(int chNo);
 }

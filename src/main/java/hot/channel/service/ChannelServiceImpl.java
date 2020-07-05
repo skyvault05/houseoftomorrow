@@ -179,4 +179,15 @@ public class ChannelServiceImpl implements ChannelService {
 		return channelRepository.findById(ChNo).orElse(null);
 		
 	}
+	
+	
+	@Override
+	public String findConName(int chNo) {
+		Channel channel = channelRepository.findById(chNo).orElse(null);
+		String conName = null;
+		if(channel != null) {
+			conName = channel.getConstructor().getConName();
+		}
+		return conName;
+	}
 }
