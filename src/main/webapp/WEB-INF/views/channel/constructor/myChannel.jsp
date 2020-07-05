@@ -41,60 +41,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          $('.drop-down__list').toggleClass('open');
          //$('.drop-down__list').removeClass('open');
       });
-   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 
-   function pageLoad(){
-      $.ajax({
-         type:"POST",
-         url:"${pageContext.request.contextPath}/channel/favoriteChannel/checkHeart",
-         data: "membNo="+${user.memberNo}+"&&chaNo="+${chNo},
-         dataType:"json",
-         success:function(result){
-            var image = document.getElementById("favoriteChannel");
-              if (result==1) {
-                image.src = "/plugins/images/heart_off.png";
-              } else {
-                image.src = "/plugins/images/heart_on.png";
-              }
-         }
-      });
-    };
-    
-    window.onload = pageLoad;
-    
-    function changeImage(){
-      $.ajax({
-         type:"POST",
-         url:"${pageContext.request.contextPath}/channel/favoriteChannel/check",
-         data: "membNo="+${user.memberNo}+"&&chaNo="+${chNo},
-         dataType:"json",
-         success:function(result){
-            var image = document.getElementById("favoriteChannel");
-              if (image.src.match("off")) {
-                image.src = "/plugins/images/heart_on.png";
-              } else {
-                image.src = "/plugins/images/heart_off.png";
-              }
-         }
-      });}
-
-      $('#favoriteChannel').on('click', changeImage);
-      
-      function insertReview(){
-         $.ajax({
-            type:"POST",
-            url:"${pageContext.request.contextPath}/channel/check/impossibleReview",
-            data: "memberNo="+${user.memberNo}+"&&chNo="+${chNo},
-            dataType:"json",
-            success:function(result){
-            }
-            
-         });}
-
-         $('#insertReview').on('click', insertReview);
-         
-         </sec:authorize>
-});
 </script>
   </head>
   
@@ -106,7 +53,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          <nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
             <ul class="navbar-nav mypage">
                <li class="nav-item">
-                  <a href="${pageContext.request.contextPath}/" class="nav-link" target="_self">시공사 수정 </a>
+                  <a href="${pageContext.request.contextPath}/channel/constructor/channelUpdate/${channel.chNo}" class="nav-link" target="_self">시공사 수정 </a>
                </li>
                <li class="nav-item">
                   <a href="${pageContext.request.contextPath}/" class="nav-link" target="_self">채널관리</a>
@@ -149,8 +96,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                            </a>
                            <span class="expert-review-popup-button">
                               <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                                 <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
-                                 <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
+                                 <a href="${pageContext.request.contextPath}/review/reviewList/${channel.chNo}">전체보기</a></span>
                               </sec:authorize>
                            </span>
                         </div><!-- end profile_info_reviews-->
@@ -166,16 +112,13 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                            </button>
                            <ul class="drop-down__list">
                               <li>
-                              <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                                 <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=1" id="insertReview">리뷰쓰기</a>
-                                 <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
-                              </sec:authorize>
+                                 <a href="${pageContext.request.contextPath}/review/reviewList/${channel.chNo}">전체보기</a></span>
                               <button type="button">팔로우</button></li>
                            </ul>
                         </div>
                      </div>      
                      <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
-                     <img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel"  src="/plugins/images/heart_off.png"/>
+                     <img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel"  src="/plugins/images/heart_on.png"/>
                      <strong>${fn:length(favCh)}</strong>
                      </sec:authorize>
                   </div><!--end 상담하기-->
@@ -214,10 +157,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
             <section class="post post--reviews">
                <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(list)}+</strong>
                   <span class="post__title__show-all">
-                  <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                     <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
-                  </sec:authorize>
-                  <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
+                  <a href="${pageContext.request.contextPath}/review/reviewList/${channel.chNo}">전체보기</a></span>
                </h5>
                <div class="row post--reviews__list">
                <c:forEach items="${list}" var="list">
@@ -252,7 +192,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 	                  	<a class="" href="/channel/constructor/portfolioForm">포트폴리오 쓰기</a>
 	                  </c:if>
                   </sec:authorize>
-                  <a class="" href="#">전체보기</a>
+                  <a class="" href="${pageContext.request.contextPath}/review/reviewList/${channel.chNo}">전체보기</a>
                   </span>
                </h5>
                <div class="post--contents__list-wrap">

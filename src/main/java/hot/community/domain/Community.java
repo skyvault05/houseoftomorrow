@@ -1,6 +1,7 @@
 package hot.community.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,6 +20,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.type.TrueFalseType;
 
+import hot.channel.domain.FavoriteChannel;
 import hot.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -70,6 +72,10 @@ public class Community {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "commParentNo")
 	private List<Community> commChildNo;
+	
+	@OneToMany
+	@JoinColumn(name = "comm_no")
+	private List<CommComment> commentList = new ArrayList<>();
 
 }
 

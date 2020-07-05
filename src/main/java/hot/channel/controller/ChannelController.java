@@ -1,5 +1,7 @@
 package hot.channel.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import hot.channel.domain.Channel;
@@ -29,6 +32,7 @@ import hot.consulting.domain.Consulting;
 import hot.consulting.domain.Contract;
 import hot.consulting.repository.ConsultingRepository;
 import hot.consulting.repository.ContractRepository;
+import hot.member.domain.Constructor;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
 import hot.member.repository.MemberRepository;
@@ -99,11 +103,48 @@ public class ChannelController {
 		return mv;
 	}
 
+	/**
+	 * 채널 수정 폼
+	 * */
+	@RequestMapping("/constructor/channelUpdate/{chNo}")
+	public ModelAndView updateChannelForm(@ModelAttribute(name="chNo")Integer chNo) {
+		Channel channel = channelService.selectChannel(chNo);
+		return new ModelAndView("channel/constructor/channelUpdate", "channel", channel);
+	}
+	
 
+	/**
+	 * 채널 수정
+	 * @throws IOException 
+	 * */
 	@RequestMapping("/update")
-	public ModelAndView updateChannel(Integer chNo) {
-		channelService.updateGrade(chNo);
-		return null;
+	public String updateChannel(Constructor constructor, Channel channel, Integer chaNo, Integer membNo, MultipartFile file) throws IOException {
+		channelService.updateChannel(constructor, channel, chaNo, file);
+		return "redirect:constructor/myChannel/"+membNo;
+	}
+	
+	/**
+	 * 내 채널
+	 * */
+	@RequestMapping("/constructor/myChannel/{memberNo}")
+	public ModelAndView myChannel(@ModelAttribute(name="memberNo")Integer memberNo, Model model, @RequestParam(defaultValue = "0")int nowPage) {
+		
+		Channel channel = channelService.myChannel(memberNo);
+		List<Portfolio> portList = portfolioService.selectPortfolioChNo(channel.getChNo());
+		
+		Pageable page =PageRequest.of(nowPage, 2, Direction.DESC, "reviewNo");
+		Page<Review> pageReview = reviewService.selectAll(page, channel);
+
+		model.addAttribute("list", pageReview.getContent());
+		
+		List<FavoriteChannel> favCh = fcRep.findByChannel(channel);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/channel/constructor/myChannel");
+		mv.addObject("channel", channel);
+		mv.addObject("portList", portList);
+		mv.addObject("favCh", favCh);
+		return mv;
 	}
 
 	
