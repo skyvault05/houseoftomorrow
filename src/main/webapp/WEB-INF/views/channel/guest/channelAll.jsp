@@ -27,11 +27,11 @@
 
 </head>
 <body>
-<c:forEach items="${list}" var="list">
+<%-- <c:forEach items="${list}" var="list">
  <section class="recommendation portfolio">
      <div class="container">
          <div class="row">
-			<div class="col-xl-12 pt-3">
+			<div class="col-md-12 pt-3">
 			<div class="card-wrap">
 			 	<div class="main_recomm card">
 				     <div class="card-img">
@@ -51,6 +51,39 @@
 		</div>
 	</div>
 </section>
-</c:forEach>
+</c:forEach> --%>
+<div class="container">
+    <div class="post--contents__list-wrap">
+                  <div class="row post--contents__list" style="transform:translateX(-0px)">
+                     <c:forEach items="${list}" var="list">
+                        <div class="col-md-4 post--contents__item-wrap">
+                           <a href="#">
+                              <div class="post--contents__item">
+                                 <div style="position:relative">
+                                    <img class="post--contents__item__img" src="${list.chImg}"/>
+                                 </div>
+                                 <p class="post--contents__item__title">${list.constructor.conName}</p>
+                                 <p class="post--contents__item__grades">${list.chGrades}</p>
+                              </div>
+                           </a>
+                        </div>
+                     </c:forEach>
+                  </div> <!-- row -->
+               </div> 
+
+<!--  페이징 처리  -->
+<c:forEach begin="0" end="${totalPage-1}" var="i">
+	<c:choose>
+		<c:when test="${i==nowPageNum }">
+			[<a href="${pageContext.request.contextPath}/channel/channelAll?nowPage=${i}" style="color:red"> ${i+1} </a>] &nbsp;
+		</c:when>
+		<c:otherwise>
+			[<a href="${pageContext.request.contextPath}/channel/channelAll?nowPage=${i}">${i+1}</a>] &nbsp;
+		</c:otherwise>
+	</c:choose>
+</c:forEach>  
+
+
+</div> <!-- container -->
 </body>
 </html>

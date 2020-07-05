@@ -58,6 +58,8 @@ public class ConstructorController {
 	
 	@RequestMapping("/channel/constructor/portfolioForm")
 	public String portfolioForm() {
+		
+		
 		return "/channel/constructor/portfolioForm";
 	}
 	
@@ -67,6 +69,8 @@ public class ConstructorController {
 		//Integer chNo = ((CustomUser)principal).getChNo();
 		//System.out.println(chNo);
 		List<Portfolio> portList = portfolioService.selectPortfolioChNo(1);
+		
+		///////// chNo 다시 손볼 것 
 		
 		
 		Channel channel = channelService.selectChannel(1);
@@ -207,11 +211,18 @@ public class ConstructorController {
 	 * 포트폴리오 전체 목록
 	 * */
 	@RequestMapping("/channel/guest/portfolioAll")
-	public ModelAndView portfolioList() {
+	public ModelAndView portfolioList(@RequestParam(defaultValue = "0")int nowPage) {
 		
-		List<Portfolio> portList = portfolioService.findAllPortfolio();
+		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "portNo");
+		Page<Portfolio> portList = portfolioService.findAllPortfolio(page);
 		
-		return new ModelAndView("channel/guest/portfolioAll", "portList", portList);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("channel/guest/portfolioAll");
+		mv.addObject("portList", portList.getContent());
+		mv.addObject("totalPage", portList.getTotalPages());
+		mv.addObject("nowPageNum", portList.getNumber());
+		
+		return mv;
 	}
 	
 	/**

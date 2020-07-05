@@ -69,10 +69,21 @@ public class ChannelController {
 	 * 채널 목록
 	 * */
 	@RequestMapping("/channelAll")
-	public ModelAndView channelAll() {
-		List<Channel> list = channelService.channelList();
+	public ModelAndView channelAll(@RequestParam(defaultValue = "0")int nowPage) {
 		
-		return new ModelAndView("channel/guest/channelAll", "list", list);
+		
+		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "chNo");
+		
+		Page<Channel> list = channelService.selectAllChannel(page);
+		
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("channel/guest/channelAll");
+		mv.addObject("list", list.getContent());
+		mv.addObject("totalPage", list.getTotalPages());
+		mv.addObject("nowPageNum", list.getNumber());
+		return mv;
 	}
 	
 	/**

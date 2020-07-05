@@ -2,6 +2,8 @@ package hot.constructor.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -13,5 +15,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Integer> {
 	List<Portfolio> findPortfolioByChNo(int chNo);
 	
 	List<Portfolio> findByPortStatus(Integer portStatus);
+	
+	Page<Portfolio> findByPortStatus(Pageable pageable, Integer portStatus);
 	
 }
