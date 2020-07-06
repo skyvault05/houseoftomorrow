@@ -59,8 +59,8 @@ public class CommunityController {
 	 * */
 	@RequestMapping("/guest/communityMain")
 	public String communityMain(Model model) {
-		List<Community> commPicList = communityService.selectCommunityMainList(0, 3, 5, 1);
-		List<Community> knowHowList = communityService.selectCommunityMainList(0, 8, 4, 1);
+		List<Community> commPicList = communityService.selectCommunityMainList(0, 8, 4, 1);
+		List<Community> knowHowList = communityService.selectCommunityMainList(0, 3, 5, 1);
 		model.addAttribute("commPicList", commPicList);
 		model.addAttribute("knowHowList", knowHowList);
 		return "community/guest/communityMain";

@@ -48,10 +48,9 @@
                   <span class="content__profile__name">곽두팔</span>
                 </div>
               </div>
-              <div class="main-img-content-viewmore">보러가기</div>
-              
-            ${commPicList}
-			${knowHowList}
+              <div class="main-img-content-viewmore">보러가기</div>              
+            ${commPicList.size()}
+			${knowHowList.size()}
             </div>
             <!--end content-->
           </a>
@@ -92,9 +91,10 @@
 <!-- 오늘의스토리 -->
     <section class="container comm-todays-stories">
       <header class="row home-section__header">
-        <h2 class="col home-section__header__content mb-4">오늘의 스토리 </h2>
+        <h2 class="col home-section__header__content mb-4"> 오늘의 스토리 </h2>
       </header>
       <ul class="row home-stories__content">
+      <c:forEach items="" var="item">
         <li class="col-6 col-md-3 home-stories__content__item">
           <article class="story-entry story-story-item">
             <a class="story-entry-link" href="#">
@@ -113,45 +113,7 @@
             </a>
           </article>
         </li>
-
-        <li class="col-6 col-md-3 home-stories__content__item">
-          <article class="story-entry story-story-item">
-            <a class="story-entry-link" href="#">
-              <div class="story-entry__image-wrap hover_effect_card">
-                <img class="story-entry__image" alt="" src="${pageContext.request.contextPath}/images/community/todaysstories.jpg">
-              </div>
-              <div class="story-entry__content-wrap">
-                <div class="story-entry__content">
-                  <div class="story-entry__content__title">사진제목쓰<br> </div>
-                  <div class="story-entry__content__profile">
-                    <img class="story-entry__content__profile__image " src="${pageContext.request.contextPath}/images/default/user_default.png">
-                    <span class="story-entry__content__profile__name">후달@.@</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </article>
-        </li>
-
-        <li class="col-6 col-md-3 home-stories__content__item">
-          <article class="story-entry story-story-item">
-            <a class="story-entry-link" href="#">
-              <div class="story-entry__image-wrap hover_effect_card">
-                <img class="story-entry__image" alt="" src="${pageContext.request.contextPath}/images/community/todaysstories.jpg">
-              </div>
-              <div class="story-entry__content-wrap">
-                <div class="story-entry__content">
-                  <div class="story-entry__content__title">사진제목쓰<br> </div>
-                  <div class="story-entry__content__profile">
-                    <img class="story-entry__content__profile__image " src="${pageContext.request.contextPath}/images/default/user_default.png">
-                    <span class="story-entry__content__profile__name">후달@.@</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </article>
-        </li>
-
+	   </c:forEach>
   <!--------------우측메뉴-------------->
     <div class="col-6 col-md-3 home-stories__content__menu-wrap">
       <div class="home-stories__content__menu">
