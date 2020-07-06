@@ -40,7 +40,7 @@
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       		<span class="navbar-toggler-icon"></span>
     	</button>
-    
+    	
     <!--------------------------------------main menu--------------------------------------------->
           <div class="collapse navbar-collapse btnCollapse" >
             <ul class="navbar-nav ">
@@ -49,7 +49,7 @@
              <div class="dd-wrap">
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/community/guest/communityMain" >커뮤니티홈</a></li>
-                <li><a class="dropdown-item" href="/community/guest/communi그tyPic">사진</a></li>
+                <li><a class="dropdown-item" href="/community/guest/communityPic">사진</a></li>
                <!--  <li><a class="dropdown-item" href="#">집들이</a></li> -->
                 <li><a class="dropdown-item" href="/community/list/5">노하우</a></li>
               </ul>
