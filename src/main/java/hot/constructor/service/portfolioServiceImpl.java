@@ -40,6 +40,14 @@ public class portfolioServiceImpl implements PortfolioService{
 		
 		return portRep.findPortfolioByChNo(ChNo);
 	}
+	
+	
+	@Override
+	public List<Portfolio> selectAllPortNoDesc() {
+		
+		return portRep.findByPortStatusOrderByPortNoDesc(1);
+	}
+	
 
 	@Override
 	public Page<Portfolio> findAllPortfolio(Pageable pageable) {

@@ -238,4 +238,16 @@ public class ChannelServiceImpl implements ChannelService {
 		}
 		return conName;
 	}
+	
+	
+	/***
+	 * index page 시공사 
+	 */
+	@Override
+	public List<Channel> selectChannelByChstatusAndchGrades(Integer chStatus) {
+		
+		
+		return channelRepository.findAllOrderBychGradesDesc(chStatus);
+	}
+	
 }

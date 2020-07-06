@@ -46,5 +46,5 @@ public interface ChannelService {
 	
 	Page<Channel> selectAllChannel(Pageable pageable);
 	
-	
+	List<Channel> selectChannelByChstatusAndchGrades(Integer chStatus);
 }
