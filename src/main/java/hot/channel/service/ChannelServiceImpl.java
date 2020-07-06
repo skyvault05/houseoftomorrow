@@ -244,7 +244,7 @@ public class ChannelServiceImpl implements ChannelService {
 	@Override
 	public Page<Channel> selectAllChannel(Pageable pageable) {
 		
-		return null;
+		return channelRepository.findByChStatus(pageable, 0);
 	}
 	
 }

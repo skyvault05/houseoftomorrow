@@ -121,11 +121,11 @@
                         <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
                        	<p class="title">${port.portTitle}</p>
                         <div class="content">${port.channel.constructor.conName}${status.count}</div>
-                         <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
+                         <%-- <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if> --%>
                        
                         </a>
                    
-                 
+                 		
                     	</div>
                 	</div>
                    
