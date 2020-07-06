@@ -265,7 +265,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                                  <div style="position:relative">
                                     <img class="post--contents__item__img" src="${port.portImg}"/>
                                  </div>
-                                 <p class="post--contents__item__title">${port.portTitle}</p>
+                                 <p class="card-text title" style="color: black">${port.portTitle}</p>
                               </div>
                            </a>
                         </div>

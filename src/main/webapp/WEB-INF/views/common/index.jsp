@@ -119,8 +119,8 @@
                          
                                                
                         <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
-                       	<p class="title">${port.portTitle}</p>
-                        <div class="content">${port.channel.constructor.conName}${status.count}</div>
+                       	<p class="card-text title" style="margin-bottom:0px;">${port.portTitle}</p>
+                        <div class="card-text content" style="margin-bottom:10px;">${port.channel.constructor.conName}${status.count}</div>
                          <%-- <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if> --%>
                        
                         </a>
@@ -236,10 +236,10 @@
                          
                                                
                         <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${ch.chNo}">
-                       	<p class="name">${ch.constructor.conName}</p>
+                       	<p class="card-text title" style="margin-bottom:0px;">${ch.constructor.conName}</p>
                      <%--    <div class="content">${ch.constructor.conName}${status.count}</div> --%>
                      <%--     <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if> --%>
-                       	<p class="grades">${ch.chGrades}</p>
+                       	<p class="card-text content">${ch.chGrades}</p>
                         </a>
                    
                  
