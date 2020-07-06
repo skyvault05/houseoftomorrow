@@ -4,17 +4,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
  <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>    
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>내일의 집</title>
+<html lang="ko">
+  <head>
+    <title>내일의 집</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
-	    
-	<link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
-	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
+  
+  <!-- Theme Style -->
+  <link rel="stylesheet" type="text/css" href="/css/common/common.css">
+  <link rel="stylesheet" type="text/css" href="/css/main/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/channel/channel.css">
+
+ 
+	
 	
 <style>
+a {color:#424242;}
+  .nav-submenu_link {padding: 0px 10px; }
+  /* .review_submenu_link, .review_link {color:#424242;}*/
+  .nav-submenu_link:hover{color:#33f0c0; transition: 0.2s; font-weight:bold;} 
+
+
+
 h1{
 		margin-left: 10%
 	}
@@ -69,7 +82,7 @@ h1{
 <body>
  <sec:authentication property="principal" var="user"/>
 <!-- ----------------------------------------------------------------------------->
-<div class="empty-space"></div>
+
   <div class="container-flude submenu_borderbottom">
 	<div class="wrap-submenu">
 		<div class="mypage-nav">
@@ -98,13 +111,13 @@ h1{
 		<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
 				<ul class="navbar-nav mypage">
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link" target="_self">커뮤니티</a>
+						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-submenu_link" target="_self">커뮤니티</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" class="nav-link" target="_self">리뷰</a>
+						<a href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" class="nav-submenu_link" target="_self">리뷰</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" class="nav-link" target="_self">Q&A</a>
+						<a href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" class="nav-submenu_link" target="_self">Q&A</a>
 					</li>
 				</ul>
 			</nav>
@@ -136,7 +149,9 @@ h1{
 				</c:when>
 				<c:when test="${list.commCategory.commCategoryNo == 5}">
 					<div class="list col-md-4"><a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
-					<div class="scale"><img src="${list.commImg}"></div><br>
+					<div class="scale">
+						<img src="${list.commImg}">
+					</div><br>
 					<b>${list.commTitle}</b><p>
 					${list.commRegdate}
 					</a>
