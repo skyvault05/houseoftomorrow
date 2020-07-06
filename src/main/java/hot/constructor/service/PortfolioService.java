@@ -25,6 +25,11 @@ public interface PortfolioService {
 
 	Page<Portfolio> selectAll(Pageable portPage, Channel channel);
 
-		Page<Portfolio> findAllPortfolio(Pageable pageable);
+	Page<Portfolio> findAllPortfolio(Pageable pageable);
 	
+
+	
+	List<Portfolio> selectAllPortNoDesc();
+	
+
 }

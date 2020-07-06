@@ -122,7 +122,7 @@ public class ReviewServiceImpl implements ReviewService {
 		List<Review> list = reviewRep.findByMemberAndReviewStatus(member, 1);
 		return list;
 	}
-	
+
 	@Override
 	public Page<Review> selectAll(Pageable pageable, Channel channel) {		
 		Page<Review> page = reviewRep.findByChannelNoAndReviewStatus(pageable, channel, 1);

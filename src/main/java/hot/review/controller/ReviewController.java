@@ -95,6 +95,8 @@ public class ReviewController {
 	public ModelAndView selectReview(@ModelAttribute(name="chNo")Integer chNo) {
 		List<Review> list = reviewService.selectReviewChNo(chNo);
 		
+		
+		
 		return new ModelAndView("review/guest/reviewList", "review", list);
 
 	}

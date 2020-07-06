@@ -49,9 +49,7 @@
 <h1>글쓰기</h1>
 <br><br>
 <form>
-	
-<div class='container'>
-<div class="row">
+
 	<div id="one" class="div col-md-3"><a href="/community/member/createCommunity?commCategoryNo=4">
 	<img src="/plugins/images/icon_camera.png"/>
 	<br>
@@ -67,9 +65,6 @@
 	<br>
 	<div><b>질문하기</b></div>
 	</a></div>
-	
-</div>
-</div>
 </form>
 </body>
 </html>
