@@ -28,10 +28,6 @@
   
   <body>
 
-   
-  <!-- END header -->
-<!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
-<!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 <div class="empty-space"> </div>
   <div class="container pt-5">
     <div class="community-main row">
@@ -54,6 +50,8 @@
               </div>
               <div class="main-img-content-viewmore">보러가기</div>
               
+            ${commPicList}
+			${knowHowList}
             </div>
             <!--end content-->
           </a>

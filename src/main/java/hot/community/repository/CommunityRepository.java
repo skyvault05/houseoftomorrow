@@ -2,6 +2,7 @@ package hot.community.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -30,5 +31,7 @@ public interface CommunityRepository extends JpaRepository<Community, Integer> {
 	
 	@Query("SELECT c FROM Community c WHERE c.member.memberNo = :#{#member.memberNo} AND commStatus = :#{#commStatus}")
 	List<Community> findByMemberEnabled(Member member, Integer commStatus);
+	
+	List<Community> findByCommStatusAndCommCategoryOrderByCommRegdateDesc(Integer commStatus, CommCategory CommCategoryNo, Pageable paging);
 
 }

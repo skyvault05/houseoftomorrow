@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import hot.aws.S3Manager;
@@ -19,9 +21,11 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Autowired
 	private CommunityRepository communityRepository;
+	@Autowired
+	private CommCategoryRepository commCategoryRepository;
 	
 	@Autowired
-	S3Manager s3Manager;
+	private S3Manager s3Manager;
 	
 	@Override
 	public int insertCommunity(Community community) {
@@ -96,6 +100,14 @@ public class CommunityServiceImpl implements CommunityService {
 		List<Community> list = communityRepository.findByMemberEnabled(member, 1);
 		
 		return list;
+	}
+
+	@Override
+	public List<Community> selectCommunityMainList(Integer page, Integer size, Integer commCategoryNo, Integer status) {
+		Pageable paging = PageRequest.of(page, size);
+		CommCategory commCategory = commCategoryRepository.findById(commCategoryNo).orElse(null);
+		List<Community> communityList = communityRepository.findByCommStatusAndCommCategoryOrderByCommRegdateDesc(status, commCategory, paging);
+		return communityList;
 	}
 
 }
