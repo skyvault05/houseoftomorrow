@@ -40,16 +40,17 @@ public class MainController {
 		
 		List<Channel> channelList = channelService.selectChannelByChstatusAndchGrades(0);
 		
-		
-		
-		
-				
+						
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/common/index");
 		mv.addObject("portList", portList);
 		mv.addObject("channelList", channelList);
 		return mv;
 	}
+	
+	
+	
+	
 	
 	@RequestMapping("/loginForm")
 	public String loginForm() {

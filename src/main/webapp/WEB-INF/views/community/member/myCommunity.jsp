@@ -91,9 +91,12 @@ h1{
 					<li class="nav-item">
 						<a href="" class="nav-link" target="_self">회원정보수정</a>
 					</li>
+					 <sec:authentication var="user" property="principal" />
+					 <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 					<li class="nav-item">
 						<a href="/myEstimateList/${user.memberNo }" class="nav-link" target="_self">견적 요청 내역</a>
 					</li>
+					</sec:authorize>
 					<li class="nav-item">
 						<a href="" class="nav-link" target="_self">내 상담 내역</a>
 					</li>
@@ -109,6 +112,8 @@ h1{
 	<div class="self_write-wrap">
 	
 		<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
+				<sec:authentication var="user" property="principal" />
+				<sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 				<ul class="navbar-nav mypage">
 					<li class="nav-item">
 						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-submenu_link" target="_self">커뮤니티</a>
@@ -120,6 +125,7 @@ h1{
 						<a href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" class="nav-submenu_link" target="_self">Q&A</a>
 					</li>
 				</ul>
+				</sec:authorize>
 			</nav>
 	
 	</div>
@@ -143,7 +149,7 @@ h1{
 					<div class="list col-md-4"><a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
 					<div class="scale"><img src="${list.commImg}"></div><br>
 					<b>${list.commTitle}</b><p>
-					${list.commRegdate}
+					  <span><fmt:formatDate value="${list.commRegdate}" pattern="yyyy-MM-dd HH:mm"/></span><p>
 					</a>
 					</div>
 				</c:when>
@@ -153,7 +159,7 @@ h1{
 						<img src="${list.commImg}">
 					</div><br>
 					<b>${list.commTitle}</b><p>
-					${list.commRegdate}
+					  <span><fmt:formatDate value="${list.commRegdate}" pattern="yyyy-MM-dd HH:mm"/></span><p>
 					</a>
 					</div>
 				</c:when>

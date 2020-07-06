@@ -211,7 +211,9 @@ img{
 
 </head>
 <body>
-<div class="container">
+
+
+<%--<div class="container">
 <div class="row col-md-12">
 	<img src="${port.portImg}">
 </div><br><br>
@@ -255,7 +257,7 @@ ${port.portDescription}
 	★★★★★★? 게시자로 로그인했을 때 포트폴리오 수정 / 삭제 어케할지 ?★★★★★★
     <sec:authentication var="user" property="principal" />
     <%-- 글쓴이: ${community.member.memberNo}<p>
-    로그인한사람: ${user.memberNo} --%>
+    로그인한사람: ${user.memberNo} 
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose>
 			<c:when test="${community.member.memberNo == user.memberNo}">

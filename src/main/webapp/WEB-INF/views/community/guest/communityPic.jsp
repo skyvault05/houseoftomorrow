@@ -106,12 +106,12 @@
               <address class="card-item-comment__writer">
                 <a href="" class="card-item-comment__writer__link">
                   <img class="card-item-comment__writer__image" src="${pageContext.request.contextPath}/images/default/user_comment.png" alt="댓글단사람사진">
-                  <span class="card-item-comment__writer__name">${list.commentList[list.commentList.size() - 1].member.memberName}</span>
+                  <span class="card-item-comment__writer__name">11<%-- ${list.commentList[list.commentList.size() - 1].member.memberName} --%></span>
                 </a>
                 <span class="card-item-comment__writer__separator">:</span>
               </address>
               <a href="" class="card-item-comment__link">
-                <p class="card-item-comment__content">${list.commentList[list.commentList.size() - 1].commCommentDescription}</p>
+                <p class="card-item-comment__content">11<%-- ${list.commentList[list.commentList.size() - 1].commCommentDescription} --%></p>
               </a>
             </article>
           </div>

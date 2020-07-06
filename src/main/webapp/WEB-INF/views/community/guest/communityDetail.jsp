@@ -1,9 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> --%>
 
 <!DOCTYPE html>
 <html>
@@ -201,8 +202,10 @@ function delchk(){
 				</c:when>
 			</c:choose>
             <span id="title"><b>${community.commTitle}</b></span><p>
+
             <span><fmt:formatDate value="${community.commRegdate}" pattern="yyyy년 MM월 dd일 "/></span><p>
             
+
             <span>글쓴이: ${community.member.memberName}</span><p>
             <span>조회수: ${community.commReadnum}</span><p>
             </li>
@@ -215,10 +218,11 @@ function delchk(){
     
 	
 	<div class="rows col-md-9">
-	<div class="btn-center">
+	
     <sec:authentication var="user" property="principal" />
-    <%-- 글쓴이: ${community.member.memberNo}<p>
-    로그인한사람: ${user.memberNo} --%>
+    글쓴이: ${community.member.memberNo}<p>
+    <%-- 로그인한사람: ${user.memberNo} --%>
+    <div class="btn-center">
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose >
 			<c:when test="${community.member.memberNo == user.memberNo}">
@@ -226,9 +230,9 @@ function delchk(){
 				<a class="btn btn-outline-primary ch_btn_style" id="btn2" href="${pageContext.request.contextPath}/community/updateCommunity?commNo=${community.commNo}">게시글 수정하기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 				<a class="btn btn-outline-primary ch_btn_style" id="btn2" onclick="return delchk()" href="${pageContext.request.contextPath}/community/delete?commNo=${community.commNo}&commCategoryNo=${community.commCategory.commCategoryNo}">게시글 삭제하기</a>
 			</c:when>
-<%--   <c:when test="${community.member.memberNo != user.memberNo}">
+  <c:when test="${community.member.memberNo != user.memberNo}">
 			달라용
-			</c:when> --%>
+			</c:when>
 		</c:choose>
 	</sec:authorize>
 	</div>
@@ -281,6 +285,8 @@ function delchk(){
 	</div>
 </div>
 
+
 </body>
+
 
 </html>
