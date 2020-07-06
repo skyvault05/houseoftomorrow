@@ -115,15 +115,7 @@
                 </div>
               </div>
          </div><!--end submenu header icon-->
-   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
+
    			<!-- Example single danger button -->
 	<%-- 	<div class="btn-group">
 		  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,11 +144,17 @@
       </nav>
   <!--END main menu--->
   </header>
-
+  
+  <!-- 상단여백 GAP -->
+  <div class="empty-space pt-5"></div>
+  
 <sitemesh:write property='body' />
 
 
+<!-- 하단여백 -->
+<div class="empty-space"></div>
 
+<!-- START FOOTER -->
 <footer class="site-footer" role="contentinfo">
       <div class="container">
       <footer class="layout-footer">
