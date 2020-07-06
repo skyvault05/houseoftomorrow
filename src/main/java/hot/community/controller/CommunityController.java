@@ -109,7 +109,7 @@ public class CommunityController {
 		community.setCommImg(imgPath);
 		communityService.updateCommunity(community);
 		
-		return "redirect:detail/"+community.getCommNo();
+		return "redirect:/community/guest/detail/"+community.getCommNo();
 	} 
 	
 	/**
