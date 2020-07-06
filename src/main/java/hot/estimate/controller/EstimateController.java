@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import hot.channel.repository.ChannelRepository;
 import hot.estimate.domain.Bathroom;
+import hot.estimate.domain.EstResponse;
 import hot.estimate.domain.Estimate;
 import hot.estimate.domain.Floor;
 import hot.estimate.domain.Kitchen;
@@ -21,6 +24,9 @@ import hot.estimate.service.EstimateService;
 public class EstimateController {
 	@Autowired
 	private EstimateService estimateService;
+	@Autowired
+	private ChannelRepository chRep;
+	
 	@RequestMapping("/estimate")
 	public String estimate() {
 		return "/estimate/member/requestForm";
@@ -52,12 +58,18 @@ public class EstimateController {
 	@RequestMapping("/viewEstimateDetail/{estNo}")
 	public ModelAndView estiPapering(@PathVariable Integer estNo) {
 		Estimate estimate = estimateService.selectByEstNo(estNo);
+		List<EstResponse> responseList = estimateService.selectResponseByEstNo(estNo);
 		estimate.setEstimateDetails();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("estimate", estimate);
+		mv.addObject("responseList", responseList);
 		mv.setViewName("/estimate/member/requestDetail");
 		return mv;
 	}
 	
-	
+	@PostMapping("/estimate/constructor/registerEstimateResponse")
+	public String registerEstimateResponse(EstResponse estResponse, Integer estNo, Integer chNo) {		
+		estimateService.insertEstimateResponse(estResponse, estNo, chNo);
+		return "redirect:/viewEstimateDetail/"+estResponse.getEstimate().getEstNo();
+	}
 }

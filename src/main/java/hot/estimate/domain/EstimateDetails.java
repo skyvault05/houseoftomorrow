@@ -25,14 +25,10 @@ public class EstimateDetails {
 		for(Object estimateFieldObj : estimateFieldObjs) {
 			Field[] fields = estimateFieldObj.getClass().getDeclaredFields();
 			for(Field field : fields) {
-				System.out.println("thrid loop");
 				field.setAccessible(true);
 				String fieldName = field.getName();
-				Integer fieldValue = (Integer) field.get(estimateFieldObj);			
-//				System.out.println(fieldName+":"+fieldValue);
-				
+				Integer fieldValue = (Integer) field.get(estimateFieldObj);
 				if(fieldValue==null)continue;
-					
 				switch(fieldName) {
 					case "paperingType" : 
 						switch(fieldValue) {
@@ -179,7 +175,6 @@ public class EstimateDetails {
 				}
 			}		
 		}
-		map.keySet().forEach(key->System.out.println(key));
 		return map;
 	}	
 }
