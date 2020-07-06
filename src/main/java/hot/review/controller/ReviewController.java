@@ -36,6 +36,19 @@ public class ReviewController {
 	
 	
 	/**
+	 * 리뷰 폼
+	 */
+	@RequestMapping("/reviewform")
+	public String reviewform() {
+		
+		return "/review/member/reviewform";
+	}
+	
+	
+	
+	
+	
+	/**
 	 * 리뷰 등록 기능
 	 * */
 	@PostMapping("/registerReview")

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 
 import hot.channel.domain.Channel;
 import lombok.AllArgsConstructor;
@@ -38,13 +39,14 @@ public class EstResponse {
 	
 	@ManyToOne
 	@JoinColumn(name = "est_no")
-	private Estimate estNo;
+	private Estimate estimate;
 	
 	@ManyToOne
 	@JoinColumn(name = "ch_no")
 	private Channel channel;
 	
 	@Column(name = "est_resp_description")
+	@Type(type = "text")
 	private String estRespDescription;
 	
 	@Column(name = "est_resp_regdate")

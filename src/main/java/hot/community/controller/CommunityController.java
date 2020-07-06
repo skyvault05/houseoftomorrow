@@ -59,7 +59,7 @@ public class CommunityController {
 	 * */
 	@RequestMapping("/guest/communityMain")
 	public String communityMain(Model model) {
-		List<Community> commPicList = communityService.selectCommunityMainList(0, 8, 4, 1);
+		List<Community> commPicList = communityService.selectCommunityMainList(0, 16, 4, 1);
 		List<Community> knowHowList = communityService.selectCommunityMainList(0, 3, 5, 1);
 		model.addAttribute("commPicList", commPicList);
 		model.addAttribute("knowHowList", knowHowList);
@@ -141,6 +141,7 @@ public class CommunityController {
 	public ModelAndView selectCommunityCategory(@PathVariable(name = "commCategoryNo") Integer commCategoryNo) {
 		
 		List<Community> communityList = communityService.selectCommunityCategory(commCategoryNo);
+		//Page<Community> communityList = communityService. 
 		
 		if(commCategoryNo == 4) {
 			return new ModelAndView("community/guest/communityPic", "list", communityList);
@@ -155,7 +156,7 @@ public class CommunityController {
 	 * community 글 조회수 증가, 상세보기
 	 * 글에 해당하는 덧글 목록도
 	 * */
-	@RequestMapping("/detail/{commNo}")
+	@RequestMapping("/guest/detail/{commNo}")
 	public ModelAndView selectCommunity(HttpSession session,@PathVariable(name = "commNo") int commNo) {
 		
 		Community community = communityService.selectCommunity(commNo, true);
@@ -192,7 +193,7 @@ public class CommunityController {
 		
 		int commNo = comment.getCommunity().getCommNo();
 		
-		return "redirect:detail/"+commNo;
+		return "redirect:/community/guest/detail/"+commNo;
 	}
 	
 	/**
@@ -203,7 +204,7 @@ public class CommunityController {
 		
 		commCommentService.deleteCommComment(commentNo);
 		
-		return "redirect:detail/"+commNo;
+		return "redirect:/community/guest/detail/"+commNo;
 	}
 	
 }

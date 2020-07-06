@@ -26,7 +26,7 @@
 						<a href="" class="nav-link" target="_self">회원정보수정</a>
 					</li>
 					<li class="nav-item">
-						<a href="/myEstimateList/${user.memberNo }" class="nav-link" target="_self">견적 요청 내역</a>
+						<a href="/myEstimateList/${user.memberNo}" class="nav-link" target="_self">견적 요청 내역</a>
 					</li>
 					<li class="nav-item">
 						<a href="" class="nav-link" target="_self">내 상담 내역</a>
@@ -51,103 +51,75 @@
 				<div class="card card-4">
 				<div class="card-body">
 				
-<!------------------------- 도배 papering ---------------------------->
-				<div class="estimate-part"> 
-				    <div class="est-detail-title">도배견적문의</div>
+<!------------------------- 견적 요청 사항 ---------------------------->
+				<div class="estimate-part row"> 
+				    <div class="est-detail-title">견적 요청 사항</div>
 				    <div class="est-detail-contents">
 				      <ul class="estimate-item">
 				      <c:forEach items="${estimate.estDetails}" var="item" >
-							<li>${item.key} : ${item.value}</li>
+							<li>${item.key}${item.value}</li>
 					  </c:forEach>
-
 				      </ul>
 			      	</div>
 			    </div>
-<!------------------------- 장판 Linoleum ---------------------------->
-			   <%--  <div class="estimate-part"> 
-				    <div class="est-detail-title">장판견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				      	<c:forEach items="${estimate.estDetails}" var="item" >
-							<li>${item.key} : ${item.value}</li>
-					  	</c:forEach>
-				        	<li>${estimate.linoleum.linoleumThick}</li>
-					        <li>${estimate.linoleum.linoleumArea}</li>
-					        <li>${estimate.linoleum.linoleumNumberOfRooms}</li>
-					        <li>${estimate.linoleum.linoleumVeranda}</li>
-					        <li>${estimate.linoleum.linoleumCurrentFloor}</li>
-					        <li>${estimate.linoleum.linoleumBurdon}</li>
-				      </ul>
-			      	</div>
-			    </div>  
-<!------------------------- 마루 floor ---------------------------->
-			    <div class="estimate-part"> 
-				    <div class="est-detail-title">마루견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.floor.floorType}</li>
-					        <li>${estimate.floor.floorArea}</li>
-					        <li>${estimate.floor.floorNumberOfRooms}</li>
-					        <li>${estimate.floor.floorVeranda}</li>
-					        <li>${estimate.floor.floorCurrentFloor}</li>
-					        <li>${estimate.floor.floorBurdon}</li>
-				      </ul>
-			      	</div>
-			    </div>  
-
-<!-------------------------  욕실 Bathroom ---------------------------->
-			    <div class="estimate-part"> 
-				    <div class="est-detail-title">욕실견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.bathroom.bathroomNumberOfRooms}</li>
-					        <li>${estimate.bathroom.bathroomType}</li>
-					        <li>${estimate.bathroom.bathroomCeiling}</li>
-					        <li>${estimate.bathroom.bathroomTile}</li>
-				      </ul>
-			      	</div>
-			    </div>  
-
-<!------------------------- 주방 Kitchen ---------------------------->
-			    <div class="estimate-part"> 
-				    <div class="est-detail-title">주방견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.kitchen.kitchenType}</li>
-					        <li>${estimate.kitchen.kitchenMaxWidth}</li>
-					        <li>${estimate.kitchen.kitchenCountertop}</li>
-					        <li>${estimate.kitchen.kitchenDoor}</li>
-					        <li>${estimate.kitchen.kitchenTile}</li>
-				      </ul>
-			      	</div>
-			    </div>  
-<!------------------------- 타일  Tile ---------------------------->
-			    <div class="estimate-part"> 
-				    <div class="est-detail-title">타일견적문의</div>
-				    <div class="est-detail-contents">
-				      <ul class="estimate-item">
-				        	<li>${estimate.tile.tileType}</li>
-					        <li>${estimate.tile.tileArea}</li>
-		
-				      </ul>
-			      	</div>
-			    </div>  
-			      			      			       --%>			      
+		      
 			      
 <!------------------------ 추가문의 ----------------------------------->
-			      <div class="estimate-item-comment">
-			        <div class="name">추가문의사항</div>
+			      <div class="estimate-item-comment row">
+			      <div class="name">추가문의사항</div>
+			      <div class="input-group">
+			      <textarea class="textarea est-comment" name="response" placeholder="${estimate.estDescription}" readonly>${estimate.estDescription}</textarea>
+		          </div>
+		          <hr>
+		          <div class="name">시공사 답변</div>
+		          <div class="col-md-12">
+		          	<table class="table">
+                    <thead>
+                        <tr class="">
+                            <th class="">시공사</th>
+                            <th class="" colspan='2'>내용</th>
+                            <th class="">작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<c:forEach items="${responseList}" var="response" varStatus="status">
+                        <tr class="">
+                            <td class="">${response.channel.constructor.conName}</td>
+                            <td class="" colspan='2'>${response.estRespDescription}</td>
+                            <td class=""><a href="/channel/guest/channelDetail/${response.channel.chNo}" class="est-title">채널 방문</a></td>
+                        </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+		          </div>
+		          
+		            <br>
+		            <div class="name">답변하기</div>
+	              <form class="col-md-12" action="/estimate/constructor/registerEstimateResponse" method="post">
+	              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+	              <input type="hidden" name="chNo" value="${user.chNo}">
+	              <input type="hidden" name="estNo" value="${estimate.estNo}">
+	              <textarea class="textarea est-comment" name="estRespDescription" placeholder="답변할 내용을 입력해 주세요"></textarea>
+	              <input type="submit" class="btn btn-primary" value="답변쓰기">
+	              </form>
+		              
+		              
+		              
+			        <%-- <div class="name">추가문의사항</div>
 			          <div class="value">
 			            <div class="input-group">
-			              <textarea class="textarea est-comment" name="message" placeholder="${estimate.estDescription}">${estimate.estDescription}</textarea>
+			              <div>${estimate.estDescription}11</div>
+			              <br>
+			              <form class="col">
+			              <textarea class="textarea est-comment" name="response" placeholder="${estimate.estDescription}">${estimate.estDescription}</textarea>
+			              </form>
 			            </div>
-			          </div>
+			          </div> --%>
 			      </div>
+			      
+			      
  <!---------------------- end 추가문의-------------------------------->
- 
- 
- 				</div><!-- card body -->
- 
+ 				</div><!-- card body --> 
 			</div><!-- end card  -->
 			
 			

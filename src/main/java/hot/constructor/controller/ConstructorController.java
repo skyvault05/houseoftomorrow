@@ -240,6 +240,8 @@ public class ConstructorController {
 		
 		List<FavoritePortfolio> favPort = favoritePortRep.findByPortfolio(port);
 		
+		port.getChannel().getChNo();
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("channel/guest/portfolioDetail");
 		mv.addObject("port", port);

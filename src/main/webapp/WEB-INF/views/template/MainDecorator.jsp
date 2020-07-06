@@ -30,7 +30,7 @@
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
   
 
-<sitemesh:write property='head' />
+<sitemesh:write property='head'/>
 </head>
 <body>
 <sec:authorize access="isAuthenticated()">
@@ -43,7 +43,7 @@
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       		<span class="navbar-toggler-icon"></span>
     	</button>
-    
+    	
     <!--------------------------------------main menu--------------------------------------------->
           <div class="collapse navbar-collapse btnCollapse" >
             <ul class="navbar-nav ">
