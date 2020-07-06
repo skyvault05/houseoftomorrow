@@ -7,31 +7,16 @@
     <title>내일의 집</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- bootstrap-->
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/plugins/bootstrap/bootstrap.min.css">
-  <script src="${pageContext.request.contextPath}/plugins/jquery/jquery-3.4.1.min.js"></script>
-  <script src="${pageContext.request.contextPath }/js/common/popper.min.js"></script>
-  <script src="${pageContext.request.contextPath }/js/bootstrap/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
-
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/channel/channel.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estimate/estimate.css">
+  <script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
 
-  <!-- WebFont -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-<script >
-
-</script>
   </head>
   
   <body>
-  <sec:authentication property="principal" var="user"/>
+
+  <div class="empty-space"></div>
   <div class="container-flude submenu_borderbottom">
 	<div class="wrap-submenu">
 		<div class="mypage-nav">
@@ -147,20 +132,11 @@
 
 	</div>
 	
-	<div class="empty-space"></div>
-    <!-- scripts -->
-<!-- 	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="/plugins/jquery/jquery-3.4.1.min.js"></script> -->
-    <script src="${pageContext.request.contextPath}/js/common/popper.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/jquery.waypoints.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/jquery.fancybox.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/main.js"></script>
-    <script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
 
-    
-	<!-- ICON -->
-	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</div><!--end main-wrap-->
+<div class="empty-space"></div>
+<!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
+<!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
 
   </body>
 </html>

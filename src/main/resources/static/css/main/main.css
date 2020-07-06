@@ -6,6 +6,7 @@ header .icon.ion:hover {
 } 
 
 /*-------------------dropdown-----------------*/
+.nav-link.dropdown-toggle.main-btn:hover {color:#33f0c0;}
 .nav > li.dropdown.open {
   position: relative;
   top:0;
@@ -79,7 +80,7 @@ header .icon.ion:hover {
 }
 
 /*-----------------------submenu----------------------*/
-/*----로그인/회원가입------*/
+/*----濡쒓렇�씤/�쉶�썝媛��엯------*/
 .header_navigation-bar-login {
   
   //display:none; 
@@ -116,7 +117,7 @@ header .icon.ion:hover {
   transition:0.2s;
 }
 
-/*-------마이페이지--------*/
+/*-------留덉씠�럹�씠吏�--------*/
 /* .iconmenu {display:none;} */
 a.menuicon {color:#424242!important;}
 .dropdown-menu.submenu {
@@ -137,7 +138,7 @@ a.menuicon {color:#424242!important;}
   border-left:1px solid #ededed !important;
 }
 
-/*--------筌띾뜆�뵠占쎈읂占쎌뵠筌욑옙--------*/
+/*--------嶺뚮씭�쐠占쎈턄�뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕--------*/
 .dropdown-toggle.menuicon::after{
   display: inline-block;
   width: 0;
