@@ -51,7 +51,7 @@
                 <li><a class="dropdown-item" href="/community/guest/communityMain" >커뮤니티홈</a></li>
                 <li><a class="dropdown-item" href="/community/guest/communityPic">사진</a></li>
                <!--  <li><a class="dropdown-item" href="#">집들이</a></li> -->
-                <li><a class="dropdown-item" href="/community/guest/communityList">노하우</a></li>
+                <li><a class="dropdown-item" href="/community/list/5">노하우</a></li>
               </ul>
               </div>
             </li>

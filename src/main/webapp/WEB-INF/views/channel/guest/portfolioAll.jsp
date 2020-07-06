@@ -46,7 +46,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 		<c:forEach items="${portList}" var="list" varStatus="status">
         <div class="col-md-3">
         <div style="relative"> 
-             <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.portNo}"><img src="${list.portImg}" class="card-img-top rounded" alt="blog" width="200px" height="200px"></a>
+             <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${list.portNo}"><img src="${list.portImg}" class="card-img-top rounded" alt="blog" width="200px" height="200px"></a>
              
                <p class="card-text title">${list.portTitle}</p>
                <div class="card-text content" style="margin-bottom:20px;">${list.channel.constructor.conName}★ </div>

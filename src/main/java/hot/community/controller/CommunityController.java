@@ -141,6 +141,7 @@ public class CommunityController {
 	public ModelAndView selectCommunityCategory(@PathVariable(name = "commCategoryNo") Integer commCategoryNo) {
 		
 		List<Community> communityList = communityService.selectCommunityCategory(commCategoryNo);
+		//Page<Community> communityList = communityService. 
 		
 		if(commCategoryNo == 4) {
 			return new ModelAndView("community/guest/communityPic", "list", communityList);
