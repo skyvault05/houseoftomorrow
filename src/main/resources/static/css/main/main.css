@@ -117,7 +117,7 @@ header .icon.ion:hover {
 }
 
 /*-------마이페이지--------*/
-.iconmenu {display:none;}
+/* .iconmenu {display:none;} */
 a.menuicon {color:#424242!important;}
 .dropdown-menu.submenu {
   width:10%;

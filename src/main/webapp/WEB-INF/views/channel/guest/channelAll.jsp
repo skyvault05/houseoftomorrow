@@ -25,15 +25,6 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
-
-<style>
-	#page{
-		margin-top:30px;
-		margin-left:40%
-	
-	}
-
-</style>
 </head>
 <body>
 
