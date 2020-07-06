@@ -27,7 +27,7 @@
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
   
 
-<sitemesh:write property='head' />
+<sitemesh:write property='head'/>
 </head>
 <body>
 <sec:authorize access="isAuthenticated()">
