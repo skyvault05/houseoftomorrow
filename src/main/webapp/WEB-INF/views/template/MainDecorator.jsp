@@ -63,15 +63,10 @@
                  <!------------------------------ 로그인/회원가입 -------------------------------->
 	<sec:authorize access="isAnonymous()">
    			  <div class="header_navigation-bar-login pl-1">
-<<<<<<< HEAD
 
-   			  	<a class="navigation-bar-login__item aftermenu" href="/common/loginForm">로그인</a>
+   			  	<a class="navigation-bar-login__item aftermenu" href="/loginForm">로그인</a>
    			  	<a class="navigation-bar-login__item signup-margin-right" href="/choiceJoin">회원가입</a>
 
-=======
-   			  	<a class="navigation-bar-login__item aftermenu" href="/loginForm">로그인</a>
-   			  	<a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
->>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
    			  </div>
  	</sec:authorize>
 

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    
+ <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,6 +67,54 @@ h1{
 </style>
 </head>
 <body>
+ <sec:authentication property="principal" var="user"/>
+<!-- ----------------------------------------------------------------------------->
+<div class="empty-space"></div>
+  <div class="container-flude submenu_borderbottom">
+	<div class="wrap-submenu">
+		<div class="mypage-nav">
+			<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
+				<ul class="navbar-nav mypage">
+					<li class="nav-item">
+						<a href="" class="nav-link" target="_self">회원정보수정</a>
+					</li>
+					<li class="nav-item">
+						<a href="/myEstimateList/${user.memberNo }" class="nav-link" target="_self">견적 요청 내역</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" target="_self">내 상담 내역</a>
+					</li>
+					<li class="nav-item">
+						<a href="" class="nav-link" target="_self">내가 쓴 글</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div><!--end wrap-submenu-->
+	
+	<!-- ------------------------------------------- -->
+	<div class="self_write-wrap">
+	
+		<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
+				<ul class="navbar-nav mypage">
+					<li class="nav-item">
+						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link" target="_self">커뮤니티</a>
+					</li>
+					<li class="nav-item">
+						<a href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" class="nav-link" target="_self">리뷰</a>
+					</li>
+					<li class="nav-item">
+						<a href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" class="nav-link" target="_self">Q&A</a>
+					</li>
+				</ul>
+			</nav>
+	
+	</div>
+
+</div> 
+<!-- ----------------------------------------------------------------------------->
+
+
 
 <div class="container pt-6">
 <div class="row">
