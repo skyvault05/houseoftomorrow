@@ -15,6 +15,8 @@ public interface PortfolioService {
 	
 	void insertOrder(Order order);
 	
+	void deletePortfolio(int portNo);
+	
 	List<Portfolio> selectPortfolio();
 		
 	List<Portfolio> selectPortfolioChNo(int ChNo);
@@ -25,6 +27,6 @@ public interface PortfolioService {
 
 	Page<Portfolio> selectAll(Pageable portPage, Channel channel);
 
-		Page<Portfolio> findAllPortfolio(Pageable pageable);
+	Page<Portfolio> findAllPortfolio(Pageable pageable);
 	
 }

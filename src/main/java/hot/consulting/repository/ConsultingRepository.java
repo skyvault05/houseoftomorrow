@@ -25,10 +25,4 @@ public interface ConsultingRepository extends JpaRepository<Consulting, Integer>
 
 	@Query("select count(c) from Consulting c where c.memberNo = ?1 and c.chNo = ?2 and c.consulStatus=2")
 	int findCountByMemberNoAndChNo(int memberNo, int chNo);
-	
-	@Query("select c from Consulting c where c.memberNo = ?1 and c.consulStatus = 2 and c.consulParentNo is null")
-	List<Consulting> findByMemberNoComConsulting(int memberNo);
-	
-	@Query("select c from Consulting c where c.chNo = ?1 and c.consulStatus = 2 and c.consulParentNo is null")
-	List<Consulting> findByChNoComConsulting(int chNo);
 }

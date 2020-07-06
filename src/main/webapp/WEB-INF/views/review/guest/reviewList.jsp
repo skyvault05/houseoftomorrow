@@ -53,7 +53,11 @@
       margin-right: -15px;
       margin-left: -15px;
     }
+    #page{
+    	margin-left:40%;
+    	margin-top:30px;
     
+    }
     
       
   </style>
@@ -92,7 +96,18 @@
    </div>
    </c:forEach>
    
-   
+   <div id="page"> <!-- 페이징 -->
+	<c:forEach begin="0" end="${totalPage-1}" var="i">
+	<c:choose>
+		<c:when test="${i==nowPageNum }">
+			[<a href="${pageContext.request.contextPath}/channel/channelAll?nowPage=${i}" style="color:red"> ${i+1} </a>] &nbsp;
+		</c:when>
+		<c:otherwise>
+			[<a href="${pageContext.request.contextPath}/channel/channelAll?nowPage=${i}">${i+1}</a>] &nbsp;
+		</c:otherwise>
+	</c:choose>
+	</c:forEach>  
+	</div>   
    </div>
    </div>
 
@@ -105,7 +120,7 @@
    
    <!--  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div> -->
 
-    <script src="/js/jquery-3.2.1.min.js"></script>
+<!--     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
@@ -113,8 +128,8 @@
     <script src="/js/jquery.fancybox.min.js"></script>
      <script src="/js/review/star.js"></script>
     </script>
-<!-- ICON -->
-<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+ICON
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script> -->
 
   </body>
 </html>

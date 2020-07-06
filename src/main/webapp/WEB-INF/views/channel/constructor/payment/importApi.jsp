@@ -51,8 +51,7 @@ function addInput(form, name, value){
 				addInput(opener.document.portForm, "pay_method", rsp.pay_method);
 				addInput(opener.document.portForm, "status", rsp.status);
 				addInput(opener.document.portForm, "amount",  <%=totalPrice%>);
-				opener.document.portForm.submit();
-                self.close();			
+				opener.document.portForm.submit();		
 			}else{ // if 끝 
 				msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;

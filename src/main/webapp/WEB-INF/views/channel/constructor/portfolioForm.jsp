@@ -35,7 +35,6 @@ $(document).ajaxSend(function(e, xhr, options) {
 
 <script> 
 function check(){
-	  
 	  window.open("${pageContext.request.contextPath}/channel/constructor/payment/importApi","win","width=800,height=700");
 }
 
@@ -50,6 +49,8 @@ function setThumbnail(event) {
 $(document).ready(function() {
 		
 document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);});
+
+
 </script>
 <style>
 	#portTitle{
@@ -83,8 +84,6 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
               </ul>
               </div>
             </li>
-</ul></div>
-
 <!-- bootstrap-->
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
 <link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">

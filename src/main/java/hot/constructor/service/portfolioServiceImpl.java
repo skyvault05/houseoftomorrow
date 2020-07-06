@@ -2,6 +2,8 @@ package hot.constructor.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -64,11 +66,30 @@ public class portfolioServiceImpl implements PortfolioService{
 	@Override
 	public Page<Portfolio> selectAll(Pageable portPage, Channel channel) {
 		Page<Portfolio> port = portRep.findByChannelNoAndPortStatus(portPage, channel, 1);
+		
 		return port;
 	}
 
+	/**
+	 * 포트폴리오 등록할 때, 주문 테이블에도 값 들어가게
+	 * */
 	@Override
 	public void insertOrder(Order order) {
 		orderRep.save(order);		
+	}
+
+	/**
+	 * 포트폴리오 삭제
+	 * 
+	 * portStatus -> 0
+	 * orderStatus -> 2
+	 * */
+	@Override
+	@Transactional
+	public void deletePortfolio(int portNo) {		
+		Portfolio dbPortfolio = portRep.findById(portNo).orElse(null);
+		Order dbOrder = orderRep.selectByPortfolioNo(dbPortfolio.getPortNo());
+		dbPortfolio.setPortStatus(0);
+		dbOrder.setOrderStatus(2);
 	}
 }

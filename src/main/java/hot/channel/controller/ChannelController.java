@@ -2,7 +2,10 @@ package hot.channel.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -284,9 +287,10 @@ public class ChannelController {
 	
 	/**
 	 * 채널 리뷰 등록 가능 여부 확인
+	 * @throws IOException 
 	 * */
 	@RequestMapping("/check/impossibleReview")
-	public ModelAndView checkReview(Integer memberNo, Integer chNo) {
+	public ModelAndView checkReview(Integer memberNo, Integer chNo, HttpServletResponse response) throws IOException {
 
 		int consultingCount = consultingRep.findCountByMemberNoAndChNo(memberNo, chNo);
 		int reviewCount = reviewRep.findCountByMemberNoAndChNo(memberNo, chNo);
@@ -300,6 +304,10 @@ public class ChannelController {
 		if(consultingCount != reviewCount) { // 상담 후, 시공이 확정된 수만큼 리뷰가 없다는 뜻(더 많을 수는 없잖아 원래)
 			return new ModelAndView("review/member/reviewform", "channel", channel); 
 		} else { // 상담 후, 시공이 확정된 수만큼 리뷰가 있다는 것이기 때문에 모든 리뷰 다 등록됨
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('리뷰를 등록할 상담내역이 존재하지 않습니다.');</script>");
+			
 			return new ModelAndView("redirect:../guest/channelDetail/"+chNo);
 			// ../를 사용하지 않으면 channel/check/channelDetail로 간다.
 		}

@@ -15,6 +15,6 @@ public interface ChannelRepository extends JpaRepository<Channel, Integer> {
 	Channel selectByMemberNo(int memberNo);
 	
 	List<Channel> findByChStatus(Integer chStatus);
-		
+	
 	Page<Channel> findByChStatus(Pageable pageable, Integer chStatus);
 }

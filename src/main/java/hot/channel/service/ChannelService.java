@@ -1,6 +1,5 @@
 package hot.channel.service;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -45,4 +44,6 @@ public interface ChannelService {
 	void updateChannel(Constructor constructor, Channel channel, Integer chaNo, MultipartFile file) throws IOException;
 	
 	Page<Channel> selectAllChannel(Pageable pageable);
+	
+	
 }

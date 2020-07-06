@@ -1,6 +1,5 @@
 package hot.channel.service;
 
-import java.awt.print.Pageable;
 import java.io.IOException;
 import java.util.List;
 
@@ -8,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -183,15 +183,6 @@ public class ChannelServiceImpl implements ChannelService {
 		List<Channel> list = channelRepository.findByChStatus(0); // 기본값이 1이 아닌 0인가봄.
 		return list;
 	}
-	
-	/**
-	 * page 처리 
-	 */
-	@Override
-	public Page<Channel> selectAllChannel(org.springframework.data.domain.Pageable pageable) {
-		Page<Channel> page = channelRepository.findByChStatus(pageable, 0);
-		return page;
-	}
 
 	/**
 	 * 로그인한 유저가 자기 페이지를 볼 수 있게
@@ -237,5 +228,14 @@ public class ChannelServiceImpl implements ChannelService {
 			conName = channel.getConstructor().getConName();
 		}
 		return conName;
+	}
+
+	/**
+	 * page 처리 
+	 */
+	@Override
+	public Page<Channel> selectAllChannel(Pageable pageable) {
+		Page<Channel> page = channelRepository.findByChStatus(pageable, 0);
+		return page;
 	}
 }

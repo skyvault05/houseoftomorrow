@@ -155,7 +155,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          <div class="channel_review">
             <!--고객리뷰-->
             <section class="post post--reviews">
-               <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(realReviewList)}</strong>
+               <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(list)}+</strong>
                   <span class="post__title__show-all">
                   <a href="${pageContext.request.contextPath}/review/reviewList/${channel.chNo}">전체보기</a></span>
                </h5>
@@ -185,7 +185,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 
             <!--포트폴리오-->
             <section class="post post--projects">
-               <h5 class="post__title">포트폴리오 <strong>${realPortList.size()}</strong>
+               <h5 class="post__title">포트폴리오 <strong>${portList.size()}</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	                  <c:if test="${user.memberNo == channel.constructor.member.memberNo}">

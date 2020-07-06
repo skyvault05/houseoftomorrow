@@ -28,6 +28,7 @@ import hot.channel.domain.Channel;
 import hot.channel.domain.FavoritePortfolio;
 import hot.channel.repository.FavoritePortfolioRepository;
 import hot.channel.service.ChannelServiceImpl;
+import hot.constructor.repository.PortfolioRepository;
 import hot.constructor.service.ConstructorServiceImpl;
 import hot.constructor.service.portfolioServiceImpl;
 import hot.member.domain.Constructor;
@@ -48,6 +49,7 @@ public class ConstructorController {
 	private final ConstructorServiceImpl constructorService;
 	private final OrderServiceImpl orderService;
 	private final FavoritePortfolioRepository favoritePortRep;
+	private final PortfolioRepository portRep;
 	private final ReviewServiceImpl reviewService;
 	
 	String orderMethod ;
@@ -62,6 +64,7 @@ public class ConstructorController {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
 		Integer chNo = ((CustomUser)principal).getChNo();
 		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
+		
 		return new ModelAndView("/channel/constructor/portfolioForm","portList", portList);
 
 	}
@@ -96,7 +99,7 @@ public class ConstructorController {
 			String portDescription, MultipartFile file, 
 			Date portStartDate, Date portEndDate, String portImg, Integer chNo, 
 			Order order,
-			String pay_method, String status, Integer amount) throws IOException{	
+			String pay_method, String status, Integer amount) throws IOException{			
 		System.out.println("pay_method: " + pay_method);
 		System.out.println("status: " + status);
 		System.out.println("amount: " + amount);
@@ -176,6 +179,19 @@ public class ConstructorController {
 	}
 	
 	/**
+	 * 포트폴리오 삭제
+	 * */
+	@RequestMapping("/channel/constructor/deletePortfolio")
+	public String deletePort(int portNo) {		
+		portfolioService.deletePortfolio(portNo);
+		
+		Portfolio portfolio = portRep.findById(portNo).orElse(null);
+		int chNo = portfolio.getChannel().getChNo();
+		
+		return "redirect:../guest/channelDetail/"+chNo;
+	}
+	
+	/**
 	 * 포트폴리오 전체 목록
 	 * */
 	@RequestMapping("/channel/guest/portfolioAll")
@@ -212,3 +228,7 @@ public class ConstructorController {
 	}
 
 }
+
+	
+
+
