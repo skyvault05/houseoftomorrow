@@ -160,7 +160,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 
                   <div class="user_profile__consultation pb-4"><!--상담하기-->
                      <div class="user_profile__btn-actions">
-                        <a class="btn btn-primary user-profile_actions_action" href="/consultations/new?id=2112978&amp;request_code=1">상담신청</a>
+                        <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
                         <div class="drop-down user-profile_actions_etc-wrap">
                            <button class="btn user-profile_actions__etc" type="button">
                               <svg class="icon" width="24" height="24" preserveAspectRatio="xMidYMid meet"><path d="M6 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#000" fill-opacity=".7" fill-rule="evenodd"></path></svg>
@@ -213,7 +213,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          <div class="channel_review">
             <!--고객리뷰-->
             <section class="post post--reviews">
-               <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(realReviewList)}</strong>
+               <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(list)}+</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
                      <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
@@ -246,7 +246,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 
             <!--포트폴리오-->
             <section class="post post--projects">
-               <h5 class="post__title">포트폴리오 <strong>${realPortList.size()}</strong>
+               <h5 class="post__title">포트폴리오 <strong>${portList.size()}</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	                  <c:if test="${user.memberNo == channel.constructor.member.memberNo}">

@@ -23,5 +23,9 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Integer> {
 	@Query("SELECT f FROM Portfolio f WHERE channel.chNo = :#{#channel.chNo} AND f.portStatus =:#{#portStatus}")
 	Page<Portfolio> findByChannelNoAndPortStatus(Pageable pageable, Channel channel, Integer portStatus);
 
+
 	
+	List<Portfolio> findByPortStatusOrderByPortNoDesc(Integer portStatus); 
+	
+
 }

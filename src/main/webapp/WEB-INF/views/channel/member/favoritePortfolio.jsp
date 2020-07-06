@@ -37,31 +37,35 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <h2>관심 포트폴리오</h2>
 </div>
 <div class="row"><br><br></div>
-<c:forEach items="${fport}" var="port">
- <section class="recommendation portfolio">
-     <div class="container">
-         <div class="row">
-			<div class="col-xl-12 pt-3">
-			<div class="card-wrap">
-			 	<div class="main_recomm card">
-				     <div class="card-img">
-				     <a href="${pageContext.request.contextPath}/channel/channelDetail/${fvChannel.channel.chNo}">
-				         <img src="${port.portfolio.portImg}" class="card-img-top rounded">
-				     </a>
-				     </div>
-				     <div class="card-body">
-				       <a href="${pageContext.request.contextPath}/수정하삼~~~~">
-				       <p class="card-text title">${port.portfolio.portTitle}</p>
-				       <div class="card-text title">${port.portfolio.channel.constructor.conName}</div>
-				       </a>
-				     </div>
-				 </div>
-			 </div>
-			</div>
-		</div>
-	</div>
-</section>
-</c:forEach>
+
+
+
+
+<div class="container">
+<br><br>
+<div class="row justify-content-center">
+<h2></h2>
+&nbsp;
+<h5 class="post__title"><strong></strong></h5>
+</div> <!-- row -->
+<div class="row" style="transform:translateX(-0px)"><br><br>
+                <c:forEach items="${fport}" var="port" varStatus="status">
+                   <div class="col-md-3">
+                   <div style="relative">
+                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portfolio.portNo}"><img src="${port.portfolio.portImg}" class="card-img-top rounded" alt="blog" width="255px" height="255px"></a>
+                       
+                          <p class="card-text title">${port.portfolio.portTitle}</p>
+                          <div class="card-text content">${port.portfolio.channel.constructor.conName}</div>
+                        
+                    <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
+                    </div>
+                	 </div>
+                 </c:forEach>
+</div> 
+</div>
+
+
+
 </div>
 </body>
 </html>

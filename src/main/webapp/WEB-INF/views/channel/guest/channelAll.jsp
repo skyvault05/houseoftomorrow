@@ -25,15 +25,6 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
-
-<style>
-	#page{
-		margin-top:30px;
-		margin-left:40%
-	
-	}
-
-</style>
 </head>
 <body>
 
@@ -61,12 +52,13 @@
 
 
 <div class="container">
-<br><br>
+
 <div class="row justify-content-center">
-<h2></h2>
+<h2>시공사</h2>
 &nbsp;
 <h5 class="post__title"><strong></strong></h5>
-</div> <!-- row -->
+</div>
+<br><br> <!-- row -->
 <div class="row" style="transform:translateX(-0px)"><br><br>
                 <c:forEach items="${list}" var="list" varStatus="status">
                    <div class="col-md-3">
@@ -74,17 +66,17 @@
                         <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}"><img src="${list.chImg}" class="card-img-top rounded" alt="blog" width="255px" height="255px"></a>
                         
                           <p class="card-text title">${list.constructor.conName}</p>
-                          <div class="card-text content">${portList.channel.constructor.conName}★ ${list.chGrades}</div>
+                          <div class="card-text content" style="margin-bottom:20px;">${portList.channel.constructor.conName}★ ${list.chGrades}</div>
                         
                     <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
                     </div>
-                	 </div>
+                	</div>
                  </c:forEach>
 </div> 
 </div>
 
 <!-- 페이징 처리 -->
-<div id="page">
+<div id="page" style="text-align: center; margin-top:10px; margin-bottom:10px;">
 <c:forEach begin="0" end="${totalPage-1}" var="i">
 	<c:choose>
 		<c:when test="${i==nowPageNum }">

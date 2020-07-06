@@ -27,4 +27,9 @@ public interface PortfolioService {
 
 	Page<Portfolio> findAllPortfolio(Pageable pageable);
 	
+
+	
+	List<Portfolio> selectAllPortNoDesc();
+	
+
 }

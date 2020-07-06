@@ -30,70 +30,37 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
   <!-- WebFont -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
   
-<style>
-	h3{
-		margin-top: 5px;
-		margin-left: 10px; 
-		margin
-	}
-	
-	.title{
-		font-size:20px;
-		margin-top:3px;
-		margin-bottom:0px;
-	}
-	
-	.content{
-		
-	}
-	img{
-	
-		margin-top:5px;
-	}
-	
-	#page{
-		
-		margin-left:40%;
-		margin-top:30px;
-	}
-
-</style>  
 </head>
 <body>
-<div class="container">
 <br><br>
+<div class="container">
+
 <div class="row justify-content-center">
 <h2>포트폴리오</h2>
 &nbsp;
 <h5 class="post__title"><strong>${fn:length(portList)}개</strong></h5>
-</div> <!-- row -->
+</div> <!-- 로우 끝 -->
+<br><br>
 <div class="row" style="transform:translateX(-0px)"><br><br>
-    
+         
+		<c:forEach items="${portList}" var="list" varStatus="status">
+        <div class="col-md-3">
+        <div style="relative"> 
+             <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.portNo}"><img src="${list.portImg}" class="card-img-top rounded" alt="blog" width="200px" height="200px"></a>
              
-                <c:forEach items="${portList}" var="portList" varStatus="status">   
-                
-                   <div class="col-md-4">     
-                    
-                   <div style="relative">       
-                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${portList.portNo}"><img src="${portList.portImg}" class="card-img-top rounded" alt="blog"></a>
-                         
-                                               
-                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${portList.portNo}">
-                       <p class="title">${portList.portTitle}</p>
-                        <div class="content">${portList.channel.constructor.conName}${status.count}</div>
-                         <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
-                       
-                        </a>
-                   
-                 
-                    </div>
-                	 </div>
-                    
-                 </c:forEach>
-                 
-                 
-<!--  페이징 처리  -->
-<div id="page"> 
+               <p class="card-text title">${list.portTitle}</p>
+               <div class="card-text content" style="margin-bottom:20px;">${list.channel.constructor.conName}★ </div>
+             
+         <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if>
+         </div>
+     	 </div>
+      	 </c:forEach>
+</div>    
+</div> <!-- 로우 끝 -->
+   
+
+
+<div id="page" style="text-align:center; margin-top:10px; margin-bottom:10px;">
 <c:forEach begin="0" end="${totalPage-1}" var="i">
 	<c:choose>
 		<c:when test="${i==nowPageNum }">
@@ -104,8 +71,9 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 		</c:otherwise>
 	</c:choose>
 </c:forEach>  
-</div>     
-</div> <!-- row -->    
-</div> <!-- container -->
+</div> <!-- 로우 끝 -->
+    
+    
+</div>
 </body>
 </html>
