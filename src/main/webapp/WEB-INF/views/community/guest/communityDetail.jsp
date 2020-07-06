@@ -33,7 +33,6 @@
 
 <script>
 (function (global, $) {
-
     var $menu     = $('.floating-menu li.m'),
         $contents = $('.scroll'),
         $doc      = $('html, body');
