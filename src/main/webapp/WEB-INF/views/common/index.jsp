@@ -115,7 +115,7 @@
                    <div class="col-md-3">     
                     
                    <div style="relative">       
-                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}"><img src="${port.portImg}" class="card-img-top rounded" alt="blog"></a>
+                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}"><img src="${port.portImg}" class="card-img-top rounded" alt="blog" style="width:200px; height:200px;"></a>
                          
                                                
                         <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
@@ -232,7 +232,7 @@
                    <div class="col-md-3">     
                     
                   		<div style="relative">       
-                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${ch.chNo}"><img src="${ch.chImg}" class="card-img-top rounded" alt="blog"></a>
+                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${ch.chNo}"><img src="${ch.chImg}" class="card-img-top rounded" alt="blog" style="width:200px; height:200px;"></a>
                          
                                                
                         <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${ch.chNo}">

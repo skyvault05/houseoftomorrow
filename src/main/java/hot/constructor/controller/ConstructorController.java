@@ -218,7 +218,7 @@ public class ConstructorController {
 	@RequestMapping("/channel/guest/portfolioAll")
 	public ModelAndView portfolioList(@RequestParam(defaultValue = "0")int nowPage) {
 		
-		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "portNo");
+		Pageable page =PageRequest.of(nowPage, 6, Direction.DESC, "portNo");
 		Page<Portfolio> portList = portfolioService.findAllPortfolio(page);
 		
 		ModelAndView mv = new ModelAndView();

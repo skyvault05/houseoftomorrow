@@ -36,7 +36,7 @@
 <header role="banner">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand " href="/common/index">HOT</a>
+          <a class="navbar-brand " href="/">HOT</a>
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       		<span class="navbar-toggler-icon"></span>
     	</button>
@@ -63,7 +63,7 @@
                   <li><a class="dropdown-item" href="/common/index">시공홈</a></li>
                   <li><a class="dropdown-item" href="/estimate">견적요청</a></li>
                  <!--  <li><a class="dropdown-item" href="#">전문가찾기</a></li> -->
-                  <li><a class="dropdown-item" href="#">포트폴리오</a></li>
+                  <li><a class="dropdown-item" href="/channel/guest/portfolioAll">포트폴리오</a></li>
               	</ul>
               </div>
             </li>
@@ -77,7 +77,7 @@
                 <span class="icon ion ion-search pt-2"><ion-icon name="search-outline"></ion-icon></span>
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
-              <button type="button" class="btn btn-outline-primary">글쓰기</button>
+              <button type="button" class="btn btn-outline-primary" href="">글쓰기</button>
               
                  <!------------------------------ 로그인/회원가입 -------------------------------->
 	<sec:authorize access="isAnonymous()">
