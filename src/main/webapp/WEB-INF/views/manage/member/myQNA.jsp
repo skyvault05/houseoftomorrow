@@ -102,7 +102,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 						<a href="" class="nav-link" target="_self">내 상담 내역</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link" target="_self">내가 쓴 글</a>
+						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link" target="_self">내가 쓴 글</a>
 					</li>
 				</ul>
 			</nav>
@@ -131,13 +131,18 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 </div> 
 <!-- ----------------------------------------------------------------------------->
 
-
-
-<div class="container margin-top-100">
-<div class="row justify-content-center">
-<h2>내가 쓴 문의글</h2>
-</div>
-<div class="row"><br><br></div>
+<div class="container" >
+<div class="py-5 text-left">
+   <div class="row">
+   
+ <div class="alert alert-danger alert-dismissible" role="alert" >
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <strong>내가 쓴 문의글!</strong> 내가 쓴 문의 글 입니다.
+  </div>
+  
+	</div>
+	
+<div class="row"><br></div>
 <c:if test="${empty myQNA}">
 	<p class="row justify-content-center">등록한 문의글이 없습니다.</p>
 </c:if>
@@ -166,6 +171,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 	</tr>
 </c:forEach>
 </table>
+</div>
 </div>
 </div>
 </body>

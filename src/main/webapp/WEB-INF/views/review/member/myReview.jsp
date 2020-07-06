@@ -82,7 +82,7 @@
 						<a href="" class="nav-link" target="_self">내 상담 내역</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link" target="_self">내가 쓴 글</a>
+						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link" target="_self">내가 쓴 글</a>
 					</li>
 				</ul>
 			</nav>
@@ -117,7 +117,7 @@
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 
-<div class="container pt-5" >
+<div class="container" >
 <div class="py-5 text-left">
    <div class="row">
    
