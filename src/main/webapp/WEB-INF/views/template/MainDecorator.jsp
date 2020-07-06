@@ -49,9 +49,9 @@
              <div class="dd-wrap">
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/community/guest/communityMain" >커뮤니티홈</a></li>
-                <li><a class="dropdown-item" href="/community/guest/communityPic">사진</a></li>
+                <li><a class="dropdown-item" href="/community/guest/communi그tyPic">사진</a></li>
                <!--  <li><a class="dropdown-item" href="#">집들이</a></li> -->
-                <li><a class="dropdown-item" href="/community/guest/communityList">노하우</a></li>
+                <li><a class="dropdown-item" href="/community/list/5">노하우</a></li>
               </ul>
               </div>
             </li>
@@ -77,7 +77,7 @@
                 <span class="icon ion ion-search pt-2"><ion-icon name="search-outline"></ion-icon></span>
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
-              <button type="button" class="btn btn-outline-primary" href="">글쓰기</button>
+              <button type="button" class="btn btn-outline-primary" href="/community/guest/write">글쓰기</button>
               
                  <!------------------------------ 로그인/회원가입 -------------------------------->
 	<sec:authorize access="isAnonymous()">

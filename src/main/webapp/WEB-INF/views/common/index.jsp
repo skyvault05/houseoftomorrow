@@ -119,8 +119,8 @@
                          
                                                
                         <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
-                       	<p class="title">${port.portTitle}</p>
-                        <div class="content">${port.channel.constructor.conName}${status.count}</div>
+                       	<p class="card-text title" style="margin-bottom:0px;">${port.portTitle}</p>
+                        <div class="card-text content" style="margin-bottom:10px;">${port.channel.constructor.conName}${status.count}</div>
                          <%-- <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if> --%>
                        
                         </a>
@@ -129,7 +129,7 @@
                     	</div>
                 	</div>
                    
-                 </c:forEach>
+                  </c:forEach>
              
 
                 </div><!--end card --> <!-- 포트폴리오 한줄 -->
@@ -232,14 +232,14 @@
                    <div class="col-md-3">     
                     
                   		<div style="relative">       
-                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${ch.chNo}"><img src="${ch.chImg}" class="card-img-top rounded" alt="blog" style="width:200px; height:200px;"></a>
+                        <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${ch.chNo}"><img src="${ch.chImg}" class="card-img-top rounded" alt="blog" style="width:200px; height:200px;"></a>
                          
                                                
-                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${ch.chNo}">
-                       	<p class="name">${ch.constructor.conName}</p>
+                        <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${ch.chNo}">
+                       	<p class="card-text title" style="margin-bottom:0px;">${ch.constructor.conName}</p>
                      <%--    <div class="content">${ch.constructor.conName}${status.count}</div> --%>
                      <%--     <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if> --%>
-                       	<p class="grades">${ch.chGrades}</p>
+                       	<p class="card-text content">${ch.chGrades}</p>
                         </a>
                    
                  
