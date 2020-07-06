@@ -193,7 +193,7 @@ public class CommunityController {
 		
 		int commNo = comment.getCommunity().getCommNo();
 		
-		return "redirect:detail/"+commNo;
+		return "redirect:/community/guest/detail/"+commNo;
 	}
 	
 	/**
@@ -204,7 +204,7 @@ public class CommunityController {
 		
 		commCommentService.deleteCommComment(commentNo);
 		
-		return "redirect:detail/"+commNo;
+		return "redirect:/community/guest/detail/"+commNo;
 	}
 	
 }

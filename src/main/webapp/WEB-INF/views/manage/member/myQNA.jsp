@@ -8,27 +8,18 @@
 <head>
 <meta charset="UTF-8">
 <title>내일의 집</title>
-<!-- bootstrap--> <link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/jquery.fancybox.min.css">
 
   <!-- Theme Style -->
   <link rel="stylesheet" type="text/css" href="/css/common/common.css">
   <link rel="stylesheet" type="text/css" href="/css/main/main.css">
   <link rel="stylesheet" type="text/css" href="/css/channel/channel.css">
 
-  <!-- WebFont -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-<style>
+  <style>
+	a {color:#424242;}
+  .nav-submenu_link {padding: 0px 10px; }
+  /* .review_submenu_link, .review_link {color:#424242;}*/
+  .nav-submenu_link:hover{color:#33f0c0; transition: 0.2s; font-weight:bold;} 
+
 	a{
 		color: black;
 		text-decoration: none;
@@ -86,7 +77,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <body>
 <sec:authentication property="principal" var="user"/>
 <!-- ----------------------------------------------------------------------------->
-<div class="empty-space"></div>
+
   <div class="container-flude submenu_borderbottom">
 	<div class="wrap-submenu">
 		<div class="mypage-nav">
@@ -115,13 +106,13 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 		<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
 				<ul class="navbar-nav mypage">
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link" target="_self">커뮤니티</a>
+						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-submenu_link" target="_self">커뮤니티</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" class="nav-link" target="_self">리뷰</a>
+						<a href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" class="nav-submenu_link" target="_self">리뷰</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" class="nav-link" target="_self">Q&A</a>
+						<a href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" class="nav-submenu_link" target="_self">Q&A</a>
 					</li>
 				</ul>
 			</nav>
@@ -135,11 +126,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <div class="py-5 text-left">
    <div class="row">
    
- <div class="alert alert-danger alert-dismissible" role="alert" >
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		  <strong>내가 쓴 문의글!</strong> 내가 쓴 문의 글 입니다.
-  </div>
-  
+
 	</div>
 	
 <div class="row"><br></div>
