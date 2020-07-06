@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,16 +28,16 @@ import hot.member.repository.MemberRepository;
 @RequestMapping("/community")
 public class CommunityController {
 	@Autowired
-	CommCategoryRepository commCategoryRepository;
+	private CommCategoryRepository commCategoryRepository;
 	
 	@Autowired
-	CommunityRepository communityRepository;
+	private CommunityRepository communityRepository;
 	
 	@Autowired
-	MemberRepository memberRepository;
+	private MemberRepository memberRepository;
 	
 	@Autowired
-	CommunityService communityService;
+	private CommunityService communityService;
 	
 	@Autowired
 	private CommCommentService commCommentService;
@@ -56,8 +57,12 @@ public class CommunityController {
 	/**
 	 * community main
 	 * */
-	@RequestMapping("/community/guest/communityMain")
-	public String communityMain() {
+	@RequestMapping("/guest/communityMain")
+	public String communityMain(Model model) {
+		List<Community> commPicList = communityService.selectCommunityMainList(0, 8, 4, 1);
+		List<Community> knowHowList = communityService.selectCommunityMainList(0, 3, 5, 1);
+		model.addAttribute("commPicList", commPicList);
+		model.addAttribute("knowHowList", knowHowList);
 		return "community/guest/communityMain";
 	}
 	

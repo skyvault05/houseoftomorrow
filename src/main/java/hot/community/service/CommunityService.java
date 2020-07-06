@@ -18,5 +18,7 @@ public interface CommunityService {
 	
 	List<Community> selectCommunityMember(Integer memberNo);
 
+	List<Community> selectCommunityMainList(Integer page, Integer size, Integer commCategoryNo, Integer status);
+
 }
 
