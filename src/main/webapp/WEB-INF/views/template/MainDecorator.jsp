@@ -26,10 +26,15 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/community/community.css"> 
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/review/star.css">
 
+  <!-- SummerNote -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/summernote/summernote-lite.min.css">
+  <script src="${pageContext.request.contextPath}/plugins/summernote/summernote-lite.min.js"></script>
+  <script src="${pageContext.request.contextPath}/plugins/summernote/setsummernote.js"></script>
 
   <!-- WebFont --> 
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font/fontawesome/css/font-awesome.min.css">
   
 
 <sitemesh:write property='head'/>
@@ -110,7 +115,7 @@
                  	<sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
 		            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
 		            </sec:authorize>
-                    <a href="/" class="dropdown-item updateInfo">회원정보수정</a>
+                    <a href="${pageContext.request.contextPath}/manage/member/memberUpdateForm" class="dropdown-item updateInfo">회원정보수정</a>
                     <a href="/member/consultingAllPage" class="dropdown-item Consulting">상담내역</a>
                     <sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
                     	<a href="/estimate/guest/requestAll" class="dropdown-item myCounsel">견적요청내역</a>
@@ -168,7 +173,7 @@
   </header>
   
   <!-- 상단여백 GAP -->
-  <div class="empty-space pt-5"></div>
+  <div class="empty-space pt-2"></div>
   
 <sitemesh:write property='body' />
 

@@ -1,6 +1,6 @@
 /*----------channel main--------------------*/
 /*----------sub menu----------*/
-.mypage-nav>nav>ul>li>a {
+.nav-link.ch_detail, .nav-link.my_write {
 
     display: block;
     padding: 0 10px;
@@ -11,7 +11,7 @@
     line-height: 60px;
     transition: color .15s ease;
 }
-.mypage-nav>nav>ul>li>a:hover {color:#33f0c0;}
+.nav-link.ch_detail:hover, .nav-link.my_write:hover  {color:#33f0c0;}
 /*--------시공사프로필-------*/
 .wrap-profile {
 	position: relative;

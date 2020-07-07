@@ -14,11 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hot.aws.S3Manager;
-import hot.channel.domain.Channel;
 import hot.consulting.domain.Consulting;
 import hot.consulting.domain.Contract;
+import hot.consulting.dto.ContractDTO;
 import hot.consulting.service.ConsultingService;
-import hot.member.domain.Member;
 
 @Controller
 public class ConsultingController {
@@ -71,7 +70,7 @@ public class ConsultingController {
 		redirect.addAttribute("chNo", consulting.getChNo());
 		
 		consultService.insertConsulting(consulting);
-		return "redirect:consultingForm";
+		return "redirect:/member/consultingForm";
 	}
 	
 	/**
@@ -82,13 +81,13 @@ public class ConsultingController {
 		redirect.addAttribute("consulNo", consulting.getConsulParentNo());
 		
 		consultService.insertConsulting(consulting);
-		return "redirect:consultingForm";
+		return "redirect:/constructor/consultingForm";
 	}
 	
 	/**
 	 * 시공사의 계약서 등록하기
 	 */
-	@PostMapping(value = {"/constructor/contractView", "/member/contractView"})
+	@RequestMapping(value = {"/constructor/contractView", "/member/contractView"})
 	public ModelAndView contract(int consulNo) {
 		return new ModelAndView("channel/member/contractDetail", "consulNo", consulNo);
 	}
@@ -122,7 +121,7 @@ public class ConsultingController {
 		consultService.insertContract(contract);
 		redirect.addAttribute("consulNo", consulNo);
 		
-		return "redirect:contractView";
+		return "redirect:/constructor/contractView";
 	}
 	
 	/**
@@ -150,13 +149,13 @@ public class ConsultingController {
 		consultService.insertContract(preContract);
 
 		redirect.addAttribute("consulNo", contract.getConsulNo());
-		return "redirect:contractView";
+		return "redirect:/member/contractView";
 	}
 	
 	/**
 	 * 계약 완료된 상담 내용 페이지 가기
 	 */
-	@PostMapping(value= {"/member/consultingView","/constructor/consultingView"})
+	@RequestMapping(value= {"/member/consultingView","/constructor/consultingView"})
 	public ModelAndView completeConsulting(Integer consulNo) {
 		return new ModelAndView("channel/member/preConsultDetail", "consulNo", consulNo);
 	}
@@ -215,5 +214,22 @@ public class ConsultingController {
 	public Timestamp contractDate(Integer consulNo){
 
 		return null;
+	}
+	
+	@ResponseBody
+	@PostMapping("/member/consultingComplete")
+	public List<ContractDTO> consultingComplete(Integer memberNo){
+		List<ContractDTO> list = consultService.selectUserContractComplete(memberNo);
+		return list;
+	}
+
+	/**
+	 * 시공사 완료된 상담 가져오기
+	 */
+	@ResponseBody
+	@PostMapping("/constructor/consultingComplete")
+	public List<ContractDTO> consultingConComplete(Integer chNo){
+		List<ContractDTO> list = consultService.selectConContractComplete(chNo);
+		return list;
 	}
 }

@@ -9,24 +9,8 @@ prefix="c" %>
 initial-scale=1, shrink-to-fit=no">
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
-   <!-- bootstrap-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
 
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
-
-  
-  <!-- WebFont -->
-  
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 <sec:authentication var="user" property="principal" />
 <script >
    var token = $("meta[name='_csrf']").attr("content");
@@ -41,12 +25,13 @@ initial-scale=1, shrink-to-fit=no">
          $('.drop-down__list').toggleClass('open');
          //$('.drop-down__list').removeClass('open');
       });
+   });
 
 </script>
   </head>
   
   <body>
-  <div class="empty-space"></div>
+
   <div class="container-flude submenu_borderbottom">
    <div class="wrap-submenu">
       <div class="mypage-nav">
@@ -223,7 +208,7 @@ initial-scale=1, shrink-to-fit=no">
 
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
-<div class="empty-space"></div>
+
 <!-- start footer -->
     
    

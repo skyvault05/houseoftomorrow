@@ -11,13 +11,7 @@
     <meta name="_csrf" content="${_csrf.token}"/>
 	<meta name="_csrf_header" content="${_csrf.headerName}"/>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
-<meta charset="UTF-8">
-<title>내일의 집</title>
+
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <script>
 var token = $("meta[name='_csrf']").attr("content");
@@ -28,7 +22,7 @@ $(document).ajaxSend(function(e, xhr, options) {
 });
 </script>
  
-<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script src="/plugins/summernote/setsummernote.js"></script>
@@ -59,52 +53,10 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
 	}
 </style>
   </head>
-  
-  <body>
-  <sec:authentication property="principal" var="user"/>
-    <header role="banner">
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-          <a class="navbar-brand " href="/common/index">HOT</a>
-    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      		<span class="navbar-toggler-icon"></span>
-    	</button>
-    
-    <!--------------------------------------main menu--------------------------------------------->
-          <div class="collapse navbar-collapse btnCollapse" >
-            <ul class="navbar-nav ">
-              <li class="nav-item dropdown pl-md-5">
-              <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
-             <div class="dd-wrap">
-              <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#" >커뮤니티홈</a></li>
-                <li><a class="dropdown-item" href="#">사진</a></li>
-                <li><a class="dropdown-item" href="#">집들이</a></li>
-                <li><a class="dropdown-item" href="#">노하우</a></li>
-              </ul>
-              </div>
-            </li>
-<!-- bootstrap-->
-<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
-<script src="/plugins/summernote/summernote-lite.min.js"></script>
-<script src="/plugins/summernote/setsummernote.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
 
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
-  
-  <!-- WebFont -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-  
-</head>
 <body>
-<div class="container">
+
 <br><br>
 <div class="row justify-content-center">
 <h2>포트폴리오 등록</h2>
@@ -142,6 +94,6 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
 		</c:otherwise>
 	</c:choose>
 </form>
-</div>
+</div><!-- end container -->
 </body>
 </html>

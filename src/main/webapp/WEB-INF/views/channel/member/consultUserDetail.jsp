@@ -49,17 +49,22 @@
 <title>내일의 집</title>
 <script>
 	$(function(){
-		$.ajax({
-			url : "/member/preConsulting",
+		if($('input[name=flag]').val() == "true"){
+			$('#summernoteDiv').hide();
+		}
+		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting";
+			$.ajax({
+			url : strUrl,
 			method : "post",
 			type : "json",
 			data : {	//#수정 바람
 				memberNo : $('input[name="memberNo"]').val(),
-				chNo : $('input[name="chNo"]').val()
+				chNo : $('input[name="chNo"]').val(),
+				consulNo : $('input[name="consulNo"]').val()
 			},
 			success : function(jsonObj){
 				if(!jsonObj){
-					
+					$('#description').append("<div><p>상담 중인 내역이 없습니다.</p></div>");
 				}else{
 					$('input[name="consulParentNo"]').val(jsonObj.consulNo);
 					$('input[name="consulNo"]').val(jsonObj.consulNo);
@@ -68,7 +73,7 @@
 						if(element.memberNo == $('input[name=memberNo]').val()){
 							$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + element.consulDescription + "</div>");
 						}else{
-							$('#description').append("<div>" + element.consulDescription + "</div>");
+							$('#description').append("<div style='text-align:left; width: 70%'>" + element.consulDescription + "</div>");
 						}
 					})
 				}
@@ -93,7 +98,11 @@
     text-align: center!important;
     /* margin-left: 1%;
     /* width: 70%; */ */
-}
+    }
+    .expert-calculate__content__header{
+    	width:100%;
+    }
+
 
 </style>
 </head>
@@ -109,7 +118,7 @@
 		
 
 		<!--start 견적폼-->
-		<section class="expert-calculate__content" style="margin: 0 auto;">
+		<section class="expert-calculate__content" style="width:100%">
 				<div class="expert-calculate__content__header">
 					<h3 class="expert-calculate__content__header__title">시공 상담 / 이미 끝난 상담 조회</h3>
 					<div class="alert alert-danger alert-dismissible" role="alert">
@@ -128,7 +137,7 @@
 
 <div class="row">
 
-			<div class="col-md-12">
+			<div id="summernoteDiv" class="col-md-12">
 				<form action="/member/consulting" id="noteForm" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					
@@ -154,11 +163,12 @@
 							<form action="/member/contractView" method="post">
 								<input type="hidden" name="consulNo" value="${param.consulNo}">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+								<input type="hidden" name="chNo" value="${param.chNo}">
 								<input class="btn btn-outline-primary" type="submit" value="계약서 보기">
 							</form>
 						</td>
 						<td style="float:right;">
-							<a class="btn btn-outline-primary"  href="/channel/guest/channelDetail/${param.chNo}" value="뒤로가기">뒤로가기</a>
+							<a class="btn btn-outline-primary"  href="/channel/guest/channelDetail/${param.chNo}" value="채널가기">채널가기</a>
 							<input class="btn btn-outline-primary" type="button" id="noteBtn" value="작성">
 						</td>
 					</tr>
@@ -166,7 +176,8 @@
 			</div>
 	
 </div>	
-	
+	<input type="hidden" name="flag" value="${param.flag}">
+	<input type="hidden" name="consulNo" value="${param.consulNo}">
 	
 </section>	
 </div>	

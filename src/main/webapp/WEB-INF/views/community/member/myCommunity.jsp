@@ -10,23 +10,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
-  
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/main.css">
-  <link rel="stylesheet" type="text/css" href="/css/channel/channel.css">
-
- 
-	
 	
 <style>
-a {color:#424242;}
+ a {color:#424242;}
   .nav-submenu_link {padding: 0px 10px; }
-  /* .review_submenu_link, .review_link {color:#424242;}*/
+ .review_submenu_link, .review_link {color:#424242;}
   .nav-submenu_link:hover{color:#33f0c0; transition: 0.2s; font-weight:bold;} 
-
-
 
 h1{
 		margin-left: 10%
@@ -43,7 +32,7 @@ h1{
 		color: black;
 		text-decoration: none;
 	}
-	.scale  img {
+	.scale img {
 		-webkit-transform:scale(1);
 		-moz-transform:scale(1);
 		-ms-transform:scale(1);	
@@ -77,11 +66,12 @@ h1{
 		width: 500px;
 		height:300px;
 	}
+	
 </style>
 </head>
 <body>
  <sec:authentication property="principal" var="user"/>
-<!-- ----------------------------------------------------------------------------->
+<!-- -------------------------------SUBMENU---------------------------------------------->
 
   <div class="container-flude submenu_borderbottom">
 	<div class="wrap-submenu">
@@ -89,52 +79,40 @@ h1{
 			<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
 				<ul class="navbar-nav mypage">
 					<li class="nav-item">
-						<a href="" class="nav-link" target="_self">회원정보수정</a>
-					</li>
-					 <sec:authentication var="user" property="principal" />
-					 <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-					<li class="nav-item">
-						<a href="/myEstimateList/${user.memberNo }" class="nav-link" target="_self">견적 요청 내역</a>
-					</li>
-					</sec:authorize>
-					<li class="nav-item">
-						<a href="/member/consultingAllPage" class="nav-link" target="_self">내 상담 내역</a>
+						<a href="${pageContext.request.contextPath}/manage/member/memberUpdateForm" class="nav-link" target="_self">회원정보수정</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link" target="_self">내가 쓴 글</a>
+						<a href="${pageContext.request.contextPath}/myEstimateList/${user.memberNo }" class="nav-link" target="_self">견적 요청 내역</a>
+					</li>
+					<li class="nav-item">
+						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link" target="_self">내 상담 내역</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link dropdown-toggle main-btn" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+						내가 쓴 글</a>
+						<!-- 좋은말로할때드롭따운해라 -->
+						<div class="dd-wrap myWrite row">
+			                <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+			                  <li class="nav-item">
+								<a class="review_submenu_link" href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" target="_self">리뷰</a>
+							  </li>
+			                  <li class="nav-item">
+								<a class="review_submenu_link" href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" target="_self">커뮤니티</a>
+							  </li>
+							  
+							  <li class="nav-item">
+								<a class="review_submenu_link" href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" target="_self">Q&A</a>
+							  </li>
+			              	</ul>
+			            </div>
 					</li>
 				</ul>
 			</nav>
 		</div>
 	</div><!--end wrap-submenu-->
-	
-	<!-- ------------------------------------------- -->
-	<div class="self_write-wrap">
-	
-		<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
-				<sec:authentication var="user" property="principal" />
-				<sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-				<ul class="navbar-nav mypage">
-					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-submenu_link" target="_self">커뮤니티</a>
-					</li>
-					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" class="nav-submenu_link" target="_self">리뷰</a>
-					</li>
-					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" class="nav-submenu_link" target="_self">Q&A</a>
-					</li>
-				</ul>
-				</sec:authorize>
-			</nav>
-	
 	</div>
-
-</div> 
-<!-- ----------------------------------------------------------------------------->
-
-
-
+	
+<!-- ----------------------------------------END SUBMENU----------------------------------------------- -->
 <div class="container pt-6">
 <div class="row">
 <%-- ${community.member.memberNo} --%>
