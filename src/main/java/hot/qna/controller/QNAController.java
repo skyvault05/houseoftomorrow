@@ -90,7 +90,7 @@ public class QNAController {
 		qnaService.insertQNA(qna);
 		
 		int qnaNo = qna.getQnaNo();
-		return "redirect:detail/"+qnaNo;
+		return "redirect:detail/"+parentNo;
 	}
 	
 	/**

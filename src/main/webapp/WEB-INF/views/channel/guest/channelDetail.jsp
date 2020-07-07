@@ -148,14 +148,7 @@ initial-scale=1, shrink-to-fit=no">
                               <svg fill="#35C5F0" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><defs><path id="star-path-1.000" d="M8 13.54l-4.37 1.85c-.5.22-.88-.06-.83-.6l.4-4.73L.1 6.47c-.37-.41-.22-.85.32-.98l4.62-1.07L7.48.36c.29-.48.75-.47 1.04 0l2.44 4.06 4.62 1.07c.54.13.68.57.32.98l-3.1 3.59.4 4.72c.05.55-.33.83-.83.61L8 13.54z"></path><clipPath id="star-clip-1.000"><rect x="0" y="0" width="16" height="16"></rect></clipPath></defs><use xlink:href="#star-path-1.000" fill="#DBDBDB"></use><use clip-path="url(#star-clip-1.000)" xlink:href="#star-path-1.000"></use></svg>
                               </c:forEach>
                            </a>
-                           <span class="expert-review-popup-button">
-                              <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-<%--                               	 <c:if  test="${user 리뷰 수 < 상담 완료 내역 수}"> --%>
-                          <%--        <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
-                                 </c:if>
-                                 <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span> --%>
-                              </sec:authorize>
-                           </span>
+                      
                         </div><!-- end profile_info_reviews-->
                      </div><!--user_proifle__info-->
                   </div><!--user_proifle__conatiner-->

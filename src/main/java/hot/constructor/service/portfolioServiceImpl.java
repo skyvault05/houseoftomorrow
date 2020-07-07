@@ -40,7 +40,7 @@ public class portfolioServiceImpl implements PortfolioService{
 	@Override
 	public List<Portfolio> selectPortfolioChNo(int ChNo) {
 		
-		return portRep.findPortfolioByChNo(ChNo);
+		return portRep.findPortfolioByChNoAndPortStatus(ChNo, 1);
 	}
 	
 	

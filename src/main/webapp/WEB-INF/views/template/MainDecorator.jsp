@@ -100,7 +100,7 @@
    	<sec:authorize access="isAuthenticated()">   
    		 <div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
-                <a href="${pageContext.request.contextPath}/myFavoriteChannel/${user.memberNo}"><ion-icon name="bookmark-outline" class="icon ion"></ion-icon></a>
+                <a href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}"><ion-icon name="bookmark-outline" class="icon ion"></ion-icon></a>
                 <ion-icon name="notifications-outline" class="icon ion"></ion-icon>
                 <div class="dropdown submenu">  
                   <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
@@ -112,9 +112,12 @@
 		            </sec:authorize>
                     <a href="/" class="dropdown-item updateInfo">회원정보수정</a>
                     <a href="/member/consultingAllPage" class="dropdown-item Consulting">상담내역</a>
-                    <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
+                    <sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
+                    	<a href="/estimate/guest/requestAll" class="dropdown-item myCounsel">견적요청내역</a>
+                    </sec:authorize>
                     <a href="/review/myReview/${user.memberNo}" class="dropdown-item writeList">내가쓴글</a>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <a href="/qna/list/14" class="dropdown-item">QNA</a>
                     <a href="/manage/admin/channelRegisterRequest" class="dropdown-item">시공사 등록 요청</a>
                     </sec:authorize>
                     <a href="/logout" class="dropdown-item logout">로그아웃</a>
