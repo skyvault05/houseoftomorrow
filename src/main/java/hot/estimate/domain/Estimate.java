@@ -51,7 +51,7 @@ public class Estimate {
 	private Member member;
 	
 	@Column(name = "est_description")
-//	@Type(type = "text")
+	@Type(type = "text")
 	private String estDescription;
 	@Column(name = "est_regdate")
 	private Timestamp estRegdate;

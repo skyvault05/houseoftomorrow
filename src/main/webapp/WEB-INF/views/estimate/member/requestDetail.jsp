@@ -33,6 +33,8 @@
 					<li class="nav-item">
 						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link my_write" target="_self">내 상담 내역</a>
 					</li>
+					<li class="nav-item">
+						<a href="/review/myReview/${user.memberNo}" class="nav-link" target="_self">내가 쓴 글</a>
 					<li class="dropright">
 						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="dropdown-toggle nav-link my_write" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						내가 쓴 글</a>

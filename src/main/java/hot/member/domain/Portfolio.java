@@ -1,7 +1,6 @@
 package hot.member.domain;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 
 import hot.channel.domain.Channel;
 import lombok.AllArgsConstructor;
@@ -43,6 +43,7 @@ public class Portfolio {
 	@Column(name = "port_img")
 	private String portImg;
 	@Column(name = "port_dsecription")
+	@Type(type = "text")
 	private String portDescription;
 	@Column(name = "port_regdate")
 	private Timestamp portRegdate;

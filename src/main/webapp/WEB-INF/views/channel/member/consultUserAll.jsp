@@ -190,17 +190,7 @@
 		<section class="expert-calculate__content" style="margin: 0 auto; width: 85%">
 				<div class="expert-calculate__content__header">
 					<h3 class="expert-calculate__content__header__title">상담 내역</h3>
-					<div class="alert alert-danger alert-dismissible" role="alert">
-					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					  <strong>시공상담!</strong> 시공 상담 내용을 확인할 수 있습니다.
-					</div>
-					
-					<div class="alert alert-warning textaline" role="alert" id="description">					
-					</div>
 				</div>
-				
-			
-		
 <p>
 
 <div class="row">

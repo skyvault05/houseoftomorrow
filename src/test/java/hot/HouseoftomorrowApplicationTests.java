@@ -1,9 +1,15 @@
 package hot;
 
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,11 +24,13 @@ import hot.community.repository.CommCommentRepository;
 import hot.community.repository.CommunityRepository;
 import hot.constructor.repository.ConstructorRepository;
 import hot.constructor.repository.PortfolioRepository;
+import hot.constructor.service.PortfolioService;
 import hot.consulting.repository.ConsultingRepository;
 import hot.consulting.repository.ContractRepository;
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
 import hot.member.domain.Member;
+import hot.member.domain.Portfolio;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
@@ -92,6 +100,9 @@ class HouseoftomorrowApplicationTests {
 	
 	@Autowired
 	private FavoriteChannelRepository fcRep;
+	
+	@Autowired
+	private PortfolioService portfolioService;
 
 	
 	@Autowired
@@ -276,6 +287,12 @@ class HouseoftomorrowApplicationTests {
 		
 //		Member member = new Member(0, "admin", passwordEncoder.encode("admin"), "admin", "000-0000-0000", null, memberRole.findById(3).orElse(null));
 //		memberRep.save(member);
+		
+		Pageable page =PageRequest.of(0, 12, Direction.DESC, "portNo");
+		Page<Portfolio> portList = portfolioService.selectPortfolioChNo(1, page);
+		for(Portfolio f :portList) {
+			System.out.println(f.getPortTitle());
+		}
 	}
 }
 	

@@ -21,6 +21,8 @@ public interface PortfolioService {
 		
 	List<Portfolio> selectPortfolioChNo(int ChNo);
 	
+	Page<Portfolio> selectPortfolioChNo(int ChNo, Pageable page);
+	
 	List<Portfolio> findAllPortfolio();
 	
 	Portfolio portfolioDetail(int portNo);

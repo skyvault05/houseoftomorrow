@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.CreatedDate;
 
 import hot.member.domain.Constructor;
 import hot.review.domain.Review;
@@ -50,6 +51,7 @@ public class Channel {
 	@Type(type = "text")
 	private String chDescription;
 	
+//	@CreatedDate
 	@Column(name = "ch_regdate")
 	private Timestamp chRegdate;
 	

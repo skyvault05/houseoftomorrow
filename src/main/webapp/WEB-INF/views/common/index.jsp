@@ -246,7 +246,7 @@
                         </div>
                         <div class="card-body">
                           <div class="card-text-summary">${ch.constructor.conName}</div>
-                          <div class="card-text-profile">${ch.chGrades}</div>
+                          <div class="card-text-profile">★ ${ch.chGrades}</div>
                           
                         </div>
             </a>
