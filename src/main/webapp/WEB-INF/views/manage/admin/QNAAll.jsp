@@ -84,7 +84,6 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 </head>
 <body>
 <div class="container">
-<br><br>
 <div class="row justify-content-center">
 <h2>문의사항</h2>
 </div>
