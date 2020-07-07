@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import hot.admin.repository.OrderRepository;
 import hot.channel.domain.Channel;
+import hot.channel.repository.ChannelRepository;
 import hot.constructor.repository.PortfolioRepository;
 import hot.member.domain.Order;
 import hot.member.domain.Portfolio;
@@ -22,6 +23,8 @@ public class portfolioServiceImpl implements PortfolioService{
 	private final PortfolioRepository portRep;
 	
 	private final OrderRepository orderRep;
+	
+	private final ChannelRepository channelRep;
 	
 	@Override
 	public void insertPortfolio(Portfolio portfolio) {
@@ -103,5 +106,12 @@ public class portfolioServiceImpl implements PortfolioService{
 		if(dbOrder != null) {
 			dbOrder.setOrderStatus(2);
 		}		
+	}
+
+	@Override
+	public Page<Portfolio> selectPortfolioChNo(int ChNo, Pageable page) {
+		Channel channel = channelRep.findById(ChNo).orElse(null);
+		Page<Portfolio> port = portRep.findByChannelNoAndPortStatus(page, channel,1);
+		return port;
 	}
 }

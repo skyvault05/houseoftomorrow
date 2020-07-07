@@ -24,6 +24,7 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/channel/channel.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/community/community.css"> 
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estimate/estimate.css"> 
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/review/star.css">
 
   <!-- SummerNote -->
@@ -106,7 +107,7 @@
    	<sec:authorize access="isAuthenticated()">   
    		 <div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
-                <a href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}"><ion-icon name="bookmark-outline" class="icon ion"></ion-icon></a>
+                <a class="menuicon" href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}"><ion-icon name="bookmark-outline" class="icon ion"></ion-icon></a>
                 <ion-icon name="notifications-outline" class="icon ion"></ion-icon>
                 <div class="dropdown submenu">  
                   <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">

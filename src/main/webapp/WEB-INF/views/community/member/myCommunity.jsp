@@ -12,7 +12,7 @@
 
 	
 <style>
- a {color:#424242;}
+/*  a {color:#424242;}
   .nav-submenu_link {padding: 0px 10px; }
  .review_submenu_link, .review_link {color:#424242;}
   .nav-submenu_link:hover{color:#33f0c0; transition: 0.2s; font-weight:bold;} 
@@ -65,7 +65,7 @@ h1{
 	img{
 		width: 500px;
 		height:300px;
-	}
+	} */
 	
 </style>
 </head>
@@ -110,14 +110,13 @@ h1{
 			</nav>
 		</div>
 	</div><!--end wrap-submenu-->
-	</div>
-	
+  </div><!-- end container -->
 <!-- ----------------------------------------END SUBMENU----------------------------------------------- -->
-<div class="row">
-<%-- ${community.member.memberNo} --%>
 
 
-
+<!-- ---------------------기 존 코 드--------------------------------------- -->
+<%-- <div class="container pt-5">
+${community.member.memberNo}
 
 <c:forEach items="${community}" var="list" >
 
@@ -142,7 +141,62 @@ h1{
 				</c:when>
 			</c:choose>
 </c:forEach>
+</div> --%>
+
+
+<!-- --------------쟈니수정-------------------------- -->
+<div class="container pt-5">
+
+<c:forEach items="${community}" var="list" >
+  <c:choose>
+	<c:when test="${list.commCategory.commCategoryNo == 4}">
+<!--------사진들어가는부분☆------------->
+		<div class="card-feed__item-wrap col-12 col-md-4 col-lg-3">
+      	 <div class="card-feed__item">
+         <article class="card-item">
+          <div class="card-item__image">    	
+		     <div class="card-item-image from_my_write">
+		        <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}" class="card-item__content__link">         
+		           <img class="image from__my__write"src="${list.commImg}" alt="등록사진"/>
+		        </a>
+		     </div>
+	      </div>
+	      <div class="my_write_title">
+			<a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}" class="my_write_community">         
+				<span class="my_write_community">${list.commTitle}</span>
+			</a>
+		  </div>
+	      
+         </article><!----end card-item----->
+       </div><!--end card-feed__item-->
+       
+     </div><!-- END community Pic-->
+     
+    </c:when>
+	 <c:when test="${list.commCategory.commCategoryNo == 5}">
+	 	<div class="card-feed__item-wrap col-12 col-md-4 col-lg-3">
+      	 <div class="card-feed__item">
+         <article class="card-item">
+          <div class="card-item__image">
+            <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}" class="card-item__content__link">
+	          <div class="card-item-image from_my_write">         
+		            <img class="image from__my__write"src="${list.commImg}" alt="등록사진"/>
+		      </div>
+		      <div class="my_write_title">
+			      	 <span class="my_write_community">${list.commTitle}</span>
+			  </div>
+	        </a>
+	      </div>
+         </article><!----end card-item----->
+       </div><!--end card-feed__item-->
+       
+     </div><!-- END community Pic-->
+    </c:when>
+	</c:choose>
+</c:forEach>
 </div>
-</div>
+
+
+
 </body>
 </html>

@@ -33,13 +33,17 @@
 	<script src="/plugins/summernote/setsummernote.js"></script>
 	
   <style>
-    .row {
+  a {color:#424242;}
+  .review_submenu_link {padding: 0px 10px; }
+  /* .review_submenu_link, .review_link {color:#424242;}*/
+  .review_submenu_link:hover{color:#33f0c0; transition: 0.2s; font-weight:bold;} 
+  .row {
       margin-bottom: 10px;
     }
     [class|="col"] {
       background-color: transparent;
       background-image: none;
-      border: 1px solid #eaeaed;
+      border-top: 1px solid #eaeaed;
       height: 50px;
       font-size: 1em;
       line-height: 50px;
@@ -53,12 +57,17 @@
       margin-right: -15px;
       margin-left: -15px;
     }
-    #page{
-    	margin-left:40%;
-    	margin-top:30px;
-    
+  .starrating > label:before {
+    content: "\f005";
+    margin: 1px;
+    font-size: 1em;
+    font-family: FontAwesome;
+    display: inline-block;
+    color: gold;
+}
+    table{
+    	text-align: center;
     }
-    
       
   </style>
 </head>
@@ -81,7 +90,9 @@
    </div>
    <p>
    <p>
+   
    <div class="row">
+  
    <div class="col-md-4">글쓴이</div>
    <div class="col-md-4">평점</div>
    <div class="col-md-4">날짜</div>
@@ -90,12 +101,57 @@
    <c:forEach items="${requestScope.review}" var="review" >
    
    <div class="row">
-   <div class="col-xs-12 col-sm-4 "><a href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}">${review.member.memberName}</a></div>
-   <div class="col-xs-12 col-sm-4 "><a href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}">${review.reviewGrade}</a></div>
-   <div class="col-xs-12 col-sm-4 "><a href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}"><fmt:formatDate value="${review.reviewRegdate}" pattern="yyyy-MM-dd HH:mm"/></a></div>
+   <div class="col-xs-12 col-sm-4 "><a class="review_link" href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}">${review.member.memberName}</a></div>
+   
+   
+   <div class="col-xs-12 col-sm-4 ">
+   <div class="review_link">
+   	<div class="starrating risingstar d-flex justify-content-center flex-row-reverse" >
+            <c:choose>
+            	<c:when test="${review.reviewGrade == 0}">
+            		0점
+            		
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 1}">
+            		<label for="star1" title="1 star"></label>
+            		
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 2}">
+            		<label for="star2" title="2 star"></label>
+		            <label for="star1" title="1 star"></label>
+		            
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 3}">
+            		<label for="star3" title="3 star"></label>
+		            <label for="star2" title="2 star"></label>
+		            <label for="star1" title="1 star"></label>
+		            
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 4}">
+            		 <label for="star4" title="4 star"></label>
+		            <label for="star3" title="3 star"></label>
+		            <label for="star2" title="2 star"></label>
+		            <label for="star1" title="1 star"></label>
+		            
+            	</c:when>
+            	<c:when test="${review.reviewGrade == 5}">
+            		<label for="star5" title="5 star"></label>
+		            <label for="star4" title="4 star"></label>
+		            <label for="star3" title="3 star"></label>
+		            <label for="star2" title="2 star"></label>
+		            <label for="star1" title="1 star"></label>
+		            
+            	</c:when>
+            </c:choose>  
+   </div>
+   </div>
+   </div>
+   <div class="col-xs-12 col-sm-4 "><a class="review_link" href="${pageContext.request.contextPath}/review/readReview/${review.reviewNo}"><fmt:formatDate value="${review.reviewRegdate}" pattern="yyyy-MM-dd HH:mm"/></a></div>
    </div>
    </c:forEach>
    
+
+   </div>
    
    <c:if test="${totalPage-1}>= 0">
    <div id="page"> <!-- 페이징 -->

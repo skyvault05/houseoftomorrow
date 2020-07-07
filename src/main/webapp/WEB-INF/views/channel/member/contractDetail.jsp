@@ -49,7 +49,7 @@
 			success : function(obj){
 				var img = "<img src='";
 				if(!obj){
-					img += "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQLQLscCTbySIEjU3X1iDGJHcmlq7kDWCAlYA&usqp=CAU";
+					img += "${pageContext.request.contextPath}/images/consulting/icon_contract.png";
 				}else{
 					img += obj.contractImg;
 					if(obj.consulConDecide == 2 && $('input[name=consulConDecide]').val() == 2)
