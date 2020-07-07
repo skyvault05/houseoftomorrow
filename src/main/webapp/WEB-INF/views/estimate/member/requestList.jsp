@@ -21,6 +21,44 @@
 
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
+  <div class="container-flude submenu_borderbottom">
+	<div class="wrap-submenu">
+		<div class="mypage-nav">
+			<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
+				<ul class="navbar-nav mypage">
+					<li class="nav-item">
+						<a href="/manage/member/memberUpdateForm" class="nav-link" target="_self">회원정보수정</a>
+					</li>
+					<li class="nav-item">
+						<a href="/myEstimateList/${user.memberNo}" class="nav-link" target="_self">견적 요청 내역</a>
+					</li>
+					<li class="nav-item">
+						<a href="/" class="nav-link" target="_self">내 상담 내역</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="/review/member/myReview" class="nav-link" target="_self">내가 쓴 글</a>
+						
+						<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
+							<ul class="navbar-nav mypage dropdown-menu" aria-labelledby="navbarDropdown">
+								<li class="dropdown-item">
+									<a class="review_submenu_link" href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" target="_self">커뮤니티</a>
+								</li>
+								<li class="dropdown-item">
+									<a class="review_submenu_link" href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" target="_self">리뷰</a>
+								</li>
+								<li class="dropdown-item">
+									<a class="review_submenu_link" href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" target="_self">Q&A</a>
+								</li>
+							</ul>
+						</nav>
+						
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div><!--end wrap-submenu-->
+
+</div> 
 
 <div class="estimateDetail-main-wrap">
 	<div class="container pt-5">

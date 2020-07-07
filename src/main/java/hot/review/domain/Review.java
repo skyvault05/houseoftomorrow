@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 
 import hot.channel.domain.Channel;
 import hot.member.domain.Member;
@@ -56,6 +57,7 @@ public class Review {
 	private Integer reviewStatus;
 	
 	@Column(name = "review_description")
+//	@Type(type = "text")
 	private String reviewDescription;
 
 }

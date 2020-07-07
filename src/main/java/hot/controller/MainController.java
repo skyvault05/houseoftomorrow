@@ -38,7 +38,7 @@ public class MainController {
 		
 		// 평점 높은 시공사 출력
 		
-		List<Channel> channelList = channelService.selectChannelByChstatusAndchGrades(0);
+		List<Channel> channelList = channelService.selectChannelByChstatusAndchGrades(1);
 		
 						
 		ModelAndView mv = new ModelAndView();

@@ -52,8 +52,24 @@ header .icon.ion:hover {
   float: left;
   width:100%;
   padding:20px 0px;
-  //top:49px;
   top:55%;
+}
+/*-------내가쓴글 드롭다운메뉴------*/
+.myWrite {
+	top:130%;
+	width:10%;
+	left:58%;
+	display:inline-block!important;
+	border:1px solid red;
+}
+.myWrite>.dropdown-menu {
+	//width:50%;
+	left:30%;
+	top: -27%;
+    //border: none!important;
+    border:2px solid #000;
+    margin-top:20px;
+    padding:0px;
 }
 .dropdown-menu {
     z-index: 900;

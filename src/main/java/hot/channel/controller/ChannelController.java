@@ -100,7 +100,6 @@ public class ChannelController {
 	@RequestMapping("/guest/channelDetail/{chNo}")
 	public ModelAndView chDetail(@PathVariable(name="chNo")Integer chNo, @RequestParam(defaultValue = "0")int nowPage, Model model) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		CustomUser user = (CustomUser) principal;
 		
 		Channel channel = channelService.selectChannel(chNo);
 		List<Review> realReviewList = reviewService.selectReviewChNo(chNo);
@@ -120,7 +119,7 @@ public class ChannelController {
 		
 		List<FavoriteChannel> favCh = fcRep.findByChannel(channel);
 		
-		boolean reviewRight = reviewService.checkReviewRight(chNo, user.getMemberNo());
+		
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/channel/guest/channelDetail");
@@ -128,7 +127,11 @@ public class ChannelController {
 		mv.addObject("realPortList", realPortList);
 		mv.addObject("favCh", favCh);
 		mv.addObject("realReviewList", realReviewList);
-		mv.addObject("reviewRight", reviewRight);
+		if(!principal.equals("anonymousUser")) {
+			CustomUser user = (CustomUser) principal;
+			boolean reviewRight = reviewService.checkReviewRight(chNo, user.getMemberNo());
+			mv.addObject("reviewRight", reviewRight);
+		}
 		return mv;
 	}
 
