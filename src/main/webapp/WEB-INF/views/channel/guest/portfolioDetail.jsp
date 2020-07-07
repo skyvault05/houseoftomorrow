@@ -48,9 +48,9 @@ $(document).ready(function() {
 	         success:function(result){
 	            var image = document.getElementById("favoritePortfolio");
 	              if (result==1) {
-	                image.src = "/plugins/images/heart_off.png";
+	            	  $('#favoritePortfolio').css('color', '#424242');
 	              } else {
-	                image.src = "/plugins/images/heart_on.png";
+	            	  $('#favoritePortfolio').css('color', 'red');          
 	              }
 	         }
 	      });
@@ -66,10 +66,12 @@ $(document).ready(function() {
 	         dataType:"json",
 	         success:function(result){
 	            var image = document.getElementById("favoritePortfolio");
-	            if (result==1) {
-	                image.src = "/plugins/images/heart_on.png";
-	              } else {
-	                image.src = "/plugins/images/heart_off.png";
+	            if ($('#favoritePortfolio').css('color')=='rgb(255, 0, 0)') {
+	            	  $('#favoritePortfolio').css('color', '#424242');
+	            	  $('#favPort').text(parseInt($('#favPort').text())-1);
+	              }else {
+	            	  $('#favoritePortfolio').css('color', 'red');
+	            	  $('#favPort').text(parseInt($('#favPort').text())+1);
 	              }
 	         }
 	      });}
@@ -265,8 +267,10 @@ ${port.portDescription}
             <span><fmt:formatDate value="${port.portRegdate}" pattern="yyyy년 MM월 dd일 HH시 mm분"/></span><p>
             <span>시공사: ${port.channel.constructor.conName}</span><p>
             <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
-                     <img style="cursor: pointer; width: 8%; height: 8%;" id="favoritePortfolio"  src="/plugins/images/heart_off.png"/>
-                     <strong>${fn:length(favPort)}</strong>
+                     <button class="btn user-profile_actions__etc" type="button">
+                              <ion-icon id="favoritePortfolio" name="heart"></ion-icon>
+                              <span id="favPort">${fn:length(favPort)}</span>
+                     </button>
             </sec:authorize>
             </li>
         </ul>
