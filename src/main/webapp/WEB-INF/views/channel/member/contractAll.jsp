@@ -51,7 +51,7 @@ $(function(){
 				$(obj).each(function(index, element){
 					var str = "<tr><td>";
 					str += index + 1;
-					str += "</td><td><a href='#'>" + element.constructorName + "시공사</a>";
+					str += "</td><td><a href='#'>" + element.constructorName + " (시공사)</a>";
 					str += "<input type='hidden' name='consulNo' value='" + element.consulting.consulNo + "'></td><td>";
 					var date = new Date(element.contractTime);
 					var year = date.getFullYear();
@@ -86,7 +86,7 @@ $(function(){
 				$(obj).each(function(index, element){
 					var str = "<tr><td>";
 					str += index + 1;
-					str += "</td><td><a href='#'>" + element.memberName + "님</a>";
+					str += "</td><td><a href='#'>" + element.memberName + "님 (일반회원)</a>";
 					str += "<input type='hidden' name='consulNo' value='" + element.consulting.consulNo + "'></td><td>";
 					var date = new Date(element.contractTime);
 					var year = date.getFullYear();
@@ -148,17 +148,7 @@ $(function(){
 		<section class="expert-calculate__content" style="margin: 0 auto; width: 85%">
 				<div class="expert-calculate__content__header">
 					<h3 class="expert-calculate__content__header__title">계약 목록</h3>
-					<div class="alert alert-danger alert-dismissible" role="alert">
-					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					  <strong>시공상담!</strong> 시공 계약 내용을 확인할 수 있습니다.
-					</div>
-					
-					<div class="alert alert-warning textaline" role="alert" id="description">					
-					</div>
 				</div>
-				
-			
-		
 <p>
 
 <div class="row">
