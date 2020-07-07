@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import hot.channel.domain.Channel;
 import hot.channel.repository.ChannelRepository;
+import hot.consulting.domain.Consulting;
+import hot.consulting.repository.ConsultingRepository;
 import hot.member.domain.Member;
 import hot.member.repository.MemberRepository;
 import hot.review.domain.Review;
@@ -26,6 +28,9 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Autowired
 	private MemberRepository memberRep;
+	
+	@Autowired
+	private ConsultingRepository consultingRep;
 	
 	
 	@Override
@@ -127,5 +132,17 @@ public class ReviewServiceImpl implements ReviewService {
 	public Page<Review> selectAll(Pageable pageable, Channel channel) {		
 		Page<Review> page = reviewRep.findByChannelNoAndReviewStatus(pageable, channel, 1);
 		return page;
+	}
+
+	@Override
+	public boolean checkReviewRight(Integer chNo, Integer memberNo) {
+		Member member = memberRep.findById(memberNo).orElse(null);		
+		List<Consulting> consultingList = consultingRep.findByMemberNoAndChNoAndConsulStatus(memberNo, chNo, 2);
+		System.out.println(consultingList.size());
+		
+		List<Review> reviewList = reviewRep.findByMemberAndReviewStatus(member, 1);
+		System.out.println(reviewList.size());
+		
+		return consultingList.size()>reviewList.size();
 	}
 }

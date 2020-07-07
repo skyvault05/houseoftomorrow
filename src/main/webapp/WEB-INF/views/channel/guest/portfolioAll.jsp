@@ -9,27 +9,6 @@
 <meta charset="UTF-8">
 <title>내일의 집</title>
 
-<!-- bootstrap--> <link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/jquery.fancybox.min.css">
-
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/main.css">
-  <link rel="stylesheet" type="text/css" href="/css/channel/channel.css">
-
-  <!-- WebFont -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-  
 </head>
 <body>
 <br><br>
@@ -76,10 +55,10 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <c:forEach begin="0" end="${totalPage-1}" var="i">
 	<c:choose>
 		<c:when test="${i==nowPageNum }">
-			[<a href="${pageContext.request.contextPath}/channel/guest/portfolioAll?nowPage=${i}" style="color:red"> ${i+1} </a>] &nbsp;
+			<a class="paginator__page selected" href="${pageContext.request.contextPath}/channel/guest/portfolioAll?nowPage=${i}"> ${i+1} </a> &nbsp;
 		</c:when>
 		<c:otherwise>
-			[<a href="${pageContext.request.contextPath}/channel/guest/portfolioAll?nowPage=${i}">${i+1}</a>] &nbsp;
+			<a class="paginator__page" href="${pageContext.request.contextPath}/channel/guest/portfolioAll?nowPage=${i}">${i+1}</a> &nbsp;
 		</c:otherwise>
 	</c:choose>
 </c:forEach>  
