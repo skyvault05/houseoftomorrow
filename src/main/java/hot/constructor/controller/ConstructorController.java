@@ -235,6 +235,24 @@ public class ConstructorController {
 		
 		return mv;
 	}
+	
+	/**
+	 * 채널별로 작성한 포트폴리오 보기
+	 * */
+	@RequestMapping("/channel/guest/channelPortfolio/{chNo}")
+	public ModelAndView chPortfolio(@ModelAttribute(name="chNo")Integer chNo, @RequestParam(defaultValue = "0")int nowPage) {
+		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "portNo");
+		Page<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo, page);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("channel/guest/channelPortfolio");
+		mv.addObject("portList", portList.getContent());
+		mv.addObject("totalPage", portList.getTotalPages());
+		mv.addObject("nowPageNum", portList.getNumber());
+		
+		return mv;
+	}
 
 }
 

@@ -96,7 +96,7 @@ initial-scale=1, shrink-to-fit=no">
                   <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}" class="nav-link ch_detail" target="_self">리뷰</a>
                </li>
                <li class="nav-item">
-                  <a href="" class="nav-link ch_detail" target="_self">포트폴리오</a>
+                  <a href="${pageContext.request.contextPath}/channel/guest/channelPortfolio/${channel.chNo}" class="nav-link ch_detail" target="_self">포트폴리오</a>
                </li>
             </ul>
          </nav>
@@ -237,7 +237,7 @@ initial-scale=1, shrink-to-fit=no">
 	                  	<a class="" href="/channel/constructor/portfolioForm">포트폴리오 쓰기</a>
 	                  </c:if>
                   </sec:authorize>
-                  <a class="" href="#">전체보기</a>
+                  <a class="" href="${pageContext.request.contextPath}/channel/guest/channelPortfolio/${channel.chNo}">전체보기</a>
                   </span>
                </h5>
                <div class="post--contents__list-wrap">
