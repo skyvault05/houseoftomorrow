@@ -45,8 +45,9 @@ public class EstimateController {
 		estimate.setTile(tile);
 		
 		System.out.println(estimate.getEstDescription());
-		estimateService.insertEstimate(estimate, memberNo);
-		return "/estimate/member/requestForm";
+		Estimate newEst = estimateService.insertEstimate(estimate, memberNo);
+		
+		return "redirect:/viewEstimateDetail/"+newEst.getEstNo();
 	}
 	
 	@RequestMapping("/myEstimateList/{memberNo}")

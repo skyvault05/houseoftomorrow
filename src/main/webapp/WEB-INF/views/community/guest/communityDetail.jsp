@@ -326,7 +326,7 @@ function delchk(){
 						<span class="comment-feed__header__count">${fn:length(comment)}</span>	
 					</h5>
 					<!-- 댓글창 -->
-					<form class="comment-feed__form" id = "commentInsertForm" name="commentInsertForm" method="post" action="${pageContext.request.contextPath}/community/insertComment"">
+					<form class="comment-feed__form" id = "commentInsertForm" name="commentInsertForm" method="post" action="${pageContext.request.contextPath}/community/insertComment">
 						<input type="hidden" name="comNo" value="${community.commNo}"/>
 		                <input type="hidden" name="membNo"  value="${user.memberNo}"/>
 		                <input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
@@ -337,7 +337,7 @@ function delchk(){
 						<div class="comment-feed__form__input">
 							<div class="comment-feed__form__content">
 								<div class="comment-content-input">
-									<input class="comment-content-input__text comment-feed__form__content__text" name="estRespDescription" type="text" placeholder="내용을 입력해주세요 :)" />
+									<input class="comment-content-input__text comment-feed__form__content__text" name="commCommentDescription" type="text" placeholder="내용을 입력해주세요 :)" />
 								</div>
 							</div>
 							<div class="comment-feed__form__actions">
@@ -349,7 +349,7 @@ function delchk(){
 					</sec:authorize>
 					<!-- 댓글내용 -->
 					<ul class="comment-feed__list">
-				      <c:forEach items="${responseList}" var="response" varStatus="status">
+				      <c:forEach items="${comment}" var="comment" varStatus="status">
 						<li class="comment-feed__list__item">
 							<article class="comment-feed__item">
 								<p class="comment-feed__item__content">
@@ -358,12 +358,16 @@ function delchk(){
 										<span class="comment-feed__item__content__author__name">${comment.member.memberName}</span>
 									</a>
 									<span class="comment-feed__item__content__content">${comment.commCommentDescription}</span>
+									<span class="comment-feed__item__content__date"><fmt:formatDate value="${comment.commCommentRegdate}" pattern="yyyy-MM-dd HH:mm"/></span>
+									&nbsp;&nbsp;&nbsp;
+									<sec:authentication var="user" property="principal" />
+								    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">				
+										<c:if test="${comment.member.memberNo == user.memberNo}">
+											<a class ="delComment" href="${pageContext.request.contextPath}/community/deleteComment?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}">덧글 삭제</a></p>
+										</c:if>
+									</sec:authorize>
 								</p>
 								
-								<div class="comment-feed__item__footer">
-									<a href="#" class="comment-feed__item__footer_esti"><fmt:formatDate value="${comment.commCommentRegdate}" pattern="yyyy년 MM월 dd일 "/></a>
-									
-								</div>
 							</article>
 						
 						</li>
@@ -387,27 +391,13 @@ function delchk(){
 									<span class="card-detail-writer__name">${community.member.memberName}</span>
 								</a>
 								<button class="btn btn-primary card-detail-writer__follow" type="button">팔로우</button>
-							</div>
-							
+							</div>							
 						</div>
-					
-					
 					</div>
-				</div>
-			
-			</div>
-		
-		</div>
-	
-	
-	
+				</div>			
+			</div>		
+		</div>	
 	</div>
-
-
 </div>
-
-
 </body>
-
-
 </html>

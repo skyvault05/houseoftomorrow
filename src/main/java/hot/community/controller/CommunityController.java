@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -196,13 +197,17 @@ public class CommunityController {
 	 * 덧글 등록
 	 * */
 	@RequestMapping("/insertComment")
-	public String insertCommComment(CommComment comment, Integer membNo, Integer comNo) {
-		comment.setCommunity(communityRepository.findById(comNo).orElse(null));
-		comment.setMember(memberRepository.findById(membNo).orElse(null));
+	public String insertCommComment(String commCommentDescription, Integer membNo, Integer comNo) {
+		CommComment comm = new CommComment();
 		
-		commCommentService.insertCommComment(comment);
+		comm.setCommCommentDescription(commCommentDescription);
 		
-		int commNo = comment.getCommunity().getCommNo();
+		comm.setCommunity(communityRepository.findById(comNo).orElse(null));
+		comm.setMember(memberRepository.findById(membNo).orElse(null));
+		
+		commCommentService.insertCommComment(comm);
+		
+		int commNo = comm.getCommunity().getCommNo();
 		
 		return "redirect:/community/guest/detail/"+commNo;
 	}

@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "comm_comment")
+@Table(name = "[comm_comment]")
 @Setter
 @Getter
 @NoArgsConstructor
