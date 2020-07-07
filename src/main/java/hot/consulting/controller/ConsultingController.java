@@ -14,11 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hot.aws.S3Manager;
-import hot.channel.domain.Channel;
 import hot.consulting.domain.Consulting;
 import hot.consulting.domain.Contract;
+import hot.consulting.dto.ContractDTO;
 import hot.consulting.service.ConsultingService;
-import hot.member.domain.Member;
 
 @Controller
 public class ConsultingController {
@@ -215,5 +214,22 @@ public class ConsultingController {
 	public Timestamp contractDate(Integer consulNo){
 
 		return null;
+	}
+	
+	@ResponseBody
+	@PostMapping("/member/consultingComplete")
+	public List<ContractDTO> consultingComplete(Integer memberNo){
+		List<ContractDTO> list = consultService.selectUserContractComplete(memberNo);
+		return list;
+	}
+
+	/**
+	 * 시공사 완료된 상담 가져오기
+	 */
+	@ResponseBody
+	@PostMapping("/constructor/consultingComplete")
+	public List<ContractDTO> consultingConComplete(Integer chNo){
+		List<ContractDTO> list = consultService.selectConContractComplete(chNo);
+		return list;
 	}
 }
