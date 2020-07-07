@@ -61,7 +61,7 @@
 <form class="expert-calculate" novalidate action="${pageContext.request.contextPath}/review/updateReview" method="post">
  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
  <input type="hidden" name="memberNo" value="${user.memberNo}">
- <input type="hidden" name="chaNo" value="1"><!-- 여기 꼭 value 값 바꿔야된다. -->
+ <input type="hidden" name="chaNo" value="${review.channel.chNo}"><!-- 여기 꼭 value 값 바꿔야된다. -->
  <input type="hidden" name="reviewNo" value="${param.reviewNo}"/>
  <input type="hidden" name="reviewRegdate" value="${review.reviewRegdate}"/>
 <div class="expert-calculate__main-wrap container">

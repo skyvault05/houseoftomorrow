@@ -62,7 +62,10 @@
 <div class="row justify-content-center">
 	<h2>${qna.qnaTitle}</h2>
 </div>
-<div class="row">
+<div class="rows">
+<br><br>
+</div>
+<div class="rows">
 <c:choose>
 	<c:when test="${qna.qnaCategory.qnaCategoryNo==14}">
 		<h4>[ 결제 ]</h4>
@@ -78,18 +81,18 @@
 	</c:when>
 </c:choose>
 </div>
-<div class="row">
+<div class="rows">
 <p>${qna.member.memberName}</p>&nbsp;&nbsp;&nbsp;&nbsp; 
 <p><fmt:formatDate value="${qna.qnaRegdate}" pattern="yyyy-MM-dd HH:mm"/></p>
 </div>
 <span class="row border">
 ${qna.qnaDescription}
 </span><!-- span row end -->
-<div class="row"><br><br></div>
-<div class="row">
+<div class="rows"><br><br></div>
+<div class="rows">
 <a class="click" href="${pageContext.request.contextPath}/qna/list/${qna.qnaCategory.qnaCategoryNo}">목록으로</a>
 </div><!-- row end -->
-<div class="row">
+<div class="rows">
 <sec:authentication var="user" property="principal" />
    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	<c:choose>
@@ -99,7 +102,7 @@ ${qna.qnaDescription}
 	</c:choose><p>
 </sec:authorize>
 </div><!-- row end -->
-<div class="row">
+<div class="rows">
 <sec:authorize access="hasRole('ROLE_ADMIN') and isAuthenticated()">
 <a class="click"   href="${pageContext.request.contextPath}/qna/replyForm?qnaParentNo=${qna.qnaNo}">답글달기</a>
 <c:choose>
@@ -110,11 +113,11 @@ ${qna.qnaDescription}
 </sec:authorize>
 </div>
 <br><hr id="line"><br>
-<div class="row">
+<div class="rows">
 <c:if test="${not empty qnaParent}">
-<h3 class="col-md-12">'${qna.qnaTitle}'에 대한 답글</h3>
+<h4 class="col-md-12">'${qna.qnaTitle}'에 대한 답글</h4>
 <c:forEach items="${qnaParent}" var="qnaParent">
-<h2 class="col-md-12">${qnaParent.qnaTitle}</h2>
+<h3 class="col-md-12">${qnaParent.qnaTitle}</h3>
 <span class="row border col-md-12">
 ${qnaParent.qnaDescription}
 </span>
