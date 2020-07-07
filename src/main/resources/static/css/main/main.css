@@ -453,6 +453,6 @@ a.menuicon {color:#424242!important;}
 .empty-space {padding-bottom: 5em;}
 
 /*-----------호버녀석덜-----------------*/
-.review_submenu_link, .my_write_community {color:#424242;}
+.review_submenu_link, .my_write_community, .port__link {color:#424242;}
 .review_submenu_link:hover {color:#33f0c0; font-weight:bold; transition:0.2s;}
-.my_write_community:hover{color:#33f0c0;}
+.my_write_community:hover, ..port__link:hover{color:#33f0c0;}

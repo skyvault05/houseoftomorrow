@@ -413,17 +413,19 @@
 #content #user_action>.contents>.buttons {
     overflow: hidden;
 }
-#content #user_action>.contents>.sharing_info {
-    margin-bottom: 20px;
-    margin: 20px 0 30px;
+.sharing_info {
     overflow: hidden;
+    border-bottom: 1px solid #ededed;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
 }
-#content #user_action>.contents>.sharing_info>.label {
-    float: left;
-    margin-right: 5px;
+.sharing_info>.label {
+    //float: left;
+    //margin-right: 5px;
     font-size: 12px;
     font-weight: bold;
     line-height: 15px;
+    margin:10px 0px;
 }
 .ui-content-share {
     overflow: hidden;
@@ -483,27 +485,52 @@
     background-size: 400px;
     background-position: top -146px left -180px;
 }
-#content #writer {
-    padding: 0 20px;
-    border: none;
-}
-#writer>.wrap {
-    border-top: 1px solid #eeeeee;
-}
-#content #writer>.wrap>a>.profile_image {
-	
-    float: left;
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    margin-right: 18px;
-    background-size: cover;
-    background-position: center;
-    background-image: url;
-}
+
 .ui-content-share .icon:after {
     content: "";
     display: block;
     margin: 5px auto;
 }
+.btn-follow-user {
+    float: right;
+    margin-top: 5px;
+    cursor: pointer;
+    padding: 8px 0;
+    width: 50px;
+    height: 30px;
+    font-size: 11px;
+    color: #757575;
+    border-color: #dcdcdc;
+    background-color: #ffffff;
+    text-align: center;
+    position: relative;
+}
+.user-action__new-consultation-link {
+    background-color: #33f0c0;
+}
+.user-action__new-consultation-link {
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    margin-top: 16px;
+    width: 290px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 15px 0;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
 
+.card-detail-writer__introduction {
+    display: block;
+    color: #757575;
+    font-size: 12px;
+    line-height: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
