@@ -13,8 +13,6 @@ import hot.channel.repository.ChannelRepository;
 import hot.channel.repository.FavoriteChannelRepository;
 import hot.channel.repository.FavoritePortfolioRepository;
 import hot.channel.service.ChannelService;
-import hot.community.domain.CommComment;
-import hot.community.domain.Community;
 import hot.community.repository.CommCategoryRepository;
 import hot.community.repository.CommCommentRepository;
 import hot.community.repository.CommunityRepository;
@@ -24,7 +22,7 @@ import hot.consulting.repository.ConsultingRepository;
 import hot.consulting.repository.ContractRepository;
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
-import hot.member.domain.Order;
+import hot.member.domain.Member;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
@@ -271,6 +269,9 @@ class HouseoftomorrowApplicationTests {
 		
 //		orderRep.save(new Order(null, constructorRepository.findById(26).orElse(null), portRep.findById(78).orElse(null), null, 1000, "card", "card", 1));
 		
+		Member member = memberRep.findById(26).orElse(null);
+		member.setMemberPwd(passwordEncoder.encode("1234"));
+		memberRep.save(member);
 	}
 }
 	

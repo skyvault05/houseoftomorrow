@@ -17,6 +17,9 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberRoleRepository memberRoleRep;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	private PasswordEncoder encoder = new BCryptPasswordEncoder();
 	
 	@Override
@@ -35,9 +38,15 @@ public class MemberServiceImpl implements MemberService{
 
 
 	@Override
-	public int memberUpdate(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void memberUpdate(Member member, String currentPassword) {
+		Member dbMember = memberRep.findById(member.getMemberNo()).orElse(null);
+		if(!passwordEncoder.matches(currentPassword, dbMember.getMemberPwd())) {
+			throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+		}
+		dbMember.setMemberPwd(passwordEncoder.encode(member.getMemberPwd()));
+		dbMember.setMemberName(member.getMemberName());
+		dbMember.setMemberPhone(member.getMemberPhone());
+		memberRep.save(dbMember);
 	}
 
 	@Override
@@ -74,5 +83,10 @@ public class MemberServiceImpl implements MemberService{
 			name = member.getMemberName();
 		}
 		return name;
+	}
+
+	@Override
+	public Member findMemberByMemberNo(Integer memberNo) {		
+		return memberRep.findById(memberNo).orElse(null);
 	}
 }

@@ -24,6 +24,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "member")
@@ -33,6 +34,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+@ToString
 public class Member{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
