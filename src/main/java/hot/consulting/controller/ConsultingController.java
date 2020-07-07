@@ -216,6 +216,7 @@ public class ConsultingController {
 		return null;
 	}
 	
+	@ResponseBody
 	@PostMapping("/member/consultingComplete")
 	public List<ContractDTO> consultingComplete(Integer memberNo){
 		List<ContractDTO> list = consultService.selectUserContractComplete(memberNo);
