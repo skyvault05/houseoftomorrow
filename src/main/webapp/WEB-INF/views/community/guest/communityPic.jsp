@@ -71,7 +71,9 @@
 		 <!-------사진들어가는부분쓰------->
           <div class="card-item__image">
 	          <div class="card-item-image">
+	          <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}" class="card-item__content__link">
 	            <img class="image"src="${list.commImg}" alt="등록사진">
+	            </a>
 	          </div>
 	      </div>
           <!---아이콘ㄱㄱ--->
@@ -95,7 +97,7 @@
           </aside>
           <!------사용자 정보가져오긔----->
           <div class="card-item__content" id="">
-            <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}" class="card-item__content__link"></a>
+            <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}" class="card-item__content__link"></a>
             <div class="expandable-text card-item-description card-item__description expandable">${fn:substring(list.commTitle, 0, 10)}</div>
             
           </div>

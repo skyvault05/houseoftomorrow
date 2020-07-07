@@ -170,7 +170,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                            <ul class="drop-down__list">
                               <li>
                               <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                                 <a href="${pageContext.request.contextPath}/review/reviewform?memberNo=${user.memberNo}&chNo=1" id="insertReview">리뷰쓰기</a>
+                                 <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
                                  <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                               </sec:authorize>
                               <button type="button">팔로우</button></li>
@@ -218,7 +218,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(realReviewList)}</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                     <a href="${pageContext.request.contextPath}/review/reviewform?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
+                     <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
                   </sec:authorize>
                   <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                </h5>

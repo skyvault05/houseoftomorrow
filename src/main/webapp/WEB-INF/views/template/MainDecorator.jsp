@@ -66,7 +66,8 @@
                   <li><a class="dropdown-item" href="/">시공홈</a></li>
                   <li><a class="dropdown-item" href="/estimate">견적요청</a></li>
                  <!--  <li><a class="dropdown-item" href="#">전문가찾기</a></li> -->
-                  <li><a class="dropdown-item" href="/channel/guest/portfolioAll">포트폴리오</a></li>
+                 <li><a class="dropdown-item" href="/channel/channelAll">채널</a></li>
+                 <li><a class="dropdown-item" href="/channel/guest/portfolioAll">포트폴리오</a></li>
               	</ul>
               </div>
             </li>
@@ -97,7 +98,7 @@
    	<sec:authorize access="isAuthenticated()">   
    		 <div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
-                <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
+                <a href="${pageContext.request.contextPath}/myFavoriteChannel/${user.memberNo}"><ion-icon name="bookmark-outline" class="icon ion"></ion-icon></a>
                 <ion-icon name="notifications-outline" class="icon ion"></ion-icon>
                 <div class="dropdown submenu">  
                   <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
@@ -108,6 +109,7 @@
 		            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
 		            </sec:authorize>
                     <a href="/" class="dropdown-item updateInfo">회원정보수정</a>
+                    <a href="/member/consultingAllPage" class="dropdown-item Consulting">상담내역</a>
                     <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
                     <a href="/review/myReview/${user.memberNo}" class="dropdown-item writeList">내가쓴글</a>
                     <a href="/logout" class="dropdown-item logout">로그아웃</a>

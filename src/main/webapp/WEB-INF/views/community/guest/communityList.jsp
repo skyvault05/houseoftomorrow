@@ -71,9 +71,6 @@
 
 <div class="row justify-content-center">
 <c:choose>
-	<c:when test="${commCategoryNo==4}"><h3>사진</h3></c:when>
-</c:choose>
-<c:choose>
 	<c:when test="${commCategoryNo==5}"><h3>노하우</h3></c:when>
 </c:choose>
 &nbsp;
@@ -85,8 +82,8 @@
                 <c:forEach items="${requestScope.list}" var="list" varStatus="status">
                    <div class="col-md-3">
                    <div style="relative">
-                        <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}"><img src="${list.commImg}" class="card-img-top rounded" alt="blog"></a>
-                        <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
+                        <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}"><img src="${list.commImg}" class="card-img-top rounded" alt="blog"></a>
+                        <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}">
                           <p class="card-text title">${list.commTitle}</p>
                           <div class="card-text content" style="margin-bottom:15px;">조회수 ${list.commReadnum}</div>
                         </a>

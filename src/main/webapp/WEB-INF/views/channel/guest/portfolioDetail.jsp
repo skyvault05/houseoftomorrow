@@ -211,68 +211,6 @@ img{
 
 </head>
 <body>
-
-
-<%--<div class="container">
-<div class="row col-md-12">
-	<img src="${port.portImg}">
-</div><br><br>
-<span class="row border col-md-11">
-${port.portDescription}
-</span><!-- span row end -->
-	
-    <div class="rows floating-menu">
-        <ul>
-            <li class="m">
-			<p id="topTitle"><b>온라인 집들이</b></p>
-            <span id="title"><b>${port.portTitle}</b></span><p>
-            <span><fmt:formatDate value="${port.portRegdate}" pattern="yyyy년 MM월 dd일 HH시 mm분"/></span><p>
-            <span>시공사: ${port.channel.constructor.conName}</span><p>
-            <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
-                     <img style="cursor: pointer; width: 10%; height: 10%;" id="favoritePortfolio"  src="/plugins/images/heart_off.png"/>
-                     <strong>${fn:length(favPort)}</strong>
-            </sec:authorize>
-            </li>
-        </ul>
-    </div>
-    <br><br>
-    <div class="rows">
-    <hr id = "line" class="col-md-10"><br>
-    </div>
-    <div class="user_profile__conatiner">
-     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${port.channel.chNo}"><img class="user_proifle__image" src="${port.channel.chImg}"/></a><p>
-     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${port.channel.chNo}">${port.channel.constructor.conName}</a><p>
-     <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${port.channel.chNo}">${port.channel.chDescription}</a>
-     </div>
-	<div class="rows">
-	<br>
-	</div>
-	<div class="rows">
-    <hr id = "line" class="col-md-10"><br>
-    </div>
-	<div class="rows">
-	<a class="click" href="${pageContext.request.contextPath}/channel/guest/portfolioAll">목록으로</a><p>
-	</div>
-	<div class="rows">
-    <sec:authentication var="user" property="principal" />
-<<<<<<< HEAD
-=======
-    <%-- 글쓴이: ${community.member.memberNo}<p>
-    로그인한사람: ${user.memberNo} 
->>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
-    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-		<c:choose>
-			<c:when test="${port.channel.constructor.member.memberNo == user.memberNo}">
-				<a class="click" onclick="return delchk()" href="${pageContext.request.contextPath}/channel/constructor/deletePortfolio?portNo=${port.portNo}">게시글 삭제하기</a>
-			</c:when>
-		</c:choose>
-	</sec:authorize>
-	</div>
-	<br><br>
-</div>
-</body> --%>
-
-<body>
 <div class="container">
 <div class="row">
 <div class="col-md-8">
@@ -301,14 +239,10 @@ ${port.portDescription}
 	<a class="click" href="${pageContext.request.contextPath}/channel/guest/portfolioAll">목록으로</a><p>
 	</div>
 	<div class="rows">
-	★★★★★★? 게시자로 로그인했을 때 포트폴리오 수정 / 삭제 어케할지 ?★★★★★★
-    <sec:authentication var="user" property="principal" />
-    글쓴이: ${community.member.memberNo}<p>
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose>
-			<c:when test="${community.member.memberNo == user.memberNo}">
-				<a class="click" href="${pageContext.request.contextPath}/community/updateCommunity?commNo=${community.commNo}"}>게시글 수정하기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a class="click" onclick="return delchk()" href="${pageContext.request.contextPath}/community/delete?commNo=${community.commNo}&commCategoryNo=${community.commCategory.commCategoryNo}">게시글 삭제하기</a>
+			<c:when test="${port.channel.constructor.member.memberNo == user.memberNo}">
+				<a class="click" onclick="return delchk()" href="${pageContext.request.contextPath}/channel/constructor/deletePortfolio?portNo=${port.portNo}">게시글 삭제하기</a>
 			</c:when>
 		</c:choose>
 	</sec:authorize>
@@ -340,7 +274,7 @@ ${port.portDescription}
 
 </div>
 
- 
+ </div>
  
 </body>
 </html>

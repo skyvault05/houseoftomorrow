@@ -61,8 +61,9 @@ public class portfolioServiceImpl implements PortfolioService{
 	
 	@Override
 	public List<Portfolio> findAllPortfolio() {
+		List<Portfolio> portAll = portRep.findByPortStatus(1);
 		
-		return null;
+		return portAll;
 	}
 	
 	@Override
@@ -98,6 +99,9 @@ public class portfolioServiceImpl implements PortfolioService{
 		Portfolio dbPortfolio = portRep.findById(portNo).orElse(null);
 		Order dbOrder = orderRep.selectByPortfolioNo(dbPortfolio.getPortNo());
 		dbPortfolio.setPortStatus(0);
-		dbOrder.setOrderStatus(2);
+		
+		if(dbOrder != null) {
+			dbOrder.setOrderStatus(2);
+		}		
 	}
 }
