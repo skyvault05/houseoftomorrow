@@ -15,7 +15,7 @@
   </head>
   
   <body>
-
+  <sec:authentication property="principal" var="user"/>
   <div class="container-flude submenu_borderbottom">
 	<div class="wrap-submenu">
 		<div class="mypage-nav">
@@ -119,12 +119,14 @@
 			          </div> --%>
 			      
 			      
-		<!-- --------------시공사답변 by쟌 ---------------->	  
+		<!-- --------------시공사답변 by쟌 ---------------->	
+		 
 		<div class="card-detail-comment-section">
 			<section class="comment-feed">
 			<!-- 댓글 -->
+			<sec:authorize access="hasRole('ROLE_CONSTRUCTOR')"> 
 				<h5 class="comment-feed__header"> 댓글 &nbsp;
-					<span class="comment-feed__header__count">'댓글수써주셈'</span>	
+					<span class="comment-feed__header__count">${responseList.size()}</span>	
 				</h5>
 				<!-- 댓글창 -->
 				<form class="comment-feed__form" action="/estimate/constructor/registerEstimateResponse" method="post">
@@ -146,10 +148,10 @@
 					
 					</div>
 				</form>
-				
+				</sec:authorize>
 				<!-- 댓글내용 -->
 				<ul class="comment-feed__list">
-			<%-- 	<c:forEach items="${responseList}" var="response" varStatus="status"> --%>
+			      <c:forEach items="${responseList}" var="response" varStatus="status">
 					<li class="comment-feed__list__item">
 						<article class="comment-feed__item">
 							<p class="comment-feed__item__content">
@@ -161,13 +163,13 @@
 							</p>
 							
 							<div class="comment-feed__item__footer">
-								<a href="#" class="comment-feed__item__footer_esti">상담하기??</a>
-								<a href="/channel/guest/channelDetail/${response.channel.chNo}" class="comment-feed__item__footer_esti">채널방문??</a>
+								<a href="/member/consultingForm?chNo=${user.chNo}" class="comment-feed__item__footer_esti">상담하기</a>
+								<a href="/channel/guest/channelDetail/${response.channel.chNo}" class="comment-feed__item__footer_esti">채널방문</a>
 							</div>
 						</article>
 					
 					</li>
-			<%-- 	</c:forEach> --%>
+			     </c:forEach>
 				</ul>
 			</section>
 						

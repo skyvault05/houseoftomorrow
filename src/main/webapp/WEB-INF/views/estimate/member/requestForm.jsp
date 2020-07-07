@@ -16,10 +16,10 @@
   </head>
   
   <body>
-<div class="empty-space"></div>
+
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
-<section class="pt-6">
+<section class="pt-5">
 <form class="expert-calculate" action="/estimateResult">
 <sec:authorize access="isAuthenticated()">
 <input type='hidden' name='memberNo' value='${user.memberNo}'>
