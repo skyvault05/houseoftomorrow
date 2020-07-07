@@ -49,7 +49,7 @@
 <title>내일의 집</title>
 <script>
 	$(function(){
-		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting"
+		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting";
 			$.ajax({
 			url : strUrl,
 			method : "post",
