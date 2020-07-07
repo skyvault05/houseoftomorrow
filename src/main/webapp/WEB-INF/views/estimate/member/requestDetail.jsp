@@ -28,10 +28,10 @@
 						<a href="/myEstimateList/${user.memberNo}" class="nav-link" target="_self">견적 요청 내역</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link" target="_self">내 상담 내역</a>
+						<a href="/member/consultingAllPage" class="nav-link" target="_self">내 상담 내역</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link" target="_self">내가 쓴 글</a>
+						<a href="/review/myReview/${user.memberNo}" class="nav-link" target="_self">내가 쓴 글</a>
 					</li>
 				</ul>
 			</nav>
