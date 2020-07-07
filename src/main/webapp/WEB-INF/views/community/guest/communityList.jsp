@@ -85,8 +85,10 @@
                 <c:forEach items="${requestScope.list}" var="list" varStatus="status">
                    <div class="col-md-3">
                    <div style="relative">
-                        <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}"><img src="${list.commImg}" class="card-img-top rounded" alt="blog">
-                       <%--  <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}"> --%>
+
+                        <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}"><img src="${list.commImg}" class="card-img-top rounded" alt="blog" style="width: 255px; height: 255px;"></a>
+                        <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}">
+
                           <p class="card-text title">${list.commTitle}</p>
                           <div class="card-text content" style="margin-bottom:15px;">조회수 ${list.commReadnum}</div>
                         </a>

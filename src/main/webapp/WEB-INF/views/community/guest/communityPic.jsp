@@ -51,7 +51,7 @@
            <div class="card-item-writer">
              <address class="card-item-writer__content">
                <div class="card-item-writer__header">
-                 <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}" class="card-item-writer__link">
+                 <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}" class="card-item-writer__link">
                   <!----작성자사진쓰----->
                    <img class="card-item-writer__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="작성자사진">
                    	<!-- 작성자이름 -->
@@ -95,7 +95,7 @@
           </aside>
           <!------사용자 정보가져오긔----->
           <div class="card-item__content" id="">
-            <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}" class="card-item__content__link"></a>
+            <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}" class="card-item__content__link"></a>
             <div class="expandable-text card-item-description card-item__description expandable">${fn:substring(list.commTitle, 0, 10)}</div>
             
           </div>
