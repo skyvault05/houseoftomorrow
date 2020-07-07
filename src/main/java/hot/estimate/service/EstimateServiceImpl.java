@@ -24,10 +24,10 @@ public class EstimateServiceImpl implements EstimateService {
 	@Autowired
 	private ChannelRepository chRep;
 	@Override
-	public void insertEstimate(Estimate estimate, Integer memberNo) {
+	public Estimate insertEstimate(Estimate estimate, Integer memberNo) {
 		Member member = memberRepository.findById(memberNo).orElse(null);
 		estimate.setMember(member);
-		estimateRep.save(estimate);
+		return estimateRep.save(estimate);
 	}
 	@Override
 	public List<Estimate> estList(Integer memberNo) {

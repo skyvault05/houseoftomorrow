@@ -41,6 +41,7 @@ var pwdCheck = false;
 					},
 					success: function(response){
 						if(response == "possible"){
+							alert("사용 가능한 아이디 입니다.");
 							idCheck=true;
 						}else{
 							alert("중복된 아이디 입니다.");
@@ -64,10 +65,12 @@ var pwdCheck = false;
 					data: {
 						memberPhone : $('#phone').val()
 					},
-					success: function(response){
-						alert(response);
+					success: function(response){						
 						if(response == "possible"){
 							phoneCheck=true;
+							alert('사용 가능한 핸드폰 번호입니다.');
+						}else{
+							alert('사용 불가능한 핸드폰 번호입니다.');
 						}
 					},
 					error: function(e){
