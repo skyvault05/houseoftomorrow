@@ -37,10 +37,10 @@
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 
-<div class="empty-space"> </div>
+
   <!----------------------------------------- TEST ----------------------------------------->
 
-  <div class="container">
+  <div class="container pt-4">
   <div class="virtualized-list card-feed__content row">
 <c:forEach items="${requestScope.list}" var="list" >
  <!-------------------- START communityPic ------------------------->
@@ -51,7 +51,7 @@
            <div class="card-item-writer">
              <address class="card-item-writer__content">
                <div class="card-item-writer__header">
-                 <a href="${pageContext.request.contextPath}/community/detail/${list.commNo}" class="card-item-writer__link">
+                 <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}" class="card-item-writer__link">
                   <!----작성자사진쓰----->
                    <img class="card-item-writer__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="작성자사진">
                    	<!-- 작성자이름 -->
@@ -117,6 +117,7 @@
               </a>
             </article>
           </div>
+          <br><br>
   <!-----end comment------>
 
          </article><!----end card-item----->

@@ -108,10 +108,13 @@ public class CommunityController {
 	 * @throws IOException 
 	 * */
 	@RequestMapping("/update")
-	public String updateCommunity(@ModelAttribute("community")Community community, MultipartFile file ) throws IOException {
+	public String updateCommunity(@ModelAttribute("community")Community community, MultipartFile file) throws IOException {
+		System.out.println(file.getSize());
+		if(file.getSize()>0) {
+			String imgPath = s3Manager.saveUploadedFiles(file);
+			community.setCommImg(imgPath);
+		}
 		
-		String imgPath = s3Manager.saveUploadedFiles(file);
-		community.setCommImg(imgPath);
 		communityService.updateCommunity(community);
 		
 		return "redirect:/community/guest/detail/"+community.getCommNo();
