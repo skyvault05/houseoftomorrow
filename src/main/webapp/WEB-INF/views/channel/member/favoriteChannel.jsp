@@ -39,7 +39,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 				<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
 					<ul class="navbar-nav mypage">
 						<li class="nav-item">
-							<a href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}" class="nav-link" target="_self">관심 채널</a>
+							<a style="color:#33f0c0" href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}" class="nav-link" target="_self">관심 채널</a>
 						</li>
 						<li class="nav-item">
 							<a href="${pageContext.request.contextPath}/channel/myFavoritePortfolio/${user.memberNo}" class="nav-link" target="_self">관심 포트폴리오</a>
