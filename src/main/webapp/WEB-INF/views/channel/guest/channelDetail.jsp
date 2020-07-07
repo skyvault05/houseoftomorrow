@@ -22,6 +22,7 @@ initial-scale=1, shrink-to-fit=no">
   <!-- Theme Style -->
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/channel/channel.css">
 
   
   <!-- WebFont -->
@@ -94,12 +95,11 @@ initial-scale=1, shrink-to-fit=no">
          $('#insertReview').on('click', insertReview);
          
          </sec:authorize>
-});
+});//end
 </script>
   </head>
   
   <body>
-  <div class="empty-space"></div>
   <div class="container-flude submenu_borderbottom">
 
    <div class="wrap-submenu">
@@ -151,9 +151,9 @@ initial-scale=1, shrink-to-fit=no">
                            <span class="expert-review-popup-button">
                               <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 <%--                               	 <c:if  test="${user 리뷰 수 < 상담 완료 내역 수}"> --%>
-                                 <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
-<%--                                  </c:if> --%>
-                                 <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
+                          <%--        <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
+                                 </c:if>
+                                 <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span> --%>
                               </sec:authorize>
                            </span>
                         </div><!-- end profile_info_reviews-->
@@ -165,21 +165,25 @@ initial-scale=1, shrink-to-fit=no">
                         <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
                         <div class="drop-down user-profile_actions_etc-wrap">
                            <button class="btn user-profile_actions__etc" type="button">
-                              <svg class="icon" width="24" height="24" preserveAspectRatio="xMidYMid meet"><path d="M6 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#000" fill-opacity=".7" fill-rule="evenodd"></path></svg>
+                              <ion-icon name="heart"></ion-icon>
+                              <span>${fn:length(favCh)}</span>
                            </button>
-                           <ul class="drop-down__list">
+                           
+                           <!-- ----------팔로우 dropdown------------ -->
+                          <%--  <ul class="drop-down__list">
                               <li>
                               <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
                                  <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
                                  <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                               </sec:authorize>
                               <button type="button">팔로우</button></li>
-                           </ul>
+                           </ul> --%>
+                           
                         </div>
                      </div>      
                      <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
-                     <img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel"  src="/plugins/images/heart_off.png"/>
-                     <strong>${fn:length(favCh)}</strong>
+                    <!--  <img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel"  src="/plugins/images/heart_off.png"/> -->
+                     <%-- <strong>${fn:length(favCh)}</strong> --%>
                      </sec:authorize>
                   </div><!--end 상담하기-->
                   
@@ -189,7 +193,7 @@ initial-scale=1, shrink-to-fit=no">
                         <c:set var="addrSplit" value="${fn:split(channel.constructor.conAddr, ' ')}" />
                               <tr>
                                  <th>위치</th>
-                                 <td>${addrSplit[1]} ${addrSplit[2]} ${addrSplit[3]}</td>
+                                 <td>${addrSplit[1]} ${addrSplit[2]}</td>
                               </tr>
                               <tr>
                                  <th>경력</th>

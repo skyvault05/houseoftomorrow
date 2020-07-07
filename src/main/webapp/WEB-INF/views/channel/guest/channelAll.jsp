@@ -63,7 +63,7 @@
                 <c:forEach items="${list}" var="list" varStatus="status">
                    <div class="col-md-3">
                    <div style="relative">
-                        <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}"><img src="${list.chImg}" class="card-img-top rounded" alt="blog" width="255px" height="255px"></a>
+                        <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}"><img src="${list.chImg}" class="card-img-top rounded"></a>
                         
                           <p class="card-text title">${list.constructor.conName}</p>
                           <div class="card-text content" style="margin-bottom:20px;">${portList.channel.constructor.conName}★ ${list.chGrades}</div>
