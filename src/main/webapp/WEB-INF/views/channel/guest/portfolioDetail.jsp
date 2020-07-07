@@ -211,7 +211,9 @@ img{
 
 </head>
 <body>
-<div class="container">
+
+
+<%--<div class="container">
 <div class="row col-md-12">
 	<img src="${port.portImg}">
 </div><br><br>
@@ -253,6 +255,11 @@ ${port.portDescription}
 	</div>
 	<div class="rows">
     <sec:authentication var="user" property="principal" />
+<<<<<<< HEAD
+=======
+    <%-- 글쓴이: ${community.member.memberNo}<p>
+    로그인한사람: ${user.memberNo} 
+>>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose>
 			<c:when test="${port.channel.constructor.member.memberNo == user.memberNo}">

@@ -33,6 +33,7 @@
   </head>
   
   <body>
+  <div class="empty-space"></div>
   <!-- main slider -->
     <div class="container pt-5">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -90,23 +91,47 @@
             <div class="row">
                 <div class="col-xl-12">
                   <h2 class="portfolio-title mb-4">추천 포트폴리오 </h2>
-                   <div class="card-wrap">
+                  </div>
+             </div>     
+             <div class="row">     
+<%--                    <div class="card-wrap">
                    
-             <%--       <c:forEach items="${portList}" var=portList>
+                 <c:forEach items="${portList}" var="port" begin="0" end="3">
                     <div class="main_recomm card">
                         <div class="card-img">
-                            <img src="${portList.portImg}" class="card-img-top rounded" alt="blog">
+                            <img src="${port.portImg}" class="card-img-top rounded" alt="blog">
                             <div class="social_connect_overlay rounded">
                                 <a href="#"><span class="ti-instagram"></span></a> 
                             </div>
                         </div>
                         <div class="card-body">
-                          <p class="card-text title"></p>
+                          <p class="card-text title">${port.portTitle}</p>
                           <div class="card-text content"></div>
                         </div>
                     </div>
-				    </c:forEach>            
-                    --%>
+				    </c:forEach>       --%>      
+				    
+				   <c:forEach items="${portList}" var="port" varStatus="status" begin="0" end="7">   
+                
+                   <div class="col-md-3">     
+                    
+                   <div style="relative">       
+                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}"><img src="${port.portImg}" class="card-img-top rounded" alt="blog" style="width:200px; height:200px;"></a>
+                         
+                                               
+                        <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
+                       	<p class="card-text title" style="margin-bottom:0px;">${port.portTitle}</p>
+                        <div class="card-text content" style="margin-bottom:10px;">${port.channel.constructor.conName}${status.count}</div>
+                         <%-- <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if> --%>
+                       
+                        </a>
+                   
+                 		
+                    	</div>
+                	</div>
+                   
+                  </c:forEach>
+             
 
                 </div><!--end card --> <!-- 포트폴리오 한줄 -->
     
@@ -200,62 +225,33 @@
             <div class="row">
                 <div class="col-xl-12 pt-5">
                   <h2 class="portfolio-title mb-4">추천 시공사</h2>
-                  <div class="card-wrap">
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="card-text-profile"></div>
-                          <div class="card-text-summary">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="card-text-profile"></div>
-                          <div class="card-text-summary">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="card-text-profile"></div>
-                          <div class="card-text-summary">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="card-text-profile"></div>
-                          <div class="card-text-summary">코원하우스</div>
-                        </div>
-                    </div>
-                </div><!--end card -->
-               </div>
-              </div><!--row-->
-             </div><!--container-->
+                <div>
+            <div> 
+            <div class="row">   
+                   <c:forEach items="${channelList}" var="ch" varStatus="status" begin="0" end="3">   
+                
+                   <div class="col-md-3">     
+                    
+                  		<div style="relative">       
+                        <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${ch.chNo}"><img src="${ch.chImg}" class="card-img-top rounded" alt="blog" style="width:200px; height:200px;"></a>
+                         
+                                               
+                        <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${ch.chNo}">
+                       	<p class="card-text title" style="margin-bottom:0px;">${ch.constructor.conName}</p>
+                     <%--    <div class="content">${ch.constructor.conName}${status.count}</div> --%>
+                     <%--     <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if> --%>
+                       	<p class="card-text content">${ch.chGrades}</p>
+                        </a>
+                   
+                 
+                    	</div>
+                	</div>
+                   
+                 </c:forEach>
+              
+            </div>
+            </div><!--row-->
+            </div><!--container-->
          </section>
 <!-- END recomm constructor  -->
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->

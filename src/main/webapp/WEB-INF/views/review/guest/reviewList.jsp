@@ -96,6 +96,8 @@
    </div>
    </c:forEach>
    
+   
+   <c:if test="${totalPage-1}>= 0">
    <div id="page"> <!-- 페이징 -->
 	<c:forEach begin="0" end="${totalPage-1}" var="i">
 	<c:choose>
@@ -107,7 +109,8 @@
 		</c:otherwise>
 	</c:choose>
 	</c:forEach>  
-	</div>   
+	</div> <!-- 페이징 끝  -->   
+	</c:if>
    </div>
    </div>
 

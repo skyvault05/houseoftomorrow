@@ -15,6 +15,11 @@ public interface ChannelRepository extends JpaRepository<Channel, Integer> {
 	Channel selectByMemberNo(int memberNo);
 	
 	List<Channel> findByChStatus(Integer chStatus);
-	
+		
 	Page<Channel> findByChStatus(Pageable pageable, Integer chStatus);
+		
+	@Query("SELECT c FROM Channel c WHERE c.chStatus=?1 Order by c.chGrades DESC")
+	List<Channel> findAllOrderBychGradesDesc(Integer chStatus);
+
+
 }

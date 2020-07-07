@@ -110,7 +110,7 @@
 	align-items: stretch;
 }
 
-/*-------�삤�뒛�쓽�뒪�넗由�------------*/
+/*-------占쎌궎占쎈뮎占쎌벥占쎈뮞占쎈꽅�뵳占�------------*/
 .comm-todays-stories {
     margin: 30px auto;
 }
@@ -278,7 +278,7 @@
     border-width: 1px 1px 0 0;
     transform: rotate(45deg);
 }
-/*------�삤�뒛�쓽 �씤湲� �궗吏�--------*/
+/*------占쎌궎占쎈뮎占쎌벥 占쎌뵥疫뀐옙 占쎄텢筌욑옙--------*/
 .home-section__header__content {
     font-size: 20px;
     color:#424242;
@@ -355,7 +355,7 @@
 }
 .story-entry__content__profile__name {font-size: 13px;}
 
-/*-------�쑀���씤�뀒由ъ뼱�떆怨듬━酉�--------*/
+/*-------占쎌�占쏙옙占쎌뵥占쎈�믥뵳�딅선占쎈뻻�⑤벉�봺�뀎占�--------*/
 .home-experts__content {
     flex-wrap: nowrap;
     display: flex;
@@ -499,7 +499,7 @@
 .card-feed__content {
     margin-top: 30px;
     padding-top: 0px;
-    padding-bottom: 11251px;
+    //padding-bottom: 11251px;
     transform: translateY(0px);
 }
 .card-item-writer {
@@ -554,7 +554,7 @@
     font-weight: 500;
 }
 .card-item-writer__separator::before {
-    content: "·";
+    content: "쨌";
     margin: 0px 2px 0px 3px;
 }
 .card-item-writer__follow {

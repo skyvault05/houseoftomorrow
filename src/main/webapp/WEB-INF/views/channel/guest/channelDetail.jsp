@@ -53,7 +53,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
             var image = document.getElementById("favoriteChannel");
               if (result==1) {
                 image.src = "/plugins/images/heart_off.png";
-              } else {
+              } else if(result==2) {
                 image.src = "/plugins/images/heart_on.png";
               }
          }
@@ -162,7 +162,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 
                   <div class="user_profile__consultation pb-4"><!--상담하기-->
                      <div class="user_profile__btn-actions">
-                        <a class="btn btn-primary user-profile_actions_action" href="/consultations/new?id=2112978&amp;request_code=1">상담신청</a>
+                        <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
                         <div class="drop-down user-profile_actions_etc-wrap">
                            <button class="btn user-profile_actions__etc" type="button">
                               <svg class="icon" width="24" height="24" preserveAspectRatio="xMidYMid meet"><path d="M6 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#000" fill-opacity=".7" fill-rule="evenodd"></path></svg>
@@ -170,7 +170,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                            <ul class="drop-down__list">
                               <li>
                               <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                                 <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=1" id="insertReview">리뷰쓰기</a>
+                                 <a href="${pageContext.request.contextPath}/review/reviewform?memberNo=${user.memberNo}&chNo=1" id="insertReview">리뷰쓰기</a>
                                  <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                               </sec:authorize>
                               <button type="button">팔로우</button></li>
@@ -218,7 +218,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(realReviewList)}</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                     <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
+                     <a href="${pageContext.request.contextPath}/review/reviewform?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
                   </sec:authorize>
                   <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                </h5>
@@ -262,12 +262,12 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                   <div class="row post--contents__list" style="transform:translateX(-0px)">
                      <c:forEach items="${portList}" var="port">
                         <div class="col-6 col-md-3 post--contents__item-wrap">
-                           <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
+                           <a href="/channel/guest/portfolioDetail/${port.portNo}">
                               <div class="post--contents__item">
                                  <div style="position:relative">
                                     <img class="post--contents__item__img" src="${port.portImg}"/>
                                  </div>
-                                 <p class="post--contents__item__title">${port.portTitle}</p>
+                                 <p class="card-text title" style="color: black">${port.portTitle}</p>
                               </div>
                            </a>
                         </div>

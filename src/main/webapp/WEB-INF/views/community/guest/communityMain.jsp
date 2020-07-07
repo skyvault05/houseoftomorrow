@@ -27,95 +27,6 @@
   </head>
   
   <body>
-
-    <header role="banner">
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-          <a class="navbar-brand " href="/common/index">HOT</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-    
-    <!--------------------------------------main menu--------------------------------------------->
-          <div class="collapse navbar-collapse btnCollapse" >
-            <ul class="navbar-nav ">
-              <li class="nav-item dropdown pl-md-5">
-              <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
-             <div class="dd-wrap">
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#" >커뮤니티홈</a></li>
-                <li><a class="dropdown-item" href="#">사진</a></li>
-                <li><a class="dropdown-item" href="#">집들이</a></li>
-                <li><a class="dropdown-item" href="#">노하우</a></li>
-              </ul>
-              </div>
-            </li>
-
-            <li class="nav-item dropdown ">
-              <a href="/common/index" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">인테리어시공</a>
-              <div class="dd-wrap">
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/common/index">시공홈</a></li>
-                  <li><a class="dropdown-item" href="/estimate">견적요청</a></li>
-                  <li><a class="dropdown-item" href="#">전문가찾기</a></li>
-                  <li><a class="dropdown-item" href="#">포트폴리오</a></li>
-                </ul>
-              </div>
-            </li>
-           </ul>
-    <!--------------------------------------sub menu--------------------------------------------->
-            <div class="navbar-nav ml-auto">
-              <form method="post" class="search-form" >
-                <span class="icon ion ion-search pt-2"><ion-icon name="search-outline"></ion-icon></span>
-                <input type="text" class="form-control col-sm-12" placeholder="Search">
-              </form>
-              <button type="button" class="btn btn-outline-primary">글쓰기</button>
-              
-   <!------------------------------ 로그인/회원가입 -------------------------------->
-
-          <div class="header_navigation-bar-login pl-1">
-            <a class="navigation-bar-login__item aftermenu" href="/member">로그인</a>
-            <a class="navigation-bar-login__item signup-margin-right" href="/memberSignup">회원가입</a>
-          </div>
-
-   <!------------------------------로긴성공시 마이페이지메뉴  ---------------------->
-        <div class="iconmenu pl-1">
-              <div class="header_social_icon d-flex">
-                
-                <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
-                <!-- <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
-                  <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
-                </a>
-                <div class="dropdown-menu submenu">
-                  <a href="#" class="dropdown-item favoriteChannel">관심채널</a>
-                  <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
-                </div> -->
-                <ion-icon name="notifications-outline" class="icon ion"></ion-icon>
-                <div class="dropdown submenu">  
-                  <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
-                    <ion-icon name="happy-outline" class="icon ion mypage"></ion-icon>
-                  </a>
-                  <div class="dropdown-menu submenu box shadow">
-                    <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
-                    <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
-                    <a href="#" class="dropdown-item writeList">내가쓴글</a>
-                    <a href="#" class="dropdown-item logout">로그아웃</a>
-                  </div>
-                </div>
-                </div>
-              </div><!--end submenu header icon-->
-
-            </div>
-            <!--END submenu-->
-          </div><!--collapse navbar-collapse btnCollapse-->
-        </div><!--end container-->
-      </nav>
-  <!--END main menu--->
-  </header>
-  <!-- END header -->
-<!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
-<!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
-<div class="empty-space"> </div>
   <div class="container pt-5">
     <div class="community-main row">
 <!-------------------- main img ------------------------->
@@ -136,7 +47,6 @@
                 </div>
               </div>
               <div class="main-img-content-viewmore">보러가기</div>
-              
             </div>
             <!--end content-->
           </a>
@@ -148,7 +58,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active hover_effect">
-              <img class="h-100" src="${pageContext.request.contextPath}/images/community/slide01.png" alt="First slide">
+              <img class="h-100" src="${pageContext.request.contextPath}/images/community/slide01.png" alt="First slide" height="550px">
             </div>
             <div class="carousel-item hover_effect">
               <img class="h-100" src="${pageContext.request.contextPath}/images/community/slide02.png" alt="Second slide">
@@ -177,66 +87,29 @@
 <!-- 오늘의스토리 -->
     <section class="container comm-todays-stories">
       <header class="row home-section__header">
-        <h2 class="col home-section__header__content mb-4">오늘의 스토리 </h2>
+        <h2 class="col home-section__header__content mb-4"> 오늘의 스토리 </h2>
       </header>
       <ul class="row home-stories__content">
+      <c:forEach items="${knowHowList}" var="item">
         <li class="col-6 col-md-3 home-stories__content__item">
           <article class="story-entry story-story-item">
-            <a class="story-entry-link" href="#">
+            <a class="story-entry-link" href="/community/guest/detail/${item.commNo}">
               <div class="story-entry__image-wrap hover_effect_card">
-                <img class="story-entry__image" alt="" src="${pageContext.request.contextPath}/images/community/todaysstories.jpg">
+                <img class="story-entry__image" alt="" src="${item.commImg}">
               </div>
               <div class="story-entry__content-wrap">
                 <div class="story-entry__content">
-                  <div class="story-entry__content__title">사진제목쓰<br> </div>
+                  <div class="story-entry__content__title">${item.commTitle}<br> </div>
                   <div class="story-entry__content__profile">
                     <img class="story-entry__content__profile__image " src="./images/default/user_default.png">
-                    <span class="story-entry__content__profile__name">후달@.@</span>
+                    <span class="story-entry__content__profile__name">${item.member.memberName}</span>
                   </div>
                 </div>
               </div>
             </a>
           </article>
         </li>
-
-        <li class="col-6 col-md-3 home-stories__content__item">
-          <article class="story-entry story-story-item">
-            <a class="story-entry-link" href="#">
-              <div class="story-entry__image-wrap hover_effect_card">
-                <img class="story-entry__image" alt="" src="${pageContext.request.contextPath}/images/community/todaysstories.jpg">
-              </div>
-              <div class="story-entry__content-wrap">
-                <div class="story-entry__content">
-                  <div class="story-entry__content__title">사진제목쓰<br> </div>
-                  <div class="story-entry__content__profile">
-                    <img class="story-entry__content__profile__image " src="${pageContext.request.contextPath}/images/default/user_default.png">
-                    <span class="story-entry__content__profile__name">후달@.@</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </article>
-        </li>
-
-        <li class="col-6 col-md-3 home-stories__content__item">
-          <article class="story-entry story-story-item">
-            <a class="story-entry-link" href="#">
-              <div class="story-entry__image-wrap hover_effect_card">
-                <img class="story-entry__image" alt="" src="${pageContext.request.contextPath}/images/community/todaysstories.jpg">
-              </div>
-              <div class="story-entry__content-wrap">
-                <div class="story-entry__content">
-                  <div class="story-entry__content__title">사진제목쓰<br> </div>
-                  <div class="story-entry__content__profile">
-                    <img class="story-entry__content__profile__image " src="${pageContext.request.contextPath}/images/default/user_default.png">
-                    <span class="story-entry__content__profile__name">후달@.@</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </article>
-        </li>
-
+	   </c:forEach>
   <!--------------우측메뉴-------------->
     <div class="col-6 col-md-3 home-stories__content__menu-wrap">
       <div class="home-stories__content__menu">
@@ -268,143 +141,25 @@
   </div>
 
     <ul class="row home-cards__content">
+      <c:forEach items="${commPicList}" var="item">
       <li class="col-6 col-md-3 home-cards__content__item">
         <articel class="story-entry story-card-item">
-          <a class="story-entry-link" href="" >
+          <a class="story-entry-link" href="/community/guest/detail/${item.commNo}" >
             <div class="story-entry__image-wrap hover_effect_card">
-              <img src="${pageContext.request.contextPath}/images/community/todaysphoto_sample.jpg" alt="" class="story-entry__image">
+              <img src="${item.commImg}" alt="" class="story-entry__image">
             </div>
             <div class="story-entry__content-wrap">
               <div class="story-entry__content">
                 <div class="story-entry__content__profile">
                   <img class="story-entry__content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="">
                 </div>
-                <span class="story-entry__content__profile__name">유저이름쉬먀</span>
+                <span class="story-entry__content__profile__name">${item.member.memberName}</span>
               </div>
             </div>  
           </a>
         </articel>
       </li>
-      <li class="col-6 col-md-3 home-cards__content__item">
-        <articel class="story-entry story-card-item">
-          <a class="story-entry-link" href="" >
-            <div class="story-entry__image-wrap hover_effect_card">
-              <img src="${pageContext.request.contextPath}/images/community/todaysphoto_sample.jpg" alt="" class="story-entry__image">
-            </div>
-            <div class="story-entry__content-wrap">
-              <div class="story-entry__content">
-                <div class="story-entry__content__profile">
-                  <img class="story-entry__content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="">
-                </div>
-                <span class="story-entry__content__profile__name">유저이름쉬먀</span>
-              </div>
-            </div>  
-          </a>
-        </articel>
-      </li>
-      <li class="col-6 col-md-3 home-cards__content__item">
-        <articel class="story-entry story-card-item">
-          <a class="story-entry-link" href="" >
-            <div class="story-entry__image-wrap hover_effect_card">
-              <img src="${pageContext.request.contextPath}/images/community/todaysphoto_sample.jpg" alt="" class="story-entry__image">
-            </div>
-            <div class="story-entry__content-wrap">
-              <div class="story-entry__content">
-                <div class="story-entry__content__profile">
-                  <img class="story-entry__content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="">
-                </div>
-                <span class="story-entry__content__profile__name">유저이름쉬먀</span>
-              </div>
-            </div>  
-          </a>
-        </articel>
-      </li>
-      <li class="col-6 col-md-3 home-cards__content__item">
-        <articel class="story-entry story-card-item">
-          <a class="story-entry-link" href="" >
-            <div class="story-entry__image-wrap hover_effect_card">
-              <img src="${pageContext.request.contextPath}/images/community/todaysphoto_sample.jpg" alt="" class="story-entry__image">
-            </div>
-            <div class="story-entry__content-wrap">
-              <div class="story-entry__content">
-                <div class="story-entry__content__profile">
-                  <img class="story-entry__content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="">
-                </div>
-                <span class="story-entry__content__profile__name">유저이름쉬먀</span>
-              </div>
-            </div>  
-          </a>
-        </articel>
-      </li>
-      <li class="col-6 col-md-3 home-cards__content__item">
-        <articel class="story-entry story-card-item">
-          <a class="story-entry-link" href="" >
-            <div class="story-entry__image-wrap hover_effect_card">
-              <img src="${pageContext.request.contextPath}/images/community/todaysphoto_sample.jpg" alt="" class="story-entry__image">
-            </div>
-            <div class="story-entry__content-wrap">
-              <div class="story-entry__content">
-                <div class="story-entry__content__profile">
-                  <img class="story-entry__content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="">
-                </div>
-                <span class="story-entry__content__profile__name">유저이름쉬먀</span>
-              </div>
-            </div>  
-          </a>
-        </articel>
-      </li>
-      <li class="col-6 col-md-3 home-cards__content__item">
-        <articel class="story-entry story-card-item">
-          <a class="story-entry-link" href="" >
-            <div class="story-entry__image-wrap hover_effect_card">
-              <img src="${pageContext.request.contextPath}/images/community/todaysphoto_sample.jpg" alt="" class="story-entry__image">
-            </div>
-            <div class="story-entry__content-wrap">
-              <div class="story-entry__content">
-                <div class="story-entry__content__profile">
-                  <img class="story-entry__content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="">
-                </div>
-                <span class="story-entry__content__profile__name">유저이름쉬먀</span>
-              </div>
-            </div>  
-          </a>
-        </articel>
-      </li>
-      <li class="col-6 col-md-3 home-cards__content__item">
-        <articel class="story-entry story-card-item">
-          <a class="story-entry-link" href="" >
-            <div class="story-entry__image-wrap hover_effect_card">
-              <img src="${pageContext.request.contextPath}/images/community/todaysphoto_sample.jpg" alt="" class="story-entry__image">
-            </div>
-            <div class="story-entry__content-wrap">
-              <div class="story-entry__content">
-                <div class="story-entry__content__profile">
-                  <img class="story-entry__content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="">
-                </div>
-                <span class="story-entry__content__profile__name">유저이름쉬먀</span>
-              </div>
-            </div>  
-          </a>
-        </articel>
-      </li>
-      <li class="col-6 col-md-3 home-cards__content__item">
-        <articel class="story-entry story-card-item">
-          <a class="story-entry-link" href="" >
-            <div class="story-entry__image-wrap hover_effect_card">
-              <img src="${pageContext.request.contextPath}/images/community/todaysphoto_sample.jpg" alt="" class="story-entry__image">
-            </div>
-            <div class="story-entry__content-wrap">
-              <div class="story-entry__content">
-                <div class="story-entry__content__profile">
-                  <img class="story-entry__content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="">
-                </div>
-                <span class="story-entry__content__profile__name">유저이름쉬먀</span>
-              </div>
-            </div>  
-          </a>
-        </articel>
-      </li>
-    
+      </c:forEach>   
     </ul>
 
     </div><!--row-->
@@ -412,7 +167,7 @@
   </section>
 
 <!----------------유저들의인테리어시공리뷰-------------------------->
-<div class="empty-space"></div>
+<%-- <div class="empty-space"></div>
   <section class="container home-section home-experts pt-5">
     <div class="row home-section__header"> 
     <h2 class="col home-section__header__content">유저들의 인테리어 시공리뷰</h2>
@@ -499,14 +254,6 @@
 
 
   </div><!--end row-->
-  </section>
-
-
-
-<!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
-<!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
-
-<div class="empty-space"></div>
-
+  </section> --%>
   </body>
 </html>

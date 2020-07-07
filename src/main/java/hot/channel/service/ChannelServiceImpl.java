@@ -229,13 +229,22 @@ public class ChannelServiceImpl implements ChannelService {
 		}
 		return conName;
 	}
-
-	/**
-	 * page 처리 
+	
+	
+	/***
+	 * index page 시공사 
 	 */
 	@Override
-	public Page<Channel> selectAllChannel(Pageable pageable) {
-		Page<Channel> page = channelRepository.findByChStatus(pageable, 0);
-		return page;
+	public List<Channel> selectChannelByChstatusAndchGrades(Integer chStatus) {
+				
+		return channelRepository.findAllOrderBychGradesDesc(chStatus);
 	}
+	
+	
+	@Override
+	public Page<Channel> selectAllChannel(Pageable pageable) {
+		
+		return channelRepository.findByChStatus(pageable, 0);
+	}
+	
 }
