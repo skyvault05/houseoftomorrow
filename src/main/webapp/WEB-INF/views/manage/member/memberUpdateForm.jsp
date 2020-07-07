@@ -6,10 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>회원가입 폼</title>
-<script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
-<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+    <title>내일의 집</title>
 
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
@@ -161,7 +158,7 @@
 <body>
 	<div class="container">
 		<div class="py-5 text-left">
-			<h2>회원 정보 변경</h2>
+			<h2>회원 정보 수정</h2>
 		</div>
 		<div class="col-md-12 order-md-1">
 			<form class="needs-validation" novalidate action="/manage/member/memberUpdate" method="POST">

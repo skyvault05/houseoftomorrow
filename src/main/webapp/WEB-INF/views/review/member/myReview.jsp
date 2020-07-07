@@ -12,18 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/main.css">
-  <link rel="stylesheet" type="text/css" href="/css/channel/channel.css">
-<link rel="stylesheet" href="/css/review/star.css">
-
-<link rel="stylesheet" href="/css/font/fontawesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/font/font-awesome.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-
-	
   <style>
   a {color:#424242;}
   .review_submenu_link {padding: 0px 10px; }
@@ -64,7 +52,9 @@
 </head>
 <body>
  <sec:authentication property="principal" var="user"/>
-<!-- ----------------------------------------------------------------------------->
+ 
+ 
+<!-- -------------------------------SUBMENU---------------------------------------------->
 
   <div class="container-flude submenu_borderbottom">
 	<div class="wrap-submenu">
@@ -72,24 +62,40 @@
 			<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
 				<ul class="navbar-nav mypage">
 					<li class="nav-item">
-						<a href="" class="nav-link" target="_self">회원정보수정</a>
+						<a href="${pageContext.request.contextPath}/manage/member/memberUpdateForm" class="nav-link my_write" target="_self">회원정보수정</a>
 					</li>
 					<li class="nav-item">
-						<a href="/myEstimateList/${user.memberNo }" class="nav-link" target="_self">견적 요청 내역</a>
+						<a href="${pageContext.request.contextPath}/myEstimateList/${user.memberNo }" class="nav-link my_write" target="_self">견적 요청 내역</a>
 					</li>
 					<li class="nav-item">
-						<a href="/member/consultingAllPage" class="nav-link" target="_self">내 상담 내역</a>
+						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link my_write" target="_self">내 상담 내역</a>
 					</li>
-					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link" target="_self">내가 쓴 글</a>
+					<li class="nav-item dropdown">
+						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link my_write dropdown-toggle main-btn" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+						내가 쓴 글</a>
+						<!-- 좋은말로할때드롭따운해라 -->
+						<div class="dd-wrap myWrite row">
+			                <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+			                  <li class="nav-item">
+								<a class="review_submenu_link" href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" target="_self">리뷰</a>
+							  </li>
+			                  <li class="nav-item">
+								<a class="review_submenu_link" href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" target="_self">커뮤니티</a>
+							  </li>
+							  
+							  <li class="nav-item">
+								<a class="review_submenu_link" href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" target="_self">Q&A</a>
+							  </li>
+			              	</ul>
+			            </div>
 					</li>
 				</ul>
 			</nav>
 		</div>
 	</div><!--end wrap-submenu-->
 	
-	<!-- ------------------------------------------- -->
-	<div class="self_write-wrap">
+<!-- ----------------------------------------END SUBMENU----------------------------------------------- -->
+<%-- 	<div class="self_write-wrap">
 	
 		<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
 				<ul class="navbar-nav mypage">
@@ -103,9 +109,9 @@
 						<a class="review_submenu_link" href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" target="_self">Q&A</a>
 					</li>
 				</ul>
-			</nav>
+		</nav>
 	
-	</div>
+	</div> --%>
 
 </div> 
 <!-- ----------------------------------------------------------------------------->
@@ -203,7 +209,6 @@
 
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
-<div class="empty-space"></div>
 
 
 

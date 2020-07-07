@@ -44,11 +44,11 @@
 <!-- recommendation portfolio -->
 
 
-    <section class="recommendation portfolio">
+    <section class="recommendation portfolio pt-4">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
-                  <h2 class="portfolio-title mb-4">노하우 </h2>
+                  <h2 class="portfolio-title mb-4"> </h2>
                  </div>
              </div>     
              <div class="row">              
