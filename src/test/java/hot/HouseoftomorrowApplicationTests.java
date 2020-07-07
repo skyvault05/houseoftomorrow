@@ -260,7 +260,7 @@ class HouseoftomorrowApplicationTests {
 //		}
 		
 //		PasswordEncoder encoder = new BCryptPasswordEncoder();
-//		Member member = new Member(null, "admin1", encoder.encode("dd"), "admin1", "000-0300-0112", null, memberRole.findById(3).orElse(null));
+//		Member member = new Member(null, "admin1", encoder.encode("admin"), "admin", "000-0000-0000", null, memberRole.findById(3).orElse(null));
 //		memberRep.save(member);
 		
 //		Community comm = communityRep.findById(2).orElse(null);
@@ -270,9 +270,12 @@ class HouseoftomorrowApplicationTests {
 		
 //		orderRep.save(new Order(null, constructorRepository.findById(26).orElse(null), portRep.findById(78).orElse(null), null, 1000, "card", "card", 1));
 		
-		Member member = memberRep.findById(26).orElse(null);
-		member.setMemberPwd(passwordEncoder.encode("1234"));
-		memberRep.save(member);
+//		Member member = memberRep.findById(26).orElse(null);
+//		member.setMemberPwd(passwordEncoder.encode("1234"));
+//		memberRep.save(member);
+		
+//		Member member = new Member(0, "admin", passwordEncoder.encode("admin"), "admin", "000-0000-0000", null, memberRole.findById(3).orElse(null));
+//		memberRep.save(member);
 	}
 }
 	

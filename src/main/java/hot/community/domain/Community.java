@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 import org.hibernate.type.TrueFalseType;
 
 import hot.channel.domain.FavoriteChannel;
@@ -51,6 +52,7 @@ public class Community {
 	@Column(name = "comm_img")
 	private String commImg;
 	@Column(name = "comm_description")
+//	@Type(type = "text")
 	private String commDescription;
 	@Column(name = "comm_regdate")
 	private Timestamp commRegdate;
