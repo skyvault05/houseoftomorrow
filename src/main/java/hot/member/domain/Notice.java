@@ -38,7 +38,7 @@ public class Notice {
 	private String noticeTitle;
 	
 	@Column(name = "notice_description")
-//	@Type(type = "text")
+	@Type(type = "text")
 	private String noticeDescription;
 	
 	@Column(name = "notice_regdate")
