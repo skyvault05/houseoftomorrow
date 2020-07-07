@@ -122,12 +122,17 @@
 
 	</div>
 	
-<div class="row"><br></div>
+<div class="row">
+
+<br></div>
 <c:if test="${empty myQNA}">
 	<p class="row justify-content-center">등록한 문의글이 없습니다.</p>
 </c:if>
 <div class="row">
 <table id="table" class="table table-hover">
+
+	<tr><th>제목</th><th>QNA Category</th><th>등록날짜</th></tr> 
+	
 <c:forEach items="${myQNA}" var="list">
 	<tr>
 	<td style="width: 40%;"><a href="${pageContext.request.contextPath}/qna/detail/${list.qnaNo}">${list.qnaTitle}</a></td>

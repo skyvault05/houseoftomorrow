@@ -130,7 +130,7 @@ ${community.member.memberNo}
 					</div>
 				</c:when>
 				<c:when test="${list.commCategory.commCategoryNo == 5}">
-					<div class="list col-md-4"><a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
+					<div class="list col-md-4"><a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}">
 					<div class="scale">
 						<img src="${list.commImg}">
 					</div><br>

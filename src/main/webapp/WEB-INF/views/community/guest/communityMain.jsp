@@ -113,14 +113,14 @@
   <!--------------우측메뉴-------------->
     <div class="col-6 col-md-3 home-stories__content__menu-wrap">
       <div class="home-stories__content__menu">
-        <a href="" class="home-stories__content__menu__entry">
+        <a href="/community/list/4" class="home-stories__content__menu__entry">
           <div class="description">예쁜 집 구경하기</div>
           <div class="title">
             <span class="text">사진</span>
               <div class="arrow"></div>
             </div>
         </a>
-        <a href="" class="home-stories__content__menu__entry">
+        <a href="/community/list/5" class="home-stories__content__menu__entry">
           <div class="description">인테리어 꿀팁 총 집합</div>
           <div class="title">
             <span class="text">노하우</span>

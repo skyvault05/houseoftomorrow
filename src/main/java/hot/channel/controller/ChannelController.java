@@ -71,10 +71,10 @@ public class ChannelController {
 	 * 채널 목록
 	 * */
 	@RequestMapping("/channelAll")
-	public ModelAndView channelAll(@RequestParam(defaultValue = "0")int nowPage) {
+	public ModelAndView channelAll(@RequestParam(defaultValue = "0")Integer nowPage) {
 		
 		
-		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "chNo");
+		Pageable page =PageRequest.of(nowPage, 8, Direction.DESC, "chNo");
 		
 		Page<Channel> list = channelService.selectAllChannel(page);
 		

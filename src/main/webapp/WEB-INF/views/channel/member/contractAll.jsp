@@ -114,8 +114,10 @@ $(function(){
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div class="container">
 		<div class="row">
+
 			<div class="col-md-12">
 				<h1>계약 목록</h1>
 			</div>

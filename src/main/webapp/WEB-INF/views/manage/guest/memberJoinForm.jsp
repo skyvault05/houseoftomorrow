@@ -214,7 +214,7 @@
 
 				<div class="mb-3">
 					<label for="phone">전화번호</label> 
-					<input type="text" class="form-control" id="phone" placeholder="전화번호" value="" required name="memberPhone"> 
+					<input type="text" class="form-control" id="phone" placeholder="전화번호 (010-0000-0000)" value="" required name="memberPhone"> 
 					<input type="button" id="phoneCheck" value="인증하기">
 				</div>
 				
