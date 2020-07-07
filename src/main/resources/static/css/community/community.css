@@ -554,7 +554,7 @@
     font-weight: 500;
 }
 .card-item-writer__separator::before {
-    content: "쨌";
+    content: " ";
     margin: 0px 2px 0px 3px;
 }
 .card-item-writer__follow {
@@ -620,6 +620,7 @@
     word-wrap: break-word;
 }
 .card-item__image {
+	padding-top:5px;
     flex: 0 0 auto;
 }
 .card-item-image {

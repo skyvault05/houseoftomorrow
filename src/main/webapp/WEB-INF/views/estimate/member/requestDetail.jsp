@@ -119,7 +119,8 @@
 			          </div> --%>
 			      
 			      
-		<!-- --------------시공사답변 by쟌 ---------------->	  
+		<!-- --------------시공사답변 by쟌 ---------------->	
+		<sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">  
 		<div class="card-detail-comment-section">
 			<section class="comment-feed">
 			<!-- 댓글 -->
@@ -146,7 +147,7 @@
 					
 					</div>
 				</form>
-				
+				</sec:authorize>
 				<!-- 댓글내용 -->
 				<ul class="comment-feed__list">
 			<%-- 	<c:forEach items="${responseList}" var="response" varStatus="status"> --%>
