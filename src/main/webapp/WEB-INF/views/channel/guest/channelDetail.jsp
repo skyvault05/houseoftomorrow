@@ -160,7 +160,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                      </div><!--user_proifle__info-->
                   </div><!--user_proifle__conatiner-->
                  
-                  <div class="user_profile__consultation pb-4"><!--상담하기-->
+                  <div class="user_profile__consultation pb-4" ><!--상담하기-->
                      <div class="user_profile__btn-actions">
                      	<sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()"> 
                      	<c:choose>
@@ -187,7 +187,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                         </div>
                      </div>      
                      <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
-                     <img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel"  src="/plugins/images/heart_off.png"/>
+                     <img style="cursor: pointer; width: 15%; height: 15%; margin-top:30px; margin-left:80px;" id="favoriteChannel"  src="/plugins/images/heart_off.png"/>
                      <strong>${fn:length(favCh)}</strong>
                      </sec:authorize>
                   </div><!--end 상담하기-->

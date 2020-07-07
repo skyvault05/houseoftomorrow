@@ -148,7 +148,10 @@ public class ConstructorController {
 		} else if(status.equals("failed")) {
 			System.out.println("**************failed**************");
 			order.setOrderStatus(3);
-		} 
+		} else {
+			
+		}
+		
 
 		portfolioService.insertOrder(order);
 		
