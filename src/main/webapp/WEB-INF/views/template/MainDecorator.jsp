@@ -40,6 +40,7 @@
 <sitemesh:write property='head'/>
 </head>
 <body>
+
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="user"/>
 </sec:authorize>
@@ -65,7 +66,7 @@
               </ul>
               </div>
             </li>
-
+	
             <li class="nav-item dropdown ">
               <a href="/" class="nav-link dropdown-toggle main-btn" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">인테리어시공</a>
               <div class="dd-wrap">
@@ -112,6 +113,7 @@
                     <ion-icon name="happy-outline" class="icon ion mypage"></ion-icon>
                   </a>
                  <div class="dropdown-menu submenu box shadow">
+                 	
                  	<sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
 		            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
 		            </sec:authorize>
@@ -171,7 +173,7 @@
       </nav>
   <!--END main menu--->
   </header>
-  
+ 
   <!-- 상단여백 GAP -->
   <div class="empty-space pt-2"></div>
   

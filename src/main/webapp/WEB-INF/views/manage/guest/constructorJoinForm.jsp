@@ -51,7 +51,7 @@
 				</div>
 				<div class="form-group col-md-6">
                     <label for="memberId">이메일</label> 
-                    <input type="email" class="form-control" id="memberId" placeholder="이메일" value="" required name="memberId">
+                    <input type="email" class="form-control" id="memberId" placeholder="이메일 (id@domain)" value="" required name="memberId">
                 </div>                
                 <div class="form-group col-md-2">
                 	<input type="button" id="dupCheck" class="btn btn-primary col" value="중복 체크">
@@ -68,7 +68,7 @@
                 
                 <div class="col-md-6">
 					<label for="phone">회원 연락처</label> 
-                    <input type="text" class="form-control" id="phone" placeholder="회원 연락처" name="memberPhone" required>
+                    <input type="text" class="form-control" id="phone" placeholder="회원 연락처 (010-0000-0000)" name="memberPhone" required>
 				</div>
 				
 				<div class="col-md-2">

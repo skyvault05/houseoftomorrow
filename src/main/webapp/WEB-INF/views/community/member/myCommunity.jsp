@@ -79,28 +79,28 @@ h1{
 			<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
 				<ul class="navbar-nav mypage">
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/manage/member/memberUpdateForm" class="nav-link" target="_self">회원정보수정</a>
+						<a href="${pageContext.request.contextPath}/manage/member/memberUpdateForm" class="nav-link my_write" target="_self">회원정보수정</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/myEstimateList/${user.memberNo }" class="nav-link" target="_self">견적 요청 내역</a>
+						<a href="${pageContext.request.contextPath}/myEstimateList/${user.memberNo }" class="nav-link my_write" target="_self">견적 요청 내역</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link" target="_self">내 상담 내역</a>
+						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link my_write" target="_self">내 상담 내역</a>
 					</li>
-					<li class="nav-item dropdown">
-						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="nav-link dropdown-toggle main-btn" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+					<li class="dropright">
+						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="dropdown-toggle nav-link my_write" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						내가 쓴 글</a>
 						<!-- 좋은말로할때드롭따운해라 -->
-						<div class="dd-wrap myWrite row">
-			                <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-			                  <li class="nav-item">
+						<div class="dropdown-menu my__write box shadow">
+			                <ul class="" aria-labelledby="navbarDropdown">
+			                  <li class="dropdown-item">
 								<a class="review_submenu_link" href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" target="_self">리뷰</a>
 							  </li>
-			                  <li class="nav-item">
+			                  <li class="dropdown-item">
 								<a class="review_submenu_link" href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" target="_self">커뮤니티</a>
 							  </li>
 							  
-							  <li class="nav-item">
+							  <li class="dropdown-item">
 								<a class="review_submenu_link" href="${pageContext.request.contextPath}/qna/myQNA/${user.memberNo}" target="_self">Q&A</a>
 							  </li>
 			              	</ul>
@@ -113,7 +113,6 @@ h1{
 	</div>
 	
 <!-- ----------------------------------------END SUBMENU----------------------------------------------- -->
-<div class="container pt-6">
 <div class="row">
 <%-- ${community.member.memberNo} --%>
 
@@ -132,7 +131,7 @@ h1{
 					</div>
 				</c:when>
 				<c:when test="${list.commCategory.commCategoryNo == 5}">
-					<div class="list col-md-4"><a href="${pageContext.request.contextPath}/community/detail/${list.commNo}">
+					<div class="list col-md-4"><a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}">
 					<div class="scale">
 						<img src="${list.commImg}">
 					</div><br>

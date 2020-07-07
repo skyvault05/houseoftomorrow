@@ -55,16 +55,24 @@ header .icon.ion:hover {
   top:55%;
 }
 /*-------내가쓴글 드롭다운메뉴------*/
-.myWrite {
-	//top:-6%;
-	display:inline-block!important;
+.dropdown-menu.my__write {
+
+  width:10%;
+  top: -19px;
+  width: 5%;
+  left:66%!important;
+  padding-left: 0;
+  padding-top:15px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-radius: 10px!important;
+  border:none!important;
+/*   border-top: 1px solid #ededed !important;
+  border-bottom: 1px solid #ededed !important;
+  border-right: 1px solid #ededed !important;
+  border-left:1px solid #ededed !important; */
 }
-.myWrite>.dropdown-menu {
-	width:50%;
-	left:30%;
-	top: 62%;
-    border: none!important;
-}
+
 .dropdown-menu {
     z-index: 900;
     width: 100%;
@@ -127,7 +135,7 @@ header .icon.ion:hover {
   transition:0.2s;
 }
 
-/*-------留덉씠�럹�씠吏�--------*/
+/*-------留MYPAGE DROPDOWN--------*/
 /* .iconmenu {display:none;} */
 a.menuicon {color:#424242!important;}
 .dropdown-menu.submenu {
