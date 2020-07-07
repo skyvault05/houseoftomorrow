@@ -20,6 +20,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 
 import hot.member.domain.Member;
 import lombok.Getter;
@@ -50,6 +51,7 @@ public class Estimate {
 	private Member member;
 	
 	@Column(name = "est_description")
+//	@Type(type = "text")
 	private String estDescription;
 	@Column(name = "est_regdate")
 	private Timestamp estRegdate;
