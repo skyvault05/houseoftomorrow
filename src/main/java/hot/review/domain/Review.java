@@ -57,7 +57,7 @@ public class Review {
 	private Integer reviewStatus;
 	
 	@Column(name = "review_description")
-//	@Type(type = "text")
+	@Type(type = "text")
 	private String reviewDescription;
 
 }

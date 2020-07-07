@@ -47,7 +47,7 @@ public class Channel {
 	private String chImg;
 	
 	@Column(name = "ch_description")
-//	@Type(type = "text")
+	@Type(type = "text")
 	private String chDescription;
 	
 	@Column(name = "ch_regdate")

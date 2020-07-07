@@ -192,11 +192,6 @@
 			     </c:forEach>
 				</ul>
 			</section>
-						
-				
-		
-		
-		
 		</div>
 		    
 		    
