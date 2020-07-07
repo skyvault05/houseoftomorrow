@@ -40,11 +40,13 @@ public class CommunityServiceImpl implements CommunityService {
 	@Transactional
 	public int updateCommunity(Community community) {
 
-		Community dbCommunity = communityRepository.findById(community.getCommNo()) .orElse(null);
+		Community dbCommunity = communityRepository.findById(community.getCommNo()).orElse(null);
 		
 		if(dbCommunity!=null) {
 			dbCommunity.setCommTitle(community.getCommTitle());
-			dbCommunity.setCommImg(community.getCommImg());
+			if(!(community.getCommImg() == null)) {
+				dbCommunity.setCommImg(community.getCommImg());
+			}
 			dbCommunity.setCommDescription(community.getCommDescription());
 		}
 		

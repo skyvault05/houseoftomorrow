@@ -37,10 +37,10 @@
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 
-<div class="empty-space"> </div>
+
   <!----------------------------------------- TEST ----------------------------------------->
 
-  <div class="container">
+  <div class="container pt-4">
   <div class="virtualized-list card-feed__content row">
 <c:forEach items="${requestScope.list}" var="list" >
  <!-------------------- START communityPic ------------------------->
@@ -71,7 +71,9 @@
 		 <!-------사진들어가는부분쓰------->
           <div class="card-item__image">
 	          <div class="card-item-image">
+	          <a href="${pageContext.request.contextPath}/community/guest/detail/${list.commNo}" class="card-item__content__link">
 	            <img class="image"src="${list.commImg}" alt="등록사진">
+	            </a>
 	          </div>
 	      </div>
           <!---아이콘ㄱㄱ--->
@@ -115,6 +117,7 @@
               </a>
             </article>
           </div>
+          <br><br>
   <!-----end comment------>
 
          </article><!----end card-item----->

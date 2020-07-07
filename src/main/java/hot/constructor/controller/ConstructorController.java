@@ -128,30 +128,34 @@ public class ConstructorController {
 		Integer memberNo = customUser.getMemberNo();
 		portfolioService.insertPortfolio(portfolio);
 		Constructor constructor = constructorService.selectConstructor(memberNo);
+					
+		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
+		int portSize = portList.size();
 		
-		order.setConstructor(constructor);
-		order.setPortfolio(portfolio);
-		order.setOrderMethod(pay_method);
-		order.setOrderPayment(amount);
-		
-		System.out.println("getOrderPayment: " + order.getOrderPayment());
-		System.out.println("status: " + status);
-		
-		if(status.equals("ready")) {
-			order.setOrderStatus(0);
-		} else if(status.equals("paid")) {
-			System.out.println("**************paid**************");
-			order.setOrderStatus(1);
-		} else if(status.equals("cancelled")) {
-			System.out.println("**************cancelled**************");
-			order.setOrderStatus(2);
-		} else if(status.equals("failed")) {
-			System.out.println("**************failed**************");
-			order.setOrderStatus(3);
-		} 
-
-		portfolioService.insertOrder(order);
-		
+		if(portSize > 2) {
+			order.setConstructor(constructor);
+			order.setPortfolio(portfolio);
+			order.setOrderMethod(pay_method);
+			order.setOrderPayment(amount);
+			
+			System.out.println("getOrderPayment: " + order.getOrderPayment());
+			System.out.println("status: " + status);
+			
+			if(status.equals("ready")) {
+				order.setOrderStatus(0);
+			} else if(status.equals("paid")) {
+				System.out.println("**************paid**************");
+				order.setOrderStatus(1);
+			} else if(status.equals("cancelled")) {
+				System.out.println("**************cancelled**************");
+				order.setOrderStatus(2);
+			} else if(status.equals("failed")) {
+				System.out.println("**************failed**************");
+				order.setOrderStatus(3);
+			} 
+			portfolioService.insertOrder(order);
+		}
+				
 		int portNo = portfolio.getPortNo();
 		
 		return new ModelAndView("redirect:/channel/guest/portfolioDetail/"+portNo); 
@@ -200,8 +204,11 @@ public class ConstructorController {
 		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "portNo");
 		Page<Portfolio> portList = portfolioService.findAllPortfolio(page);
 		
+		List<Portfolio> portAll = portfolioService.findAllPortfolio();
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("channel/guest/portfolioAll");
+		mv.addObject("portAll", portAll);
 		mv.addObject("portList", portList.getContent());
 		mv.addObject("totalPage", portList.getTotalPages());
 		mv.addObject("nowPageNum", portList.getNumber());
