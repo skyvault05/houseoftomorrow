@@ -74,7 +74,7 @@ public class ChannelController {
 	public ModelAndView channelAll(@RequestParam(defaultValue = "0")int nowPage) {
 		
 		
-		Pageable page =PageRequest.of(nowPage, 12, Direction.DESC, "chNo");
+		Pageable page =PageRequest.of(nowPage, 8, Direction.DESC, "chNo");
 		
 		Page<Channel> list = channelService.selectAllChannel(page);
 		
