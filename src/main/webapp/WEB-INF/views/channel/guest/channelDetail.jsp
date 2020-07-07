@@ -178,22 +178,23 @@ initial-scale=1, shrink-to-fit=no">
                   
                   <div class="profile_info_about"><!--업체정보-->
                      <div class="expandable-text user-profile_about">
-                        <table class="user-profile_about_table">
                         <c:set var="addrSplit" value="${fn:split(channel.constructor.conAddr, ' ')}" />
+                        <table class="user-profile_about_table">
                               <tr>
-                                 <th>위치</th>
-                                 <td>${addrSplit[1]} ${addrSplit[2]}</td>
+                                 <th class="row">위치</th>
+                                 <td class="row">${addrSplit[1]} ${addrSplit[2]}</td>
                               </tr>
                               <tr>
-                                 <th>경력</th>
-                                 <td>${channel.constructor.conCareer}년</td>
+                                 <th class="row">경력</th>
+                                 <td class="row">${channel.constructor.conCareer}</td>
                               </tr>
                               <tr>
-                                 <th>A/S</th>                                 
+                                 <th class="row">소개</th>
+                                 <td class="user-profile_about_about row">${channel.chDescription}</td>                                 
                               </tr>
                            </table>
-                           <div class="user-profile_about_about">${channel.chDescription}</div>
                         </div>
+                        
                   </div><!--end 업체정보-->
 
 
