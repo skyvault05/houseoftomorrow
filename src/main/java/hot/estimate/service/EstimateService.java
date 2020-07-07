@@ -13,5 +13,6 @@ public interface EstimateService {
 	Estimate selectByEstNo(Integer estNo);
 	void insertEstimateResponse(EstResponse estResponse, Integer estNo, Integer chNo);
 	List<EstResponse> selectResponseByEstNo(Integer estNo);
+	List<Estimate> selectAll();
 
 }

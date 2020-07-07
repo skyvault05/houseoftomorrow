@@ -110,7 +110,9 @@
 		            </sec:authorize>
                     <a href="/" class="dropdown-item updateInfo">회원정보수정</a>
                     <a href="/member/consultingAllPage" class="dropdown-item Consulting">상담내역</a>
-                    <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
+                    <sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
+                    	<a href="/estimate/guest/requestAll" class="dropdown-item myCounsel">견적요청내역</a>
+                    </sec:authorize>
                     <a href="/review/myReview/${user.memberNo}" class="dropdown-item writeList">내가쓴글</a>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <a href="/manage/admin/channelRegisterRequest" class="dropdown-item">시공사 등록 요청</a>

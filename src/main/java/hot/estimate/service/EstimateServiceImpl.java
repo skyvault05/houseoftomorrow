@@ -55,6 +55,10 @@ public class EstimateServiceImpl implements EstimateService {
 		List<EstResponse> reponseList = estRespRep.findByEstimateOrderByEstRespRegdateDesc(estimate);
 		return reponseList;
 	}
+	@Override
+	public List<Estimate> selectAll() {		
+		return estimateRep.findAll();
+	}
 
 		
 	
