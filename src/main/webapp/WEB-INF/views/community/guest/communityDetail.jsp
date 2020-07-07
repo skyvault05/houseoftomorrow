@@ -252,7 +252,7 @@ function delchk(){
                <input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
                <input type="text" class="form-control" id="content" name="commCommentDescription" placeholder="  덧글을 입력하세요.">
                <span class="input-group-btn">
-                    <button id="btn" class="btn btn-outline-primary" type="submit" name="commentInsertBtn">등록</button>
+                 &nbsp;<button id="btn" class="btn btn-outline-primary" type="submit" name="commentInsertBtn">등록</button>
                </span>
               </div>
         </form>

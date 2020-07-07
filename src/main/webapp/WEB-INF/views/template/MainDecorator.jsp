@@ -101,6 +101,7 @@
                     <ion-icon name="happy-outline" class="icon ion mypage"></ion-icon>
                   </a>
                  <div class="dropdown-menu submenu box shadow">
+                 	
                  	<sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
 		            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
 		            </sec:authorize>
