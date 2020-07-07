@@ -49,29 +49,36 @@
 <br><br>
 <!--  페이징 처리  -->
 
-
-
-<div class="container">
-
-<div class="row justify-content-center">
-<h2>시공사</h2>
-&nbsp;
-<h5 class="post__title"><strong></strong></h5>
-</div>
-<br><br> <!-- row -->
-<div class="row" style="transform:translateX(-0px)"><br><br>
-                <c:forEach items="${list}" var="list" varStatus="status">
-                   <div class="col-md-3">
-                   <div style="relative">
-                        <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}"><img src="${list.chImg}" class="card-img-top rounded" alt="blog" width="255px" height="255px"></a>
-                        
-                          <p class="card-text title">${list.constructor.conName}</p>
-                          <div class="card-text content" style="margin-bottom:20px;">${portList.channel.constructor.conName}★ ${list.chGrades}</div>
+    <section class="recommendation portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                  <h2 class="portfolio-title mb-4">시공사 </h2>
+                 </div>
+             </div>     
+             <div class="row">              
+  			 <c:forEach items="${list}" var="list" begin="0" end="7">
+                    <div class="main_recomm card col-3 pb-3">
+                    	<a class="main_index__link" href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}">
+	                        <div class="card-img">
+	                        	<img src="${list.chImg}" class="card-img-top rounded" alt="" style="width: 255px; height: 255px;">
+	
+	                        </div>
+	                        <div class="card-body">
+	                          <p class="card-text title">${list.constructor.conName}</p>
+	                          <div class="card-text content">${portList.channel.constructor.conName}★ ${list.chGrades}</div>
+                        	</div>
+                        </a>
                     </div>
-                	</div>
-                 </c:forEach>
-</div> 
-</div>
+			 </c:forEach> 
+  	
+                </div><!--end card --> <!-- 포트폴리오 한줄 -->
+            </div>
+            </div><!--end row-->
+        </div><!--end container-->
+    </section>
+
+
 
 <!-- 페이징 처리 -->
 <div id="page" style="text-align: center; margin-top:10px; margin-bottom:10px;">
