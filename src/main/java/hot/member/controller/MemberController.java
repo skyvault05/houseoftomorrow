@@ -1,9 +1,8 @@
 package hot.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +19,7 @@ import hot.member.domain.Member;
 import hot.member.domain.MemberRole;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.service.MemberService;
+import hot.security.CustomUser;
 
 @Controller
 public class MemberController {
@@ -116,7 +116,7 @@ public class MemberController {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		System.out.println(member);
 		member = new Member(null, "memberId", encoder.encode("1234"), "memberName", "memberPhone", null, memberRoleRepository.findById(1).orElse(null));
-		memberService.memberUpdate(member);
+		memberService.memberUpdate(member, "1");
 	return "index";
 	}
 	
@@ -135,6 +135,18 @@ public class MemberController {
 		return name;
 	}
 	
+	@RequestMapping("/manage/member/memberUpdateForm")
+	public ModelAndView memberUpdateForm() {
+		CustomUser principal = (CustomUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Member member = memberService.findMemberByMemberNo(principal.getMemberNo());
+		return new ModelAndView("/manage/member/memberUpdateForm", "member", member);
+	}
+	
+	@PostMapping("/manage/member/memberUpdate")
+	public String memberUpdate(Member member, String currentPassword) {
+		memberService.memberUpdate(member, currentPassword);
+		return "redirect:/";
+	}
 	/**
 	 * 내가 쓴 글
 	 * 

@@ -112,6 +112,9 @@
                     <a href="/member/consultingAllPage" class="dropdown-item Consulting">상담내역</a>
                     <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
                     <a href="/review/myReview/${user.memberNo}" class="dropdown-item writeList">내가쓴글</a>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <a href="/manage/admin/channelRegisterRequest" class="dropdown-item">시공사 등록 요청</a>
+                    </sec:authorize>
                     <a href="/logout" class="dropdown-item logout">로그아웃</a>
                  </div>
                 </div>
