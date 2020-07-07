@@ -70,7 +70,7 @@
 		if($('input[name=flag]').val() == "true"){
 			$('#summernoteDiv').hide();
 		}
-		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting";
+		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/constructor/preConsulting";
 		$.ajax({
 			url : strUrl,
 			method : "post",
