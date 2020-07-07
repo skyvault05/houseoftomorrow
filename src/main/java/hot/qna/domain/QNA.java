@@ -45,7 +45,7 @@ public class QNA {
 	@Column(name = "qna_title")
 	private String qnaTitle;
 	@Column(name = "qna_description")
-//	@Type(type = "text")
+	@Type(type = "text")
 	private String qnaDescription;
 	@Column(name = "qna_regdate")
 	private Timestamp qnaRegdate;

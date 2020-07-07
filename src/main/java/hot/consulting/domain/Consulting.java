@@ -52,7 +52,7 @@ public class Consulting {
 	private Integer chNo;
 	
 	@Column(name = "consul_description")
-//	@Type(type = "text")
+	@Type(type = "text")
 	private String consulDescription;
 	
 	@Column(name = "consul_regdate")
