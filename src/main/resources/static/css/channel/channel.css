@@ -12,7 +12,7 @@
     transition: color .15s ease;
 }
 .nav-link.ch_detail:hover, .nav-link.my_write:hover  {color:#33f0c0;}
-/*--------½Ã°ø»çÇÁ·ÎÇÊ-------*/
+/*--------ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-------*/
 .wrap-profile {
 	position: relative;
 	width: 100%;
@@ -344,7 +344,7 @@
     position: absolute;
     height: 100%;
 }
-/*---------°ü½ÉÇÏ¶ß-------------*/
+/*---------ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½-------------*/
 .user-profile_actions__etc>ion-icon {
   font-size: 20px;
 }
@@ -378,3 +378,132 @@
     text-decoration: none;
     padding: 2px 8px;
 }
+
+/*-------í¬íŠ¸í´ë¦¬ì˜¤ìƒì„¸ë³´ê¸°------------*/
+#content #user_action {
+    position: relative;
+    transition: top .1s;
+}
+#content>.right {
+    float: right;
+    width: 330px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    position: fixed;
+    right: 268.667px;
+    top: 113px;
+}
+#content #user_action>.contents {
+    padding: 20px 20px 0;
+}
+#content #user_action>.contents>.title {
+    font-weight: bold;
+    color: #424242;
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+#content #user_action>.contents>.created_at {
+    color: #bdbdbd;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+#content #user_action>.contents>.buttons {
+    overflow: hidden;
+}
+#content #user_action>.contents>.sharing_info {
+    margin-bottom: 20px;
+    margin: 20px 0 30px;
+    overflow: hidden;
+}
+#content #user_action>.contents>.sharing_info>.label {
+    float: left;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+}
+.ui-content-share {
+    overflow: hidden;
+}
+.ui-content-share .icon {
+    float: left;
+    margin-right: 2px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.icon {
+    background-repeat: no-repeat;
+    background-size: 400px;
+    display: inline-block;
+}
+.ui-content-share .icon.share_facebook {
+    background-color: #3b579d;
+}
+.ui-content-share .icon.share_kakaoStory {
+    background-color: #fae100;
+}
+.ui-content-share .icon.share_naver {
+    background-color: #3aac36;
+}
+.ui-content-share .icon.share_link {
+    background-color: #35c5f0;
+}
+.ui-content-share .icon.share_facebook:after {
+    width: 30px;
+    height: 30px;
+    background-image: url(https://d1nyaccf3kuclt.cloudfront.net/assets/icon_map/icon-sns.png);
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position: top -146px left 0;
+}
+.ui-content-share .icon.share_kakaoStory:after {
+    width: 30px;
+    height: 30px;
+    background-image: url(https://d1nyaccf3kuclt.cloudfront.net/assets/icon_map/icon-sns.png);
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position: top -146px left -60px;
+}.ui-content-share .icon.share_naver:after {
+    width: 30px;
+    height: 30px;
+    background-image: url(https://d1nyaccf3kuclt.cloudfront.net/assets/icon_map/icon-sns.png);
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position: top -146px left -120px;
+}
+.ui-content-share .icon.share_link:after {
+    width: 30px;
+    height: 30px;
+    background-image: url(https://d1nyaccf3kuclt.cloudfront.net/assets/icon_map/icon-sns.png);
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position: top -146px left -180px;
+}
+#content #writer {
+    padding: 0 20px;
+    border: none;
+}
+#writer>.wrap {
+    border-top: 1px solid #eeeeee;
+}
+#content #writer>.wrap>a>.profile_image {
+	
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin-right: 18px;
+    background-size: cover;
+    background-position: center;
+    background-image: url;
+}
+.ui-content-share .icon:after {
+    content: "";
+    display: block;
+    margin: 5px auto;
+}
+
