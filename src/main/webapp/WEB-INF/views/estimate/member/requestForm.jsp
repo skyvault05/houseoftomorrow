@@ -18,7 +18,8 @@
 <!--☆★☆★☆ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 수정가능 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ★☆★☆★-->
 <section class="pt-5">
 <sec:authentication var="user" property="principal" />
-<form class="expert-calculate" action="/estimateResult">
+<form class="expert-calculate" action="/estimateResult" method="post">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 <sec:authorize access="isAuthenticated()">
 <input type='hidden' name='memberNo' value='${user.memberNo}'>
 </sec:authorize>
@@ -1005,7 +1006,7 @@
 				</div>
 				<div class="estmate-form-group__content "><!--START comment-->
 					<div class="estmate-form-group__row">
-						<textarea class="form-control form-rounded" rows="2" id="estimate_comment"></textarea>
+						<textarea class="form-control form-rounded" rows="2" id="estimate_comment" name="estDescription"></textarea>
 					</div>
 				</div><!--end comment-->
 			</div><!--END group-->

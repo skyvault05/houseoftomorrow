@@ -12,11 +12,10 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/channel/channel.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estimate/estimate.css">
   <script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
-
+	<sec:authentication property="principal" var="user"></sec:authentication>
   </head>
   
   <body>
-  
 
 
 <!-- ↑↑↑↑↑↑↑↑↑↑ 이 윗부분 터치ㄴㄴ ↑↑↑↑↑↑↑↑ -->
@@ -32,7 +31,7 @@
 						<a href="${pageContext.request.contextPath}/manage/member/memberUpdateForm" class="nav-link my_write" target="_self">회원정보수정</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/myEstimateList/${user.memberNo }" class="nav-link my_write" target="_self">견적 요청 내역</a>
+						<a href="${pageContext.request.contextPath}/myEstimateList/${user.memberNo}" class="nav-link my_write" target="_self">견적 요청 내역</a>
 					</li>
 					<li class="nav-item">
 						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link my_write" target="_self">내 상담 내역</a>

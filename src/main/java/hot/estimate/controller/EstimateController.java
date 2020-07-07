@@ -35,7 +35,7 @@ public class EstimateController {
 		return "/estimate/member/requestForm";
 	}
 	
-	@RequestMapping("/estimateResult")
+	@PostMapping("/estimateResult")
 	public String estimateResult(Estimate estimate, Papering papering, Linoleum linoleum ,Floor floor, Bathroom bathroom, Kitchen kitchen, Tile tile, Integer memberNo) {
 		estimate.setPapering(papering);
 		estimate.setLinoleum(linoleum);
@@ -44,7 +44,7 @@ public class EstimateController {
 		estimate.setKitchen(kitchen);
 		estimate.setTile(tile);
 		
-		System.out.println(estimate);
+		System.out.println(estimate.getEstDescription());
 		estimateService.insertEstimate(estimate, memberNo);
 		return "/estimate/member/requestForm";
 	}
