@@ -18,4 +18,5 @@ public interface ReviewService {
 	Review readReview(Integer reviewNo);
 	List<Review> myReview(Integer memberNo);
 	Page<Review> selectAll(Pageable pageable, Channel channel);
+	boolean checkReviewRight(Integer chNo, Integer memberNo);
 }

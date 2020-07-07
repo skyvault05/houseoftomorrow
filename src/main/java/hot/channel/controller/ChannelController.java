@@ -1,6 +1,5 @@
 package hot.channel.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -12,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,10 +32,7 @@ import hot.channel.repository.FavoritePortfolioRepository;
 import hot.channel.service.ChannelService;
 import hot.constructor.repository.PortfolioRepository;
 import hot.constructor.service.PortfolioService;
-import hot.consulting.domain.Consulting;
-import hot.consulting.domain.Contract;
 import hot.consulting.repository.ConsultingRepository;
-import hot.consulting.repository.ContractRepository;
 import hot.member.domain.Constructor;
 import hot.member.domain.Member;
 import hot.member.domain.Portfolio;
@@ -43,6 +40,7 @@ import hot.member.repository.MemberRepository;
 import hot.review.domain.Review;
 import hot.review.repository.ReviewRepository;
 import hot.review.service.ReviewService;
+import hot.security.CustomUser;
 
 @Controller
 @RequestMapping("/channel")
@@ -100,8 +98,10 @@ public class ChannelController {
 	 * + 포트폴리오
 	 * */
 	@RequestMapping("/guest/channelDetail/{chNo}")
-	public ModelAndView chDetail(@PathVariable(name="chNo")int chNo, @RequestParam(defaultValue = "0")int nowPage, Model model) {
-
+	public ModelAndView chDetail(@PathVariable(name="chNo")Integer chNo, @RequestParam(defaultValue = "0")int nowPage, Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		CustomUser user = (CustomUser) principal;
+		
 		Channel channel = channelService.selectChannel(chNo);
 		List<Review> realReviewList = reviewService.selectReviewChNo(chNo);
 		List<Portfolio> realPortList = portfolioService.selectPortfolioChNo(chNo);
@@ -120,12 +120,15 @@ public class ChannelController {
 		
 		List<FavoriteChannel> favCh = fcRep.findByChannel(channel);
 		
+		boolean reviewRight = reviewService.checkReviewRight(chNo, user.getMemberNo());
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/channel/guest/channelDetail");
 		mv.addObject("channel", channel);
 		mv.addObject("realPortList", realPortList);
 		mv.addObject("favCh", favCh);
 		mv.addObject("realReviewList", realReviewList);
+		mv.addObject("reviewRight", reviewRight);
 		return mv;
 	}
 
