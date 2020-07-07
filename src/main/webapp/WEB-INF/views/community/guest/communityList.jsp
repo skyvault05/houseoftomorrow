@@ -71,9 +71,6 @@
 
 <div class="row justify-content-center">
 <c:choose>
-	<c:when test="${commCategoryNo==4}"><h3>사진</h3></c:when>
-</c:choose>
-<c:choose>
 	<c:when test="${commCategoryNo==5}"><h3>노하우</h3></c:when>
 </c:choose>
 &nbsp;

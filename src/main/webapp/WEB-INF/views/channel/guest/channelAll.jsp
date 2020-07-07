@@ -67,8 +67,6 @@
                         
                           <p class="card-text title">${list.constructor.conName}</p>
                           <div class="card-text content" style="margin-bottom:20px;">${portList.channel.constructor.conName}★ ${list.chGrades}</div>
-                        
-                    <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
                     </div>
                 	</div>
                  </c:forEach>

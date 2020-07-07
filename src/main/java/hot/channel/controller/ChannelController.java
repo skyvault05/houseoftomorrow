@@ -291,7 +291,7 @@ public class ChannelController {
 	 * */
 	@ResponseBody
 	@RequestMapping("/check/impossibleReview")
-	public ModelAndView checkReview(Integer memberNo, Integer chNo) throws IOException {
+	public ModelAndView checkReview(Integer memberNo, Integer chNo, HttpServletResponse response) throws IOException {
 		System.out.println("리뷰 체크 컨트롤러 들어옴");
 		int consultingCount = consultingRep.findCountByMemberNoAndChNo(memberNo, chNo);
 		int reviewCount = reviewRep.findCountByMemberNoAndChNo(memberNo, chNo);
@@ -302,13 +302,14 @@ public class ChannelController {
 		//Consulting consulting = consultingRep.findByMemberNoAndChNo(memberNo, chNo);
 		Channel channel = channelRep.findById(chNo).orElse(null);
 		
-		if(consultingCount != reviewCount) { // 상담 후, 시공이 확정된 수만큼 리뷰가 없다는 뜻(더 많을 수는 없잖아 원래)
+		if(consultingCount > reviewCount) { // 상담 후, 시공이 확정된 수만큼 리뷰가 없다는 뜻(더 많을 수는 없잖아 원래)
 			return new ModelAndView("review/member/reviewform", "channel", channel); 
 		} else { // 상담 후, 시공이 확정된 수만큼 리뷰가 있다는 것이기 때문에 모든 리뷰 다 등록됨
-//			response.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>alert('리뷰를 등록할 상담내역이 존재하지 않습니다.');</script>");
-			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('리뷰를 등록할 상담내역이 존재하지 않습니다.');</script>");
+			out.flush();
+
 			return new ModelAndView("redirect:../guest/channelDetail/"+chNo);
 			// ../를 사용하지 않으면 channel/check/channelDetail로 간다.
 		}

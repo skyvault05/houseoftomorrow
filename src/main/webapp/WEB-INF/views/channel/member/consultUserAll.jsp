@@ -166,6 +166,21 @@
 
 <div class="expert-calculate__main-wrap container">
 	<div class="expert-calculate__main row">
+	
+	<div class="wrap-submenu" style="text-align: center">
+		<div class="mypage-nav">
+			<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
+				<ul class="navbar-nav mypage">
+					<li class="nav-item">
+						<a href="/member/consultingAllPage" class="nav-link" target="_self">내 상담 내역</a>
+					</li>
+					<li class="nav-item">
+						<a href="/member/contractAll" class="nav-link" target="_self">내 계약 내역</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div><!--end wrap-submenu-->
 		
 	<input type="hidden" id="myChNo" value='<sec:authentication property="principal.chNo"/>'>
 	<input type="hidden" id="myMemberNo" value='<sec:authentication property="principal.memberNo"/>'>

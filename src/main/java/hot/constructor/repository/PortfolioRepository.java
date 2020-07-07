@@ -22,5 +22,7 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Integer> {
 	
 	List<Portfolio> findByPortStatusOrderByPortNoDesc(Integer portStatus); 
 	
+	List<Portfolio> findByPortStatus(Integer portStatus);
+	
 
 }

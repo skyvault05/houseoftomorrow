@@ -219,7 +219,7 @@ function delchk(){
 	
 	
     <sec:authentication var="user" property="principal" />
-    <div class="w" style="margin-left: 0%; color: gray">글쓴이: ${community.member.memberNo}<p></div>
+<%--     <div class="w" style="margin-left: 0%; color: gray">글쓴이: ${community.member.memberNo}<p></div> --%>
     <%-- 로그인한사람: ${user.memberNo} --%>
     <div class="rows col-md-9">
     <div class="btn-center">

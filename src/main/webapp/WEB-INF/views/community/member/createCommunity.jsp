@@ -154,10 +154,8 @@ function setThumbnail(event) {
 	</div>
 	</form>
 	
-	<form method="post" action="${pageContext.request.contextPath}/community/insert">
-	<div id="picture">
-	<input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event); "> 
-	 </div>
+	<form method="post"  enctype="multipart/form-data"  action="${pageContext.request.contextPath}/community/insert">
+	<input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event);">  
 	 <div  id="image_container"></div>
 	<div id="title" class="form-group">
 	<input type="text" class="form-control" name="commTitle" placeholder="제목을 입력해주세요">
