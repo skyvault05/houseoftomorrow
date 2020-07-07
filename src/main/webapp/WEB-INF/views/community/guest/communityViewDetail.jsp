@@ -109,20 +109,20 @@ function delchk(){
 			<section class="comment-feed">
 				<sec:authorize access="hasRole('ROLE_MEMBER')"> 
 					<h5 class="comment-feed__header"> 댓글 &nbsp;
-						<span class="comment-feed__header__count">${responseList.size()}</span>	
+						<span class="comment-feed__header__count">${comment.size()}</span>	
 					</h5>
 					<!-- 댓글창 -->
-					<form class="comment-feed__form" action="/estimate/constructor/registerEstimateResponse" method="post">
+					<form class="comment-feed__form" action="${pageContext.request.contextPath}/community/insertComment" method="post">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			            <input type="hidden" name="chNo" value="${user.chNo}">
-			            <input type="hidden" name="estNo" value="${estimate.estNo}">
+			            <input type="hidden" name="comNo" value="${community.commNo}"/>
+              			<input type="hidden" name="membNo"  value="${user.memberNo}"/>
 						<div class="comment-feed__form__user">
 							<img src="${pageContext.request.contextPath}/images/default/user_default.png" alt="" class="comm_img" />
 						</div>
 						<div class="comment-feed__form__input">
 							<div class="comment-feed__form__content">
 								<div class="comment-content-input">
-									<input class="comment-content-input__text comment-feed__form__content__text" name="estRespDescription" type="text" placeholder="내용을 입력해주세요 :)" />
+									<input class="comment-content-input__text comment-feed__form__content__text" name="commCommentDescription" type="text" placeholder="내용을 입력해주세요 :)" />
 								</div>
 							</div>
 							<div class="comment-feed__form__actions">
@@ -134,21 +134,25 @@ function delchk(){
 					</sec:authorize>
 					<!-- 댓글내용 -->
 					<ul class="comment-feed__list">
-				      <c:forEach items="${responseList}" var="response" varStatus="status">
+				      <c:forEach items="${comment}" var="comment" varStatus="status">
 						<li class="comment-feed__list__item">
 							<article class="comment-feed__item">
 								<p class="comment-feed__item__content">
 									<a href="#" class="comment-feed__item__content__author">
 										<img src="${pageContext.request.contextPath}/images/default/user_comment.png" alt="" class="comment-feed__item__content__author__image" />
-										<span class="comment-feed__item__content__author__name">${response.channel.constructor.conName}</span>
+										<span class="comment-feed__item__content__author__name">${comment.member.memberName}</span>
 									</a>
-									<span class="comment-feed__item__content__content">${response.estRespDescription}</span>
+									<span class="comment-feed__item__content__content">${comment.commCommentDescription}</span>
+									<span class="comment-feed__item__content__date"><fmt:formatDate value="${comment.commCommentRegdate}" pattern="yyyy-MM-dd HH:mm"/></span>
+									
+									<sec:authentication var="user" property="principal" />
+								    <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">				
+										<c:if test="${comment.member.memberNo == user.memberNo}">
+											<a class ="delComment" href="${pageContext.request.contextPath}/community/deleteComment?commentNo=${comment.commCommentNo}&commNo=${comment.community.commNo}">덧글 삭제</a></p>
+										</c:if>
+									</sec:authorize>
 								</p>
 								
-								<div class="comment-feed__item__footer">
-									<a href="/member/consultingForm?chNo=${user.chNo}" class="comment-feed__item__footer_esti">상담하기</a>
-									<a href="/channel/guest/channelDetail/${response.channel.chNo}" class="comment-feed__item__footer_esti">채널방문</a>
-								</div>
 							</article>
 						
 						</li>
