@@ -9,23 +9,23 @@ prefix="c" %>
 initial-scale=1, shrink-to-fit=no">
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
- <!-- bootstrap--> <link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+   <!-- bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/main/jquery.fancybox.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
 
   <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="/css/channel/channel.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
 
+  
   <!-- WebFont -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 <sec:authentication var="user" property="principal" />
 <script>
