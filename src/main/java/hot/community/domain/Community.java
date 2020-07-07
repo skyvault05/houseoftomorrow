@@ -52,7 +52,7 @@ public class Community {
 	@Column(name = "comm_img")
 	private String commImg;
 	@Column(name = "comm_description")
-//	@Type(type = "text")
+	@Type(type = "text")
 	private String commDescription;
 	@Column(name = "comm_regdate")
 	private Timestamp commRegdate;

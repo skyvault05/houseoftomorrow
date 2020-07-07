@@ -192,7 +192,7 @@
 				<div class="mb-3">
 					<label for="email">이메일</label>
 					<input type="text" id="memberId" name="memberId" class="form-control" placeholder="email (id@domain)">
-					<input type="button" id="dupCheck" value="중복 체크">
+					<input type="button" class="btn btn-primary" id="dupCheck" value="중복 체크">
 				</div>
 				<input type="hidden">
 				<div class="mb-3">
@@ -215,7 +215,7 @@
 				<div class="mb-3">
 					<label for="phone">전화번호</label> 
 					<input type="text" class="form-control" id="phone" placeholder="전화번호 (010-0000-0000)" value="" required name="memberPhone"> 
-					<input type="button" id="phoneCheck" value="인증하기">
+					<input type="button" class="btn btn-primary" id="phoneCheck" value="인증하기">
 				</div>
 				
 
