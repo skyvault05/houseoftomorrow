@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 
 import hot.member.domain.Member;
 import lombok.AllArgsConstructor;
@@ -44,6 +45,7 @@ public class CommComment {
 	private Member member;
 	
 	@Column(name = "comm_comment_description")
+//	@Type(type = "text")
 	private String commCommentDescription;
 	
 	@Column(name = "comm_comment_regdate")

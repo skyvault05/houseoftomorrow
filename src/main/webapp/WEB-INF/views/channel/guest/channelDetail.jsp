@@ -78,7 +78,7 @@ initial-scale=1, shrink-to-fit=no">
          $('#insertReview').on('click', insertReview);
          
          </sec:authorize>
-});//end
+});
 </script>
   </head>
   

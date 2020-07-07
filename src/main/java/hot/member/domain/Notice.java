@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,6 +38,7 @@ public class Notice {
 	private String noticeTitle;
 	
 	@Column(name = "notice_description")
+//	@Type(type = "text")
 	private String noticeDescription;
 	
 	@Column(name = "notice_regdate")

@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 
 import hot.member.domain.Member;
 import lombok.AllArgsConstructor;
@@ -44,6 +45,7 @@ public class QNA {
 	@Column(name = "qna_title")
 	private String qnaTitle;
 	@Column(name = "qna_description")
+//	@Type(type = "text")
 	private String qnaDescription;
 	@Column(name = "qna_regdate")
 	private Timestamp qnaRegdate;
