@@ -32,13 +32,25 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 </head>
 <body>
 <div class="container margin-top-100">
+		<sec:authorize access="isAuthenticated()">   
+		<sec:authentication property="principal" var="user"/>
+		<div class="wrap-submenu" style="text-align: center">
+			<div class="mypage-nav">
+				<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
+					<ul class="navbar-nav mypage">
+						<li class="nav-item">
+							<a href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}" class="nav-link" target="_self">관심 채널</a>
+						</li>
+						<li class="nav-item">
+							<a href="${pageContext.request.contextPath}/channel/myFavoritePortfolio/${user.memberNo}" class="nav-link" target="_self">관심 포트폴리오</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div><!--end wrap-submenu-->
+		</sec:authorize>
 <br><br>
-<div class="row justify-content-center">
-<h2>관심 채널</h2>
-</div>
 <div class="row"><br><br></div>
-
-
 <div class="container">
 <br><br>
 <div class="row justify-content-center">
@@ -54,24 +66,11 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                         
                           <p class="card-text title">${fvChannel.channel.constructor.conName}</p>
                           <div class="card-text content">★ ${fvChannel.channel.chGrades}</div>
-                        
-                    <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
                     </div>
                 	 </div>
                  </c:forEach>
 </div> 
 </div>
-
-
-
-
-
-
-
-
-
-
-
 </div>
 </body>
 </html>

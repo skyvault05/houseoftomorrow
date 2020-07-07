@@ -33,8 +33,9 @@
   </head>
   
   <body>
+
   <!-- main slider -->
-    <div class="container pt-5">
+    <div class="container">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -90,7 +91,7 @@
             <div class="row">
                 <div class="col-xl-12">
                   <h2 class="portfolio-title mb-4">추천 포트폴리오 </h2>
-                  </div>
+                 </div>
              </div>     
              <div class="row">     
 <%--                    <div class="card-wrap">
@@ -110,7 +111,9 @@
                     </div>
 				    </c:forEach>       --%>      
 				    
-				   <c:forEach items="${portList}" var="port" varStatus="status" begin="0" end="7">   
+				    
+	<!-- --------------------by 웅희------------------------------- -->			    
+<%-- 				   <c:forEach items="${portList}" var="port" varStatus="status" begin="0" end="7">   
                 
                    <div class="col-md-3">     
                     
@@ -121,7 +124,7 @@
                         <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
                        	<p class="card-text title" style="margin-bottom:0px;">${port.portTitle}</p>
                         <div class="card-text content" style="margin-bottom:10px;">${port.channel.constructor.conName}${status.count}</div>
-                         <%-- <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if> --%>
+                         <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if>
                        
                         </a>
                    
@@ -129,8 +132,30 @@
                     	</div>
                 	</div>
                    
-                  </c:forEach>
-             
+                  </c:forEach> --%>
+  	<!-- --------------------end by 웅희------------------------------- -->	    
+  	
+  	<!-- ----------------------by쟌 -------------------------------->  
+  			 <c:forEach items="${portList}" var="port" begin="0" end="7">
+                    <div class="main_recomm card col-3 pb-3">
+                    	<a class="main_index__link" href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
+	                        <div class="card-img">
+	                        	<img src="${port.portImg}" class="card-img-top rounded" alt="">
+	
+	                        </div>
+	                        <div class="card-body">
+	                          <p class="card-text title">${port.portTitle}</p>
+	                          <div class="card-text content">${port.channel.constructor.conName}</div>
+                        	</div>
+                        </a>
+                    </div>
+			 </c:forEach> 
+  	<!-- -end by 쟌  --> 
+  	
+  	
+  	
+  	
+  	    
 
                 </div><!--end card --> <!-- 포트폴리오 한줄 -->
     
@@ -151,44 +176,6 @@
                         </div>
                     </div>
 
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
-
-                    <div class="main_recomm card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/images/default/thumbnail.png" class="card-img-top rounded" alt="blog">
-                            <div class="social_connect_overlay rounded">
-                                <a href="#"><span class="ti-instagram"></span></a> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                          <p class="card-text title">감성충만, 홈카페를 품은 한강뷰 목조주택</p>
-                          <div class="card-text content">코원하우스</div>
-                        </div>
-                    </div>
 
                    
 
@@ -209,7 +196,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 pt-5"> 
-          <a href="#"><img src="${pageContext.request.contextPath}/images/default/main_company_btn.jpg" class="img-fluid rounded" alt="시공사 회원가입 바로가기"></a>
+          <a href="/constructorSignup"><img src="${pageContext.request.contextPath}/images/default/main_company_btn.jpg" class="img-fluid rounded" alt="시공사 회원가입 바로가기"></a>
                 </div>
             </div>
         </div>
@@ -220,14 +207,16 @@
 
 <!-- recomm constructor -->
  <section class="recomm-constructor">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 pt-5">
-                  <h2 class="portfolio-title mb-4">추천 시공사</h2>
-                <div>
-            <div> 
-            <div class="row">   
-                   <c:forEach items="${channelList}" var="ch" varStatus="status" begin="0" end="3">   
+    <div class="container">
+       <div class="row">
+         <div class="col-xl-12">
+             <h2 class="portfolio-title mb-4">추천 시공사 </h2>
+         </div>
+       </div>  
+       <div class="row">   
+       
+       			<!-- -----------------------------by 웅희--------------------------------------- -->
+                   <%-- <c:forEach items="${channelList}" var="ch" varStatus="status" begin="0" end="3">   
                 
                    <div class="col-md-3">     
                     
@@ -237,8 +226,8 @@
                                                
                         <a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${ch.chNo}">
                        	<p class="card-text title" style="margin-bottom:0px;">${ch.constructor.conName}</p>
-                     <%--    <div class="content">${ch.constructor.conName}${status.count}</div> --%>
-                     <%--     <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if> --%>
+                        <div class="content">${ch.constructor.conName}${status.count}</div>
+                         <c:if test="${ status.count%4 == 0 }" >★<div class="rows"></div></c:if>
                        	<p class="card-text content">${ch.chGrades}</p>
                         </a>
                    
@@ -246,17 +235,31 @@
                     	</div>
                 	</div>
                    
-                 </c:forEach>
-              
-            </div>
-            </div><!--row-->
-            </div><!--container-->
-         </section>
+                 </c:forEach> --%>
+                 
+           <!-- ------------------------by 쟌----------------------------- -->
+       <c:forEach items="${channelList}" var="ch" varStatus="status" begin="0" end="3">
+           <div class="main_recomm card col-3">
+           	<a class="main_index__link" href="${pageContext.request.contextPath}/channel/guest/channelDetail/${ch.chNo}">
+                        <div class="card-img__image-wrap">
+                            <img src="${ch.chImg}" class="card-img__constructor rounded" alt="">
+                        </div>
+                        <div class="card-body">
+                          <div class="card-text-summary">${ch.constructor.conName}</div>
+                          <div class="card-text-profile">${ch.chGrades}</div>
+                          
+                        </div>
+            </a>
+          </div>
+       </c:forEach>
+           
+       </div><!--row-->
+    </div><!--container-->
+</section>
 <!-- END recomm constructor  -->
 <!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
 <!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
 
-<div class="empty-space"></div>
 
   </body>
 </html>

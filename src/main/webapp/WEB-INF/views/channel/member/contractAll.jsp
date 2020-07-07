@@ -10,6 +10,22 @@
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
+
+<!-- Theme Style -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">  
+<link rel="stylesheet" href="/css/review/star.css">
+<!-- WebFont -->
+<link rel="stylesheet" href="/css/font/fontawesome/css/font-awesome.min.css">
+   
+<link rel="stylesheet" href="/css/font/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
@@ -70,11 +86,27 @@ $(function(){
 	}
 </style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의 집</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
+	<div class="container pt-5">
+		<div class="py-5 text-left">
+		
+		<div class="wrap-submenu" style="text-align: center">
+			<div class="mypage-nav">
+				<nav class="navbar justify-content-center navbar-expand-lg submenu_nav">
+					<ul class="navbar-nav mypage">
+						<li class="nav-item">
+							<a href="/member/consultingAllPage" class="nav-link" target="_self">내 상담 내역</a>
+						</li>
+						<li class="nav-item">
+							<a href="/member/contractAll" class="nav-link" target="_self">내 계약 내역</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div><!--end wrap-submenu-->
+		
 			<div class="col-md-12">
 				<h1>계약 목록</h1>
 			</div>

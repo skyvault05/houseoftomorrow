@@ -2,6 +2,8 @@ package hot.constructor.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -59,8 +61,9 @@ public class portfolioServiceImpl implements PortfolioService{
 	
 	@Override
 	public List<Portfolio> findAllPortfolio() {
+		List<Portfolio> portAll = portRep.findByPortStatus(1);
 		
-		return null;
+		return portAll;
 	}
 	
 	@Override
@@ -76,25 +79,29 @@ public class portfolioServiceImpl implements PortfolioService{
 		return port;
 	}
 
+	/**
+	 * 포트폴리오 등록할 때, 주문 테이블에도 값 들어가게
+	 * */
 	@Override
-	public void insertOrder(Order order, String orderStatusName) {
-		System.out.println("order.getOrderStatusName(): " + orderStatusName);
-		
-		if(orderStatusName == "ready") {
-			System.out.println("**************ready**************");
-			order.setOrderStatus(0);
-		} else if(orderStatusName == "paid") {
-			System.out.println("**************paid**************");
-			order.setOrderStatus(1);
-		} else if(orderStatusName == "cancelled") {
-			
-			order.setOrderStatus(2);
-		} else if(orderStatusName == "failed") {
-			order.setOrderStatus(3);
-		}
-		
-		order.setOrderStatus(1);
-		System.out.println("강제로 status 값 줌");
+	public void insertOrder(Order order) {
 		orderRep.save(order);		
+	}
+
+	/**
+	 * 포트폴리오 삭제
+	 * 
+	 * portStatus -> 0
+	 * orderStatus -> 2
+	 * */
+	@Override
+	@Transactional
+	public void deletePortfolio(int portNo) {		
+		Portfolio dbPortfolio = portRep.findById(portNo).orElse(null);
+		Order dbOrder = orderRep.selectByPortfolioNo(dbPortfolio.getPortNo());
+		dbPortfolio.setPortStatus(0);
+		
+		if(dbOrder != null) {
+			dbOrder.setOrderStatus(2);
+		}		
 	}
 }

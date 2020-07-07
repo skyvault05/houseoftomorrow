@@ -2848,8 +2848,8 @@ fieldset:disabled a.btn {
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #33f0c0;
-  border-color: #33f0c0;
+  background-color: #33f0c0!important;
+  border-color: #33f0c0!important;
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -4570,7 +4570,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
-  color: #fff;
+  color: #33f0c0;
 }
 
 .navbar-dark .navbar-nav .nav-link {

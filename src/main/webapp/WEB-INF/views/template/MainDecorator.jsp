@@ -21,6 +21,9 @@
    <!-- Theme Style -->
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/channel/channel.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/community/community.css"> 
+
 
   <!-- WebFont --> 
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
@@ -45,11 +48,11 @@
           <div class="collapse navbar-collapse btnCollapse" >
             <ul class="navbar-nav ">
               <li class="nav-item dropdown pl-md-5">
-              <a href="/community/guest/communityMain" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
+              <a href="/community/guest/communityMain" class="nav-link dropdown-toggle main-btn" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">커뮤니티 </a>
              <div class="dd-wrap">
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/community/guest/communityMain" >커뮤니티홈</a></li>
-                <li><a class="dropdown-item" href="/community/guest/communityPic">사진</a></li>
+                <li><a class="dropdown-item" href="/community/list/4">사진</a></li>
                <!--  <li><a class="dropdown-item" href="#">집들이</a></li> -->
                 <li><a class="dropdown-item" href="/community/list/5">노하우</a></li>
               </ul>
@@ -57,13 +60,14 @@
             </li>
 
             <li class="nav-item dropdown ">
-              <a href="/common/index" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">인테리어시공</a>
+              <a href="/" class="nav-link dropdown-toggle main-btn" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">인테리어시공</a>
               <div class="dd-wrap">
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/common/index">시공홈</a></li>
+                  <li><a class="dropdown-item" href="/">시공홈</a></li>
                   <li><a class="dropdown-item" href="/estimate">견적요청</a></li>
                  <!--  <li><a class="dropdown-item" href="#">전문가찾기</a></li> -->
-                  <li><a class="dropdown-item" href="/channel/guest/portfolioAll">포트폴리오</a></li>
+                 <li><a class="dropdown-item" href="/channel/channelAll">채널</a></li>
+                 <li><a class="dropdown-item" href="/channel/guest/portfolioAll">포트폴리오</a></li>
               	</ul>
               </div>
             </li>
@@ -77,7 +81,7 @@
                 <span class="icon ion ion-search pt-2"><ion-icon name="search-outline"></ion-icon></span>
                 <input type="text" class="form-control col-sm-12" placeholder="Search">
               </form>
-              <button type="button" class="btn btn-outline-primary" href="/community/guest/write">글쓰기</button>
+              <a class="btn btn-outline-primary pt-2" href="/community/guest/write">글쓰기</a>
               
                  <!------------------------------ 로그인/회원가입 -------------------------------->
 	<sec:authorize access="isAnonymous()">
@@ -94,7 +98,7 @@
    	<sec:authorize access="isAuthenticated()">   
    		 <div class="iconmenu pl-1">
               <div class="header_social_icon d-flex">
-                <ion-icon name="bookmark-outline" class="icon ion"></ion-icon>
+                <a href="${pageContext.request.contextPath}/myFavoriteChannel/${user.memberNo}"><ion-icon name="bookmark-outline" class="icon ion"></ion-icon></a>
                 <ion-icon name="notifications-outline" class="icon ion"></ion-icon>
                 <div class="dropdown submenu">  
                   <a href="#" class="dropdown-toggle menuicon" data-toggle="dropdown">
@@ -104,9 +108,10 @@
                  	<sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
 		            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
 		            </sec:authorize>
-                    <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
+                    <a href="/" class="dropdown-item updateInfo">회원정보수정</a>
+                    <a href="/member/consultingAllPage" class="dropdown-item Consulting">상담내역</a>
                     <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
-                    <a href="#" class="dropdown-item writeList">내가쓴글</a>
+                    <a href="/review/myReview/${user.memberNo}" class="dropdown-item writeList">내가쓴글</a>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <a href="/manage/admin/channelRegisterRequest" class="dropdown-item">시공사 등록 요청</a>
                     </sec:authorize>
@@ -115,21 +120,25 @@
                 </div>
               </div>
          </div><!--end submenu header icon-->
-   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
    			<!-- Example single danger button -->
 	<%-- 	<div class="btn-group">
 		  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		    마이메뉴
 		  </button>
 		  <div class="dropdown-menu">
+		  	<a href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}" class="dropdown-item favoriteChannel">관심채널</a>
+            <a href="${pageContext.request.contextPath}/channel/myFavoritePortfolio/${user.memberNo}" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
+            <div class="dropdown-divider"></div>
+            <sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
+            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
+            </sec:authorize>
+            <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
+            <a href="#" class="dropdown-item writeList">내가쓴글</a>
+            <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
+            <div class="dropdown-divider"></div>
+            <a href="/logout" class="dropdown-item logout">로그아웃</a>
+		  </div>
+		</div>
 		  	<a href="#" class="dropdown-item favoriteChannel">관심채널</a>
             <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
             <div class="dropdown-divider"></div>
@@ -152,12 +161,17 @@
       </nav>
   <!--END main menu--->
   </header>
-
-<div style="height:90px;"></div>
+  
+  <!-- 상단여백 GAP -->
+  <div class="empty-space pt-5"></div>
+  
 <sitemesh:write property='body' />
 
 
+<!-- 하단여백 -->
+<div class="empty-space"></div>
 
+<!-- START FOOTER -->
 <footer class="site-footer" role="contentinfo">
       <div class="container">
       <footer class="layout-footer">

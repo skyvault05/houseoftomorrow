@@ -53,7 +53,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
             var image = document.getElementById("favoriteChannel");
               if (result==1) {
                 image.src = "/plugins/images/heart_off.png";
-              } else {
+              } else if(result==2) {
                 image.src = "/plugins/images/heart_on.png";
               }
          }
@@ -150,7 +150,9 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                            </a>
                            <span class="expert-review-popup-button">
                               <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                                 <a href="${pageContext.request.contextPath}/review/reviewform?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
+<%--                               	 <c:if  test="${user 리뷰 수 < 상담 완료 내역 수}"> --%>
+                                 <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
+<%--                                  </c:if> --%>
                                  <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                               </sec:authorize>
                            </span>
@@ -168,7 +170,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                            <ul class="drop-down__list">
                               <li>
                               <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                                 <a href="${pageContext.request.contextPath}/review/reviewform?memberNo=${user.memberNo}&chNo=1" id="insertReview">리뷰쓰기</a>
+                                 <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
                                  <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                               </sec:authorize>
                               <button type="button">팔로우</button></li>
@@ -213,10 +215,10 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
          <div class="channel_review">
             <!--고객리뷰-->
             <section class="post post--reviews">
-               <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(list)}+</strong>
+               <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(realReviewList)}</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                     <a href="${pageContext.request.contextPath}/review/reviewform?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
+                     <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
                   </sec:authorize>
                   <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                </h5>
@@ -246,7 +248,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 
             <!--포트폴리오-->
             <section class="post post--projects">
-               <h5 class="post__title">포트폴리오 <strong>${portList.size()}</strong>
+               <h5 class="post__title">포트폴리오 <strong>${realPortList.size()}</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 	                  <c:if test="${user.memberNo == channel.constructor.member.memberNo}">

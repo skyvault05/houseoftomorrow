@@ -13,7 +13,9 @@ public interface PortfolioService {
 	
 	void insertPortfolio(Portfolio portfolio);
 	
-	void insertOrder(Order order, String orderStatusName);
+	void insertOrder(Order order);
+	
+	void deletePortfolio(int portNo);
 	
 	List<Portfolio> selectPortfolio();
 		

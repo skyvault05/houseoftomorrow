@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -145,5 +146,17 @@ public class MemberController {
 	public String memberUpdate(Member member, String currentPassword) {
 		memberService.memberUpdate(member, currentPassword);
 		return "redirect:/";
+	}
+	/**
+	 * 내가 쓴 글
+	 * 
+	 * 리뷰, 커뮤니티, qna
+	 * */
+	@RequestMapping("/manage/member/myPage/{memberNo}")
+	public ModelAndView myPage(@ModelAttribute(name="memberNo")Integer memberNo) {		
+		
+		
+		
+		return null;
 	}
 }

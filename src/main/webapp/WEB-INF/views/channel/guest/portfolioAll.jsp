@@ -38,7 +38,7 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <div class="row justify-content-center">
 <h2>포트폴리오</h2>
 &nbsp;
-<h5 class="post__title"><strong>${fn:length(portList)}개</strong></h5>
+<h5 class="post__title"><strong>${fn:length(portAll)}개</strong></h5>
 </div> <!-- 로우 끝 -->
 <br><br>
 <div class="row" style="transform:translateX(-0px)"><br><br>

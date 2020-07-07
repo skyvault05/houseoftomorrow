@@ -28,6 +28,7 @@ import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
 import hot.member.repository.NotificationRepository;
+import hot.qna.domain.QNA;
 import hot.review.repository.ReviewRepository;
 
 
