@@ -70,17 +70,17 @@
 					<li class="nav-item">
 						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link my_write" target="_self">내 상담 내역</a>
 					</li>
-					<li class="dropdown submenu dropright">
+					<li class="dropright">
 						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="dropdown-toggle nav-link my_write" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						내가 쓴 글</a>
 						<!-- 좋은말로할때드롭따운해라 -->
-						<div class="dropdown-menu box shadow">
+						<div class="dropdown-menu my__write box shadow">
 			                <ul class="" aria-labelledby="navbarDropdown">
 			                  <li class="dropdown-item">
 								<a class="review_submenu_link" href="${pageContext.request.contextPath}/review/myReview/${user.memberNo}" target="_self">리뷰</a>
 							  </li>
 			                  <li class="dropdown-item">
-								<a class="reviewdropdown-menu submenu box shadow_submenu_link" href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" target="_self">커뮤니티</a>
+								<a class="review_submenu_link" href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" target="_self">커뮤니티</a>
 							  </li>
 							  
 							  <li class="dropdown-item">
