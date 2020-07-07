@@ -140,7 +140,7 @@
                     <div class="main_recomm card col-3 pb-3">
                     	<a class="main_index__link" href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${port.portNo}">
 	                        <div class="card-img">
-	                        	<img src="${port.portImg}" class="card-img-top rounded" alt="">
+	                        	<img src="${port.portImg}" class="card-img-top rounded" alt="" style="width: 255px; height: 255px;">
 	
 	                        </div>
 	                        <div class="card-body">
