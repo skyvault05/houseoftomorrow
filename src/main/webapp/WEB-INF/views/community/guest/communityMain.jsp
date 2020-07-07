@@ -40,10 +40,10 @@
             <!--contents-->
             <div class="main-img-content-wrap">
               <div class="main-img-content-info">
-                <div class="main-img-content__title">타이틀이라고여 팍씨ㅡㅡ</div>
+                <div class="main-img-content__title">따뜻한 분위기의 MY ROOM ^^</div>
                 <div class="main-img-content__profile">
                   <img class="content__profile__image" src="${pageContext.request.contextPath}/images/default/user_default.png" alt="사용자프로필사진">
-                  <span class="content__profile__name">곽두팔</span>
+                  <span class="content__profile__name">동글</span>
                 </div>
               </div>
               <div class="main-img-content-viewmore">보러가기</div>
