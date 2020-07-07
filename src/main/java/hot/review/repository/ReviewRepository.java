@@ -20,6 +20,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	
 	List<Review> findByMemberAndReviewStatus(Member member, Integer reviewStatus);
 	
+	List<Review> findByMemberAndChannelAndReviewStatus(Member member, Channel channel, Integer reviewStatus);
+	
 	@Query("SELECT r FROM Review r WHERE channel.chNo = :#{#channel.chNo}")
 	List<Review> findByChannelNo(Channel channel);
 	

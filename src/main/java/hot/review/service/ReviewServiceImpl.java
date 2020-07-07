@@ -47,8 +47,11 @@ public class ReviewServiceImpl implements ReviewService {
 			int grade = list.getReviewGrade();
 			sum += grade;
 		}
+		System.out.println("sum: " + sum);
 		double avg = (double)sum/(double)reviewList.size();
+		System.out.println("avg: " + avg);
 		double avg2 = Math.round(avg*100)/100.0;
+		System.out.println("avg2: " + avg2);
 		
 		channel.setChGrades(avg2);
 	}
@@ -137,11 +140,12 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public boolean checkReviewRight(Integer chNo, Integer memberNo) {
 		Member member = memberRep.findById(memberNo).orElse(null);		
+		Channel channel = channelRep.findById(chNo).orElse(null);
 		List<Consulting> consultingList = consultingRep.findByMemberNoAndChNoAndConsulStatus(memberNo, chNo, 2);
-		System.out.println(consultingList.size());
+		System.out.println("consultingList.size(): " + consultingList.size());
 		
-		List<Review> reviewList = reviewRep.findByMemberAndReviewStatus(member, 1);
-		System.out.println(reviewList.size());
+		List<Review> reviewList = reviewRep.findByMemberAndChannelAndReviewStatus(member, channel, 1);
+		System.out.println("reviewList.size(): " + reviewList.size());
 		
 		return consultingList.size()>reviewList.size();
 	}
