@@ -89,7 +89,7 @@ $(function(){
 <title>내일의 집</title>
 </head>
 <body>
-	<div class="container pt-5">
+	<div class="container pt-2">
 		<div class="py-5 text-left">
 		
 		<div class="wrap-submenu" style="text-align: center">
@@ -108,7 +108,7 @@ $(function(){
 		</div><!--end wrap-submenu-->
 		
 			<div class="col-md-12">
-				<h1>계약 목록</h1>
+				<h3 class="expert-calculate__content__header__title">계약 목록</h3>
 			</div>
 			<div class="col-md-12">
 				<table id="contractList">

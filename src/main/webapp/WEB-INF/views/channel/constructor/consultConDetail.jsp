@@ -7,28 +7,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="_csrf" content="${_csrf.token}" />
-<meta name="_csrf_header" content="${_csrf.headerName}" />
-<title>내일의 집</title>
-
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 
-<link rel="stylesheet" href="/plugins/summernote/summernote-lite.min.css">
+
+
+<!-- bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
+
+  <!-- Theme Style -->
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
+
+  
+  <!-- WebFont -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
+
+
+
+
+
+
+<script>
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content"); 
+	$(document).ajaxSend(function(e, xhr, options) {
+	  xhr.setRequestHeader(header, token);
+	});
+</script>
+<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
 <script src="/plugins/summernote/summernote-lite.min.js"></script>
 <script src="/plugins/summernote/setsummernote.js"></script>
 
-<!-- WebFont -->
-<link rel="stylesheet" href="/css/font/fontawesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/font/font-awesome.min.css">
 
 
-
+<meta charset="UTF-8">
+<title>내일의 집</title>
 <style type="text/css">
 	table{
 		width:100%;
@@ -37,7 +65,6 @@
 		max-width:100%;
 	}
 </style>
-
 <script>
 	$(function(){
 		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting";
@@ -154,12 +181,5 @@
 </div>	
 </div>
 </div></div>
-<script>
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content"); 
-	$(document).ajaxSend(function(e, xhr, options) {
-	  xhr.setRequestHeader(header, token);
-	});
-</script>
 </body>
 </html>

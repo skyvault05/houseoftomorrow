@@ -160,7 +160,7 @@
 							</form>
 						</td>
 						<td style="float:right;">
-							<a class="btn btn-outline-primary"  href="/channel/guest/channelDetail/${param.chNo}" value="뒤로가기">뒤로가기</a>
+							<a class="btn btn-outline-primary"  href="/channel/guest/channelDetail/${param.chNo}" value="채널가기">채널가기</a>
 							<input class="btn btn-outline-primary" type="button" id="noteBtn" value="작성">
 						</td>
 					</tr>
