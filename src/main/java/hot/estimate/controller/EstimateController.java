@@ -1,5 +1,6 @@
 package hot.estimate.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,5 +75,13 @@ public class EstimateController {
 		System.out.println(estNo+":"+chNo);
 		estimateService.insertEstimateResponse(estResponse, estNo, chNo);
 		return "redirect:/viewEstimateDetail/"+estResponse.getEstimate().getEstNo();
+	}
+	
+	@RequestMapping("/estimate/guest/requestAll")
+	public ModelAndView allEstimate() {
+		List<Estimate> list = estimateService.selectAll();
+		Collections.reverse(list);
+//		list.forEach(item -> item.setEstimateDetails());
+		return new ModelAndView("estimate/guest/requestAll", "list", list);
 	}
 }
