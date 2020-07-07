@@ -158,7 +158,7 @@ initial-scale=1, shrink-to-fit=no">
                         <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
                         <div class="drop-down user-profile_actions_etc-wrap">
                            <button class="btn user-profile_actions__etc" type="button">
-                              <ion-icon name="heart"></ion-icon>
+                              <ion-icon id="favoriteChannel" name="heart"></ion-icon>
                               <span>${fn:length(favCh)}</span>
                            </button>
                            
