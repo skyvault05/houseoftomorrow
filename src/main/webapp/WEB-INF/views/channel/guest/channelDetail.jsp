@@ -159,10 +159,19 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                         </div><!-- end profile_info_reviews-->
                      </div><!--user_proifle__info-->
                   </div><!--user_proifle__conatiner-->
-
+                 
                   <div class="user_profile__consultation pb-4"><!--상담하기-->
                      <div class="user_profile__btn-actions">
-                        <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
+                     	<sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()"> 
+                     	<c:choose>
+                     	<c:when test="${user.memberNo==channel.constructor.memberNo}">
+                          <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/channel/constructor/portfolioForm">포트폴리오등록</a>
+                        </c:when>
+                        <c:otherwise>
+                          <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
+                        </c:otherwise>
+                        </c:choose>
+                        </sec:authorize>
                         <div class="drop-down user-profile_actions_etc-wrap">
                            <button class="btn user-profile_actions__etc" type="button">
                               <svg class="icon" width="24" height="24" preserveAspectRatio="xMidYMid meet"><path d="M6 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#000" fill-opacity=".7" fill-rule="evenodd"></path></svg>
