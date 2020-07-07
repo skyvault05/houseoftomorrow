@@ -41,7 +41,7 @@
                  </div>
              </div>     
              <div class="row">              
-  			 <c:forEach items="${list}" var="list" begin="0" end="7">
+  			 <c:forEach items="${list}" var="list">
                     <div class="main_recomm card col-3 pb-3">
                     	<a class="main_index__link" href="${pageContext.request.contextPath}/channel/guest/channelDetail/${list.chNo}">
 	                        <div class="card-img">

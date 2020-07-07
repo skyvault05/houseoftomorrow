@@ -45,6 +45,7 @@
 	                          <p class="card-text title">${list.commTitle}</p>
 	                          <div class="card-text content">조회수 ${list.commReadnum}</div>
                         	</div>
+
                         </a>
                     </div>
 			 </c:forEach> 

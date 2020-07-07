@@ -135,10 +135,19 @@ initial-scale=1, shrink-to-fit=no">
                         </div><!-- end profile_info_reviews-->
                      </div><!--user_proifle__info-->
                   </div><!--user_proifle__conatiner-->
-
-                  <div class="user_profile__consultation pb-4"><!--상담하기-->
+                 
+                  <div class="user_profile__consultation pb-4" ><!--상담하기-->
                      <div class="user_profile__btn-actions">
-                        <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
+                     	<sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()"> 
+                     	<c:choose>
+                     	<c:when test="${user.memberNo==channel.constructor.memberNo}">
+                          <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/channel/constructor/portfolioForm">포트폴리오등록</a>
+                        </c:when>
+                        <c:otherwise>
+                          <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
+                        </c:otherwise>
+                        </c:choose>
+                        </sec:authorize>
                         <div class="drop-down user-profile_actions_etc-wrap">
                            <button class="btn user-profile_actions__etc" type="button">
                               <ion-icon id="favoriteChannel" name="heart"></ion-icon>
@@ -158,8 +167,12 @@ initial-scale=1, shrink-to-fit=no">
                         </div>
                      </div>      
                      <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">            
+
+                 
+
                     <!--  <img style="cursor: pointer; width: 15%; height: 15%;" id="favoriteChannel"  src="/plugins/images/heart_off.png"/> -->
                      <%-- <strong>${fn:length(favCh)}</strong> --%>
+
                      </sec:authorize>
                   </div><!--end 상담하기-->
                   

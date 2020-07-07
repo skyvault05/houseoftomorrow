@@ -132,6 +132,7 @@ public class ConstructorController {
 		List<Portfolio> portList = portfolioService.selectPortfolioChNo(chNo);
 		int portSize = portList.size();
 		
+
 		if(portSize > 2) {
 			order.setConstructor(constructor);
 			order.setPortfolio(portfolio);
@@ -156,6 +157,7 @@ public class ConstructorController {
 			portfolioService.insertOrder(order);
 		}
 				
+
 		int portNo = portfolio.getPortNo();
 		
 		return new ModelAndView("redirect:/channel/guest/portfolioDetail/"+portNo); 

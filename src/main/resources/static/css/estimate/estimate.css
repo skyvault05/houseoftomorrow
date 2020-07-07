@@ -587,3 +587,5 @@ feed__item__content__author {
 .comment-feed__item__content__content {
     white-space: pre-line;
 }
+
+#category-list> li > button {font-size:17px;}
