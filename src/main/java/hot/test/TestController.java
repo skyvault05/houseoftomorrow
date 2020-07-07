@@ -20,4 +20,8 @@ public class TestController {
 	public String logintest() {
 		return "/estimate/member/requestForm";
 	}
+	@RequestMapping("/communityTest")
+	public String communityTest() {
+		return "/community/guest/communityViewDetail";
+	}
 }

@@ -733,6 +733,159 @@
 .card-item__content img{
 	display:none;
 }
+
+/*----------사진상세TEST할끄야----------------*/
+.card-detail__content {
+    padding-bottom: 40px;
+        padding-right: 10px;
+    padding-left: 10px;
+}
+.card-detail-header {
+    margin: 40px 0 30px;
+    font-size: 15px;
+    line-height: 21px;
+    display: flex;
+    justify-content: space-between;
+    color: #757575;
+}
+.card-detail-header__prop {
+    display: inline-block;
+}
+.card-detail-header__prop:not(:last-child):after {
+    content: "|";
+    margin: 0 5px 0 2px;
+    color: #bdbdbd;
+}
+
+.card-detail-card {
+    margin: 0 0 60px;
+}
+.card-detail-card-image-wrap {
+    margin: 0;
+}
+.card-detail-card-image {
+	padding-bottom: 65%;
+    position: relative;
+    display: block;
+    background-color: #ededed;
+    overflow: hidden;
+}
+.card-detail-card-image__image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%,-50%);
+    border: 0;
+}
+.card-detail-card__description {
+    display: block;
+    margin: 10px 0 20px;
+    font-size: 15px;
+    line-height: 28px;
+    color: #424242;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    margin: 30px 0;
+}
+.card-detail-footer {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-detail-footer__metadata {
+    color: #757575;
+    font-size: 13px;
+    line-height: 19px;
+}
+.card-detail-footer__prop, .card-detail-footer__report {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+}
+.card-detail-footer__prop:not(:last-child):after {
+    content: "·";
+    margin: 0 7px 0 4px;
+    color: #bdbdbd;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/*--사이드메뉴--*/
+.col-lg-4 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.card-detail-sidebar-wrap {
+    display: block;
+    position: relative;
+    min-height: 100%;
+    padding-left: 40px;
+    margin-left: 20px;
+    border-left: 1px solid #ededed;
+}
+.card-detail-sidebar__content {
+    flex: 1 0 auto;
+}
+.card-detail-sidebar__title {
+    font-weight: bold;
+    color: #424242;
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+.created_at {
+    color: #bdbdbd;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+.card-detail-writer {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 0 0 60px;
+    min-height: 50px;
+}
+.card-detail-writer__user {
+    flex: 1 0 0px;
+    min-width: 0;
+}
+.card-detail-writer__link {
+    display: inline;
+    color: #424242;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 21px;
+    transition: opacity .1s;
+}
+.card-detail-writer__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #ededed;
+}
+.card-detail-writer__name {
+    display: inline-block;
+    margin: -3px 0 0;
+}
+.card-detail-writer__follow{
+    flex: 0 0 auto;
+    margin-left: 50px;
+    font-size: 12px;
+    float: right;
+}
+
+
 /*---------------나그가쓴글 이미지 크기 수정쓰---------------*/
 .card-item-image.from_my_write {padding-bottom:80%;}
 .image.from__my__write {width:120%;}
