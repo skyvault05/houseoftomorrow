@@ -153,10 +153,7 @@ public class MemberController {
 	 * 리뷰, 커뮤니티, qna
 	 * */
 	@RequestMapping("/manage/member/myPage/{memberNo}")
-	public ModelAndView myPage(@ModelAttribute(name="memberNo")Integer memberNo) {		
-		
-		
-		
+	public ModelAndView myPage(@ModelAttribute(name="memberNo")Integer memberNo) {
 		return null;
 	}
 }

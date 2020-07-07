@@ -71,6 +71,7 @@ public class EstimateController {
 	
 	@PostMapping("/estimate/constructor/registerEstimateResponse")
 	public String registerEstimateResponse(EstResponse estResponse, Integer estNo, Integer chNo) {		
+		System.out.println(estNo+":"+chNo);
 		estimateService.insertEstimateResponse(estResponse, estNo, chNo);
 		return "redirect:/viewEstimateDetail/"+estResponse.getEstimate().getEstNo();
 	}
