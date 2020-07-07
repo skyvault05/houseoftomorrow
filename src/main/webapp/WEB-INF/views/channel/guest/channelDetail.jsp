@@ -33,11 +33,11 @@ initial-scale=1, shrink-to-fit=no">
          data: "membNo="+${user.memberNo}+"&&chaNo="+${chNo},
          dataType:"json",
          success:function(result){
-            var image = document.getElementById("favoriteChannel");
-              if (result==1) {
-                image.src = "/plugins/images/heart_off.png";
+            var icon = $('#favoriteChannel');
+              if (result==1) {            	  
+            	  $('#favoriteChannel').css('color', '#424242');
               } else if(result==2) {
-                image.src = "/plugins/images/heart_on.png";
+            	  $('#favoriteChannel').css('color', 'red');            	  
               }
          }
       });
@@ -52,11 +52,12 @@ initial-scale=1, shrink-to-fit=no">
          data: "membNo="+${user.memberNo}+"&&chaNo="+${chNo},
          dataType:"json",
          success:function(result){
-            var image = document.getElementById("favoriteChannel");
-              if (image.src.match("off")) {
-                image.src = "/plugins/images/heart_on.png";
-              } else {
-                image.src = "/plugins/images/heart_off.png";
+              if ($('#favoriteChannel').css('color')=='rgb(255, 0, 0)') {
+            	  $('#favoriteChannel').css('color', '#424242');
+            	  $('#favNo').text(parseInt($('#favNo').text())-1);
+              }else {
+            	  $('#favoriteChannel').css('color', 'red');
+            	  $('#favNo').text(parseInt($('#favNo').text())+1);
               }
          }
       });}
@@ -140,8 +141,8 @@ initial-scale=1, shrink-to-fit=no">
                         <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
                         <div class="drop-down user-profile_actions_etc-wrap">
                            <button class="btn user-profile_actions__etc" type="button">
-                              <ion-icon name="heart"></ion-icon>
-                              <span>${fn:length(favCh)}</span>
+                              <ion-icon id="favoriteChannel" name="heart"></ion-icon>
+                              <span id="favNo">${fn:length(favCh)}</span>
                            </button>
                            
                            <!-- ----------팔로우 dropdown------------ -->
@@ -197,7 +198,9 @@ initial-scale=1, shrink-to-fit=no">
                <h5 class="post__title">고객들의 리뷰 <strong>${fn:length(realReviewList)}</strong>
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-                     <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
+                  	<c:if test="${reviewRight}">
+                     <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰등록</a>
+                  	</c:if>
                   </sec:authorize>
                   <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                </h5>
