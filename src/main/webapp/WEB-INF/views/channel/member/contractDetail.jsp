@@ -180,7 +180,7 @@
 							<sec:authorize access="!hasRole('ROLE_CONSTRUCTOR')">
 								<form action="/member/consultingForm" method="post">
 							</sec:authorize>
-									<input type="hidden" id="chNo" name="chNo" value="">
+									<input type="hidden" id="chNo" name="chNo" value="${param.chNo}">
 									<input type="hidden" id="consulNo" name="consulNo" value="${param.consulNo}">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 									<input class="btn btn-outline-primary" type="submit" id="consultingView" value="상담하기">

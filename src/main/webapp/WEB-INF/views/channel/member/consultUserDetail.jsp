@@ -49,6 +49,9 @@
 <title>내일의 집</title>
 <script>
 	$(function(){
+		if($('input[name=flag]').val() == "true"){
+			$('#summernoteDiv').hide();
+		}
 		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting";
 			$.ajax({
 			url : strUrl,
@@ -95,7 +98,11 @@
     text-align: center!important;
     /* margin-left: 1%;
     /* width: 70%; */ */
-}
+    }
+    .expert-calculate__content__header{
+    	width:100%;
+    }
+
 
 </style>
 </head>
@@ -111,7 +118,7 @@
 		
 
 		<!--start 견적폼-->
-		<section class="expert-calculate__content" style="margin: 0 auto;">
+		<section class="expert-calculate__content" style="width:100%">
 				<div class="expert-calculate__content__header">
 					<h3 class="expert-calculate__content__header__title">시공 상담 / 이미 끝난 상담 조회</h3>
 					<div class="alert alert-danger alert-dismissible" role="alert">
@@ -130,7 +137,7 @@
 
 <div class="row">
 
-			<div class="col-md-12">
+			<div id="summernoteDiv" class="col-md-12">
 				<form action="/member/consulting" id="noteForm" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					
@@ -156,6 +163,7 @@
 							<form action="/member/contractView" method="post">
 								<input type="hidden" name="consulNo" value="${param.consulNo}">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+								<input type="hidden" name="chNo" value="${param.chNo}">
 								<input class="btn btn-outline-primary" type="submit" value="계약서 보기">
 							</form>
 						</td>

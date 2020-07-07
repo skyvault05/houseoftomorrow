@@ -67,6 +67,9 @@
 </style>
 <script>
 	$(function(){
+		if($('input[name=flag]').val() == "true"){
+			$('#summernoteDiv').hide();
+		}
 		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting";
 		$.ajax({
 			url : strUrl,
@@ -117,7 +120,7 @@
 		
 
 		<!--start 견적폼-->
-		<section class="expert-calculate__content" style="margin: 0 auto;">
+		<section class="expert-calculate__content" style="width:100%">
 				<div class="expert-calculate__content__header">
 					<h3 class="expert-calculate__content__header__title">시공 상담 / 이미 끝난 상담 조회</h3>
 					<div class="alert alert-danger alert-dismissible" role="alert">
@@ -136,7 +139,7 @@
 
 <div class="row">
 
-			<div class="col-md-12">
+			<div id="summernoteDiv" class="col-md-12">
 				<form action="/constructor/consulting" id="noteForm" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					
