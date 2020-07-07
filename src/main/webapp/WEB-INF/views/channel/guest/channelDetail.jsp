@@ -150,9 +150,7 @@ initial-scale=1, shrink-to-fit=no">
                            </a>
                            <span class="expert-review-popup-button">
                               <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
-<%--                               	 <c:if  test="${user 리뷰 수 < 상담 완료 내역 수}"> --%>
                                  <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
-<%--                                  </c:if> --%>
                                  <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
                               </sec:authorize>
                            </span>
