@@ -37,8 +37,6 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 <h2>관심 채널</h2>
 </div>
 <div class="row"><br><br></div>
-
-
 <div class="container">
 <br><br>
 <div class="row justify-content-center">
@@ -61,17 +59,6 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
                  </c:forEach>
 </div> 
 </div>
-
-
-
-
-
-
-
-
-
-
-
 </div>
 </body>
 </html>

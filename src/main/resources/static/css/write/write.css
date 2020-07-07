@@ -1,0 +1,47 @@
+/*-------write----------*/
+
+.upload-types>h2 {
+    margin-bottom: 60px;
+}
+.upload-types__item {
+    display: block;
+    max-width: 160px;
+    margin: 0 auto 60px;
+}
+.upload-types__item__pictogram {
+    position: relative;
+    width: 100%;
+}
+.upload-types__item__pictogram__contents {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+ion-icon.ion__icon {
+  font-size: 60px;
+}
+.upload-types__item__pictogram__contents>p {
+    //margin-top: 15px;
+    font-size: 18px;
+}
+.upload-types__item__pictogram:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+    background: #fafafa;
+    border-radius: 50%;
+}
+.upload-types__item {color:#424242}
+.upload-types__item:hover {color:#33f0c0;}
+.upload-types__item:hover .upload-types__item__caption {color:#424242; transition:0.2s;}
+.upload-types__item__caption {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.46;
+    color: #bdbdbd;
+}

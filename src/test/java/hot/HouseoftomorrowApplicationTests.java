@@ -25,11 +25,13 @@ import hot.consulting.repository.ContractRepository;
 import hot.estimate.repository.EstResponseRepository;
 import hot.estimate.repository.EstimateRepository;
 import hot.member.domain.Order;
+import hot.member.domain.Portfolio;
 import hot.member.repository.ConstructorRegisterRequestRepository;
 import hot.member.repository.MemberRepository;
 import hot.member.repository.MemberRoleRepository;
 import hot.member.repository.NoticeRepository;
 import hot.member.repository.NotificationRepository;
+import hot.qna.domain.QNA;
 import hot.review.repository.ReviewRepository;
 
 
@@ -270,7 +272,7 @@ class HouseoftomorrowApplicationTests {
 //		}
 		
 //		orderRep.save(new Order(null, constructorRepository.findById(26).orElse(null), portRep.findById(78).orElse(null), null, 1000, "card", "card", 1));
-		
+
 	}
 }
 	

@@ -88,6 +88,11 @@ public class CommunityController {
 	 * */
 	@PostMapping("/insert")
 	public String insertCommunity(Community community, Integer commCategoryNo, Integer membNo, MultipartFile file ) throws IOException {
+		
+		System.out.println("1");
+		System.out.println("file: " + file);
+		System.out.println("2");
+		
 		community.setCommCategory(commCategoryRepository.findById(commCategoryNo).orElse(null));
 		community.setMember(memberRepository.findById(membNo).orElse(null));
 		
@@ -109,7 +114,7 @@ public class CommunityController {
 		community.setCommImg(imgPath);
 		communityService.updateCommunity(community);
 		
-		return "redirect:detail/"+community.getCommNo();
+		return "redirect:/community/guest/detail/"+community.getCommNo();
 	} 
 	
 	/**

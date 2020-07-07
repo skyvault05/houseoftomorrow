@@ -46,7 +46,7 @@
 <script src="/plugins/summernote/setsummernote.js"></script>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의 집</title>
 <script>
 	$(function(){
 		$.ajax({
@@ -143,7 +143,9 @@
 				</form>
 			</div>
 			
+			<div class="rows">
 			<br>
+			</div>
 			
 			<div class="col-md-12">
 				<table>

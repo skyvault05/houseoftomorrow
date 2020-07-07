@@ -154,26 +154,26 @@ function setThumbnail(event) {
 	</div>
 	</form>
 	
-	<form action="">
+	<form method="post" action="${pageContext.request.contextPath}/community/insert">
 	<div id="picture">
 	<input type="file" name="file"  id="commImg" accept="image/gif, image/jpeg, image/png"  onchange="setThumbnail(event); "> 
 	 </div>
-	 
-	 
 	 <div  id="image_container"></div>
 	<div id="title" class="form-group">
-	<input type="text" class="form-control" name="title" placeholder="제목을 입력해주세요">
+	<input type="text" class="form-control" name="commTitle" placeholder="제목을 입력해주세요">
 	</div>
 	
 	
 	<div id="write">
-	<textarea id="summernote">
+	<textarea name="commDescription" id="summernote">
 	
 	</textarea>
 	
 	</div>
 	
 	<input type="hidden" name="commCategoryNo"  value="${param.commCategoryNo}"/>
+	<sec:authentication var="user" property="principal" />
+	<input type="hidden" name="membNo"  value="${user.memberNo}"/>
 	<input type="hidden" name=${_csrf.parameterName} value="${_csrf.token}"/>
 	<div id="register">
 		<button type="submit" class="btn btn-primary">등록</button>

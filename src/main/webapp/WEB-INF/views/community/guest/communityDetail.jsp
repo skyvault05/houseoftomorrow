@@ -217,11 +217,11 @@ function delchk(){
  <br><br>
     
 	
-	<div class="rows col-md-9">
 	
     <sec:authentication var="user" property="principal" />
-    글쓴이: ${community.member.memberNo}<p>
+    <div class="w" style="margin-left: 0%; color: gray">글쓴이: ${community.member.memberNo}<p></div>
     <%-- 로그인한사람: ${user.memberNo} --%>
+    <div class="rows col-md-9">
     <div class="btn-center">
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose >

@@ -70,7 +70,7 @@ $(function(){
 	}
 </style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의 집</title>
 </head>
 <body>
 	<div class="container">

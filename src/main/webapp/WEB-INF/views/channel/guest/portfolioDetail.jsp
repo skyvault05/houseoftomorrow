@@ -254,15 +254,16 @@ ${port.portDescription}
 	<a class="click" href="${pageContext.request.contextPath}/channel/guest/portfolioAll">목록으로</a><p>
 	</div>
 	<div class="rows">
-	★★★★★★? 게시자로 로그인했을 때 포트폴리오 수정 / 삭제 어케할지 ?★★★★★★
     <sec:authentication var="user" property="principal" />
+<<<<<<< HEAD
+=======
     <%-- 글쓴이: ${community.member.memberNo}<p>
     로그인한사람: ${user.memberNo} 
+>>>>>>> branch 'master' of https://github.com/skyvault05/houseoftomorrow.git
     <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
 		<c:choose>
-			<c:when test="${community.member.memberNo == user.memberNo}">
-				<a class="click" href="${pageContext.request.contextPath}/community/updateCommunity?commNo=${community.commNo}"}>게시글 수정하기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a class="click" onclick="return delchk()" href="${pageContext.request.contextPath}/community/delete?commNo=${community.commNo}&commCategoryNo=${community.commCategory.commCategoryNo}">게시글 삭제하기</a>
+			<c:when test="${port.channel.constructor.member.memberNo == user.memberNo}">
+				<a class="click" onclick="return delchk()" href="${pageContext.request.contextPath}/channel/constructor/deletePortfolio?portNo=${port.portNo}">게시글 삭제하기</a>
 			</c:when>
 		</c:choose>
 	</sec:authorize>

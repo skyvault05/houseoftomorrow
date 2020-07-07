@@ -7,31 +7,15 @@
     <title>내일의 집</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- bootstrap-->
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/plugins/bootstrap/bootstrap.min.css">
-  <script src="${pageContext.request.contextPath}/plugins/jquery/jquery-3.4.1.min.js"></script>
-  <script src="${pageContext.request.contextPath }/js/common/popper.min.js"></script>
-  <script src="${pageContext.request.contextPath }/js/bootstrap/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
-
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/channel/channel.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estimate/estimate.css">
+  <script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
 
-  <!-- WebFont -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-<script >
-
-</script>
   </head>
   
   <body>
-  <sec:authentication property="principal" var="user"/>
+
   <div class="container-flude submenu_borderbottom">
 	<div class="wrap-submenu">
 		<div class="mypage-nav">
@@ -81,12 +65,15 @@
 			      
 <!------------------------ 추가문의 ----------------------------------->
 			      <div class="estimate-item-comment row">
-			      <div class="name">추가문의사항</div>
-			      <div class="input-group">
-			      <textarea class="textarea est-comment" name="response" placeholder="${estimate.estDescription}" readonly>${estimate.estDescription}</textarea>
-		          </div>
-		          <hr>
-		          <div class="name">시공사 답변</div>
+				      <div class="name">추가문의사항</div>
+				      <div class="input-group">
+				     	 <textarea class="textarea est-comment" name="response" placeholder="${estimate.estDescription}" readonly>${estimate.estDescription}</textarea>
+			          </div>
+		          </div> <!-- end 추가문의--->
+		          
+ <!--------------------------시공사답변 by 효진------------------->
+		   
+		        <%--   <div class="name">시공사 답변</div>
 		          <div class="col-md-12">
 		          	<table class="table">
                     <thead>
@@ -111,13 +98,13 @@
 		            <br>
 		            <div class="name">답변하기</div>
 	              <form class="col-md-12" action="/estimate/constructor/registerEstimateResponse" method="post">
-	              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	              <input type="hidden" name="chNo" value="${user.chNo}">
-	              <input type="hidden" name="estNo" value="${estimate.estNo}">
-	              <textarea class="textarea est-comment" name="estRespDescription" placeholder="답변할 내용을 입력해 주세요"></textarea>
-	              <input type="submit" class="btn btn-primary" value="답변쓰기">
+		              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		              <input type="hidden" name="chNo" value="${user.chNo}">
+		              <input type="hidden" name="estNo" value="${estimate.estNo}">
+		              <textarea class="textarea est-comment" name="estRespDescription" placeholder="답변할 내용을 입력해 주세요"></textarea>
+		              <input type="submit" class="btn btn-primary" value="답변쓰기">
 	              </form>
-		              
+		               --%>
 		              
 		              
 			        <%-- <div class="name">추가문의사항</div>
@@ -130,10 +117,71 @@
 			              </form>
 			            </div>
 			          </div> --%>
-			      </div>
 			      
 			      
- <!---------------------- end 추가문의-------------------------------->
+		<!-- --------------시공사답변 by쟌 ---------------->	  
+		<div class="card-detail-comment-section">
+			<section class="comment-feed">
+			<!-- 댓글 -->
+				<h5 class="comment-feed__header"> 댓글 &nbsp;
+					<span class="comment-feed__header__count">'댓글수써주셈'</span>	
+				</h5>
+				<!-- 댓글창 -->
+				<form class="comment-feed__form" action="/estimate/constructor/registerEstimateResponse" method="post">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		            <input type="hidden" name="chNo" value="${user.chNo}">
+		            <input type="hidden" name="estNo" value="${estimate.estNo}">
+					<div class="comment-feed__form__user">
+						<img src="${pageContext.request.contextPath}/images/default/user_default.png" alt="" class="comm_img" />
+					</div>
+					<div class="comment-feed__form__input">
+						<div class="comment-feed__form__content">
+							<div class="comment-content-input">
+								<input class="comment-content-input__text comment-feed__form__content__text" name="estRespDescription" type="text" placeholder="내용을 입력해주세요 :)" />
+							</div>
+						</div>
+						<div class="comment-feed__form__actions">
+							<button class="comment-feed__form__submit btn btn-outline-primary" aria-label="등록" type="submit">등록</button>
+						</div>
+					
+					</div>
+				</form>
+				
+				<!-- 댓글내용 -->
+				<ul class="comment-feed__list">
+			<%-- 	<c:forEach items="${responseList}" var="response" varStatus="status"> --%>
+					<li class="comment-feed__list__item">
+						<article class="comment-feed__item">
+							<p class="comment-feed__item__content">
+								<a href="#" class="comment-feed__item__content__author">
+									<img src="${pageContext.request.contextPath}/images/default/user_comment.png" alt="" class="comment-feed__item__content__author__image" />
+									<span class="comment-feed__item__content__author__name">${response.channel.constructor.conName}</span>
+								</a>
+								<span class="comment-feed__item__content__content">${response.estRespDescription}</span>
+							</p>
+							
+							<div class="comment-feed__item__footer">
+								<a href="#" class="comment-feed__item__footer_esti">상담하기??</a>
+								<a href="/channel/guest/channelDetail/${response.channel.chNo}" class="comment-feed__item__footer_esti">채널방문??</a>
+							</div>
+						</article>
+					
+					</li>
+			<%-- 	</c:forEach> --%>
+				</ul>
+			</section>
+						
+				
+		
+		
+		
+		</div>
+		    
+		    
+		    
+		    
+		  <!-- --------------------end 시공사답변  -->  
+
  				</div><!-- card body --> 
 			</div><!-- end card  -->
 			
@@ -147,20 +195,11 @@
 
 	</div>
 	
-	<div class="empty-space"></div>
-    <!-- scripts -->
-<!-- 	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="/plugins/jquery/jquery-3.4.1.min.js"></script> -->
-    <script src="${pageContext.request.contextPath}/js/common/popper.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/jquery.waypoints.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/jquery.fancybox.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/common/main.js"></script>
-    <script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
 
-    
-	<!-- ICON -->
-	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</div><!--end main-wrap-->
+<div class="empty-space"></div>
+<!--☆★☆★☆ ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ 여기까지 수정가능 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ ★☆★☆★-->
+<!-- ↓↓↓↓↓↓↓↓↓ 이 밑부분 터치ㄴㄴ ↓↓↓↓↓↓↓↓↓-->
 
   </body>
 </html>
