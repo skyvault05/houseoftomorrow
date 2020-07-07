@@ -101,7 +101,7 @@
                 <div class="story-entry__content">
                   <div class="story-entry__content__title">${item.commTitle}<br> </div>
                   <div class="story-entry__content__profile">
-                    <img class="story-entry__content__profile__image " src="./images/default/user_default.png">
+                    <img class="story-entry__content__profile__image " src="${pageContext.request.contextPath}/images/default/user_default.png">
                     <span class="story-entry__content__profile__name">${item.member.memberName}</span>
                   </div>
                 </div>

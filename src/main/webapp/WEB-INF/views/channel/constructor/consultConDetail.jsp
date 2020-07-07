@@ -7,41 +7,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
+<title>내일의 집</title>
+
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-<meta name="_csrf" content="${_csrf.token}" />
-<meta name="_csrf_header" content="${_csrf.headerName}" />
-<script>
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content"); 
-	$(document).ajaxSend(function(e, xhr, options) {
-	  xhr.setRequestHeader(header, token);
-	});
-</script>
-<link href="/plugins/summernote/summernote-lite.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/plugins/summernote/summernote-lite.min.css">
 <script src="/plugins/summernote/summernote-lite.min.js"></script>
 <script src="/plugins/summernote/setsummernote.js"></script>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
-
-<!-- Theme Style -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">  
-<link rel="stylesheet" href="/css/review/star.css">
 <!-- WebFont -->
 <link rel="stylesheet" href="/css/font/fontawesome/css/font-awesome.min.css">
-   
 <link rel="stylesheet" href="/css/font/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
-<meta charset="UTF-8">
-<title>내일의 집</title>
+
+
 <style type="text/css">
 	table{
 		width:100%;
@@ -50,6 +37,7 @@
 		max-width:100%;
 	}
 </style>
+
 <script>
 	$(function(){
 		$.ajax({
@@ -159,5 +147,12 @@
 </div>	
 </div>
 </div></div>
+<script>
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content"); 
+	$(document).ajaxSend(function(e, xhr, options) {
+	  xhr.setRequestHeader(header, token);
+	});
+</script>
 </body>
 </html>
