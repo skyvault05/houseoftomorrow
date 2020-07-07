@@ -733,3 +733,6 @@
 .card-item__content img{
 	display:none;
 }
+/*---------------나그가쓴글 이미지 크기 수정쓰---------------*/
+.card-item-image.from_my_write {padding-bottom:80%;}
+.image.from__my__write {width:120%;}
