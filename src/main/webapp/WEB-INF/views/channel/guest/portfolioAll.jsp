@@ -33,30 +33,42 @@ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></scri
 </head>
 <body>
 <br><br>
-<div class="container">
 
-<div class="row justify-content-center">
-<h2>포트폴리오</h2>
-&nbsp;
-<h5 class="post__title"><strong>${fn:length(portAll)}개</strong></h5>
-</div> <!-- 로우 끝 -->
-<br><br>
-<div class="row" style="transform:translateX(-0px)"><br><br>
-         
-		<c:forEach items="${portList}" var="list" varStatus="status">
-        <div class="col-md-3">
-        <div style="relative"> 
-             <a href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${list.portNo}"><img src="${list.portImg}" class="card-img-top rounded" alt="blog" width="200px" height="200px"></a>
-             
-               <p class="card-text title">${list.portTitle}</p>
-               <div class="card-text content" style="margin-bottom:20px;">${list.channel.constructor.conName}★ </div>
-             
-         <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if>
-         </div>
-     	 </div>
-      	 </c:forEach>
-</div>    
-</div> <!-- 로우 끝 -->
+
+
+    <section class="recommendation portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                  <h2 class="portfolio-title mb-4">포트폴리오 </h2>
+                 </div>
+             </div>     
+             <div class="row">              
+  			 <c:forEach items="${portList}" var="list" begin="0" end="7">
+                    <div class="main_recomm card col-3 pb-3">
+                    	<a class="main_index__link" href="${pageContext.request.contextPath}/channel/guest/portfolioDetail/${list.portNo}">
+	                        <div class="card-img">
+	                        	<img src="${list.portImg}" class="card-img-top rounded" alt="" style="width: 255px; height: 255px;">
+	
+	                        </div>
+	                        <div class="card-body">
+	                          <p class="card-text title">${list.portTitle}</p>
+	                          <div class="card-text content">${list.channel.constructor.conName}★</div>
+	                          
+	                          <c:if test="${ status.count%4 == 0 }" ><div class="rows"></div></c:if>
+                        	</div>
+                        </a>
+                    </div>
+			 </c:forEach> 
+  	
+                </div><!--end card --> <!-- 포트폴리오 한줄 -->
+            </div>
+            </div><!--end row-->
+        </div><!--end container-->
+    </section>
+    
+    
+
    
 
 
