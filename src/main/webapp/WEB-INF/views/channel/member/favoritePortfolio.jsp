@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<div class="container margin-top-100">
+<div class="container pt-5">
 		<sec:authorize access="isAuthenticated()">   
 		<sec:authentication property="principal" var="user"/>
 		<div class="wrap-submenu" style="text-align: center">
