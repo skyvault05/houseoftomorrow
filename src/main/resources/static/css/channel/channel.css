@@ -99,7 +99,7 @@
 }
 
 .user-profile_actions_action, .user-profile_actions__etc{
-    padding: 10px 0;
+    padding: 10px;
     line-height: 20px;
     font-size: 17px;
     font-weight: 700;
@@ -114,13 +114,15 @@
     display: inline-block;
 }
 .user-profile_actions__etc {
-    padding: 8px;
+    padding: 11px;
     background-color: #ededed;
     border-color: #ededed;
 }
-.profile__expert-actions__etc>svg {
+.profile__expert-actions__etc>ion-icon {
     display: block;
+
 }
+.btn user-profile_actions__etc strong {font-size:13px;}
 .drop-down__list {
     position: absolute;
     top: 100%;
@@ -341,5 +343,15 @@
     margin-left: 20px;
     position: absolute;
     height: 100%;
+}
+/*---------╟Э╫иго╤ъ-------------*/
+.user-profile_actions__etc>ion-icon {
+  font-size: 20px;
+}
+.user-profile_actions__etc:hover ion-icon {
+	color: red;
+}
+.user-profile_actions__etc>ion-icon:focus {
+	color: red;
 }
 	

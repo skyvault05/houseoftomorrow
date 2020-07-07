@@ -1,6 +1,7 @@
 package hot.community.controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -149,14 +150,16 @@ public class CommunityController {
 	public ModelAndView selectCommunityCategory(@PathVariable(name = "commCategoryNo") Integer commCategoryNo) {
 		
 		List<Community> communityList = communityService.selectCommunityCategory(commCategoryNo);
-		//Page<Community> communityList = communityService. 
-		
+		for(Community comm : communityList) {
+			List<CommComment> list = comm.getCommentList();
+			Collections.reverse(list);
+			comm.setCommentList(list);
+		}
 		if(commCategoryNo == 4) {
 			return new ModelAndView("community/guest/communityPic", "list", communityList);
 		} else if(commCategoryNo == 5) {
 			return new ModelAndView("community/guest/communityList", "list", communityList);
 		}
-		
 		return new ModelAndView("community/guest/communityPic", "list", communityList);
 	}
 	
