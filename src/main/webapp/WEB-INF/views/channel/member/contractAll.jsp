@@ -35,7 +35,7 @@ $(function(){
 				$(obj).each(function(index, element){
 					var str = "<tr><td>";
 					str += index + 1;
-					str += "</td><td><a href='#'>" + element.constructorName + "시공사</a>";
+					str += "</td><td><a href='#'>" + element.constructorName + " (시공사)</a>";
 					str += "<input type='hidden' name='consulNo' value='" + element.consulting.consulNo + "'></td><td>";
 					var date = new Date(element.contractTime);
 					var year = date.getFullYear();
@@ -70,7 +70,7 @@ $(function(){
 				$(obj).each(function(index, element){
 					var str = "<tr><td>";
 					str += index + 1;
-					str += "</td><td><a href='#'>" + element.memberName + "님</a>";
+					str += "</td><td><a href='#'>" + element.memberName + "님 (일반회원)</a>";
 					str += "<input type='hidden' name='consulNo' value='" + element.consulting.consulNo + "'></td><td>";
 					var date = new Date(element.contractTime);
 					var year = date.getFullYear();
