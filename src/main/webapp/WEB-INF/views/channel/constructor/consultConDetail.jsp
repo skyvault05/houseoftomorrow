@@ -67,8 +67,9 @@
 </style>
 <script>
 	$(function(){
+		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting";
 		$.ajax({
-			url : "/constructor/preConsulting",
+			url : strUrl,
 			method : "post",
 			type : "json",
 			data : {	//#수정 바람
@@ -79,12 +80,16 @@
 					$('#description').append("<div><p>상담 중인 내역이 없습니다.</p></div>");
 				}else{
 					$('input[name=chNo]').val(jsonObj.chNo);
-					$('#description').append("<div>" + jsonObj.consulDescription + "</div>");
+					if(jsonObj.memberNo == $('input[name=memberNo]').val()){
+						$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + jsonObj.consulDescription + "</div>");
+					}else{
+						$('#description').append("<div style='text-align:left; width: 70%'>" + jsonObj.consulDescription + "</div>");
+					}
 					$(jsonObj.consultChild).each(function(item, element){
 						if(element.memberNo == $('input[name=memberNo]').val()){
 							$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + element.consulDescription + "</div>");
 						}else{
-							$('#description').append("<div>" + element.consulDescription + "</div>");
+							$('#description').append("<div style='text-align:left; width: 70%'>" + element.consulDescription + "</div>");
 						}
 					})
 				}
@@ -169,6 +174,8 @@
 	
 </div>	
 	
+	<input type="hidden" name="flag" value="${param.flag}">
+	<input type="hidden" name="consulNo" value="${param.consulNo}">
 	
 </section>	
 </div>	

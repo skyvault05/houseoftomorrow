@@ -62,7 +62,8 @@
 								str += "</td><td><a href='#'>";
 								str += text;
 								str += "님과의 상담</a><input type='hidden' name='chNo' value='" + element.chNo + "'>";
-								str += "<input type='hidden' name='memberNo' value='" + element.memberNo + "'></td><td>";
+								str += "<input type='hidden' name='memberNo' value='" + element.memberNo + "'>";
+								str += "<input type='hidden' name='consulNo' value='" + element.consulNo + "'></td><td>";
 								var date = new Date(element.consulRegDate);
 								var year = date.getFullYear();
 								var month = date.getMonth()+1;
@@ -113,7 +114,8 @@
 								str += "</td><td><a href='#'>";
 								str += text;
 								str += "님과의 상담</a><input type='hidden' name='chNo' value='" + element.chNo + "'>";
-								str += "<input type='hidden' name='memberNo' value='" + element.memberNo + "'></td><td>";
+								str += "<input type='hidden' name='memberNo' value='" + element.memberNo + "'>";
+								str += "<input type='hidden' name='consulNo' value='" + element.consulNo + "'></td><td>";
 								var date = new Date(element.consulRegDate);
 								var year = date.getFullYear();
 								var month = date.getMonth()+1;
@@ -148,6 +150,7 @@
 			$('#chNo').val($(this).siblings('input[name=chNo]').val());
 			$('#memberNo').val($(this).siblings('input[name=memberNo]').val());
 			$('#consulNo').val($(this).siblings('input[name=consulNo]').val());
+			
 			$('form').submit();
 			return false;
 		})
