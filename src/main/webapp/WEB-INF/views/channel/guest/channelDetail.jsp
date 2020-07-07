@@ -217,7 +217,7 @@ initial-scale=1, shrink-to-fit=no">
                   <span class="post__title__show-all">
                   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
                   	<c:if test="${reviewRight}">
-                     <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰쓰기</a>
+                     <a href="${pageContext.request.contextPath}/channel/check/impossibleReview?memberNo=${user.memberNo}&chNo=${chNo}" id="insertReview">리뷰등록</a>
                   	</c:if>
                   </sec:authorize>
                   <a href="${pageContext.request.contextPath}/review/reviewList/${chNo}">전체보기</a></span>
