@@ -25,4 +25,6 @@ public interface ConsultingRepository extends JpaRepository<Consulting, Integer>
 
 	@Query("select count(c) from Consulting c where c.memberNo = ?1 and c.chNo = ?2 and c.consulStatus=2")
 	int findCountByMemberNoAndChNo(int memberNo, int chNo);
+	
+	List<Consulting> findByMemberNoAndChNoAndConsulStatus(Integer MemberNo, Integer chNo, Integer consulStatus);
 }
