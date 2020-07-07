@@ -14,7 +14,6 @@ public interface MemberService {
 	Member selectMember(String memberId);
 	
 
-	int memberUpdate(Member member);
 	int memberDelete(int memberNo);
 	String findId(String phoneNumber, String name);
 	String findPwd(Member member);
@@ -28,4 +27,8 @@ public interface MemberService {
 	 * 상담하기의 유저 이름 가져오기
 	 */
 	String findMemberName(int memberNo);
+
+	Member findMemberByMemberNo(Integer memberNo);
+
+	void memberUpdate(Member member, String CurrentPassword);
 }
