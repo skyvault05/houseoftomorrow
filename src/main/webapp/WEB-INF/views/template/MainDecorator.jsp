@@ -115,21 +115,25 @@
                 </div>
               </div>
          </div><!--end submenu header icon-->
-   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
-   	
    			<!-- Example single danger button -->
 	<%-- 	<div class="btn-group">
 		  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		    마이메뉴
 		  </button>
 		  <div class="dropdown-menu">
+		  	<a href="${pageContext.request.contextPath}/channel/myFavoriteChannel/${user.memberNo}" class="dropdown-item favoriteChannel">관심채널</a>
+            <a href="${pageContext.request.contextPath}/channel/myFavoritePortfolio/${user.memberNo}" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
+            <div class="dropdown-divider"></div>
+            <sec:authorize access="hasRole('ROLE_CONSTRUCTOR')">
+            	<a href="/channel/guest/channelDetail/${user.chNo}" class="dropdown-item writeList">내 채널</a>
+            </sec:authorize>
+            <a href="/myEstimateList/${user.memberNo}" class="dropdown-item myCounsel">견적요청내역</a>
+            <a href="#" class="dropdown-item writeList">내가쓴글</a>
+            <a href="#" class="dropdown-item updateInfo">회원정보수정</a>
+            <div class="dropdown-divider"></div>
+            <a href="/logout" class="dropdown-item logout">로그아웃</a>
+		  </div>
+		</div>
 		  	<a href="#" class="dropdown-item favoriteChannel">관심채널</a>
             <a href="#" class="dropdown-item favoritePortfolio">관심포트폴리오</a>
             <div class="dropdown-divider"></div>
@@ -152,11 +156,17 @@
       </nav>
   <!--END main menu--->
   </header>
-
+  
+  <!-- 상단여백 GAP -->
+  <div class="empty-space pt-5"></div>
+  
 <sitemesh:write property='body' />
 
 
+<!-- 하단여백 -->
+<div class="empty-space"></div>
 
+<!-- START FOOTER -->
 <footer class="site-footer" role="contentinfo">
       <div class="container">
       <footer class="layout-footer">

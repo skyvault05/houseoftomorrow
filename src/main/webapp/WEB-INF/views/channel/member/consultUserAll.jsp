@@ -10,6 +10,22 @@
 <script src="/plugins/jquery/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
+
+<!-- Theme Style -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">  
+<link rel="stylesheet" href="/css/review/star.css">
+<!-- WebFont -->
+<link rel="stylesheet" href="/css/font/fontawesome/css/font-awesome.min.css">
+   
+<link rel="stylesheet" href="/css/font/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
 
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
@@ -137,22 +153,62 @@
 		})
 	})
 </script>
-<style>
-	table{
-		width: 100%;
-	}
-	table, tr, td{
-		border : 1px solid;
-		border-collapse: collapse;
-	}
-</style>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내일의 집</title>
 </head>
 <body>
 
 <!-- --------------------------------------------------------------------------------- -->
+
+<div class="container pt-5" >
+<div class="py-5 text-left">
+
+<div class="expert-calculate__main-wrap container">
+	<div class="expert-calculate__main row">
+		
+	<input type="hidden" id="myChNo" value='<sec:authentication property="principal.chNo"/>'>
+	<input type="hidden" id="myMemberNo" value='<sec:authentication property="principal.memberNo"/>'>
+
+		<section class="expert-calculate__content" style="margin: 0 auto; width: 85%">
+				<div class="expert-calculate__content__header">
+					<h3 class="expert-calculate__content__header__title">상담 내역</h3>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>시공상담!</strong> 시공 상담 내용을 확인할 수 있습니다.
+					</div>
+					
+					<div class="alert alert-warning textaline" role="alert" id="description">					
+					</div>
+				</div>
+				
+			
+		
+<p>
+
+<div class="row">
+
+			<div class="col-md-12">
+				<table class="table" id="consultingList">
+					
+				</table>
+			</div>
+			<form method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<input type="hidden" id="memberNo" name="memberNo" value="">
+				<input type="hidden" id="chNo" name="chNo" value="">
+				<input type="hidden" id="consulNo" name="consulNo" value="">
+			</form>
+	
+</div>	
+	
+	
+</section>	
+</div>	
+</div>
+</div></div>
+</body>
+
 
 
 	<input type="hidden" id="myChNo" value='<sec:authentication property="principal.chNo"/>'>

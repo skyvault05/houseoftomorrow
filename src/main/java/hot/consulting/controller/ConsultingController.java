@@ -28,7 +28,7 @@ public class ConsultingController {
 	/**
 	 * 유저의 상담하기 페이지
 	 */
-	@PostMapping("/member/consultingForm")
+	@RequestMapping("/member/consultingForm")
 	public ModelAndView consultForm(int chNo) {
 		return new ModelAndView("channel/member/consultUserDetail", "chNo", chNo);
 	}
@@ -36,7 +36,7 @@ public class ConsultingController {
 	/**
 	 * 시공사의 상담하기 페이지
 	 */
-	@PostMapping("/constructor/consultingForm")
+	@RequestMapping("/constructor/consultingForm")
 	public ModelAndView conConsultForm(Integer consulNo) {
 		return new ModelAndView("channel/constructor/consultConDetail", "consulNo", consulNo);
 	}
@@ -174,7 +174,7 @@ public class ConsultingController {
 	/**
 	 * 상담 목록 페이지
 	 */
-	@PostMapping("/member/consultingAllPage")
+	@RequestMapping("/member/consultingAllPage")
 	public String consultingAllPage() {
 		return "channel/member/consultUserAll";
 	}
