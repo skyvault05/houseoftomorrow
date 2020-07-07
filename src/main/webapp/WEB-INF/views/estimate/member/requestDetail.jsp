@@ -33,11 +33,11 @@
 					<li class="nav-item">
 						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link my_write" target="_self">내 상담 내역</a>
 					</li>
-					<li class="nav-item">
-						<a href="/review/myReview/${user.memberNo}" class="nav-link" target="_self">내가 쓴 글</a>
 					<li class="dropright">
 						<a href="${pageContext.request.contextPath}/community/myCommunity/${user.memberNo}" class="dropdown-toggle nav-link my_write" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						내가 쓴 글</a>
+					</li>
+					</ul>
 						<!-- 좋은말로할때드롭따운해라 -->
 						<div class="dropdown-menu my__write box shadow">
 			                <ul class="" aria-labelledby="navbarDropdown">
@@ -177,7 +177,7 @@
 					<li class="comment-feed__list__item">
 						<article class="comment-feed__item">
 							<p class="comment-feed__item__content">
-								<a href="#" class="comment-feed__item__content__author">
+								<a href="${pageContext.request.contextPath}/channel/guest/channelDetail/${response.channel.chNo}" class="comment-feed__item__content__author">
 									<img src="${pageContext.request.contextPath}/images/default/user_comment.png" alt="" class="comment-feed__item__content__author__image" />
 									<span class="comment-feed__item__content__author__name">${response.channel.constructor.conName}</span>
 								</a>
