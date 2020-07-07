@@ -12,8 +12,8 @@ import hot.member.domain.Portfolio;
 
 public interface PortfolioRepository extends JpaRepository<Portfolio, Integer> {
 	
-	@Query("select p from Portfolio p where p.channel.chNo = ?1")
-	List<Portfolio> findPortfolioByChNo(int chNo);
+	@Query("select p from Portfolio p where p.channel.chNo = ?1 AND p.portStatus =?2")
+	List<Portfolio> findPortfolioByChNoAndPortStatus(int chNo, int portStatus);
 	
 	Page<Portfolio> findByPortStatus(Pageable pageable, Integer portStatus);
 
