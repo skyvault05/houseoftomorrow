@@ -71,7 +71,7 @@ public class ConsultingController {
 		redirect.addAttribute("chNo", consulting.getChNo());
 		
 		consultService.insertConsulting(consulting);
-		return "redirect:consultingForm";
+		return "redirect:/member/consultingForm";
 	}
 	
 	/**
@@ -82,13 +82,13 @@ public class ConsultingController {
 		redirect.addAttribute("consulNo", consulting.getConsulParentNo());
 		
 		consultService.insertConsulting(consulting);
-		return "redirect:consultingForm";
+		return "redirect:/constructor/consultingForm";
 	}
 	
 	/**
 	 * 시공사의 계약서 등록하기
 	 */
-	@PostMapping(value = {"/constructor/contractView", "/member/contractView"})
+	@RequestMapping(value = {"/constructor/contractView", "/member/contractView"})
 	public ModelAndView contract(int consulNo) {
 		return new ModelAndView("channel/member/contractDetail", "consulNo", consulNo);
 	}
@@ -122,7 +122,7 @@ public class ConsultingController {
 		consultService.insertContract(contract);
 		redirect.addAttribute("consulNo", consulNo);
 		
-		return "redirect:contractView";
+		return "redirect:/constructor/contractView";
 	}
 	
 	/**
@@ -150,13 +150,13 @@ public class ConsultingController {
 		consultService.insertContract(preContract);
 
 		redirect.addAttribute("consulNo", contract.getConsulNo());
-		return "redirect:contractView";
+		return "redirect:/member/contractView";
 	}
 	
 	/**
 	 * 계약 완료된 상담 내용 페이지 가기
 	 */
-	@PostMapping(value= {"/member/consultingView","/constructor/consultingView"})
+	@RequestMapping(value= {"/member/consultingView","/constructor/consultingView"})
 	public ModelAndView completeConsulting(Integer consulNo) {
 		return new ModelAndView("channel/member/preConsultDetail", "consulNo", consulNo);
 	}

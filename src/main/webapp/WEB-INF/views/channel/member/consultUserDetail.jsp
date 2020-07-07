@@ -49,17 +49,19 @@
 <title>내일의 집</title>
 <script>
 	$(function(){
-		$.ajax({
-			url : "/member/preConsulting",
+		var strUrl = $('input[name=flag]').val() == "true" ? "/member/completeConsulting" : "/member/preConsulting";
+			$.ajax({
+			url : strUrl,
 			method : "post",
 			type : "json",
 			data : {	//#수정 바람
 				memberNo : $('input[name="memberNo"]').val(),
-				chNo : $('input[name="chNo"]').val()
+				chNo : $('input[name="chNo"]').val(),
+				consulNo : $('input[name="consulNo"]').val()
 			},
 			success : function(jsonObj){
 				if(!jsonObj){
-					
+					$('#description').append("<div><p>상담 중인 내역이 없습니다.</p></div>");
 				}else{
 					$('input[name="consulParentNo"]').val(jsonObj.consulNo);
 					$('input[name="consulNo"]').val(jsonObj.consulNo);
@@ -68,7 +70,7 @@
 						if(element.memberNo == $('input[name=memberNo]').val()){
 							$('#description').append("<div style='text-align:right; margin-left:30%; width: 70%'>" + element.consulDescription + "</div>");
 						}else{
-							$('#description').append("<div>" + element.consulDescription + "</div>");
+							$('#description').append("<div style='text-align:left; width: 70%'>" + element.consulDescription + "</div>");
 						}
 					})
 				}
@@ -166,7 +168,8 @@
 			</div>
 	
 </div>	
-	
+	<input type="hidden" name="flag" value="${param.flag}">
+	<input type="hidden" name="consulNo" value="${param.consulNo}">
 	
 </section>	
 </div>	
