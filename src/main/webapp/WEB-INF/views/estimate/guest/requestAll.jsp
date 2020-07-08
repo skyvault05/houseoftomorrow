@@ -39,7 +39,7 @@
                     	<c:forEach items="${list}" var="item" varStatus="status">
                         <tr class="row">
                             <td class="text-center col-sm-2">${item.estNo}</td>
-                            <td class="text-center col-sm-6"><a href="/viewEstimateDetail/${item.estNo}" class="est-title">${user.username}님의 요청사항입니다</a></td>
+                            <td class="text-center col-sm-6"><a href="/viewEstimateDetail/${item.estNo}" class="est-title">${item.member.memberName}님의 요청사항입니다</a></td>
                             <td class="text-center col-sm-2">${item.estRegdate}</td>
                             
                         </tr>

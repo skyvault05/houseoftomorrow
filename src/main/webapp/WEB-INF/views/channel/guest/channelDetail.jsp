@@ -144,7 +144,14 @@ initial-scale=1, shrink-to-fit=no">
                           <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/channel/constructor/portfolioForm">포트폴리오등록</a>
                         </c:when>
                         <c:otherwise>
-                          <a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
+                        	<c:choose>
+                        		<c:when test="${isNotConstructor}">
+                          			<a class="btn btn-primary user-profile_actions_action" href="${pageContext.request.contextPath}/member/consultingForm?chNo=${channel.chNo}">상담신청</a>
+                        		</c:when>
+                        		<c:otherwise>
+                        			<a class="btn btn-primary user-profile_actions_action" href="#">상담불가</a>
+                        		</c:otherwise>
+                        	</c:choose>
                         </c:otherwise>
                         </c:choose>
                         </sec:authorize>
@@ -261,7 +268,7 @@ initial-scale=1, shrink-to-fit=no">
                            <a href="/channel/guest/portfolioDetail/${port.portNo}">
                               <div class="post--contents__item">
                                  <div style="position:relative">
-                                    <img class="post--contents__item__img" src="${port.portImg}"/>
+                                    <img class="post--contents__item__img" src="${port.portImg}" style="width: 100%; height: 170px;"/>
                                  </div>
                                  <p class="card-text title" style="color: black">${port.portTitle}</p>
                               </div>

@@ -126,12 +126,12 @@
 					  <strong>시공상담!</strong> 시공상담내용 | 상담할 내용 작성해 주세요.
 					</div>
 					
-					<div class="alert alert-warning textaline" role="alert" id="description">
 					
-					</div>
 				</div>
 				
-			
+			<div class="alert alert-warning textaline col-md-12" role="alert" id="description">
+					
+			</div>
 		
 <p>
 

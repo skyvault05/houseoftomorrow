@@ -127,9 +127,6 @@
 					  <strong>시공상담!</strong> 계약서를 확인할 수 있습니다.
 					</div>
 					
-					<div class="alert alert-warning textaline" role="alert" id="description">
-					
-					</div>
 				</div>
 			<div id="contractImg" class="col-md-12">
 				
