@@ -268,7 +268,7 @@ initial-scale=1, shrink-to-fit=no">
                            <a href="/channel/guest/portfolioDetail/${port.portNo}">
                               <div class="post--contents__item">
                                  <div style="position:relative">
-                                    <img class="post--contents__item__img" src="${port.portImg}"/>
+                                    <img class="post--contents__item__img" src="${port.portImg}" style="width: 100%; height: 170px;"/>
                                  </div>
                                  <p class="card-text title" style="color: black">${port.portTitle}</p>
                               </div>
