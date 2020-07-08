@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,9 @@ import hot.estimate.domain.Linoleum;
 import hot.estimate.domain.Papering;
 import hot.estimate.domain.Tile;
 import hot.estimate.service.EstimateService;
+import hot.member.domain.Member;
+import hot.member.service.MemberService;
+import hot.security.CustomUser;
 
 @Controller
 public class EstimateController {
@@ -27,6 +31,8 @@ public class EstimateController {
 	private EstimateService estimateService;
 	@Autowired
 	private ChannelRepository chRep;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping("/estimate")
 	public String estimate() {
@@ -61,6 +67,9 @@ public class EstimateController {
 	
 	@RequestMapping("/viewEstimateDetail/{estNo}")
 	public ModelAndView estiPapering(@PathVariable Integer estNo) {
+		Boolean isConstructor = false;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
 		Estimate estimate = estimateService.selectByEstNo(estNo);
 		List<EstResponse> responseList = estimateService.selectResponseByEstNo(estNo);
 		estimate.setEstimateDetails();
@@ -68,6 +77,13 @@ public class EstimateController {
 		mv.addObject("estimate", estimate);
 		mv.addObject("responseList", responseList);
 		mv.setViewName("/estimate/member/requestDetail");
+		
+		if(!principal.equals("anonymousUser")) {
+			CustomUser user = (CustomUser) principal;
+			Member member = memberService.findMemberByMemberNo(user.getMemberNo());
+			if(member.getMemberRole().getMemberRoleNo()==2 || member.getMemberRole().getMemberRoleNo()==3) isConstructor = true;
+			mv.addObject("isConstructor", isConstructor);
+		}
 		return mv;
 	}
 	
