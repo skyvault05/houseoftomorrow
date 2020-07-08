@@ -11,7 +11,14 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/channel/channel.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estimate/estimate.css">
   <script src="${pageContext.request.contextPath}/js/estimate/estimate.js"></script>
-
+	
+<script>
+	$(function(){
+		if($('input[name=chNo]').val()){
+			$('#consulting').hide();
+		}
+	})
+</script>
   </head>
   
   <body>
@@ -192,7 +199,7 @@
 							</p>
 							
 							<div class="comment-feed__item__footer">
-								<a href="/member/consultingForm?chNo=${user.chNo}" class="comment-feed__item__footer_esti">상담하기</a>
+								<a id="consulting" href="/member/consultingForm?chNo=${response.channel.chNo}" class="comment-feed__item__footer_esti">상담하기</a>
 								<a href="/channel/guest/channelDetail/${response.channel.chNo}" class="comment-feed__item__footer_esti">채널방문</a>
 							</div>
 						</article>
