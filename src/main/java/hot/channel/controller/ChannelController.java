@@ -99,6 +99,7 @@ public class ChannelController {
 	 * */
 	@RequestMapping("/guest/channelDetail/{chNo}")
 	public ModelAndView chDetail(@PathVariable(name="chNo")Integer chNo, @RequestParam(defaultValue = "0")int nowPage, Model model) {
+		Boolean isNotConstructor = true;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		Channel channel = channelService.selectChannel(chNo);
@@ -131,6 +132,8 @@ public class ChannelController {
 			CustomUser user = (CustomUser) principal;
 			boolean reviewRight = reviewService.checkReviewRight(chNo, user.getMemberNo());
 			mv.addObject("reviewRight", reviewRight);
+			if(user.getChNo()!=null) isNotConstructor = false;
+			mv.addObject("isNotConstructor", isNotConstructor);			
 		}
 		return mv;
 	}
