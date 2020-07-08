@@ -8,9 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>내일의 집</title>
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/qna/qna.css"> 
 <style>
-	body{
+/* 	body{
 		margin-left: 10%;
 	}
 	p{
@@ -29,7 +29,7 @@
 	  }
 	  #line{
 	  	border: 2px solid #33f0c0;
-	  }
+	  } */
 </style>
 
 <script type="text/javascript">
@@ -38,27 +38,10 @@
 	}
 </script>
 
-<!-- bootstrap-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/animate.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/owl.carousel.min.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/jquery.fancybox.min.css">
-
-  <!-- Theme Style -->
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/common.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main/main.css">
-  
-  <!-- WebFont -->
-  
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;900&display=swap" rel="stylesheet">
-
 </head>
 <body>
-<div  class="container margin-top-100">
+<!-- -------------------------기존코드--------------------------- -->
+<%-- <div  class="container margin-top-100">
 <div class="row justify-content-center">
 	<h2>${qna.qnaTitle}</h2>
 </div>
@@ -124,6 +107,107 @@ ${qnaParent.qnaDescription}
 </c:forEach>
 </c:if>
 </div>
-<br><br>
+<br><br> --%>
+
+
+<!-- ----------------쟈니수정----------------------- -->
+<div class="container pt-5">
+	<div class="row"></div>
+	<div class="table_qna">
+		<table class="main_table">
+			<tr>
+				<th colspan="2" scope="row">
+					<p class="qna_title">
+						<span class="">${qna.qnaTitle}</span>
+					</p>
+					<p class="qna_date">등록일 &nbsp;: &nbsp;
+						<em><fmt:formatDate value="${qna.qnaRegdate}" pattern="yyyy-MM-dd HH:mm"/></em>
+					</p>
+				</th>
+				
+			</tr>
+			<tr>
+				<td colspan="2" class="info">
+					<dl class="qna">
+						<dt>문의 유형</dt>
+						<dd>
+							<strong>
+								<c:choose>
+									<c:when test="${qna.qnaCategory.qnaCategoryNo==14}">
+										<span> 결제 </span>
+									</c:when>
+									<c:when test="${qna.qnaCategory.qnaCategoryNo==15}">
+										<span> 환불 </span>
+									</c:when>
+									<c:when test="${qna.qnaCategory.qnaCategoryNo==16}">
+										<span> 회원정보 변경 </span>
+									</c:when>
+									<c:when test="${qna.qnaCategory.qnaCategoryNo==17}">
+										<span> 서비스 / 기타 </span>
+									</c:when>
+								</c:choose>
+							</strong>
+						</dd>
+					</dl>
+				
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="txt-conts">
+						<span>
+							${qna.qnaDescription}
+						</span>
+					
+					</div>
+					<div class="reply">
+						<strong> 답변 </strong>
+					</div>
+					<div class="box-polaroid">
+						<c:if test="${not empty qnaParent}">
+						<div class="box-inner">
+							<c:forEach items="${qnaParent}" var="qnaParent">
+								<p class="reply_title">${qnaParent.qnaTitle}</p>
+								${qnaParent.qnaDescription}
+							</c:forEach>
+						</div>
+						</c:if>
+					</div>
+				
+				</td>
+			</tr>
+
+		</table><!-- --end table----- -->
+
+	</div><!-- end QNA -->
+	<div class="set-btn">
+		<div class="rows justify-content-center" style="margin-left:67%;">
+		<a class="click btn btn-primary" href="${pageContext.request.contextPath}/qna/list/${qna.qnaCategory.qnaCategoryNo}">목록으로</a>
+
+<sec:authentication var="user" property="principal" />
+   <sec:authorize access="hasRole('ROLE_MEMBER') and isAuthenticated()">
+	<c:choose>
+		<c:when test="${qna.member.memberNo == user.memberNo}">
+			<a class="click btn btn-primary" onclick="return delchk()" href="${pageContext.request.contextPath}/qna/delete?qnaNo=${qna.qnaNo}">게시글 삭제하기</a>
+		</c:when>
+	</c:choose><p>
+</sec:authorize>
+</div><!-- row end -->
+<div class="rows">
+<sec:authorize access="hasRole('ROLE_ADMIN') and isAuthenticated()">
+<a class="click btn btn-primary"   href="${pageContext.request.contextPath}/qna/replyForm?qnaParentNo=${qna.qnaNo}">답글달기</a>
+<c:choose>
+<c:when test="${qna.member.memberNo == user.memberNo}">
+	 | <a class="click btn btn-primary" href="${pageContext.request.contextPath}/qna/updateForm?qnaNo=${qna.qnaNo}"}>게시글 수정하기</a>
+</c:when>
+</c:choose>
+</sec:authorize>
+</div>
+	</div>
+
+</div>
+
 </body>
+
+
 </html>
