@@ -1,0 +1,98 @@
+/*-----질 문 과 답 변-----*/
+table {
+    font-size: 15px;
+    line-height: 1.2;
+    color: #666;
+    font-weight: 300;
+    margin:0 auto;
+}
+tr, th, td, dl, dt, dd {
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    word-break: break-all;
+
+}
+.qna_title {font-size:18px; float: left;}
+.qna_date {font-size:15px; float: right;}
+.table_qna thead th {
+    padding: 0 10px;
+    background-color: #edebe1;
+    line-height: 40px;
+}
+table thead th {
+    font-weight: 500;
+}
+th {
+	text-align: left;
+    vertical-align: middle;
+}
+
+.table_qna thead th>p:first-child>strong {
+    display: inline-block;
+    overflow: hidden;
+    width: 540px;
+    margin-left: 15px;
+    color: #222;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.table_qna tbody td.info {
+    padding-bottom: 5px;
+}
+.table_qna tbody td {
+    padding: 25px 10px 23px;
+    border-top: 1px solid #d6d4ca;
+}
+.table_qna tbody td>dl {
+    overflow: hidden;
+}
+.table_qna tbody td>dl>dt {
+    width: 63px;
+}
+.table_qna tbody td>dl>dd, .table_qna tbody td>dl>dt {
+    float: left;
+    height: 23px;
+    margin-bottom: 10px;
+}
+.table_qna tbody td>dl.qna>dd {
+    width: 296px;
+}
+.table_qna tbody td>dl.qna>dd>strong {
+    max-width: 260px;
+}
+.table_qna tbody td>dl>dd>strong {
+    display: inline-block;
+    overflow: hidden;
+    color: #222;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.table_qna tbody td>.txt-conts {
+    width: 780px;
+    margin-bottom: 50px;
+    line-height: 1.6;
+}
+.table_qna tbody td>.reply {
+    overflow: hidden;
+    margin: 20px 0 5px;
+}
+.table_qna tbody td>.reply>strong {
+    display: inline-block;
+    float: left;
+}
+.box-polaroid {
+    border: 1px solid #000;
+}
+.table_qna tbody td>.box-polaroid>.box-inner {
+    padding: 20px;
+    line-height: 2;
+}
+.table_qna thead th>p>em {
+    margin-left: 10px;
+  
+}
