@@ -326,7 +326,7 @@ ${port.portDescription}
 							</div>
 							<button class="btn btn-primary card-detail-writer__follow" type="button">팔로우</button>
 						</div>	
-						<a href="/member/consultingForm?chNo=${port.channel.chNo}" class="btn btn-primary user-action__new-consultation-link">이 컨셉 시공상담</a>
+						<a href="/member/consultingForm?chNo=${port.channel.chNo}" class="btn btn-primary user-action__new-consultation-link"> 시공상담</a>
 											
 					</div>
 				</div>
