@@ -28,7 +28,14 @@
 						<a href="${pageContext.request.contextPath}/manage/member/memberUpdateForm" class="nav-link my_write" target="_self">회원정보수정</a>
 					</li>
 					<li class="nav-item">
-						<a href="${pageContext.request.contextPath}/myEstimateList/${user.memberNo }" class="nav-link my_write" target="_self">견적 요청 내역</a>
+						<c:choose>
+							<c:when test="${isConstructor}">
+								<a href="${pageContext.request.contextPath}/estimate/guest/requestAll" class="nav-link my_write" target="_self">견적 요청 내역</a>
+							</c:when>
+							<c:otherwise>
+								<a href="${pageContext.request.contextPath}/myEstimateList/${user.memberNo}" class="nav-link my_write" target="_self">견적 요청 내역</a>
+							</c:otherwise>
+						</c:choose>
 					</li>
 					<li class="nav-item">
 						<a href="${pageContext.request.contextPath}/member/consultingAllPage" class="nav-link my_write" target="_self">내 상담 내역</a>
