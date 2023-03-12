@@ -21,8 +21,8 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 public class S3Manager {
    
    private static final AWSCredentials credentials = new BasicAWSCredentials(
-         "AKIAI3H47TE7WP6OADGA", 
-         "ZSI1msV2sAZIN8WtG4TVchldNLY6RCGT6aokZCIn"
+         "id", 
+         "secret"
          );
    
    private static final AmazonS3 s3client = AmazonS3ClientBuilder
